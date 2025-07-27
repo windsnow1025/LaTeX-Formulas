@@ -1,0 +1,351 @@
+\documentclass{article}
+
+% Language setting
+\usepackage[english]{babel}
+
+% Set page size and margins
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{amsfonts}
+
+\title{Probability}
+\date{}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\newpage
+\section{Combinatorics}
+
+\subsection{Combinations}
+\[
+    \binom{n}{k} = \frac{n!}{k!(n-k)!}
+\]
+
+\subsection{Permutations}
+\[
+    P(n, k) = \frac{n!}{(n-k)!}
+\]
+
+\subsection{Binomial Theorem}
+\[
+    (a+b)^n = \sum_{k=0}^{n} \binom{n}{k} a^k b^{n-k}
+\]
+
+\newpage
+\section{Events}
+
+\subsection{Mutually Exclusive Events}
+\[
+    P(A \cap B) = 0
+\]
+
+\subsection{Complementary Events}
+\[
+    P(A \cap B) = 0
+\]
+\[
+    P(A) + P(B) = 1
+\]
+
+\subsection{Independent Events}
+\[
+    P(A \cap B) = P(A)P(B)
+\]
+
+\newpage
+\section{Laws of Probability}
+
+\subsection{Complement Rule}
+\[
+    P(\bar{A}) = 1 - P(A)
+\]
+
+\subsection{Addition Law}
+\[
+    P(A \cup B) = P(A) + P(B) - P(A \cap B)
+\]
+
+\subsection{Subtraction Law}
+\[
+    P(A \setminus B) = P(A \cap \bar{B}) = P(A) - P(A \cap B)
+\]
+
+\subsection{Conditional Probability}
+\[
+    P(A|B) = \frac{P(A \cap B)}{P(B)}
+\]
+
+\subsection{Law of Total Probability}
+\[
+    P(A) = \sum_{i=1}^{k} P(B_i \cap A) = \sum_{i=1}^{k} P(B_i)P(A|B_i)
+\]
+
+\subsection{Bayes Theorem}
+\[
+    P(B_j|A) = \frac{P(B_j)P(A|B_j)}{P(A)}
+\]
+
+\newpage
+\section{Numerical Characteristics}
+
+\subsection{Expected Value (Mean)}
+\[
+    \mu = E(X) = \int_{-\infty}^{+\infty} x f(x) dx
+\]
+\textbf{Properties:}
+\begin{itemize}
+    \item \( E(c) = c \)
+    \item \( E(cX) = cE(X) \)
+    \item \( E(X \pm Y) = E(X) \pm E(Y) \)
+    \item \( E(XY) = E(X)E(Y) + \text{Cov}(X,Y) \)
+\end{itemize}
+
+\subsection{Expected Value of a function}
+\[
+    E(g(X)) = \int_{-\infty}^{+\infty} g(x)f(x)dx
+\]
+
+\subsection{Variance}
+\[
+    \sigma^2 = V(X) = E[(X - E(X))^2]
+\]
+\[
+    V(X) = E(X^2) - [E(X)]^2
+\]
+\textbf{Properties:}
+\begin{itemize}
+    \item \( V(c) = 0 \)
+    \item \( V(cX) = c^2 V(X) \)
+    \item \( V(X+c) = V(X) \)
+    \item \( V(X \pm Y) = V(X) + V(Y) \pm 2\text{Cov}(X,Y) \)
+\end{itemize}
+
+\subsection{Standard Deviation}
+\[
+    \sigma = \sqrt{E[(X-\mu)^2]}
+\]
+
+\subsection{Covariance}
+\[
+    \text{Cov}(X,Y) = E[(X-E(X))(Y-E(Y))]
+\]
+\[
+    \text{Cov}(X,Y) = E(XY) - E(X)E(Y)
+\]
+\textbf{Properties:}
+\begin{itemize}
+    \item \( \text{Cov}(X,Y) = \text{Cov}(Y,X) \)
+    \item \( \text{Cov}(aX, bY) = ab\,\text{Cov}(X,Y) \)
+    \item \( \text{Cov}(c,X) = 0 \)
+    \item \( \text{Cov}(X_1+X_2, Y) = \text{Cov}(X_1,Y) + \text{Cov}(X_2,Y) \)
+    \item If X and Y are mutually independent, \( \text{Cov}(X,Y) = 0 \)
+\end{itemize}
+
+\subsection{Correlation Coefficient}
+\[
+    \rho_{XY} = \frac{\text{Cov}(X,Y)}{\sqrt{V(X)}\sqrt{V(Y)}}
+\]
+\textbf{Properties:}
+\begin{itemize}
+    \item \( |\rho_{XY}| \le 1 \)
+    \item \( |\rho_{XY}| = 1 \Leftrightarrow (\exists a)(\exists b)(P(Y=aX+b)=1), (a>0, \rho_{XY}=1; a<0, \rho_{XY}=-1) \)
+\end{itemize}
+
+\subsection{Markov's Inequality}
+If \( X \geq 0 \), for any \( a > 0 \):
+\[
+    P(X \geq a) \leq \frac{E(X)}{a}
+\]
+
+\subsection{Chebyshev's Inequality}
+For any \( \varepsilon > 0 \):
+\[
+    P(|X-E(X)| \ge \varepsilon) \le \frac{V(X)}{\varepsilon^2}
+\]
+\[
+    P(|X-E(X)| < \varepsilon) \ge 1 - \frac{V(X)}{\varepsilon^2}
+\]
+
+\newpage
+\section{One-dimensional Random Variables}
+
+\subsection{Probability Mass Function}
+For a discrete random variable, the Probability Mass Function \( p(x) \) is defined as:
+\[
+    P(X=x) = p(x)
+\]
+
+\subsection{Probability Density Function}
+For a continuous random variable, the Probability Density Function \( f(x) \) is defined as:
+\[
+    P(a \le x \le b) = \int_{a}^{b} f(x)dx
+\]
+
+\subsection{Cumulative Distribution Function}
+\[
+    F(x) = P(X \le x) = \int_{-\infty}^{x} f(t)dt
+\]
+
+\subsection{Cumulative Distribution Function of a function}
+\[
+    Y=g(X)
+\]
+\[
+    F(y) = P(Y \le y) = \int_{g(x) \le y} f_X(x)dx
+\]
+
+\subsection{Discrete Probability Distributions}
+
+\subsubsection{Bernoulli Distribution}
+Probability of success in a single trial with only two outcomes.
+\[ X \sim B(1,p) \]
+\[ f(x) = p^x (1-p)^{1-x}, \quad x=0,1 \]
+\[ \mu = p \]
+\[ \sigma^2 = p(1-p) \]
+
+\subsubsection{Binomial Distribution}
+The number of successes in \( n \) independent Bernoulli trails.
+\[ X \sim B(n,p) \]
+\[ f(x) = \binom{n}{x} p^x (1-p)^{n-x}, \quad x=0,1,\dots,n \]
+\[ \mu = np \]
+\[ \sigma^2 = np(1-p) \]
+
+\subsubsection{Geometric Distribution}
+The number of trials needed to get the first success in a sequence of independent Bernoulli trials.
+\[ X \sim G(p) \]
+\[ f(x) = (1-p)^{x-1}p, \quad x=1,2,\dots \]
+\[ F(x) = 1 - (1-p)^x \]
+\[ \mu = \frac{1}{p} \]
+\[ \sigma^2 = \frac{1-p}{p^2} \]
+
+\subsubsection{Poisson Distribution}
+The number of events occurring in an interval of time, given an average rate \( \lambda \) of occurrence.
+\[ X \sim P(\lambda) \]
+\[ f(x) = \frac{\lambda^x e^{-\lambda}}{x!}, \quad \lambda>0, x=0,1,\dots \]
+\[ \mu = \sigma^2 = \lambda \]
+\textbf{Derivation (Poisson Limit Theorem):}
+\[
+    B(n, p) \xrightarrow{n \to \infty,\, p \to 0} P(\lambda = np)
+\]
+
+\subsection{Continuous Probability Distributions}
+
+\subsubsection{Exponential Distribution}
+The waiting time for the next event in a Poisson process with an average rate \( \lambda \).
+\[ X \sim E(\lambda) \]
+\[
+    f(x) = \lambda e^{-\lambda x}, \quad x \geq 0
+\]
+\[
+    F(x) = 1 - e^{-\lambda x}, \quad x \geq 0
+\]
+\[
+    \mu = \frac{1}{\lambda}
+\]
+\[
+    \sigma^2 = \frac{1}{\lambda^2}
+\]
+Derivation from Poisson:
+\[
+    P(X>x) = f_{\text{Poisson}(\lambda x)}(0)
+\]
+
+\subsubsection{Gamma Distribution}
+The waiting time for the \( r^{th} \) event in a Poisson process with an average rate \( \lambda \).
+\[ X \sim \mathrm{Gamma}(r, \lambda) \]
+\[
+    f(x) = \frac{\lambda^r x^{r-1} e^{-\lambda x}}{(r-1)!}, \quad x \geq 0
+\]
+\[
+    \mu = \frac{r}{\lambda}
+\]
+\[
+    \sigma^2 = \frac{r}{\lambda^2}
+\]
+Derivation from Poisson:
+\[
+    P(X > x) = \sum_{k=0}^{r-1} f_{\text{Poisson}(\lambda x)}(k)
+\]
+
+\subsubsection{Normal Distribution}
+\[ X \sim \mathcal{N}(\mu, \sigma^2) \]
+\[ f(x) = \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{(x-\mu)^2}{2\sigma^2}}, \quad -\infty < x < +\infty \]
+\textbf{Derivation (De Moivre–Laplace theorem):}
+\[
+    B(n, p) \xrightarrow{n \to \infty} \mathcal{N}(\mu = np, \sigma^2 = np(1-p))
+\]
+
+
+\subsubsection{Standard Normal Distribution}
+\[ Z = \frac{X-\mu}{\sigma} \sim \mathcal{N}(0,1) \]
+\[ \phi(z) = \frac{1}{\sqrt{2\pi}} e^{-\frac{z^2}{2}} \]
+\[ \Phi(x) = \int_{-\infty}^{x} \phi(t)dt \]
+
+\newpage
+\section{Two-dimensional Continuous Random Variable}
+
+\subsection{Probability Distribution Function}
+For two continuous random variables, the Probability Density Function \( f(x,y) \) is defined as:
+\[
+    P((X,Y) \in A) = \iint_{A} f(x,y) dx dy
+\]
+
+\subsection{Cumulative Distribution Function}
+\[
+    F(x,y) = \int_{-\infty}^{y} \int_{-\infty}^{x} f(u,v) du dv
+\]
+
+\subsection{Marginal Probability Density Function}
+\[
+    f_X(x) = \int_{-\infty}^{\infty} f(x,y)dy
+\]
+\[
+    f_Y(y) = \int_{-\infty}^{\infty} f(x,y)dx
+\]
+
+\subsection{Conditional Probability Density Function}
+\[
+    f_{X|Y}(x|y) = \frac{f(x,y)}{f_Y(y)}
+\]
+\[
+    f_{Y|X}(y|x) = \frac{f(x,y)}{f_X(x)}
+\]
+
+\subsection{Convolution of Probability Distributions}
+\[
+    Z = X + Y
+\]
+\[
+    f_Z(z) = \int_{-\infty}^{+\infty} f(x,z-x)dx
+\]
+\[
+    f_Z(z) = \int_{-\infty}^{+\infty} f(z-y,y)dy
+\]
+
+\subsection{Distribution of a Function of Two Random Variables}
+\[
+    z=g(x,y)
+\]
+\[
+    y=h(x,z)
+\]
+\[
+    f_Z(z) = \int_{-\infty}^{+\infty} f(x,h(x,z)) \left| \frac{\partial h}{\partial z} \right| dx
+\]
+
+\subsection{Normal Distribution}
+\[ (X,Y) \sim \mathcal{N}(\mu_1, \mu_2, \sigma_1^2, \sigma_2^2, \rho) \]
+\textbf{Properties:}
+\begin{itemize}
+    \item \( X \sim \mathcal{N}(\mu_1, \sigma_1^2), Y \sim \mathcal{N}(\mu_2, \sigma_2^2) \)
+    \item X and Y are mutually independent iff, \( \rho = 0 \)
+\end{itemize}
+
+\end{document}

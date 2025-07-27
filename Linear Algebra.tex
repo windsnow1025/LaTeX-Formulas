@@ -1,0 +1,386 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{amsfonts}
+
+\title{Linear Algebra}
+\date{}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\newpage
+\section{Matrix}
+Matrix $A \in \mathbb{R}^{m \times n}$ defines a linear transformation from $\mathbb{R}^n$ to $\mathbb{R}^m$.\\
+Matrix $A$ is composed of column vectors $\mathbf{a}_j$, each of which is the image of the $j$-th standard basis vector after applying the transformation $A$.
+\[
+    A
+\]
+Expanded form~\ref{eq:matrix}
+
+
+\newpage
+\section{Matrix Operation}
+
+
+\subsection{Inner Product}
+The inner product (dot product) of two vectors $\mathbf{a}, \mathbf{b} \in \mathbb{R}^n$ is a scalar:
+\[
+    \mathbf{a}^T \mathbf{b} = \sum_{i=1}^n a_i b_i
+\]
+Expanded form~\ref{eq:innerprod}.
+
+\subsection{Outer Product}
+The outer product of two vectors $\mathbf{a} \in \mathbb{R}^m$ and $\mathbf{b} \in \mathbb{R}^n$ is an $m \times n$ matrix:
+\[
+    \mathbf{a} \mathbf{b}^T
+\]
+Expanded form~\ref{eq:outerprod}.
+
+\subsection{Matrix-Vector Multiplication}
+Apply linear transformation $A \in \mathbb{R}^{m \times n}$ to vector $\mathbf{x} \in \mathbb{R}^n$ and produce a new vector $A\mathbf{x} \in \mathbb{R}^m$
+\[
+    A\mathbf{x} = \sum_{j=1}^n x_j \mathbf{a}_j
+\]{
+Expanded} form~\ref{eq:matvec}.
+
+\subsection{Matrix-Matrix Multiplication}
+Apply transformation $B$, then apply transformation $A$.
+\[
+    (AB)_{*j} = A\mathbf{b}_j
+\]
+Expanded form~\ref{eq:mul}.
+
+\subsection{Transpose}
+\[
+    A^T = (a_{ji})
+\]
+\textbf{Transpose Distribution Rule:}
+\[
+    (AB)^T = B^T A^T
+\]
+Expanded form~\ref{eq:trans}.
+
+\subsection{Inverse}
+Reverses the transformation of $A$
+\[
+    A A^{-1} = A^{-1} A = I_n
+\]
+Calculation~\ref{subsec:gauss}.
+
+
+\newpage
+\section{Special Matrix}
+
+\subsection{Identity Matrix}
+The diagonal entries are all 1, and all off-diagonal entries are 0.\\
+\textbf{Geometric Explanation:} No transformation
+\[
+    (I_n)_{ij} =
+    \begin{cases}
+        1, & i = j \\
+        0, & i \neq j
+    \end{cases}
+\]
+Expanded form~\ref{eq:iden}.
+
+\subsection{Diagonal Matrix}
+The diagonal entries can be any value, and all off-diagonal entries are 0.\\
+\textbf{Geometric Explanation:} Scale the $i$-th standard basis vector by $d_i$
+\[
+    (D_n)_{ij} =
+    \begin{cases}
+        d_i, & i = j \\
+        0, & i \neq j
+    \end{cases}
+\]
+Expanded form~\ref{eq:diagm}.
+
+\subsection{Orthogonal Matrix}
+All column vectors are unit vectors and orthogonal to each other.\\
+\textbf{Geometric Explanation:} Preserves lengths and angles
+\[
+    Q^T Q = Q Q^T = I_n
+\]
+\[
+    Q^T = Q^{-1}
+\]
+
+
+\newpage
+\section{Matrix Decomposision}
+
+\subsection{Eigenvector \& Eigenvalue}
+
+A unit \textbf{eigenvector} $\|\mathbf{v}\| = 1$ of a matrix $A \in \mathbb{R}^{n \times n}$ is scaled by its corresponding \textbf{eigenvalue} $\lambda$ when the transformation $A$ is applied.
+\[
+    A\mathbf{v} = \lambda \mathbf{v}
+\]
+Calculation:
+\[
+    \det(A - \lambda I) = 0
+\]
+
+\subsection{Spectral Decomposition}
+
+Symmetric matrix $A \in \mathbb{R}^{n \times n}$ can be decomposed as:
+\[
+    A = Q \Lambda Q^T
+\]
+\begin{itemize}
+    \item $Q$ is an orthogonal matrix whose columns are the eigenvectors of $A$.
+    \item $\Lambda$ is a diagonal matrix whose diagonal entries are the eigenvalues of $A$.
+\end{itemize}
+\textbf{Geometric Explanation:}
+\begin{itemize}
+    \item Change the basis of the vector space to the eigenvector basis ($Q^T$).
+    \item Apply a scaling transformation along the new coordinate axes by the eigenvalues ($\Lambda$).
+    \item Change the basis back to the original coordinate system ($Q$).
+\end{itemize}
+
+\subsection{Eigen Decomposition}
+
+Square matrix $A \in \mathbb{R}^{n \times n}$ can be decomposed as ($A$ is \textbf{similar} to $D$):
+\[
+    A = PDP^{-1}
+\]
+where:
+\begin{itemize}
+    \item The columns of $P$ are the eigenvectors of $A$.
+    \item $D$ is a diagonal matrix whose diagonal entries are the eigenvalues of $A$.
+\end{itemize}
+\textbf{Geometric Explanation:}
+\begin{enumerate}
+    \item $P^{-1}$: Change the basis of the vector space from the standard basis to the eigenvector basis.
+    \item $D$: Apply a scaling transformation along the coordinate axes by the eigenvalues.
+    \item $P$: Change the basis of the vector space from the eigenvector basis to the standard basis.
+\end{enumerate}
+
+\subsection{Singular Value Decomposition}
+
+\subsubsection{Singular Vector \& Singular Value}
+For any matrix $A \in \mathbb{R}^{m \times n}$, the \textbf{singular values} (the square roots of the eigenvalues of $A^T A$ or $AA^T$) measure how much $A$ stretches unit vectors in different directions, with the corresponding \textbf{right singular vectors} (eigenvectors of $A^T A$) indicating the directions of maximum stretch in the input space, and the \textbf{left singular vectors} (eigenvectors of $AA^T$) indicating the directions of maximum stretch in the output space.
+
+\subsubsection{SVD Formula}
+Any matrix $A \in \mathbb{R}^{m \times n}$ can be decomposed as:
+\[
+    A = U \Sigma V^T
+\]
+where:
+\begin{itemize}
+    \item $V \in \mathbb{R}^{n \times n}$ is an orthogonal matrix whose columns are the \textbf{right singular vectors} of $A$.
+    \item $U \in \mathbb{R}^{m \times m}$ is an orthogonal matrix whose columns are the \textbf{left singular vectors} of $A$.
+    \item $\Sigma \in \mathbb{R}^{m \times n}$ is a diagonal matrix whose diagonal entries are the \textbf{singular values} of $A$.
+\end{itemize}
+\textbf{Geometric Explanation:}
+\begin{enumerate}
+    \item $V^T$: Change the basis of the input space from the standard basis to the right singular vector basis.
+    \item $\Sigma$: Apply scaling transformation by the singular values and map from the right singular vector basis to the left singular vector basis.
+    \item $U$: Change the basis of the output space from the left singular vector basis to the standard basis.
+\end{enumerate}
+
+
+\subsubsection{SVD Derivation}
+Assume that matrix $A \in \mathbb{R}^{m \times n}$ can be decomposed as:
+\[
+    A = U \Sigma V^T
+\]
+where $U \in \mathbb{R}^{m \times m}$ and $V \in \mathbb{R}^{n \times n}$ are orthogonal matrices, and $\Sigma \in \mathbb{R}^{m \times n}$ is a diagonal matrix.
+
+\paragraph{Compute $A^T A$ and $AA^T$:}
+\[
+    A^T A = (U \Sigma V^T)^T (U \Sigma V^T) = V \Sigma^T U^T U \Sigma V^T = V \Sigma^T \Sigma V^T
+\]
+\[
+    AA^T = (U \Sigma V^T)(U \Sigma V^T)^T = U \Sigma V^T V \Sigma^T U^T = U \Sigma \Sigma^T U^T
+\]
+Notice that these expressions are in the form of eigen decomposition:
+\begin{itemize}
+    \item $A^T A = V (\Sigma^T \Sigma) V^T$ where $V$ is orthogonal and $\Sigma^T \Sigma$ is diagonal
+    \item $AA^T = U (\Sigma \Sigma^T) U^T$ where $U$ is orthogonal and $\Sigma \Sigma^T$ is diagonal
+\end{itemize}
+Therefore: $V$ contains the eigenvectors of $A^T A$, and $\sigma_i = \sqrt{\lambda_i}$. $U$ contains the eigenvectors of $AA^T$, and $\sigma_i = \sqrt{\lambda_i}$.
+
+
+\newpage
+\section{Calculation}
+
+\subsection{Gaussian Elimination}
+\label{subsec:gauss}
+
+Gaussian elimination is an algorithm for solving systems of linear equations, finding the rank, and calculating the inverse of a matrix. The process consists of two main steps:
+
+\begin{enumerate}
+    \item \textbf{Forward Elimination:} Transform the matrix into an upper triangular form using \textbf{elementary row operations}:
+    \begin{itemize}
+        \item Swap two rows.
+        \item Multiply a row by a nonzero scalar.
+        \item Add a multiple of one row to another row.
+    \end{itemize}
+    \item \textbf{Back Substitution:} Solve for the variables starting from the last row and moving upwards.
+\end{enumerate}
+
+
+\newpage
+\appendix
+\section{Expanded Form}
+
+\begin{itemize}
+
+    \item \textbf{Matrix:}
+    \begin{equation}
+        A =
+        \left[
+            \begin{array}{ccc}
+                | &        & | \\
+                \mathbf{a}_1 & \cdots & \mathbf{a}_n \\
+                | &        & |
+            \end{array}
+        \right]
+        \label{eq:matrix}
+    \end{equation}
+
+    \item \textbf{Inner Product:}
+    \begin{equation}
+        \mathbf{a}^T \mathbf{b} =
+        \left[
+            \begin{array}{ccc}
+                a_1 & \cdots & a_n
+            \end{array}
+        \right]
+        \left[
+            \begin{array}{c}
+                b_1 \\
+                \vdots \\
+                b_n
+            \end{array}
+        \right]
+        = a_1 b_1 + \cdots + a_n b_n
+        \label{eq:innerprod}
+    \end{equation}
+
+    \item \textbf{Outer Product:}
+    \begin{equation}
+        \mathbf{a} \mathbf{b}^T =
+        \left[
+            \begin{array}{c}
+                a_1 \\
+                \vdots \\
+                a_m
+            \end{array}
+        \right]
+        \left[
+            \begin{array}{ccc}
+                b_1 & \cdots & b_n
+            \end{array}
+        \right]
+        =
+        \left[
+            \begin{array}{ccc}
+                a_1 b_1 & \cdots & a_1 b_n \\
+                \vdots & \ddots & \vdots \\
+                a_m b_1 & \cdots & a_m b_n
+            \end{array}
+        \right]
+        \label{eq:outerprod}
+    \end{equation}
+
+    \item \textbf{Matrix-Vector Multiplication:}
+    \begin{equation}
+        A\mathbf{x} =
+        \left[
+            \begin{array}{ccc}
+                | &        & | \\
+                \mathbf{a}_1 & \cdots & \mathbf{a}_n \\
+                | &        & |
+            \end{array}
+        \right]
+        \left[
+            \begin{array}{c}
+                x_1 \\
+                \vdots \\
+                x_n
+            \end{array}
+        \right]
+        =
+        x_1\mathbf{a}_1 + x_2\mathbf{a}_2 + \cdots + x_n\mathbf{a}_n
+        \label{eq:matvec}
+    \end{equation}
+
+    \item \textbf{Matrix-Matrix Multiplication:}
+    \begin{equation}
+        AB =
+        \left[
+            \begin{array}{ccc}
+                | &        & | \\
+                A\mathbf{b}_1 & \cdots & A\mathbf{b}_p \\
+                | &        & |
+            \end{array}
+        \right]
+        \label{eq:mul}
+    \end{equation}
+
+    \item \textbf{Transpose:}
+    \begin{equation}
+        \left[
+            \begin{array}{ccc}
+                a_{11} & \cdots & a_{1n} \\
+                \vdots & \ddots & \vdots \\
+                a_{m1} & \cdots & a_{mn}
+            \end{array}
+        \right]^T
+        =
+        \left[
+            \begin{array}{ccc}
+                a_{11} & \cdots & a_{m1} \\
+                \vdots & \ddots & \vdots \\
+                a_{1n} & \cdots & a_{mn}
+            \end{array}
+        \right]
+        \label{eq:trans}
+    \end{equation}
+
+    \item \textbf{Identity Matrix:}
+    \begin{equation}
+        I_n =
+        \left[
+            \begin{array}{cccc}
+                1 & 0 & \cdots & 0 \\
+                0 & 1 & \cdots & 0 \\
+                \vdots & \vdots & \ddots & \vdots \\
+                0 & 0 & \cdots & 1
+            \end{array}
+        \right]
+        \label{eq:iden}
+    \end{equation}
+
+    \item \textbf{Diagonal Matrix:}
+    \begin{equation}
+        D_n =
+        \left[
+            \begin{array}{cccc}
+                d_1 & 0 & \cdots & 0 \\
+                0 & d_2 & \cdots & 0 \\
+                \vdots & \vdots & \ddots & \vdots \\
+                0 & 0 & \cdots & d_n
+            \end{array}
+        \right]
+        \label{eq:diagm}
+    \end{equation}
+
+\end{itemize}
+
+\end{document}
