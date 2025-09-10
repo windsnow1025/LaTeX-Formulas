@@ -148,14 +148,20 @@
     \item If X and Y are mutually independent, \( \text{Cov}(X,Y) = 0 \)
 \end{itemize}
 
+\subsection{Covariance Matrix}
+\[
+    \Sigma_{ij} = \text{Cov}(X_i, X_j) = E[(X_i - E[X_i])(X_j - E[X_j])]
+\]
+
 \subsection{Correlation Coefficient}
 \[
-    \rho_{XY} = \frac{\text{Cov}(X,Y)}{\sqrt{V(X)}\sqrt{V(Y)}}
+    \rho_{X,Y} = \frac{\text{Cov}(X,Y)}{\sigma_X\sigma_Y}
 \]
 \textbf{Properties:}
 \begin{itemize}
-    \item \( |\rho_{XY}| \le 1 \)
-    \item \( |\rho_{XY}| = 1 \Leftrightarrow (\exists a)(\exists b)(P(Y=aX+b)=1), (a>0, \rho_{XY}=1; a<0, \rho_{XY}=-1) \)
+    \item \( |\rho_{X,Y}| \le 1 \)
+    \item \( |\rho_{X,Y}| = 1 \Leftrightarrow (\exists a)(\exists b)(P(Y=aX+b)=1), (a>0, \rho_{X,Y}=1; a<0, \rho_{X,Y}=-1) \)
+    \item \( \rho_{aX + b, cY + d} = \rho_{XY} \)
 \end{itemize}
 
 \subsection{Markov's Inequality}
@@ -276,7 +282,9 @@ Derivation from Poisson:
 
 \subsubsection{Normal Distribution}
 \[ X \sim \mathcal{N}(\mu, \sigma^2) \]
-\[ f(x) = \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{(x-\mu)^2}{2\sigma^2}}, \quad -\infty < x < +\infty \]
+\[
+f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left( -\frac{(x-\mu)^2}{2\sigma^2} \right)
+\]
 \textbf{Derivation (De Moivre–Laplace theorem):}
 \[
     B(n, p) \xrightarrow{n \to \infty} \mathcal{N}(\mu = np, \sigma^2 = np(1-p))
@@ -340,12 +348,28 @@ For two continuous random variables, the Probability Density Function \( f(x,y) 
     f_Z(z) = \int_{-\infty}^{+\infty} f(x,h(x,z)) \left| \frac{\partial h}{\partial z} \right| dx
 \]
 
-\subsection{Normal Distribution}
+\subsection{Bivariate Normal Distribution}
 \[ (X,Y) \sim \mathcal{N}(\mu_1, \mu_2, \sigma_1^2, \sigma_2^2, \rho) \]
+\[
+    f(x_1, x_2) = \frac{1}{2\pi\sqrt{\det(\Sigma)}} \exp\left(-\frac{1}{2}(\mathbf{x} - \boldsymbol{\mu})^\top \Sigma^{-1} (\mathbf{x} - \boldsymbol{\mu})\right)
+\]
+
 \textbf{Properties:}
 \begin{itemize}
     \item \( X \sim \mathcal{N}(\mu_1, \sigma_1^2), Y \sim \mathcal{N}(\mu_2, \sigma_2^2) \)
     \item X and Y are mutually independent iff, \( \rho = 0 \)
 \end{itemize}
+
+\subsection{Standard Bivariate Normal Distribution}
+\[
+    f(x_1, x_2) = \frac{1}{2\pi} \exp\left(-\frac{x_1^2 + x_2^2}{2}\right)
+\]
+
+\newpage
+\section{Multivariate Normal Distribution}
+
+\[
+    f(\mathbf{x}; \boldsymbol{\mu}, \Sigma) = \frac{1}{(2\pi)^{d/2} \sqrt{\det(\Sigma)}} \exp\left(-\frac{1}{2}(\mathbf{x} - \boldsymbol{\mu})^\top \Sigma^{-1} (\mathbf{x} - \boldsymbol{\mu})\right)
+\]
 
 \end{document}
