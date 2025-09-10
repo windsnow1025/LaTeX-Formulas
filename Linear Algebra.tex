@@ -64,6 +64,11 @@ Apply transformation $B$, then apply transformation $A$.
 \]
 Expanded form~\ref{eq:mul}.
 
+\subsection{Associative Law}
+\[
+    (AB)C = A(BC)
+\]
+
 \subsection{Transpose}
 \[
     A^T = (a_{ji})
@@ -79,6 +84,10 @@ Reverses the transformation of $A$
 \[
     A A^{-1} = A^{-1} A = I_n
 \]
+\textbf{Inverse of a Product Rule:}
+\[
+    (AB)^{-1} = B^{-1}A^{-1}
+\]
 Calculation~\ref{subsec:gauss}.
 
 
@@ -87,7 +96,7 @@ Calculation~\ref{subsec:gauss}.
 
 \subsection{Identity Matrix}
 The diagonal entries are all 1, and all off-diagonal entries are 0.\\
-\textbf{Geometric Explanation:} No transformation
+\textbf{Geometric Interpretation:} No transformation
 \[
     (I_n)_{ij} =
     \begin{cases}
@@ -99,7 +108,7 @@ Expanded form~\ref{eq:iden}.
 
 \subsection{Diagonal Matrix}
 The diagonal entries can be any value, and all off-diagonal entries are 0.\\
-\textbf{Geometric Explanation:} Scale the $i$-th standard basis vector by $d_i$
+\textbf{Geometric Interpretation:} Scale the $i$-th standard basis vector by $d_i$
 \[
     (D_n)_{ij} =
     \begin{cases}
@@ -107,11 +116,20 @@ The diagonal entries can be any value, and all off-diagonal entries are 0.\\
         0, & i \neq j
     \end{cases}
 \]
-Expanded form~\ref{eq:diagm}.
+Expanded form~\ref{eq:diagm}.\\
+\textbf{Inverse of a Diagnal Matrix:}
+\[
+    (D_n^{-1})_{ij} =
+    \begin{cases}
+        \frac{1}{d_i}, & i = j \\
+        0, & i \neq j
+    \end{cases}
+\]
+Expanded form~\ref{eq:diagminv}.
 
 \subsection{Orthogonal Matrix}
 All column vectors are unit vectors and orthogonal to each other.\\
-\textbf{Geometric Explanation:} Preserves lengths and angles
+\textbf{Geometric Interpretation:} Preserves lengths and angles
 \[
     Q^T Q = Q Q^T = I_n
 \]
@@ -140,33 +158,34 @@ Symmetric matrix $A \in \mathbb{R}^{n \times n}$ can be decomposed as:
 \[
     A = Q \Lambda Q^T
 \]
+where:
 \begin{itemize}
     \item $Q$ is an orthogonal matrix whose columns are the eigenvectors of $A$.
     \item $\Lambda$ is a diagonal matrix whose diagonal entries are the eigenvalues of $A$.
 \end{itemize}
-\textbf{Geometric Explanation:}
-\begin{itemize}
-    \item Change the basis of the vector space to the eigenvector basis ($Q^T$).
-    \item Apply a scaling transformation along the new coordinate axes by the eigenvalues ($\Lambda$).
-    \item Change the basis back to the original coordinate system ($Q$).
-\end{itemize}
+\textbf{Geometric Interpretation:}
+\begin{enumerate}
+    \item $Q^T$: Change the basis of the vector space to the eigenvector basis.
+    \item $\Lambda$: Apply a scaling transformation along the new axes by the eigenvalues.
+    \item $Q$: Change the basis of the vector space back to the standard basis.
+\end{enumerate}
 
 \subsection{Eigen Decomposition}
 
 Square matrix $A \in \mathbb{R}^{n \times n}$ can be decomposed as ($A$ is \textbf{similar} to $D$):
 \[
-    A = PDP^{-1}
+    A = P \LambdaP ^{-1}
 \]
 where:
 \begin{itemize}
-    \item The columns of $P$ are the eigenvectors of $A$.
-    \item $D$ is a diagonal matrix whose diagonal entries are the eigenvalues of $A$.
+    \item $P$ is a matrix whose columns are the eigenvectors of $A$.
+    \item $\Lambda$ is a diagonal matrix whose diagonal entries are the eigenvalues of $A$.
 \end{itemize}
-\textbf{Geometric Explanation:}
+\textbf{Geometric Interpretation:}
 \begin{enumerate}
-    \item $P^{-1}$: Change the basis of the vector space from the standard basis to the eigenvector basis.
-    \item $D$: Apply a scaling transformation along the coordinate axes by the eigenvalues.
-    \item $P$: Change the basis of the vector space from the eigenvector basis to the standard basis.
+    \item $P^{-1}$: Change the basis of the vector space to the eigenvector basis.
+    \item $\Lambda$: Apply a scaling transformation along the new axes by the eigenvalues.
+    \item $P$: Change the basis of the vector space back to the standard basis.
 \end{enumerate}
 
 \subsection{Singular Value Decomposition}
@@ -185,7 +204,7 @@ where:
     \item $U \in \mathbb{R}^{m \times m}$ is an orthogonal matrix whose columns are the \textbf{left singular vectors} of $A$.
     \item $\Sigma \in \mathbb{R}^{m \times n}$ is a diagonal matrix whose diagonal entries are the \textbf{singular values} of $A$.
 \end{itemize}
-\textbf{Geometric Explanation:}
+\textbf{Geometric Interpretation:}
 \begin{enumerate}
     \item $V^T$: Change the basis of the input space from the standard basis to the right singular vector basis.
     \item $\Sigma$: Apply scaling transformation by the singular values and map from the right singular vector basis to the left singular vector basis.
@@ -213,6 +232,34 @@ Notice that these expressions are in the form of eigen decomposition:
     \item $AA^T = U (\Sigma \Sigma^T) U^T$ where $U$ is orthogonal and $\Sigma \Sigma^T$ is diagonal
 \end{itemize}
 Therefore: $V$ contains the eigenvectors of $A^T A$, and $\sigma_i = \sqrt{\lambda_i}$. $U$ contains the eigenvectors of $AA^T$, and $\sigma_i = \sqrt{\lambda_i}$.
+
+
+\newpage
+\section{Quadratic Form}
+
+\subsection{Quadratic Form}
+For a vector $\mathbf{x} \in \mathbb{R}^n$, a quadratic form is:
+\[
+    q(\mathbf{x}) = \mathbf{x}^T A \mathbf{x}
+\]
+where $A \in \mathbb{R}^{n \times n}$ is a symmetric matrix.
+
+
+\subsection{Geometric Interpretation}
+The quadratic form $q(\mathbf{x}) = \mathbf{x}^T A \mathbf{x}$ describes the geometry of a quadric surface.
+
+\paragraph{Apply Spectral Decomposition:}
+\[
+    q(\mathbf{x}) = \mathbf{x}^T (Q \Lambda Q^T) \mathbf{x} = (\mathbf{x}^T Q) \Lambda (Q^T \mathbf{x})
+\]
+Define $\mathbf{y} = Q^T \mathbf{x}$:
+\[
+    q(\mathbf{y}) = \mathbf{y}^T \Lambda \mathbf{y} = \sum_{i=1}^n \lambda_i y_i^2
+\]
+\begin{enumerate}
+    \item The \textbf{eigenvectors} of $A$ (columns of $Q$) define the \textbf{principal axes} of the geometric shape.
+    \item The \textbf{eigenvalues} $\lambda_i$ of $A$ \textbf{scales} the length of each semi-axis by $1/\sqrt{\lambda_i}$.
+\end{enumerate}
 
 
 \newpage
@@ -379,6 +426,20 @@ Gaussian elimination is an algorithm for solving systems of linear equations, fi
             \end{array}
         \right]
         \label{eq:diagm}
+    \end{equation}
+
+    \item \textbf{Inverse of Diagonal Matrix:}
+    \begin{equation}
+        D_n^{-1} =
+        \left[
+            \begin{array}{cccc}
+                \frac{1}{d_1} & 0 & \cdots & 0 \\
+                0 & \frac{1}{d_2} & \cdots & 0 \\
+                \vdots & \vdots & \ddots & \vdots \\
+                0 & 0 & \cdots & \frac{1}{d_n}
+            \end{array}
+        \right]
+        \label{eq:diagminv}
     \end{equation}
 
 \end{itemize}
