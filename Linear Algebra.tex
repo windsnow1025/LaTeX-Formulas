@@ -137,6 +137,27 @@ All column vectors are unit vectors and orthogonal to each other.\\
     Q^T = Q^{-1}
 \]
 
+\subsection{Positive Definite Matrix}
+A symmetric matrix $A \in \mathbb{R}^{n \times n}$ is called \textbf{positive definite} if for any nonzero vector $\mathbf{x} \in \mathbb{R}^n$,
+\[
+    \mathbf{x}^T A \mathbf{x} > 0
+\]
+\textbf{Properties:}
+\begin{itemize}
+    \item All eigenvalues of $A$ are positive.
+    \item $A$ is invertible, and $A^{-1}$ is also positive definite.
+\end{itemize}
+
+\subsection{Positive Semi-Definite Matrix}
+A symmetric matrix $A \in \mathbb{R}^{n \times n}$ is called \textbf{positive semi-definite} if for any vector $\mathbf{x} \in \mathbb{R}^n$,
+\[
+    \mathbf{x}^T A \mathbf{x} \geq 0
+\]
+\textbf{Properties:}
+\begin{itemize}
+    \item All eigenvalues of $A$ are non-negative.
+\end{itemize}
+
 
 \newpage
 \section{Matrix Decomposision}
@@ -243,7 +264,6 @@ For a vector $\mathbf{x} \in \mathbb{R}^n$, a quadratic form is:
     q(\mathbf{x}) = \mathbf{x}^T A \mathbf{x}
 \]
 where $A \in \mathbb{R}^{n \times n}$ is a symmetric matrix.
-
 
 \subsection{Geometric Interpretation}
 The quadratic form $q(\mathbf{x}) = \mathbf{x}^T A \mathbf{x}$ describes the geometry of a quadric surface.
