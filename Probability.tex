@@ -368,8 +368,26 @@ For two continuous random variables, the Probability Density Function \( f(x,y) 
 \newpage
 \section{Multivariate Normal Distribution}
 
+\subsection{Mahalanobis Distance}
 \[
-    f(\mathbf{x}; \boldsymbol{\mu}, \Sigma) = \frac{1}{(2\pi)^{d/2} \sqrt{\det(\Sigma)}} \exp\left(-\frac{1}{2}(\mathbf{x} - \boldsymbol{\mu})^\top \Sigma^{-1} (\mathbf{x} - \boldsymbol{\mu})\right)
+    \Delta^2 = (\mathbf{x} - \boldsymbol{\mu})^\top \Sigma^{-1} (\mathbf{x} - \boldsymbol{\mu})
+\]
+
+\paragraph{Apply Spectral Decomposition:}
+\[
+    \Sigma^{-1} = (Q \Lambda Q^\top)^{-1} = Q \Lambda^{-1} Q^\top
+\]
+\[
+    \Delta^2 = (\mathbf{x} - \boldsymbol{\mu})^\top (Q \Lambda^{-1} Q^\top) (\mathbf{x} - \boldsymbol{\mu})
+\]
+Define \( \mathbf{y} = Q^\top (\mathbf{x} - \boldsymbol{\mu}) \):
+\[
+    \Delta^2 = \mathbf{y}^\top \Lambda^{-1} \mathbf{y} = \sum_{i=1}^{d} \frac{y_i^2}{\lambda_i}
+\]
+
+\subsection{Multivariate Normal Distribution}
+\[
+    f(\mathbf{x}; \boldsymbol{\mu}, \Sigma) = \frac{1}{\sqrt{(2\pi)^d\det(\Sigma)}} \exp\left(-\frac{1}{2}(\mathbf{x} - \boldsymbol{\mu})^\top \Sigma^{-1} (\mathbf{x} - \boldsymbol{\mu})\right)
 \]
 
 \end{document}
