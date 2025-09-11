@@ -58,6 +58,24 @@
 \[
     P(A \cap B) = P(A)P(B)
 \]
+\[
+    P(A|B) = P(A)
+\]
+\[
+    P(B|A) = P(B)
+\]
+
+\paragraph{Conditional Independence: }\( A \perp\!\!\!\perp B \mid C \)
+\[
+    P(A \cap B \mid C) = P(A \mid C) P(B \mid C)
+\]
+\[
+    P(A \mid B, C) = P(A \mid C)
+\]
+\[
+    P(B \mid A, C) = P(B \mid C)
+\]
+
 
 \newpage
 \section{Laws of Probability}
@@ -99,6 +117,9 @@
 \[
     \mu = E(X) = \int_{-\infty}^{+\infty} x f(x) dx
 \]
+\[
+    \mu = E(X) = \sum_{x} x \, p(x)
+\]
 \textbf{Properties:}
 \begin{itemize}
     \item \( E(c) = c \)
@@ -107,7 +128,12 @@
     \item \( E(XY) = E(X)E(Y) + \text{Cov}(X,Y) \)
 \end{itemize}
 
-\subsection{Expected Value of a function}
+\subsubsection{Law of Total Expectation}
+\[
+    E(X) = E[E(X|Y)]
+\]
+
+\subsubsection{Expected Value of a function}
 \[
     E(g(X)) = \int_{-\infty}^{+\infty} g(x)f(x)dx
 \]
@@ -199,7 +225,7 @@ For a continuous random variable, the Probability Density Function \( f(x) \) is
     F(x) = P(X \le x) = \int_{-\infty}^{x} f(t)dt
 \]
 
-\subsection{Cumulative Distribution Function of a function}
+\subsubsection{Cumulative Distribution Function of a function}
 \[
     Y=g(X)
 \]
@@ -208,6 +234,26 @@ For a continuous random variable, the Probability Density Function \( f(x) \) is
 \]
 
 \subsection{Discrete Probability Distributions}
+
+\subsubsection{Discrete Uniform Distribution}
+\[
+    X \sim U\{a, a+1, \dots, b\}
+\]
+\[
+    f(x) =
+    \begin{cases}
+        \frac{1}{n}, & x \in \{a, a+1, \dots, b\} \\
+        0, & \text{otherwise}
+    \end{cases}
+\]
+where $n = b - a + 1$.
+
+\[
+    \mu = \frac{a + b}{2}
+\]
+\[
+    \sigma^2 = \frac{n^2 - 1}{12}
+\]
 
 \subsubsection{Bernoulli Distribution}
 Probability of success in a single trial with only two outcomes.
@@ -242,6 +288,32 @@ The number of events occurring in an interval of time, given an average rate \( 
 \]
 
 \subsection{Continuous Probability Distributions}
+
+\subsubsection{Uniform Distribution}
+\[
+    X \sim U(a, b)
+\]
+\[
+    f(x) =
+    \begin{cases}
+        \frac{1}{b-a}, & a \leq x \leq b \\
+        0, & \text{otherwise}
+    \end{cases}
+\]
+\[
+    F(x) =
+    \begin{cases}
+        0, & x < a \\
+        \frac{x-a}{b-a}, & a \leq x \leq b \\
+        1, & x > b
+    \end{cases}
+\]
+\[
+    \mu = \frac{a+b}{2}
+\]
+\[
+    \sigma^2 = \frac{(b-a)^2}{12}
+\]
 
 \subsubsection{Exponential Distribution}
 The waiting time for the next event in a Poisson process with an average rate \( \lambda \).
@@ -289,7 +361,6 @@ f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left( -\frac{(x-\mu)^2}{2\sigma^2} \ri
 \[
     B(n, p) \xrightarrow{n \to \infty} \mathcal{N}(\mu = np, \sigma^2 = np(1-p))
 \]
-
 
 \subsubsection{Standard Normal Distribution}
 \[ Z = \frac{X-\mu}{\sigma} \sim \mathcal{N}(0,1) \]
