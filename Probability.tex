@@ -117,6 +117,9 @@
 \[
     \mu = E(X) = \int_{-\infty}^{+\infty} x f(x) dx
 \]
+\[
+    \mu = E(X) = \sum_{x} x \, p(x)
+\]
 \textbf{Properties:}
 \begin{itemize}
     \item \( E(c) = c \)
@@ -125,7 +128,12 @@
     \item \( E(XY) = E(X)E(Y) + \text{Cov}(X,Y) \)
 \end{itemize}
 
-\subsection{Expected Value of a function}
+\subsubsection{Law of Total Expectation}
+\[
+    E(X) = E[E(X|Y)]
+\]
+
+\subsubsection{Expected Value of a function}
 \[
     E(g(X)) = \int_{-\infty}^{+\infty} g(x)f(x)dx
 \]
@@ -217,7 +225,7 @@ For a continuous random variable, the Probability Density Function \( f(x) \) is
     F(x) = P(X \le x) = \int_{-\infty}^{x} f(t)dt
 \]
 
-\subsection{Cumulative Distribution Function of a function}
+\subsubsection{Cumulative Distribution Function of a function}
 \[
     Y=g(X)
 \]
