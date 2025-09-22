@@ -1,3 +1,4 @@
+
 \documentclass{article}
 
 % Language setting
@@ -115,58 +116,52 @@
 
 \subsection{Expected Value (Mean)}
 \[
-    \mu = E(X) = \int_{-\infty}^{+\infty} x f(x) dx
+    \mu = \mathbb{E}[X] = \int_{-\infty}^{+\infty} x f(x) dx
 \]
 \[
-    \mu = E(X) = \sum_{x} x \, p(x)
+    \mu = \mathbb{E}[X] = \sum_{x} x \, p(x)
 \]
 \textbf{Properties:}
 \begin{itemize}
-    \item \( E(c) = c \)
-    \item \( E(cX) = cE(X) \)
-    \item \( E(X \pm Y) = E(X) \pm E(Y) \)
-    \item \( E(XY) = E(X)E(Y) + \text{Cov}(X,Y) \)
+    \item \( \mathbb{E}[c] = c \)
+    \item \( \mathbb{E}[aX+bY] = a\mathbb{E}[X] + b\mathbb{E}[Y] \)
+    \item \( \mathbb{E}[XY] = \mathbb{E}[X]\mathbb{E}[Y] + \text{Cov}(X,Y) \)
 \end{itemize}
 
 \subsubsection{Law of Total Expectation}
 \[
-    E(X) = E[E(X|Y)]
+    \mathbb{E}[X] = \mathbb{E}[\mathbb{E}[X|Y]]
 \]
 
 \subsubsection{Expected Value of a function}
 \[
-    E(g(X)) = \int_{-\infty}^{+\infty} g(x)f(x)dx
+    \mathbb{E}[g(X)] = \int_{-\infty}^{+\infty} g(x)f(x)dx
 \]
 
 \subsection{Variance}
 \[
-    \sigma^2 = V(X) = E[(X - E(X))^2]
-\]
-\[
-    V(X) = E(X^2) - [E(X)]^2
+    \sigma^2 = Var(X) = \mathbb{E}[(X - \mathbb{E}[X])^2] = \mathbb{E}[X^2] - \mathbb{E}[X]^2
 \]
 \textbf{Properties:}
 \begin{itemize}
-    \item \( V(c) = 0 \)
-    \item \( V(cX) = c^2 V(X) \)
-    \item \( V(X+c) = V(X) \)
-    \item \( V(X \pm Y) = V(X) + V(Y) \pm 2\text{Cov}(X,Y) \)
+    \item \( Var(c) = 0 \)
+    \item \( Var(cX) = c^2 Var(X) \)
+    \item \( Var(X+c) = Var(X) \)
+    \item \( Var(X \pm Y) = Var(X) + Var(Y) \pm 2\text{Cov}(X,Y) \)
 \end{itemize}
 
 \subsection{Standard Deviation}
 \[
-    \sigma = \sqrt{E[(X-\mu)^2]}
+    \sigma = \sqrt{\mathbb{E}[X-\mu]^2}
 \]
 
 \subsection{Covariance}
 \[
-    \text{Cov}(X,Y) = E[(X-E(X))(Y-E(Y))]
-\]
-\[
-    \text{Cov}(X,Y) = E(XY) - E(X)E(Y)
+    \text{Cov}(X,Y) = \mathbb{E}[(X-\mathbb{E}[X])(Y-\mathbb{E}[Y])] = \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y]
 \]
 \textbf{Properties:}
 \begin{itemize}
+    \item \( \text{Cov}(X, X) = \text{Var}(X) \)
     \item \( \text{Cov}(X,Y) = \text{Cov}(Y,X) \)
     \item \( \text{Cov}(aX, bY) = ab\,\text{Cov}(X,Y) \)
     \item \( \text{Cov}(c,X) = 0 \)
@@ -176,7 +171,7 @@
 
 \subsection{Covariance Matrix}
 \[
-    \Sigma_{ij} = \text{Cov}(X_i, X_j) = E[(X_i - E[X_i])(X_j - E[X_j])]
+    \Sigma_{ij} = \text{Cov}(X_i, X_j) = \mathbb{E}[(X_i - \mathbb{E}[X_i])(X_j - \mathbb{E}[X_j])]
 \]
 
 \subsection{Correlation Coefficient}
@@ -193,16 +188,16 @@
 \subsection{Markov's Inequality}
 If \( X \geq 0 \), for any \( a > 0 \):
 \[
-    P(X \geq a) \leq \frac{E(X)}{a}
+    P(X \geq a) \leq \frac{\mathbb{E}[X]}{a}
 \]
 
 \subsection{Chebyshev's Inequality}
 For any \( \varepsilon > 0 \):
 \[
-    P(|X-E(X)| \ge \varepsilon) \le \frac{V(X)}{\varepsilon^2}
+    P(|X-\mathbb{E}[X]| \ge \varepsilon) \le \frac{Var(X)}{\varepsilon^2}
 \]
 \[
-    P(|X-E(X)| < \varepsilon) \ge 1 - \frac{V(X)}{\varepsilon^2}
+    P(|X-\mathbb{E}[X]| < \varepsilon) \ge 1 - \frac{Var(X)}{\varepsilon^2}
 \]
 
 \newpage
