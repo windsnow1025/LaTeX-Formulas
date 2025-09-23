@@ -23,8 +23,9 @@
 \tableofcontents
 
 \newpage
+
 \section{Matrix}
-Matrix $A \in \mathbb{R}^{m \times n}$ defines a linear transformation from $\mathbb{R}^n$ to $\mathbb{R}^m$.
+Matrix $A \in \mathbb{R}^{m \times n}$ defines a Linear Transformation from Domain $\mathbb{R}^n$ to Codomain $\mathbb{R}^m$.
 \newline
 Matrix $A$ is composed of column vectors $\mathbf{a}_j$, each of which is the image of the $j$-th standard basis vector after applying the transformation $A$.
 \[
@@ -36,27 +37,33 @@ Expanded form~\ref{eq:matrix}
 \newpage
 \section{Matrix Operation}
 
-
 \subsection{Inner Product}
-The inner product (dot product) of two vectors $\mathbf{a}, \mathbf{b} \in \mathbb{R}^n$ is a scalar:
+The \textbf{Inner Product} (Dot Product) of two vectors $\mathbf{a}, \mathbf{b} \in \mathbb{R}^n$ is a scalar:
 \[
-    \mathbf{a}^T \mathbf{b} = \sum_{i=1}^n a_i b_i
+    \langle \mathbf{a}, \mathbf{b} \rangle = \mathbf{a}^T \mathbf{b} = \sum_{i=1}^n a_i b_i
 \]
 Expanded form~\ref{eq:innerprod}.
 
 \subsection{Outer Product}
-The outer product of two vectors $\mathbf{a} \in \mathbb{R}^m$ and $\mathbf{b} \in \mathbb{R}^n$ is an $m \times n$ matrix:
+The \textbf{Outer Product} of two vectors $\mathbf{a} \in \mathbb{R}^m$ and $\mathbf{b} \in \mathbb{R}^n$ is an $m \times n$ matrix:
 \[
-    \mathbf{a} \mathbf{b}^T
+    \mathbf{a} \otimes \mathbf{b} = \mathbf{a} \mathbf{b}^T
 \]
 Expanded form~\ref{eq:outerprod}.
 
 \subsection{Matrix-Vector Multiplication}
-Apply linear transformation $A \in \mathbb{R}^{m \times n}$ to vector $\mathbf{x} \in \mathbb{R}^n$ and produce a new vector $A\mathbf{x} \in \mathbb{R}^m$
+Apply Linear Transformation $A \in \mathbb{R}^{m \times n}$ to vector $\mathbf{x} \in \mathbb{R}^n$ and produce a new vector $A\mathbf{x} \in \mathbb{R}^m$.
 \[
     A\mathbf{x} = \sum_{j=1}^n x_j \mathbf{a}_j
-\]{
-Expanded} form~\ref{eq:matvec}.
+\]
+Expanded form~\ref{eq:matvec}.
+\newline
+Apply Linear Transformation $A \in \mathbb{R}^{m \times n}$ to a row vector $\mathbf{y}^T \in \mathbb{R}^{1 \times m}$ from the left and produce a new row vector $\mathbf{y}^T A \in \mathbb{R}^{1 \times n}$.
+\[
+    \mathbf{y}^T A = \sum_{i=1}^m y_i \mathbf{a}_i^T
+\]
+Expanded form~\ref{eq:rowvecmat}.
+
 
 \subsection{Matrix-Matrix Multiplication}
 Apply transformation $B$, then apply transformation $A$.
@@ -74,6 +81,8 @@ Expanded form~\ref{eq:mul}.
 \[
     A^T = (a_{ji})
 \]
+\textbf{Geometric Interpretation:} A dual transformation that reverses the direction of the mapping, from the original Codomain back to the Domain. It maps the original Column Space back to the original Row Space, preserving the principal stretching factors (Singular Values) of the transformation $A$.
+\newline
 \textbf{Transpose Distribution Rule:}
 \[
     (AB)^T = B^T A^T
@@ -89,7 +98,85 @@ Reverses the transformation of $A$
 \[
     (AB)^{-1} = B^{-1}A^{-1}
 \]
+\textbf{Properties:}
+\begin{itemize}
+    \item A square matrix $A \in \mathbb{R}^{n \times n}$ is invertible iff it has full rank, i.e., $\operatorname{rank}(A) = n$.
+\end{itemize}
 Calculation~\ref{subsec:gauss}.
+
+\subsection{Determinant}
+The \textbf{determinant} of a square matrix $A \in \mathbb{R}^{n \times n}$ is denoted as $\det(A)$ or $|A|$.
+\newline
+\textbf{Geometric Interpretation:} The scaling factor of the transformation $A$.
+\newline
+\textbf{Properties:}
+\begin{itemize}
+    \item A square matrix $A \in \mathbb{R}^{n \times n}$ has Full Rank iff $\det(A) \neq 0$.
+\end{itemize}
+\newline
+\textbf{Calculation:}
+\begin{itemize}
+    \item \textbf{$2 \times 2$ Matrix:} For $A = \begin{bmatrix} a & b \\ c & d \end{bmatrix}$, $\det(A) = ad - bc$
+    \item \textbf{$n \times n$ Matrix:}~\ref{subsec:cofactor}.
+\end{itemize}
+
+
+\section{Vecctor Spaces and Subspaces}
+
+\subsection{Linear Independence}
+A set of vectors $\{\mathbf{v}_i\}_{i=1}^n$ is \textbf{Linearly Independent} if the only solution to the equation:
+\[
+    \sum_{i=1}^{n} c_i \mathbf{v}_i = \mathbf{0}
+\]
+is the trivial solution, where all coefficients $c_i = 0$. Otherwise, the set is \textbf{Linearly Dependent}.
+\newline
+\textbf{Geometric Interpretation:} Each vector in the set adds a new dimension to the space spanned by the others
+
+\subsection{Column Space}
+The \textbf{Column Space} (or \textbf{Range}) of a matrix $A \in \mathbb{R}^{m \times n}$ is the subspace of Codomain $\mathbb{R}^m$ spanned by the columns of $A$:
+\[
+    \text{Col}(A) = \{ A\mathbf{x} : \mathbf{x} \in \mathbb{R}^n \}
+\]
+\textbf{Geometric Interpretation:} The subspace of the Codomain representing all directions that \textbf{can be reached} by the transformation $A$.
+
+\subsection{Null Space}
+The \textbf{Null Space} (or \textbf{Kernel}) of a matrix $A \in \mathbb{R}^{m \times n}$ is:
+\[
+    \ker(A) = \{ \mathbf{x} \in \mathbb{R}^n : A\mathbf{x} = \mathbf{0} \}
+\]
+\textbf{Geometric Interpretation:} The subspace of the Domain containing the component of any input vector that is \textbf{discarded} by $A$.
+
+\subsection{Row Space}
+The \textbf{Row Space} of a matrix $A \in \mathbb{R}^{m \times n}$ is the subspace of Domain $\mathbb{R}^n$ spanned by the rows of $A$:
+\[
+    \text{Row}(A) = \{ \mathbf{y}^T A : \mathbf{y} \in \mathbb{R}^m \}
+\]
+\[
+    \text{Row}(A) = \text{Col}(A^T)
+\]
+\textbf{Geometric Interpretation:} The subspace of the Domain containing the component of any input vector that is \textbf{preserved and transformed} by $A$.
+
+\subsection{Left Null Space}
+The \textbf{Left Null Space} (or \textbf{Cokernel}) of a matrix $A \in \mathbb{R}^{m \times n}$ is:
+\[
+    \operatorname{coker}(A) = \{ \mathbf{x} \in \mathbb{R}^m : \mathbf{x}^T A = \mathbf{0}^T \}
+\]
+\[
+    \operatorname{coker}(A) = \ker(A^T) = \{ \mathbf{y} \in \mathbb{R}^m : A^T \mathbf{y} = \mathbf{0} \}
+\]
+\textbf{Geometric Interpretation:} The subspace of the Codomain representing all directions that \textbf{cannot be reached} by the transformation $A$.
+
+\subsection{Rank}
+The \textbf{Rank} of a matrix $A$ is the dimension of the Column Space or Row Space of $A$.
+\newline
+\textbf{Codomain:}
+\[
+    \operatorname{rank}(A) + \dim(\operatorname{coker}(A)) = m
+\]
+\textbf{Domain:}
+\[
+    \operatorname{rank}(A) + \dim(\ker(A)) = n
+\]
 
 
 \newpage
@@ -97,8 +184,6 @@ Calculation~\ref{subsec:gauss}.
 
 \subsection{Identity Matrix}
 The diagonal entries are all 1, and all off-diagonal entries are 0.
-\newline
-\textbf{Geometric Interpretation:} No transformation
 \[
     (I_n)_{ij} =
     \begin{cases}
@@ -107,11 +192,11 @@ The diagonal entries are all 1, and all off-diagonal entries are 0.
     \end{cases}
 \]
 Expanded form~\ref{eq:iden}.
+\newline
+\textbf{Geometric Interpretation:} No transformation
 
 \subsection{Diagonal Matrix}
 The diagonal entries can be any value, and all off-diagonal entries are 0.
-\newline
-\textbf{Geometric Interpretation:} Scale the $i$-th standard basis vector by $d_i$
 \[
     (D_n)_{ij} =
     \begin{cases}
@@ -119,7 +204,10 @@ The diagonal entries can be any value, and all off-diagonal entries are 0.
         0, & i \neq j
     \end{cases}
 \]
-Expanded form~\ref{eq:diagm}.\\
+Expanded form~\ref{eq:diagm}.
+\newline
+\textbf{Geometric Interpretation:} Scale the $i$-th standard basis vector by $d_i$
+\newline
 \textbf{Inverse of a Diagnal Matrix:}
 \[
     (D_n^{-1})_{ij} =
@@ -132,14 +220,13 @@ Expanded form~\ref{eq:diagminv}.
 
 \subsection{Orthogonal Matrix}
 All column vectors are unit vectors and orthogonal to each other.
-\newline
-\textbf{Geometric Interpretation:} Preserves lengths and angles
 \[
     Q^T Q = Q Q^T = I_n
 \]
 \[
     Q^T = Q^{-1}
 \]
+\textbf{Geometric Interpretation:} Preserves lengths and angles
 
 \subsection{Positive Definite Matrix}
 A symmetric matrix $A \in \mathbb{R}^{n \times n}$ is called \textbf{positive definite} if for any nonzero vector $\mathbf{x} \in \mathbb{R}^n$,
@@ -148,7 +235,7 @@ A symmetric matrix $A \in \mathbb{R}^{n \times n}$ is called \textbf{positive de
 \]
 \textbf{Properties:}
 \begin{itemize}
-    \item All eigenvalues of $A$ are positive.
+    \item All Eigenvalues of $A$ are positive.
     \item $A$ is invertible, and $A^{-1}$ is also positive definite.
 \end{itemize}
 
@@ -159,7 +246,7 @@ A symmetric matrix $A \in \mathbb{R}^{n \times n}$ is called \textbf{positive se
 \]
 \textbf{Properties:}
 \begin{itemize}
-    \item All eigenvalues of $A$ are non-negative.
+    \item All Eigenvalues of $A$ are non-negative.
 \end{itemize}
 
 
@@ -168,7 +255,7 @@ A symmetric matrix $A \in \mathbb{R}^{n \times n}$ is called \textbf{positive se
 
 \subsection{Eigenvector \& Eigenvalue}
 
-A unit \textbf{eigenvector} $\|\mathbf{v}\| = 1$ of a matrix $A \in \mathbb{R}^{n \times n}$ is scaled by its corresponding \textbf{eigenvalue} $\lambda$ when the transformation $A$ is applied.
+A unit \textbf{Eigenvector} $\|\mathbf{v}\| = 1$ of a matrix $A \in \mathbb{R}^{n \times n}$ is scaled by its corresponding \textbf{Eigenvalue} $\lambda$ when the transformation $A$ is applied.
 \[
     A\mathbf{v} = \lambda \mathbf{v}
 \]
@@ -185,13 +272,13 @@ Symmetric matrix $A \in \mathbb{R}^{n \times n}$ can be decomposed as:
 \]
 where:
 \begin{itemize}
-    \item $Q$ is an orthogonal matrix whose columns are the eigenvectors of $A$.
-    \item $\Lambda$ is a diagonal matrix whose diagonal entries are the eigenvalues of $A$.
+    \item $Q$ is an orthogonal matrix whose columns are the Eigenvectors of $A$.
+    \item $\Lambda$ is a diagonal matrix whose diagonal entries are the Eigenvalues of $A$.
 \end{itemize}
 \textbf{Geometric Interpretation:}
 \begin{enumerate}
-    \item $Q^T$: Change the basis of the vector space to the eigenvector basis.
-    \item $\Lambda$: Apply a scaling transformation along the new axes by the eigenvalues.
+    \item $Q^T$: Change the basis of the vector space to the Eigenvector basis.
+    \item $\Lambda$: Apply a scaling transformation along the new axes by the Eigenvalues.
     \item $Q$: Change the basis of the vector space back to the standard basis.
 \end{enumerate}
 
@@ -203,20 +290,33 @@ Square matrix $A \in \mathbb{R}^{n \times n}$ can be decomposed as ($A$ is \text
 \]
 where:
 \begin{itemize}
-    \item $P$ is a matrix whose columns are the eigenvectors of $A$.
-    \item $\Lambda$ is a diagonal matrix whose diagonal entries are the eigenvalues of $A$.
+    \item $P$ is a matrix whose columns are the Eigenvectors of $A$.
+    \item $\Lambda$ is a diagonal matrix whose diagonal entries are the Eigenvalues of $A$.
 \end{itemize}
 \textbf{Geometric Interpretation:}
 \begin{enumerate}
-    \item $P^{-1}$: Change the basis of the vector space to the eigenvector basis.
-    \item $\Lambda$: Apply a scaling transformation along the new axes by the eigenvalues.
+    \item $P^{-1}$: Change the basis of the vector space to the Eigenvector basis.
+    \item $\Lambda$: Apply a scaling transformation along the new axes by the Eigenvalues.
     \item $P$: Change the basis of the vector space back to the standard basis.
 \end{enumerate}
 
 \subsection{Singular Value Decomposition}
 
 \subsubsection{Singular Vector \& Singular Value}
-For any matrix $A \in \mathbb{R}^{m \times n}$, the \textbf{singular values} (the square roots of the eigenvalues of $A^T A$ or $AA^T$) measure how much $A$ stretches unit vectors in different directions, with the corresponding \textbf{right singular vectors} (eigenvectors of $A^T A$) indicating the directions of maximum stretch in the input space, and the \textbf{left singular vectors} (eigenvectors of $AA^T$) indicating the directions of maximum stretch in the output space.
+For any matrix $A \in \mathbb{R}^{m \times n}$ with rank $r$:
+\begin{itemize}
+    \item \textbf{Singular Values:} $\sigma_1 \geq \cdots \geq \sigma_r > 0$ represent the stretching factors along the principal directions of the transformation.
+    \item \textbf{Right Singular Vectors:} Orthonormal basis for the Domain subspaces:
+        \begin{itemize}
+            \item First $r$ columns of $V$: orthonormal basis for $\text{Row}(A)$
+            \item Last $n-r$ columns of $V$: orthonormal basis for $\ker(A)$
+        \end{itemize}
+    \item \textbf{Left Singular Vectors} Orthonormal basis for the Codomain subspaces:
+        \begin{itemize}
+            \item First $r$ columns of $U$: orthonormal basis for $\text{Col}(A)$
+            \item Last $m-r$ columns of $U$: orthonormal basis for $\operatorname{coker}(A)$
+        \end{itemize}
+\end{itemize}
 
 \subsubsection{SVD Formula}
 Any matrix $A \in \mathbb{R}^{m \times n}$ can be decomposed as:
@@ -225,17 +325,32 @@ Any matrix $A \in \mathbb{R}^{m \times n}$ can be decomposed as:
 \]
 where:
 \begin{itemize}
-    \item $V \in \mathbb{R}^{n \times n}$ is an orthogonal matrix whose columns are the \textbf{right singular vectors} of $A$.
-    \item $U \in \mathbb{R}^{m \times m}$ is an orthogonal matrix whose columns are the \textbf{left singular vectors} of $A$.
-    \item $\Sigma \in \mathbb{R}^{m \times n}$ is a diagonal matrix whose diagonal entries are the \textbf{singular values} of $A$.
+    \item $V \in \mathbb{R}^{n \times n}$ is an orthogonal matrix whose columns are the \textbf{Right Singular Vectors} of $A$.
+    \item $U \in \mathbb{R}^{m \times m}$ is an orthogonal matrix whose columns are the \textbf{Left Singular Vectors} of $A$.
+    \item $\Sigma \in \mathbb{R}^{m \times n}$ is a diagonal matrix whose diagonal entries are the \textbf{Singular Values} of $A$.
 \end{itemize}
+
 \textbf{Geometric Interpretation:}
 \begin{enumerate}
-    \item $V^T$: Change the basis of the input space from the standard basis to the right singular vector basis.
-    \item $\Sigma$: Apply scaling transformation by the singular values and map from the right singular vector basis to the left singular vector basis.
-    \item $U$: Change the basis of the output space from the left singular vector basis to the standard basis.
-\end{enumerate}
+    \item \textbf{$V^T$:} Rotate the Domain $\mathbb{R}^n$ from the standard basis to the principal directions defined by Right Singular Vectors:
+    \begin{itemize}
+        \item The first $r$ standard basis vectors align with the orthonormal basis of $\text{Row}(A)$
+        \item The last $n-r$ standard basis vectors align with the orthonormal basis of $\ker(A)$
+    \end{itemize}
 
+    \item \textbf{$\Sigma$:} Scale along each principal axis defined by the Singular Vectors:
+    \begin{itemize}
+        \item Scale the first $r$ axes (corresponding to $\text{Row}(A)$) by singular values $\sigma_1, \ldots, \sigma_r$
+        \item Scale the last $n-r$ axes (corresponding to $\ker(A)$) by zero
+        \item Map the $\text{Row}(A)$ directions to the $\text{Col}(A)$ directions
+    \end{itemize}
+
+    \item \textbf{$U$:} Rotate the Codomain $\mathbb{R}^m$ from the principal directions defined by Left Singular Vectors to the standard basis:
+    \begin{itemize}
+        \item The orthonormal basis of $\text{Col}(A)$ aligns with the first $r$ standard basis vectors
+        \item The orthonormal basis of $\operatorname{coker}(A)$ aligns with the last $m-r$ standard basis vectors
+    \end{itemize}
+\end{enumerate}
 
 \subsubsection{SVD Derivation}
 Assume that matrix $A \in \mathbb{R}^{m \times n}$ can be decomposed as:
@@ -251,12 +366,42 @@ where $U \in \mathbb{R}^{m \times m}$ and $V \in \mathbb{R}^{n \times n}$ are or
 \[
     AA^T = (U \Sigma V^T)(U \Sigma V^T)^T = U \Sigma V^T V \Sigma^T U^T = U \Sigma \Sigma^T U^T
 \]
-Notice that these expressions are in the form of eigen decomposition:
+Notice that these expressions are in the form of Eigen Decomposition:
 \begin{itemize}
     \item $A^T A = V (\Sigma^T \Sigma) V^T$ where $V$ is orthogonal and $\Sigma^T \Sigma$ is diagonal
     \item $AA^T = U (\Sigma \Sigma^T) U^T$ where $U$ is orthogonal and $\Sigma \Sigma^T$ is diagonal
 \end{itemize}
-Therefore: $V$ contains the eigenvectors of $A^T A$, and $\sigma_i = \sqrt{\lambda_i}$. $U$ contains the eigenvectors of $AA^T$, and $\sigma_i = \sqrt{\lambda_i}$.
+Therefore: $V$ contains the Eigenvectors of $A^T A$, and $\sigma_i = \sqrt{\lambda_i}$. $U$ contains the Eigenvectors of $AA^T$, and $\sigma_i = \sqrt{\lambda_i}$.
+
+
+\newpage
+\section{Pseudo Inverse and Normal Equations}
+
+\subsection{Pseudo Inverse}
+
+For any matrix $A \in \mathbb{R}^{m \times n}$ with SVD $A = U \Sigma V^T$, the \textbf{Moore-Penrose Pseudo Inverse} is:
+\[
+    A^+ = V \Sigma^+ U^T
+\]
+where $\Sigma^+ \in \mathbb{R}^{n \times m}$ is defined element-wise as:
+\[
+    (\Sigma^+)_{ij} =
+    \begin{cases}
+        \frac{1}{\sigma_j}, & \text{if } i = j \text{ and } \sigma_j \neq 0 \\
+        0, & \text{otherwise}
+    \end{cases}
+\]
+
+\subsection{Normal Equations}
+
+For any linear system $A\mathbf{x} = \mathbf{b}$ where $A \in \mathbb{R}^{m \times n}$, the \textbf{Normal Equations} are:
+\[
+    A^T A \mathbf{x} = A^T \mathbf{b}
+\]
+\textbf{Derivation:} To minimize $\|A\mathbf{x} - \mathbf{b}\|^2$, the residual $A\mathbf{x} - \mathbf{b}$ is orthogonal to the column space of $A$, i.e., it belongs to the left null space $\operatorname{coker}(A)$
+\[
+    A^T(A\mathbf{x} - \mathbf{b}) = \mathbf{0}
+\]
 
 
 \newpage
@@ -281,8 +426,8 @@ Define $\mathbf{y} = Q^T \mathbf{x}$:
     q(\mathbf{y}) = \mathbf{y}^T \Lambda \mathbf{y} = \sum_{i=1}^n \lambda_i y_i^2
 \]
 \begin{enumerate}
-    \item The \textbf{eigenvectors} of $A$ (columns of $Q$) define the \textbf{principal axes} of the geometric shape.
-    \item The \textbf{eigenvalues} $\lambda_i$ of $A$ \textbf{scales} the length of each semi-axis by $1/\sqrt{\lambda_i}$.
+    \item The \textbf{Eigenvectors} of $A$ (columns of $Q$) define the \textbf{principal axes} of the geometric shape.
+    \item The \textbf{Eigenvalues} $\lambda_i$ of $A$ \textbf{scales} the length of each semi-axis by $1/\sqrt{\lambda_i}$.
 \end{enumerate}
 
 
@@ -303,6 +448,14 @@ Gaussian elimination is an algorithm for solving systems of linear equations, fi
     \end{itemize}
     \item \textbf{Back Substitution:} Solve for the variables starting from the last row and moving upwards.
 \end{enumerate}
+
+\subsection{Cofactor Expansion}
+\label{subsec:cofactor}
+The determinant of a matrix can be calculated using Cofactor Expansion (or Laplace Expansion) along any row or column. For matrix $A \in \mathbb{R}^{n \times n}$, the expansion along the $i$-th row is:
+\[
+    \det(A) = \sum_{j=1}^{n} (-1)^{i+j} a_{ij} M_{ij}
+\]
+where $M_{ij}$ is the determinant of the submatrix obtained by removing the $i$-th row and $j$-th column.
 
 
 \newpage
@@ -389,6 +542,26 @@ Gaussian elimination is an algorithm for solving systems of linear equations, fi
         =
         x_1\mathbf{a}_1 + x_2\mathbf{a}_2 + \cdots + x_n\mathbf{a}_n
         \label{eq:matvec}
+    \end{equation}
+
+    \item \textbf{Row Vector-Matrix Multiplication:}
+    \begin{equation}
+        \mathbf{y}^T A =
+        \left[
+            \begin{array}{ccc}
+                y_1 & \cdots & y_m
+            \end{array}
+        \right]
+        \left[
+            \begin{array}{c}
+                - \mathbf{a}_1^T - \\
+                \vdots \\
+                - \mathbf{a}_m^T -
+            \end{array}
+        \right]
+        =
+        y_1\mathbf{a}_1^T + y_2\mathbf{a}_2^T + \cdots + y_m\mathbf{a}_m^T
+        \label{eq:rowvecmat}
     \end{equation}
 
     \item \textbf{Matrix-Matrix Multiplication:}
