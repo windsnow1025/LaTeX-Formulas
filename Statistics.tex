@@ -1,0 +1,202 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{amssymb}
+
+\title{Statistics}
+\date{}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\newpage
+\section{Sample Statistics}
+
+\subsection{Sample Mean}
+\[
+    \overline{X} = \frac{1}{n}\sum_{i=1}^{n} X_i
+\]
+\textbf{Properties:}
+\begin{itemize}
+    \item $\mathbb{E}[\overline{X}] = \mu$
+    \item $\text{Var}(\overline{X}) = \frac{\sigma^2}{n}$
+\end{itemize}
+
+\subsection{Sample Variance (Unbiased)}
+\[
+    S^2 = \frac{1}{n-1}\sum_{i=1}^{n}(X_i - \overline{X})^2 = \frac{1}{n-1}\left(\sum_{i=1}^{n} X_i^2 - n\overline{X}^2\right)
+\]
+\textbf{Properties:}
+\begin{itemize}
+    \item $\mathbb{E}[S^2] = \sigma^2$
+\end{itemize}
+
+
+\newpage
+\section{Central Limit Theorem}
+
+Let $X_1, X_2, \ldots, X_n$ be i.i.d. (independent and identically distributed) random variables with mean $\mu$ and variance $\sigma^2$:
+\[
+    \overline{X}_n \overset{d}{\rightarrow} \mathcal{N}\left(\mu, \frac{\sigma^2}{n}\right) \text{ as } n \rightarrow \infty
+\]
+
+
+\newpage
+\section{Order Statistics}
+
+\subsection{Cumulative Distribution Function of Order Statistics}
+
+\textbf{Maximum:}
+\[
+    F_{\max}(x) = P\left(\max(X_1, X_2, \ldots, X_n) \leq x\right) = F^n(x)
+\]
+\textbf{Minimum:}
+\[
+    F_{\min}(x) = P\left(\min(X_1, X_2, \ldots, X_n) \leq x\right) = 1 - (1 - F(x))^n
+\]
+
+
+\newpage
+\section{Sample Distributions}
+
+\subsection{Chi-Square Distribution}
+\[
+    X \sim \chi^2(n)
+\]
+where $Z_i \sim \mathcal{N}(0,1)$ and:
+\[
+    \chi^2 = \sum_{i=1}^{n} Z_i^2
+\]
+\textbf{Properties:}
+\begin{itemize}
+    \item $\mathbb{E}[\chi^2] = n$
+    \item $\text{Var}(\chi^2) = 2n$
+    \item $\chi_1^2 \sim \chi^2(n_1), \chi_2^2 \sim \chi^2(n_2)$: $\chi_1^2 + \chi_2^2 \sim \chi^2(n_1 + n_2)$
+    \item $X_i \sim N(\mu, \sigma^2)$: $\chi^2 = \frac{1}{\sigma^2}\sum_{i=1}^{n}(X_i - \mu)^2 \sim \chi^2(n)$
+    \item $X_i \sim N(\mu, \sigma^2)$: $\frac{(n-1)S^2}{\sigma^2} = \frac{1}{\sigma^2}\sum_{i=1}^{n}(X_i - \overline{X})^2 \sim \chi^2(n-1)$
+\end{itemize}
+
+\subsection{t Distribution}
+\[
+    t \sim t(n)
+\]
+where $X \sim \mathcal{N}(0,1)$, $Y \sim \chi^2(n)$, and:
+\[
+    t = \frac{X}{\sqrt{Y/n}}
+\]
+\textbf{Properties:}
+\begin{itemize}
+    \item $n \rightarrow +\infty$: $\mathcal{N}(0,1)$
+    \item $T = \frac{\overline{X} - \mu}{S/\sqrt{n}} \sim t(n-1)$
+\end{itemize}
+
+\subsection{F Distribution}
+\[
+    F \sim F(m,n)
+\]
+where $X \sim \chi^2(m)$, $Y \sim \chi^2(n)$, and:
+\[
+    F = \frac{X/m}{Y/n}
+\]
+\textbf{Properties:}
+\begin{itemize}
+    \item $F_{1-\alpha}(n_1, n_2) = \frac{1}{F_\alpha(n_2, n_1)}$
+    \item $t \sim t(n)$: $t^2 \sim F(1, n)$
+\end{itemize}
+
+
+\newpage
+\section{Estimation}
+
+\subsection{Moment Estimation}
+
+\subsubsection{Raw Moment}
+\[
+    \mu_n' = \mathbb{E}[X^n]
+\]
+
+\subsubsection{Central Moment}
+\[
+    \mu_n = \mathbb{E}[(X - \mathbb{E}[X])^n]
+\]
+
+\subsubsection{Moment Generating Function}
+The Moment Generating Function is the Laplace Transform of the Probability Density Function:
+\[
+    M_X(t) = \mathbb{E}[e^{tX}]
+\]
+\[
+    \mu_n' = \left.\frac{d^n}{dt^n} M_X(t)\right|_{t=0}
+\]
+
+\subsection{Maximum Likelihood Estimation}
+\[
+    \hat{\theta} = \arg\max_\theta L(\theta)
+\]
+where the likelihood function is:
+\[
+    L(\theta) = \prod_{i=1}^{n} p(x_i|\theta)
+\]
+The maximum likelihood estimate is found by solving:
+\[
+    \frac{\partial \ln L(\theta)}{\partial \theta_i} = 0
+\]
+
+
+\newpage
+\section{Interval Estimation}
+
+For significance level $\alpha$:
+\[
+    P(\underline{\theta} < \theta < \overline{\theta}) \geq 1 - \alpha
+\]
+
+\subsection{Single Population}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Unknown} & \textbf{Known} & \textbf{Distribution} & \textbf{Two-tailed Confidence Interval} \\
+\hline
+$\mu$ & $\sigma^2$ & $u = \frac{\overline{X} - \mu}{\sigma/\sqrt{n}} \sim \mathcal{N}(0,1)$ & $\left(\overline{X} \pm \frac{\sigma}{\sqrt{n}} u_{\alpha/2}\right)$ \\
+\hline
+$\mu$ & $S^2$ & $t = \frac{\overline{X} - \mu}{S/\sqrt{n}} \sim t(n-1)$ & $\left(\overline{X} \pm \frac{S}{\sqrt{n}} t_{\alpha/2}(n-1)\right)$ \\
+\hline
+$\sigma^2$ & $S^2$ & $\chi^2 = \frac{(n-1)S^2}{\sigma^2} \sim \chi^2(n-1)$ & $\left(\frac{(n-1)S^2}{\chi^2_{\alpha/2}(n-1)}, \frac{(n-1)S^2}{\chi^2_{1-\alpha/2}(n-1)}\right)$ \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Two Populations}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Unknown} & \textbf{Known} & \textbf{Distribution} & \textbf{Two-tailed Confidence Interval} \\
+\hline
+$\mu_1 - \mu_2$ & $\sigma_1^2, \sigma_2^2$ & $\frac{(\overline{X} - \overline{Y}) - (\mu_1 - \mu_2)}{\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}} \sim \mathcal{N}(0,1)$ & $\left((\overline{X} - \overline{Y}) \pm u_{\alpha/2}\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}\right)$ \\
+\hline
+$\mu_1 - \mu_2$ & $S_1^2, S_2^2$ & $\frac{(\overline{X} - \overline{Y}) - (\mu_1 - \mu_2)}{S_W\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}} \sim t(n_1 + n_2 - 2)$ & $\left((\overline{X} - \overline{Y}) \pm t_{\alpha/2}(n_1 + n_2 - 2) S_W\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}\right)$ \\
+& & $S_W^2 = \frac{(n_1-1)S_1^2 + (n_2-1)S_2^2}{n_1 + n_2 - 2}$ & \\
+\hline
+$\frac{\sigma_1^2}{\sigma_2^2}$ & $S_1^2, S_2^2$ & $\frac{S_1^2/S_2^2}{\sigma_1^2/\sigma_2^2} \sim F(n_1-1, n_2-1)$ & $\left(\frac{S_1^2/S_2^2}{F_{1-\alpha/2}(n_1-1, n_2-1)}, \frac{S_1^2/S_2^2}{F_{\alpha/2}(n_1-1, n_2-1)}\right)$ \\
+\hline
+\end{tabular}
+\end{table}
+
+\end{document}
