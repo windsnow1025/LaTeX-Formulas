@@ -150,9 +150,13 @@ where the likelihood function is:
 \[
     L(\theta) = \prod_{i=1}^{n} p(x_i|\theta)
 \]
-The maximum likelihood estimate is found by solving:
+Log likelihood:
 \[
-    \frac{\partial \ln L(\theta)}{\partial \theta_i} = 0
+    \ell(\theta) = \log L(\theta) = \sum_{i=1}^{n} \log p(x_i|\theta)
+\]
+Found $\hat{\theta}$ by solving:
+\[
+    \frac{\partial \ell(\theta)}{\partial \theta_i} = 0
 \]
 
 
