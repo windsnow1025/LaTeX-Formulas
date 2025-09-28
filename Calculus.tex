@@ -1,0 +1,967 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{amssymb}
+
+\title{Calculus}
+\date{}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\newpage
+\section{Single Variable Calculus}
+
+\subsection{Limit}
+
+\[
+    \lim_{x \to 0} \frac{\sin x}{x} = 1
+\]
+\[
+    \lim_{x \to \infty} \left(1 + \frac{1}{x}\right)^x = e
+\]
+\[
+    \lim_{x \to \infty} \left(1 + \frac{\lambda}{x}\right)^x = e^\lambda
+\]
+
+\subsection{Equivalent Infinitesimal}
+
+\[
+    \sin x \sim x
+\]
+\[
+    1 - \cos x \sim \frac{x^2}{2}
+\]
+\[
+    \arcsin x \sim x
+\]
+\[
+    \tan x \sim x
+\]
+\[
+    \arctan x \sim x
+\]
+\[
+    e^x - 1 \sim x
+\]
+\[
+    a^x - 1 \sim x \ln a
+\]
+\[
+    \ln(1 + x) \sim x
+\]
+\[
+    \log_a(1 + x) \sim \frac{x}{\ln a}
+\]
+\[
+    (1 + ax)^b - 1 \sim abx
+\]
+
+\subsection{Derivative}
+
+\subsubsection{Basic Functions}
+
+\[
+    \frac{d}{dx} x^a = ax^{a-1}
+\]
+\[
+    \frac{d}{dx} e^x = e^x
+\]
+\[
+    \frac{d}{dx} a^x = a^x \ln a
+\]
+\[
+    \frac{d}{dx} \ln x = \frac{1}{x}
+\]
+\[
+    \frac{d}{dx} \log_a x = \frac{1}{x \ln a}
+\]
+\[
+    \frac{d}{dx} \sin x = \cos x
+\]
+\[
+    \frac{d}{dx} \cos x = -\sin x
+\]
+\[
+    \frac{d}{dx} \tan x = \sec^2 x
+\]
+\[
+    \frac{d}{dx} \cot x = -\csc^2 x
+\]
+\[
+    \frac{d}{dx} \sec x = \sec x \tan x
+\]
+\[
+    \frac{d}{dx} \csc x = -\csc x \cot x
+\]
+\[
+    \frac{d}{dx} \arcsin x = \frac{1}{\sqrt{1 - x^2}}
+\]
+\[
+    \frac{d}{dx} \arccos x = -\frac{1}{\sqrt{1 - x^2}}
+\]
+\[
+    \frac{d}{dx} \arctan x = \frac{1}{1 + x^2}
+\]
+\[
+    \frac{d}{dx} \operatorname{arccot} x = -\frac{1}{1 + x^2}
+\]
+
+\subsubsection{Combined Functions}
+
+\[
+    (\alpha f + \beta g)' = \alpha f' + \beta g'
+\]
+\[
+    (fg)' = f'g + fg'
+\]
+\[
+    \left(\frac{f}{g}\right)' = \frac{f'g - fg'}{g^2}
+\]
+
+\subsubsection{Chain Rule}
+
+\[
+    f'(g(x)) = f'(g(x)) \cdot g'(x)
+\]
+
+\subsubsection{Inverse Function}
+
+\[
+    (f^{-1})'(x) = \frac{1}{f'(f^{-1}(x))}
+\]
+
+\subsubsection{Parametric Functions}
+
+\[
+    \begin{cases}
+        y = y(t) \\
+        x = x(t)
+    \end{cases}
+\]
+\[
+    \frac{dy}{dx} = \frac{\frac{dy}{dt}}{\frac{dx}{dt}}
+\]
+\[
+    \frac{d^2y}{dx^2} = \frac{d\frac{dy}{dx}}{dt} \cdot \frac{dt}{dx}
+\]
+
+\subsubsection{Implicit Function}
+
+\[
+    F(x, y) = 0
+\]
+\[
+    \frac{dy}{dx} = -\frac{F_x'}{F_y'}
+\]
+
+\subsubsection{Definite Integral with Variable Bounds}
+
+\[
+    \frac{d}{dx} \int_a^x f(t) dt = f(x)
+\]
+
+\subsection{L'Hôpital's Rule}
+
+If $\lim_{x \to c} f(x) = \lim_{x \to c} g(x) = 0$ or $\pm\infty$:
+\[
+    \lim_{x \to c} \frac{f(x)}{g(x)} = \lim_{x \to c} \frac{f'(x)}{g'(x)}
+\]
+
+\subsection{Taylor Series}
+
+\[
+    f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!}(x - a)^n
+\]
+
+\subsubsection{Exponential Function}
+
+\[
+    e^x = \sum_{n=0}^{\infty} \frac{x^n}{n!}
+\]
+
+\subsubsection{Natural Logarithm}
+
+\[
+    \ln(1 - x) = -\sum_{n=1}^{\infty} \frac{x^n}{n}
+\]
+\[
+    \ln(1 + x) = \sum_{n=1}^{\infty} (-1)^{n+1} \frac{x^n}{n}
+\]
+
+\subsubsection{Binomial Series}
+
+\[
+    (1 + x)^\alpha = \sum_{n=0}^{\infty} \binom{\alpha}{n} x^n
+\]
+
+\subsubsection{Trigonometric Functions}
+
+\[
+    \sin x = \sum_{n=0}^{\infty} \frac{(-1)^n}{(2n + 1)!} x^{2n + 1}
+\]
+\[
+    \cos x = \sum_{n=0}^{\infty} \frac{(-1)^n}{(2n)!} x^{2n}
+\]
+
+\subsection{Applications for Derivatives}
+
+\subsubsection{Tangent Line Equation}
+
+\[
+    y - y_0 = y'(x - x_0)
+\]
+
+\subsubsection{Extrema}
+
+\[
+    y' = 0
+\]
+
+\subsubsection{Arc Length}
+
+\[
+    ds = \sqrt{1 + (y')^2} dx
+\]
+
+\subsubsection{Curvature}
+
+\[
+    \kappa = \frac{|y''|}{(1 + (y')^2)^{3/2}}
+\]
+For parametric equations:
+\[
+    \kappa = \frac{|\phi'(t)\psi''(t) - \phi''(t)\psi'(t)|}{(\phi'(t)^2 + \psi'(t)^2)^{3/2}}
+\]
+
+\subsubsection{Radius of Curvature}
+
+\[
+    \rho = \frac{1}{\kappa}
+\]
+
+\subsubsection{Center of Curvature}
+
+\[
+    D(\alpha, \beta)
+\]
+\[
+    \begin{cases}
+        \alpha = x - \frac{y'(1 + (y')^2)}{y''} \\
+        \beta = y + \frac{1 + (y')^2}{y''}
+    \end{cases}
+\]
+
+\subsection{Integrals}
+
+\subsubsection{Indefinite Integrals}
+
+\textbf{Rational Functions:}
+\[
+    \int a dx = ax + C
+\]
+\[
+    \int x^n dx = \frac{x^{n+1}}{n+1} + C \quad (n \neq -1)
+\]
+\[
+    \int (ax + b)^n dx = \frac{(ax + b)^{n+1}}{a(n+1)} + C \quad (n \neq -1)
+\]
+\[
+    \int \frac{1}{x} dx = \ln|x| + C
+\]
+\[
+    \int \frac{c}{ax + b} dx = \frac{c}{a} \ln|ax + b| + C
+\]
+\textbf{Exponential Functions:}
+\[
+    \int e^{ax} dx = \frac{1}{a} e^{ax} + C
+\]
+\[
+    \int f'(x) e^{f(x)} dx = e^{f(x)} + C
+\]
+\[
+    \int a^x dx = \frac{a^x}{\ln a} + C
+\]
+\textbf{Logarithms:}
+\[
+    \int \ln x dx = x \ln x - x + C
+\]
+\[
+    \int \log_a x dx = x \log_a x - \frac{x}{\ln a} + C = \frac{x \ln x - x}{\ln a} + C
+\]
+\textbf{Trigonometric Functions:}
+\[
+    \int \sin x dx = -\cos x + C
+\]
+\[
+    \int \cos x dx = \sin x + C
+\]
+\[
+    \int \tan x dx = -\ln|\cos x| + C
+\]
+\[
+    \int \cot x dx = \ln|\sin x| + C
+\]
+\[
+    \int \sec x dx = \ln|\sec x + \tan x| + C
+\]
+\[
+    \int \csc x dx = -\ln|\csc x + \cot x| + C
+\]
+\[
+    \int \sec^2 x dx = \tan x + C
+\]
+\[
+    \int \csc^2 x dx = -\cot x + C
+\]
+\[
+    \int \sec x \tan x dx = \sec x + C
+\]
+\[
+    \int \csc x \cot x dx = -\csc x + C
+\]
+\[
+    \int \sin^2 x dx = \frac{1}{2}\left(x - \frac{\sin 2x}{2}\right) + C
+\]
+\[
+    \int \cos^2 x dx = \frac{1}{2}\left(x + \frac{\sin 2x}{2}\right) + C
+\]
+\[
+    \int \tan^2 x dx = \tan x - x + C
+\]
+\[
+    \int \cot^2 x dx = -\cot x - x + C
+\]
+\[
+    \int \sec^3 x dx = \frac{1}{2}\left(\sec x \tan x + \ln|\sec x + \tan x|\right) + C
+\]
+\[
+    \int \csc^3 x dx = \frac{1}{2}\left(-\csc x \cot x + \ln|\csc x - \cot x|\right) + C
+\]
+\[
+    \int \sin^n x dx = -\frac{\sin^{n-1} x \cos x}{n} + \frac{n-1}{n} \int \sin^{n-2} x dx
+\]
+\[
+    \int \cos^n x dx = \frac{\cos^{n-1} x \sin x}{n} + \frac{n-1}{n} \int \cos^{n-2} x dx
+\]
+\textbf{Inverse Trigonometric Functions:}
+\[
+    \int \arcsin x dx = x \arcsin x + \sqrt{1 - x^2} + C
+\]
+\[
+    \int \arccos x dx = x \arccos x - \sqrt{1 - x^2} + C
+\]
+\[
+    \int \arctan x dx = x \arctan x - \frac{1}{2} \ln|1 + x^2| + C
+\]
+\[
+    \int \operatorname{arccot} x dx = x \operatorname{arccot} x + \frac{1}{2} \ln|1 + x^2| + C
+\]
+\[
+    \int \operatorname{arcsec} x dx = x \operatorname{arcsec} x - \ln|x(1 + \sqrt{1 - x^{-2}})| + C
+\]
+\[
+    \int \operatorname{arccsc} x dx = x \operatorname{arccsc} x + \ln|x(1 + \sqrt{1 - x^{-2}})| + C
+\]
+
+\subsubsection{Definite Integrals}
+
+\[
+    \int_0^{\pi/2} \sin^n x dx = \int_0^{\pi/2} \cos^n x dx = \frac{(n-1)!!}{n!!} \times
+    \begin{cases}
+        1 & \text{if } n \text{ is odd} \\
+        \frac{\pi}{2} & \text{if } n \text{ is even}
+    \end{cases}
+\]
+
+\subsection{Ordinary Differential Equations}
+
+\subsubsection{Separable Differential Equation}
+
+\[
+    P(x) dx = Q(y) dy
+\]
+\[
+    \int P(x) dx = \int Q(y) dy
+\]
+
+\subsubsection{Homogeneous Differential Equation}
+
+\[
+    \frac{dy}{dx} = F\left(\frac{y}{x}\right)
+\]
+Set $u = \frac{y}{x}$, $\frac{dy}{dx} = u + x\frac{du}{dx}$:
+\[
+    u + x\frac{du}{dx} = F(u)
+\]
+\[
+    \frac{1}{F(u) - u} du = \frac{1}{x} dx
+\]
+
+\subsubsection{First Order Linear Differential Equation}
+
+\[
+    y' + P(x)y = Q(x)
+\]
+\[
+    y = e^{-\int P(x) dx} \left(\int Q(x) e^{\int P(x) dx} dx + C\right)
+\]
+
+\subsubsection{Bernoulli Equation}
+
+\[
+    y' + P(x)y = Q(x)y^n \quad (n \neq 0, 1)
+\]
+\[
+    y^{-n} \frac{dy}{dx} + P(x) y^{1-n} = Q(x)
+\]
+Set $z = y^{1-n}$:
+\[
+    \frac{dz}{dx} = (1-n) y^{-n} \frac{dy}{dx}
+\]
+
+\[
+    \frac{dz}{dx} + (1-n)P(x)z = (1-n)Q(x)
+\]
+
+\subsubsection{Higher Order Linear Differential Equations}
+
+\textbf{Degradable Higher Order Differential Equations:}
+
+\begin{itemize}
+    \item $y^{(n)} = f(x)$
+    \[
+        y = \underbrace{\int \int \cdots \int}_{n \text{ times}} f(x) dx
+    \]
+
+    \item $y'' = f(x, y')$
+
+    Set $y' = p$:
+    \[
+        y'' = \frac{dp}{dx} = p'
+    \]
+    \[
+        p' = f(x, p)
+    \]
+
+    \item $y'' = f(y, y')$
+
+    Set $y' = p$:
+    \[
+        y'' = \frac{dp}{dx} = \frac{dp}{dy} \frac{dy}{dx} = p \frac{dp}{dy}
+    \]
+    \[
+        p \frac{dp}{dy} = f(y, p)
+    \]
+\end{itemize}
+
+\textbf{Homogeneous Linear Differential Equations with Constant Coefficients:}
+
+\[
+    y'' + py' + qy = 0
+\]
+
+Characteristic Equation: $r^2 + pr + q = 0$
+
+\begin{itemize}
+    \item $r_1 \neq r_2$: $y = C_1 e^{r_1 x} + C_2 e^{r_2 x}$
+    \item $r_1 = r_2$: $y = (C_1 + C_2 x) e^{r_1 x}$
+    \item $r_{1,2} = \alpha \pm \beta i$: $y = e^{\alpha x}(C_1 \cos \beta x + C_2 \sin \beta x)$
+\end{itemize}
+
+\textbf{Inhomogeneous Linear Differential Equations with Constant Coefficients:}
+
+\[
+    y'' + py' + qy = f(x)
+\]
+\[
+    y = Y(x) + y^*(x)
+\]
+
+\begin{itemize}
+    \item $f(x) = e^{\lambda x} P_m(x)$
+    \[
+        y^* = x^k R_m(x) e^{\lambda x}
+    \]
+
+    where $k$ is the multiplicity of $\lambda$ as a root of the characteristic equation.
+
+    \item $f(x) = e^{\lambda x}(P_l(x) \cos \omega x + Q_n(x) \sin \omega x)$
+    \[
+        y^* = x^k e^{\lambda x}(R_m^{(1)}(x) \cos \omega x + R_m^{(2)}(x) \sin \omega x)
+    \]
+
+    where $m = \max\{l, n\}$ and $k$ is the multiplicity of $\lambda + \omega i$ as a root of the characteristic equation.
+\end{itemize}
+
+\newpage
+\section{Multivariable Calculus}
+
+\subsection{Total Differential}
+
+\[
+    df = \sum_{i=1}^n \frac{\partial f}{\partial x_i} dx_i
+\]
+
+\subsection{Derivative of Vector-valued Function}
+
+$f: \mathbb{R}^n \to \mathbb{R}$, $f = f(x)$
+
+\subsubsection{Gradient}
+
+\[
+    \nabla f = \frac{\partial f}{\partial x^T} = \begin{bmatrix}
+        \frac{\partial f}{\partial x_1} \\
+        \vdots \\
+        \frac{\partial f}{\partial x_n}
+    \end{bmatrix}
+\]
+
+\subsubsection{Hessian Matrix}
+
+\[
+    H = \nabla^2 f = \begin{bmatrix}
+        \frac{\partial^2 f}{\partial x_1^2} & \cdots & \frac{\partial^2 f}{\partial x_1 \partial x_n} \\
+        \vdots & \ddots & \vdots \\
+        \frac{\partial^2 f}{\partial x_n \partial x_1} & \cdots & \frac{\partial^2 f}{\partial x_n^2}
+    \end{bmatrix}
+\]
+
+\subsubsection{Chain Rule}
+
+$f = f(x(t))$
+
+\[
+    \frac{\partial f}{\partial t_j} = \sum_{i=1}^n \frac{\partial f}{\partial x_i} \frac{\partial x_i}{\partial t_j}
+\]
+\[
+    \nabla_t f = J_{x \to t}^T \cdot \nabla_x f
+\]
+
+\subsection{Derivative of Scalar-valued Function}
+
+$f: \mathbb{R}^n \to \mathbb{R}^m$, $f(x) = y$
+
+\subsubsection{Jacobian Matrix}
+
+\[
+    J = \frac{\partial f}{\partial x^T} = \begin{bmatrix}
+        \frac{\partial y_1}{\partial x_1} & \cdots & \frac{\partial y_1}{\partial x_n} \\
+        \vdots & \ddots & \vdots \\
+        \frac{\partial y_m}{\partial x_1} & \cdots & \frac{\partial y_m}{\partial x_n}
+    \end{bmatrix}
+\]
+
+\subsubsection{Chain Rule}
+
+$y = f(x(t))$
+
+\[
+    \frac{\partial y}{\partial t_j} = \sum_{i=1}^n \frac{\partial y}{\partial x_i} \frac{\partial x_i}{\partial t_j}
+\]
+\[
+    J_{y \to t} = J_{y \to x} \cdot J_{x \to t}
+\]
+
+\subsection{Directional Derivative}
+
+\[
+    \nabla_u f(x) = \hat{u} \cdot \nabla f(x)
+\]
+
+\subsection{Implicit Function}
+
+\[
+    F(x, y, z) = 0
+\]
+\[
+    \frac{\partial z}{\partial x} = -\frac{F_x'}{F_z'}
+\]
+\[
+    \frac{\partial z}{\partial y} = -\frac{F_y'}{F_z'}
+\]
+
+\subsection{Jacobian Determinant}
+
+\[
+    \det(J) = \left|\frac{\partial y}{\partial x}\right| = \begin{vmatrix}
+        \frac{\partial y_1}{\partial x_1} & \cdots & \frac{\partial y_1}{\partial x_n} \\
+        \vdots & \ddots & \vdots \\
+        \frac{\partial y_m}{\partial x_1} & \cdots & \frac{\partial y_m}{\partial x_n}
+    \end{vmatrix}
+\]
+\[
+    dx = \left|\frac{\partial x}{\partial u}\right| du
+\]
+
+\subsection{System of Functions}
+
+\[
+    \begin{cases}
+        F(x, y, u(x, y), v(x, y)) = 0 \\
+        G(x, y, u(x, y), v(x, y)) = 0
+    \end{cases}
+\]
+\[
+    \det(J) = \frac{\partial(F, G)}{\partial(u, v)}
+\]
+\[
+    \frac{\partial u}{\partial x} = -\frac{1}{\det(J)} \frac{\partial(F, G)}{\partial(x, v)} = -\frac{\begin{vmatrix} F_x' & F_v' \\ G_x' & G_v' \end{vmatrix}}{\begin{vmatrix} F_u' & F_v' \\ G_u' & G_v' \end{vmatrix}}
+\]
+\[
+    \frac{\partial v}{\partial x} = -\frac{1}{\det(J)} \frac{\partial(F, G)}{\partial(u, x)} = -\frac{\begin{vmatrix} F_u' & F_x' \\ G_u' & G_x' \end{vmatrix}}{\begin{vmatrix} F_u' & F_v' \\ G_u' & G_v' \end{vmatrix}}
+\]
+\[
+    \frac{\partial u}{\partial y} = -\frac{1}{\det(J)} \frac{\partial(F, G)}{\partial(y, v)} = -\frac{\begin{vmatrix} F_y' & F_v' \\ G_y' & G_v' \end{vmatrix}}{\begin{vmatrix} F_u' & F_v' \\ G_u' & G_v' \end{vmatrix}}
+\]
+\[
+    \frac{\partial v}{\partial y} = -\frac{1}{\det(J)} \frac{\partial(F, G)}{\partial(u, y)} = -\frac{\begin{vmatrix} F_u' & F_y' \\ G_u' & G_y' \end{vmatrix}}{\begin{vmatrix} F_u' & F_v' \\ G_u' & G_v' \end{vmatrix}}
+\]
+
+\subsection{Hessian Determinant}
+
+For $f(x, y)$:
+
+\[
+    \det(H) = \begin{vmatrix}
+        \frac{\partial^2 f}{\partial x_1^2} & \frac{\partial^2 f}{\partial x_1 x_2} \\
+        \frac{\partial^2 f}{\partial x_2 x_1} & \frac{\partial^2 f}{\partial x_2^2}
+    \end{vmatrix}
+\]
+
+\subsection{Taylor Series}
+
+\[
+    f(x) = \sum_{n=0}^{\infty} \frac{\left(h\frac{\partial}{\partial x} + k\frac{\partial}{\partial y}\right)^n}{n!} f(x_0, y_0)
+\]
+
+\subsection{Applications for Bivariable Derivatives}
+
+\subsubsection{Tangent Line Equation}
+
+\begin{itemize}
+    \item For parametric curve:
+    \[
+        \begin{cases}
+            x = \phi(t) \\
+            y = \psi(t) \\
+            z = \omega(t)
+        \end{cases}
+    \]
+    \[
+        \frac{x - x_0}{\phi'(t_0)} = \frac{y - y_0}{\psi'(t_0)} = \frac{z - z_0}{\omega'(t_0)}
+    \]
+
+    \item For intersection of surfaces:
+    \[
+        \begin{cases}
+            F(x, y, z) = 0 \\
+            G(x, y, z) = 0
+        \end{cases}
+    \]
+    \[
+        \frac{x - x_0}{\begin{vmatrix} F_y' & F_z' \\ G_y' & G_z' \end{vmatrix}_M} = \frac{y - y_0}{\begin{vmatrix} F_z' & F_x' \\ G_z' & G_x' \end{vmatrix}_M} = \frac{z - z_0}{\begin{vmatrix} F_x' & F_y' \\ G_x' & G_y' \end{vmatrix}_M}
+    \]
+\end{itemize}
+
+\subsubsection{Normal Plane Equation}
+
+For $F(x, y, z) = 0$:
+\[
+    F_x'(x_0, y_0, z_0)(x - x_0) + F_y'(x_0, y_0, z_0)(y - y_0) + F_z'(x_0, y_0, z_0)(z - z_0) = 0
+\]
+
+\subsubsection{Extrema}
+
+\[
+    \begin{cases}
+        f_x' = 0 \\
+        f_y' = 0
+    \end{cases}
+\]
+
+\[
+    \det(H) \geq 0
+\]
+
+\begin{itemize}
+    \item Local Maximum: $\det(H) > 0$, $\frac{\partial^2 f}{\partial x_1^2} < 0$
+    \item Local Minimum: $\det(H) > 0$, $\frac{\partial^2 f}{\partial x_1^2} > 0$
+    \item Saddle Point: $\det(H) < 0$
+\end{itemize}
+
+\subsubsection{Conditional Extrema}
+
+\[
+    L(x, y) = f(x, y) + \lambda \phi(x, y)
+\]
+\[
+    \begin{cases}
+        L_x'(x, y) = 0 \\
+        L_y'(x, y) = 0 \\
+        \phi(x, y) = 0
+    \end{cases}
+\]
+
+\subsection{Multiple Integrals}
+
+\[
+    \iint_D f(x, y) dx dy = \iint_{D'} f(x(u, v), y(u, v)) \det(J) du dv
+\]
+
+\subsubsection{Double Integral}
+
+\textbf{Cartesian Coordinate System:}
+\[
+    \iint_D f(x, y) d\sigma = \int_c^d dy \int_{\psi_1(y)}^{\psi_2(y)} f(x, y) dx
+\]
+\textbf{Polar Coordinate System:}
+\[
+    \iint_D f(x, y) dx dy = \iint_D f(\rho \cos \theta, \rho \sin \theta) \rho d\rho d\theta = \int_\alpha^\beta d\theta \int_{\phi_1(\theta)}^{\phi_2(\theta)} f(\rho \cos \theta, \rho \sin \theta) \rho d\rho
+\]
+
+\subsubsection{Triple Integral}
+
+\textbf{Cartesian Coordinate System}
+\[
+    \iiint_\Omega f(x, y, z) dv = \int_a^b dx \int_{y_1(x)}^{y_2(x)} dy \int_{z_1(x, y)}^{z_2(x, y)} f(x, y, z) dz
+\]
+\textbf{Cylindrical Coordinate System}
+\[
+    \begin{cases}
+        x = \rho \cos \theta \\
+        y = \rho \sin \theta \\
+        z = z
+    \end{cases}
+\]
+\[
+    \iiint_\Omega f(x, y, z) dv = \iiint_\Omega F(\rho, \theta, z) \rho d\rho d\theta dz
+\]
+\textbf{Spherical Coordinate System}
+\[
+    \begin{cases}
+        x = r \sin \phi \cos \theta \\
+        y = r \sin \phi \sin \theta \\
+        z = r \cos \phi
+    \end{cases}
+\]
+\[
+    \iiint_\Omega f(x, y, z) dv = \iiint_\Omega F(r, \phi, \theta) r^2 \sin \phi dr d\phi d\theta
+\]
+
+\subsection{Line Integral}
+
+\subsubsection{Line Integrals of a Scalar Field}
+
+For parametric curve:
+\[
+    \begin{cases}
+        x = \phi(t) \\
+        y = \psi(t) \\
+        z = \omega(t)
+    \end{cases}
+\]
+\[
+    \int_\Gamma f(x, y, z) ds = \int_\alpha^\beta f(\phi(t), \psi(t), \omega(t)) \sqrt{\phi'(t)^2 + \psi'(t)^2 + \omega'(t)^2} dt
+\]
+
+\subsubsection{Line Integrals of a Vector Field}
+
+\[
+    \int_\Gamma P(x, y, z) dx + Q(x, y, z) dy + R(x, y, z) dz =
+\]
+\[
+    \int_\alpha^\beta \left[P(\phi(t), \psi(t), \omega(t)) \phi'(t) + Q(\phi(t), \psi(t), \omega(t)) \psi'(t) + R(\phi(t), \psi(t), \omega(t)) \omega'(t)\right] dt
+\]
+
+\subsubsection{Conversion between two types of Line Integrals}
+
+\[
+    \tau = \phi'(t) i + \psi'(t) j + \omega'(t) k
+\]
+\[
+    \int_\Gamma P dx + Q dy + R dz = \int_\Gamma (P \cos \alpha + Q \cos \beta + R \cos \gamma) ds
+\]
+
+\subsubsection{Green's Theorem}
+
+\[
+    \iint_D \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right) dx dy = \oint_L P dx + Q dy
+\]
+
+\subsubsection{Area}
+
+\[
+    A = \frac{1}{2} \oint_L x dy - y dx
+\]
+
+\subsubsection{Path Independence for Line Integrals of a Vector Field}
+
+\[
+    \frac{\partial Q}{\partial x} = \frac{\partial P}{\partial y}
+\]
+
+\subsubsection{Exact Differential Equation}
+
+\[
+    P(x, y) dx + Q(x, y) dy = 0
+\]
+\[
+    \frac{\partial Q}{\partial x} = \frac{\partial P}{\partial y}
+\]
+\[
+    u(x, y) = \int_{(x_0, y_0)}^{(x, y)} P(x, y) dx + Q(x, y) dy = C
+\]
+
+\subsection{Surface Integral}
+
+\subsubsection{Surface Integral of a Scalar Field}
+
+\[
+    \iint_\Sigma f(x, y, z) dS = \iint_{D_{xy}} f(x, y, z(x, y)) \sqrt{1 + z_x'(x, y)^2 + z_y'(x, y)^2} dx dy
+\]
+
+\subsubsection{Surface Integral of a Vector Field}
+
+\[
+    \iint_\Sigma f(x, y, z) dx dy = \pm \iint_{D_{xy}} f(x, y, z(x, y)) dx dy
+\]
+
+\subsubsection{Conversion between two types of Surface Integrals}
+
+\[
+    \cos \alpha = \frac{-z_x'}{\sqrt{1 + z_x'^2 + z_y'^2}}
+\]
+\[
+    \cos \beta = \frac{-z_y'}{\sqrt{1 + z_x'^2 + z_y'^2}}
+\]
+\[
+    \cos \gamma = \frac{1}{\sqrt{1 + z_x'^2 + z_y'^2}}
+\]
+\[
+    \iint_\Sigma P dy dz + Q dz dx + R dx dy = \iint_\Sigma (P \cos \alpha + Q \cos \beta + R \cos \gamma) dS
+\]
+
+\subsubsection{Divergence Theorem}
+
+\[
+    \iiint_\Omega \left(\frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z}\right) dv = \iint_\Sigma P dy dz + Q dz dx + R dx dy
+\]
+
+\newpage
+\section{Coordinate Transformation}
+
+\subsection{Inner Product}
+
+\[
+    \langle f(x), g(x) \rangle = \int_a^b f(x) g(x) dx
+\]
+
+\subsection{Norm}
+
+\[
+    \|f(x)\| = \sqrt{\langle f(x), f(x) \rangle}
+\]
+In Complex Field:
+\[
+    \langle f(x), g(x) \rangle = \int_a^b f(x) \overline{g(x)} dx
+\]
+
+\subsection{Eigen Function}
+
+\[
+    \frac{d^n}{dx^n} e^{inx} = (in)^n e^{inx}
+\]
+
+\subsection{Fourier Analysis}
+
+Express a function as a sum of projections onto a set of orthogonal eigenfunctions.
+
+\subsubsection{Fourier Series}
+
+A function $f(t)$ with period $2\pi$ can be represented as:
+\[
+    f(t) = \frac{a_0}{2} + \sum_{n=1}^{\infty} \left[a_n \cos(nt) + b_n \sin(nt)\right]
+\]
+\[
+    a_n = \frac{\langle f(t), \cos(nt) \rangle}{\|\cos(nt)\|^2} = \frac{1}{\pi} \int_{-\pi}^{\pi} f(t) \cos(nt) dt
+\]
+\[
+    b_n = \frac{\langle f(t), \sin(nt) \rangle}{\|\sin(nt)\|^2} = \frac{1}{\pi} \int_{-\pi}^{\pi} f(t) \sin(nt) dt
+\]
+In Complex Field:
+\[
+    f(t) = \sum_{n=-\infty}^{\infty} c_n e^{int}
+\]
+\[
+    c_n = \frac{\langle f(t), e^{int} \rangle}{\|e^{int}\|^2} = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(t) e^{-int} dt
+\]
+\[
+    a_n = c_n + c_{-n}
+\]
+\[
+    b_n = i(c_n - c_{-n})
+\]
+
+\subsubsection{Fourier Transform}
+
+\[
+    F(\omega) = \mathcal{F}(f(x)) = \int_{-\infty}^{\infty} f(t) e^{-i\omega t} dt
+\]
+\[
+    f(t) = \mathcal{F}^{-1}(F(\omega)) = \frac{1}{2\pi} \int_{-\infty}^{\infty} F(\omega) e^{i\omega t} dt
+\]
+\textbf{Properties:}
+\[
+    \mathcal{F}\left(\frac{d^n}{dt^n} f(t)\right) = (i\omega)^n F(\omega)
+\]
+
+\subsection{Laplace Transform}
+
+\[
+    F(s) = \mathcal{L}(f(t)) = \int_0^{\infty} f(t) e^{-st} dt
+\]
+\[
+    f(t) = \frac{1}{2\pi i} \int_{\gamma - i\infty}^{\gamma + i\infty} F(s) e^{st} ds
+\]
+\textbf{Derivation:}
+\[
+    \mathcal{L}(f(t)) = \mathcal{F}(f(t) e^{-\gamma t} H(t))
+\]
+where:
+\[
+    s = \gamma + i\omega
+\]
+\[
+    H(t) = \begin{cases}
+        0, & t < 0 \\
+        1, & t \geq 0
+    \end{cases}
+\]
+
+\subsection{Convolution}
+
+\[
+    (f * g)(t) = \int_{-\infty}^{\infty} f(\tau) g(t - \tau) d\tau
+\]
+\[
+    \mathcal{F}(f * g) = \mathcal{F}(f) \cdot \mathcal{F}(g)
+\]
+\[
+    \mathcal{L}(f * g) = \mathcal{L}(f) \cdot \mathcal{L}(g)
+\]
+
+\end{document}
