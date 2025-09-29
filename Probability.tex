@@ -109,7 +109,7 @@
 
 \subsection{Bayes Theorem}
 \[
-    P(B_j|A) = \frac{P(B_j)P(A|B_j)}{P(A)}
+    P(B_i|A) = \frac{P(B_i)P(A|B_i)}{P(A)}
 \]
 
 \newpage
@@ -117,10 +117,10 @@
 
 \subsection{Expected Value (Mean)}
 \[
-    \mu = \mathbb{E}[X] = \int_{-\infty}^{+\infty} x f(x) dx
+    \mu = \mathbb{E}_X[X] = \int_{-\infty}^{+\infty} x f_X(x) dx
 \]
 \[
-    \mu = \mathbb{E}[X] = \sum_{x} x \, p(x)
+    \mu = \mathbb{E}_X[X] = \sum_{x} x P(X=x)
 \]
 \textbf{Properties:}
 \begin{itemize}
@@ -129,14 +129,14 @@
     \item \( \mathbb{E}[XY] = \mathbb{E}[X]\mathbb{E}[Y] + \text{Cov}(X,Y) \)
 \end{itemize}
 
-\subsubsection{Law of Total Expectation}
-\[
-    \mathbb{E}[X] = \mathbb{E}[\mathbb{E}[X|Y]]
-\]
-
 \subsubsection{Expected Value of a function}
 \[
-    \mathbb{E}[g(X)] = \int_{-\infty}^{+\infty} g(x)f(x)dx
+    \mathbb{E}_X[g(X)] = \int_{-\infty}^{+\infty} g(x)f_X(x)dx
+\]
+
+\subsubsection{Law of Total Expectation}
+\[
+    \mathbb{E}_{X,Y}[X] = \mathbb{E}_Y[\mathbb{E}_{X|Y}[X|Y]]
 \]
 
 \subsection{Variance}
@@ -172,7 +172,7 @@
 
 \subsection{Covariance Matrix}
 \[
-    \Sigma_{ij} = \text{Cov}(X_i, X_j) = \mathbb{E}[(X_i - \mathbb{E}[X_i])(X_j - \mathbb{E}[X_j])]
+    \Sigma_{ij} = \text{Cov}(X_i, X_j)
 \]
 
 \subsection{Correlation Coefficient}
@@ -183,7 +183,7 @@
 \begin{itemize}
     \item \( |\rho_{X,Y}| \le 1 \)
     \item \( |\rho_{X,Y}| = 1 \Leftrightarrow (\exists a)(\exists b)(P(Y=aX+b)=1), (a>0, \rho_{X,Y}=1; a<0, \rho_{X,Y}=-1) \)
-    \item \( \rho_{aX + b, cY + d} = \rho_{XY} \)
+    \item \( \rho_{aX + b, cY + d} = \rho_{X,Y} \)
 \end{itemize}
 
 \subsection{Markov's Inequality}
@@ -213,12 +213,12 @@ For a discrete random variable, the Probability Mass Function \( p(x) \) is defi
 \subsection{Probability Density Function}
 For a continuous random variable, the Probability Density Function \( f(x) \) is defined as:
 \[
-    P(a \le x \le b) = \int_{a}^{b} f(x)dx
+    P(a \le x \le b) = \int_{a}^{b} f_X(x)dx
 \]
 
 \subsection{Cumulative Distribution Function}
 \[
-    F(x) = P(X \le x) = \int_{-\infty}^{x} f(t)dt
+    F(x) = P(X \le x) = \int_{-\infty}^{x} f_X(t)dt
 \]
 
 \subsubsection{Cumulative Distribution Function of a function}
@@ -351,7 +351,7 @@ Derivation from Poisson:
 \subsubsection{Normal Distribution}
 \[ X \sim \mathcal{N}(\mu, \sigma^2) \]
 \[
-f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left( -\frac{(x-\mu)^2}{2\sigma^2} \right)
+    f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left( -\frac{(x-\mu)^2}{2\sigma^2} \right)
 \]
 \textbf{Derivation (De Moivre–Laplace theorem):}
 \[
@@ -360,8 +360,12 @@ f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left( -\frac{(x-\mu)^2}{2\sigma^2} \ri
 
 \subsubsection{Standard Normal Distribution}
 \[ Z = \frac{X-\mu}{\sigma} \sim \mathcal{N}(0,1) \]
-\[ \phi(z) = \frac{1}{\sqrt{2\pi}} e^{-\frac{z^2}{2}} \]
-\[ \Phi(x) = \int_{-\infty}^{x} \phi(t)dt \]
+\[
+    \phi(z) = \frac{1}{\sqrt{2\pi}} \exp\left( -\frac{z^2}{2} \right)
+\]
+\[
+    \Phi(x) = \int_{-\infty}^{x} \phi(t)dt
+\]
 
 \newpage
 \section{Two-dimensional Continuous Random Variable}
