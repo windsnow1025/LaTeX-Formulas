@@ -461,4 +461,28 @@ Define \( \mathbf{y} = Q^\top (\mathbf{x} - \boldsymbol{\mu}) \):
     f(\mathbf{x}; \boldsymbol{\mu}, \Sigma) = \frac{1}{\sqrt{(2\pi)^d\det(\Sigma)}} \exp\left(-\frac{1}{2}(\mathbf{x} - \boldsymbol{\mu})^\top \Sigma^{-1} (\mathbf{x} - \boldsymbol{\mu})\right)
 \]
 
+
+\newpage
+\section{Information Theory}
+
+\subsection{Quantities of Information}
+\[
+    I(m) = -\log(p(m))
+\]
+
+\subsection{Entropy}
+\[
+    H(P) = \mathbb{E}[I(X)] = \sum_{i=1}^{n} p_i \cdot I(p_i) = -\sum_{i=1}^{n} p_i \log_2 p_i
+\]
+
+\subsection{KL Divergence}
+\[
+    D_{KL}(P||Q) = \sum_{i=1}^{n} p_i (I(q_i) - I(p_i)) = (-\sum_{i=1}^{n} p_i \log q_i) - (-\sum_{i=1}^{n} p_i \log p_i)
+\]
+
+\subsection{Cross Entropy}
+\[
+    H(P, Q) = -\sum_{i=1}^{n} p_i \log q_i
+\]
+
 \end{document}
