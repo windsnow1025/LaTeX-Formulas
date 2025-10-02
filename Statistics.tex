@@ -127,6 +127,25 @@ where $X \sim \chi^2(m)$, $Y \sim \chi^2(n)$, and:
     \mu_n = \mathbb{E}[(X - \mathbb{E}[X])^n]
 \]
 
+\subsubsection{Standardized Moment}
+\[
+    \gamma_n = \frac{\mu_n}{\sigma^n} = \frac{\mathbb{E}[(X - \mu)^n]}{\sigma^n}
+\]
+
+\subsubsection{Relationships Between Parameters and Moments}
+\textbf{Mean:}
+\[
+    \mu = \mu_1'
+\]
+\textbf{Variance:}
+\[
+    \sigma^2 = \mu_2 = \mu_2' - (\mu_1')^2
+\]
+\textbf{Skewness:}
+\[
+    \gamma_3 = \frac{\mu_3}{\sigma^3} = \frac{\mu_3' - 3\mu_1'\mu_2' + 2(\mu_1')^3}{\sigma^3}
+\]
+
 \subsubsection{Moment Generating Function}
 The Moment Generating Function is the Laplace Transform of the Probability Density Function:
 \[
@@ -134,6 +153,11 @@ The Moment Generating Function is the Laplace Transform of the Probability Densi
 \]
 \[
     \mu_n' = \left.\frac{d^n}{dt^n} M_X(t)\right|_{t=0}
+\]
+
+\subsubsection{Moment Generating Function Series}
+\[
+    M_X(t) = \mathbb{E}[e^{tX}] = \sum_{n=0}^{\infty} \frac{\mu_n' t^n}{n!}
 \]
 
 \subsection{Maximum Likelihood Estimation}
