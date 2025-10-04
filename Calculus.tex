@@ -520,14 +520,26 @@ Characteristic Equation: $r^2 + pr + q = 0$
     df = \sum_{i=1}^n \frac{\partial f}{\partial x_i} dx_i
 \]
 
-\subsection{Derivative of Vector-valued Function}
+\subsection{Numerator Layout}
 
-$f: \mathbb{R}^n \to \mathbb{R}$, $f = f(x)$
+$f: \mathbb{R}^n \to \mathbb{R}^m$, $Y = f(X)$
+\[
+    \left[\frac{\partial Y}{\partial X}\right]_{i,j} = \frac{\partial Y_{i}}{\partial X_{j}}
+\]
+\[
+    \frac{\partial Y}{\partial X} \in \mathbb{R}^{m\times n}
+\]
+
+
+\subsection{Derivative of Scalar-valued Function}
+
+$f: \mathbb{R}^n \to \mathbb{R}$, $f = f(\mathbf{x})$
 
 \subsubsection{Gradient}
 
 \[
-    \nabla f = \frac{\partial f}{\partial x^T} = \begin{bmatrix}
+    \nabla f = \frac{\partial f}{\partial \mathbf{x}^T} =
+    \begin{bmatrix}
         \frac{\partial f}{\partial x_1} \\
         \vdots \\
         \frac{\partial f}{\partial x_n}
@@ -535,49 +547,52 @@ $f: \mathbb{R}^n \to \mathbb{R}$, $f = f(x)$
 \]
 
 \subsubsection{Hessian Matrix}
-Curvature of a function
+Curvature of a function.
 \[
-    \mathbf{H} = \nabla^2 f = \begin{bmatrix}
+    \mathbf{H} = \nabla^2 f =
+    \begin{bmatrix}
         \frac{\partial^2 f}{\partial x_1^2} & \cdots & \frac{\partial^2 f}{\partial x_1 \partial x_n} \\
         \vdots & \ddots & \vdots \\
         \frac{\partial^2 f}{\partial x_n \partial x_1} & \cdots & \frac{\partial^2 f}{\partial x_n^2}
     \end{bmatrix}
 \]
+The Jacobian matrix of the Gradient of $f$.
+\[
+    \mathbf{H}(f) = \mathbf{J}(\nabla f)
+\]
 
 \subsubsection{Chain Rule}
 
-$f = f(x(t))$
+\subsection{Derivative of Vector-valued Function}
 
-\[
-    \frac{\partial f}{\partial t_j} = \sum_{i=1}^n \frac{\partial f}{\partial x_i} \frac{\partial x_i}{\partial t_j}
-\]
-\[
-    \nabla_t f = J_{x \to t}^T \cdot \nabla_x f
-\]
-
-\subsection{Derivative of Scalar-valued Function}
-
-$f: \mathbb{R}^n \to \mathbb{R}^m$, $f(x) = y$
+$\mathbf{f}: \mathbb{R}^n \to \mathbb{R}^m$, $\mathbf{f}(\mathbf{x}) = \mathbf{y}$
 
 \subsubsection{Jacobian Matrix}
 
 \[
-    \mathbf{J} = \frac{\partial f}{\partial x^T} = \begin{bmatrix}
+    \mathbf{J} = \frac{\partial \mathbf{f}}{\partial \mathbf{x}} =
+    \begin{bmatrix}
         \frac{\partial y_1}{\partial x_1} & \cdots & \frac{\partial y_1}{\partial x_n} \\
         \vdots & \ddots & \vdots \\
         \frac{\partial y_m}{\partial x_1} & \cdots & \frac{\partial y_m}{\partial x_n}
     \end{bmatrix}
 \]
 
-\subsubsection{Chain Rule}
+\subsection{Chain Rule}
 
-$y = f(x(t))$
-
+$f = f(\mathbf{x}(\mathbf{t}))$
 \[
-    \frac{\partial y}{\partial t_j} = \sum_{i=1}^n \frac{\partial y}{\partial x_i} \frac{\partial x_i}{\partial t_j}
+    \frac{\partial f}{\partial t_j} = \sum_{i=1}^n \frac{\partial f}{\partial x_i} \frac{\partial x_i}{\partial t_j}
 \]
 \[
-    J_{y \to t} = J_{y \to x} \cdot J_{x \to t}
+    \nabla_{\mathbf{t}} f = \mathbf{J}_{\mathbf{x} \to \mathbf{t}}^T \cdot \nabla_{\mathbf{x}} f
+\]
+$\mathbf{y} = \mathbf{f}(\mathbf{x}(\mathbf{t}))$
+\[
+    \frac{\partial \mathbf{y}}{\partial t_j} = \sum_{i=1}^n \frac{\partial \mathbf{y}}{\partial x_i} \frac{\partial x_i}{\partial t_j}
+\]
+\[
+    \mathbf{J}_{\mathbf{y} \to \mathbf{t}} = \mathbf{J}_{\mathbf{y} \to \mathbf{x}} \cdot \mathbf{J}_{\mathbf{x} \to \mathbf{t}}
 \]
 
 \subsection{Directional Derivative}
