@@ -228,27 +228,6 @@ All column vectors are unit vectors and orthogonal to each other.
 \]
 \textbf{Geometric Interpretation:} Preserves lengths and angles
 
-\subsection{Positive Definite Matrix}
-A symmetric matrix $A \in \mathbb{R}^{n \times n}$ is called \textbf{positive definite} if for any nonzero vector $\mathbf{x} \in \mathbb{R}^n$,
-\[
-    \mathbf{x}^T A \mathbf{x} > 0
-\]
-\textbf{Properties:}
-\begin{itemize}
-    \item All Eigenvalues of $A$ are positive.
-    \item $A$ is invertible, and $A^{-1}$ is also positive definite.
-\end{itemize}
-
-\subsection{Positive Semi-Definite Matrix}
-A symmetric matrix $A \in \mathbb{R}^{n \times n}$ is called \textbf{positive semi-definite} if for any vector $\mathbf{x} \in \mathbb{R}^n$,
-\[
-    \mathbf{x}^T A \mathbf{x} \geq 0
-\]
-\textbf{Properties:}
-\begin{itemize}
-    \item All Eigenvalues of $A$ are non-negative.
-\end{itemize}
-
 
 \newpage
 \section{Matrix Decomposision}
@@ -281,6 +260,27 @@ where:
     \item $\Lambda$: Apply a scaling transformation along the new axes by the Eigenvalues.
     \item $Q$: Change the basis of the vector space back to the standard basis.
 \end{enumerate}
+
+\subsection{Positive Definite Matrix}
+A symmetric matrix $A \in \mathbb{R}^{n \times n}$ is \textbf{positive definite}, denoted as $A \succ 0$, if for any nonzero vector $\mathbf{x} \in \mathbb{R}^n$,
+\[
+    \mathbf{x}^T A \mathbf{x} > 0
+\]
+\textbf{Properties:}
+\begin{itemize}
+    \item All Eigenvalues of $A$ are positive. (Proof via Spectral Decomposition)
+    \item $A$ is invertible, and $A^{-1}$ is also positive definite.
+\end{itemize}
+
+\subsection{Positive Semi-Definite Matrix}
+A symmetric matrix $A \in \mathbb{R}^{n \times n}$ is \textbf{positive semi-definite}, denoted as $A \succeq 0$, if for any vector $\mathbf{x} \in \mathbb{R}^n$,
+\[
+    \mathbf{x}^T A \mathbf{x} \geq 0
+\]
+\textbf{Properties:}
+\begin{itemize}
+    \item All Eigenvalues of $A$ are non-negative. (Proof via Spectral Decomposition)
+\end{itemize}
 
 \subsection{Eigen Decomposition}
 
