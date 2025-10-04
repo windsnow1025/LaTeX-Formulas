@@ -186,6 +186,10 @@ If $\lim_{x \to c} f(x) = \lim_{x \to c} g(x) = 0$ or $\pm\infty$:
 \[
     f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!}(x - a)^n
 \]
+Let $h = x - a$:
+\[
+    f(a + h) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!}h^n
+\]
 
 \subsubsection{Exponential Function}
 
@@ -531,9 +535,9 @@ $f: \mathbb{R}^n \to \mathbb{R}$, $f = f(x)$
 \]
 
 \subsubsection{Hessian Matrix}
-
+Curvature of a function
 \[
-    H = \nabla^2 f = \begin{bmatrix}
+    \mathbf{H} = \nabla^2 f = \begin{bmatrix}
         \frac{\partial^2 f}{\partial x_1^2} & \cdots & \frac{\partial^2 f}{\partial x_1 \partial x_n} \\
         \vdots & \ddots & \vdots \\
         \frac{\partial^2 f}{\partial x_n \partial x_1} & \cdots & \frac{\partial^2 f}{\partial x_n^2}
@@ -558,7 +562,7 @@ $f: \mathbb{R}^n \to \mathbb{R}^m$, $f(x) = y$
 \subsubsection{Jacobian Matrix}
 
 \[
-    J = \frac{\partial f}{\partial x^T} = \begin{bmatrix}
+    \mathbf{J} = \frac{\partial f}{\partial x^T} = \begin{bmatrix}
         \frac{\partial y_1}{\partial x_1} & \cdots & \frac{\partial y_1}{\partial x_n} \\
         \vdots & \ddots & \vdots \\
         \frac{\partial y_m}{\partial x_1} & \cdots & \frac{\partial y_m}{\partial x_n}
@@ -597,7 +601,7 @@ $y = f(x(t))$
 \subsection{Jacobian Determinant}
 
 \[
-    \det(J) = \left|\frac{\partial y}{\partial x}\right| = \begin{vmatrix}
+    \det(\mathbf{J}) = \left|\frac{\partial y}{\partial x}\right| = \begin{vmatrix}
         \frac{\partial y_1}{\partial x_1} & \cdots & \frac{\partial y_1}{\partial x_n} \\
         \vdots & \ddots & \vdots \\
         \frac{\partial y_m}{\partial x_1} & \cdots & \frac{\partial y_m}{\partial x_n}
@@ -616,19 +620,19 @@ $y = f(x(t))$
     \end{cases}
 \]
 \[
-    \det(J) = \frac{\partial(F, G)}{\partial(u, v)}
+    \det(\mathbf{J}) = \frac{\partial(F, G)}{\partial(u, v)}
 \]
 \[
-    \frac{\partial u}{\partial x} = -\frac{1}{\det(J)} \frac{\partial(F, G)}{\partial(x, v)} = -\frac{\begin{vmatrix} F_x' & F_v' \\ G_x' & G_v' \end{vmatrix}}{\begin{vmatrix} F_u' & F_v' \\ G_u' & G_v' \end{vmatrix}}
+    \frac{\partial u}{\partial x} = -\frac{1}{\det(\mathbf{J})} \frac{\partial(F, G)}{\partial(x, v)} = -\frac{\begin{vmatrix} F_x' & F_v' \\ G_x' & G_v' \end{vmatrix}}{\begin{vmatrix} F_u' & F_v' \\ G_u' & G_v' \end{vmatrix}}
 \]
 \[
-    \frac{\partial v}{\partial x} = -\frac{1}{\det(J)} \frac{\partial(F, G)}{\partial(u, x)} = -\frac{\begin{vmatrix} F_u' & F_x' \\ G_u' & G_x' \end{vmatrix}}{\begin{vmatrix} F_u' & F_v' \\ G_u' & G_v' \end{vmatrix}}
+    \frac{\partial v}{\partial x} = -\frac{1}{\det(\mathbf{J})} \frac{\partial(F, G)}{\partial(u, x)} = -\frac{\begin{vmatrix} F_u' & F_x' \\ G_u' & G_x' \end{vmatrix}}{\begin{vmatrix} F_u' & F_v' \\ G_u' & G_v' \end{vmatrix}}
 \]
 \[
-    \frac{\partial u}{\partial y} = -\frac{1}{\det(J)} \frac{\partial(F, G)}{\partial(y, v)} = -\frac{\begin{vmatrix} F_y' & F_v' \\ G_y' & G_v' \end{vmatrix}}{\begin{vmatrix} F_u' & F_v' \\ G_u' & G_v' \end{vmatrix}}
+    \frac{\partial u}{\partial y} = -\frac{1}{\det(\mathbf{J})} \frac{\partial(F, G)}{\partial(y, v)} = -\frac{\begin{vmatrix} F_y' & F_v' \\ G_y' & G_v' \end{vmatrix}}{\begin{vmatrix} F_u' & F_v' \\ G_u' & G_v' \end{vmatrix}}
 \]
 \[
-    \frac{\partial v}{\partial y} = -\frac{1}{\det(J)} \frac{\partial(F, G)}{\partial(u, y)} = -\frac{\begin{vmatrix} F_u' & F_y' \\ G_u' & G_y' \end{vmatrix}}{\begin{vmatrix} F_u' & F_v' \\ G_u' & G_v' \end{vmatrix}}
+    \frac{\partial v}{\partial y} = -\frac{1}{\det(\mathbf{J})} \frac{\partial(F, G)}{\partial(u, y)} = -\frac{\begin{vmatrix} F_u' & F_y' \\ G_u' & G_y' \end{vmatrix}}{\begin{vmatrix} F_u' & F_v' \\ G_u' & G_v' \end{vmatrix}}
 \]
 
 \subsection{Hessian Determinant}
@@ -636,7 +640,7 @@ $y = f(x(t))$
 For $f(x, y)$:
 
 \[
-    \det(H) = \begin{vmatrix}
+    \det(\mathbf{H}) = \begin{vmatrix}
         \frac{\partial^2 f}{\partial x_1^2} & \frac{\partial^2 f}{\partial x_1 x_2} \\
         \frac{\partial^2 f}{\partial x_2 x_1} & \frac{\partial^2 f}{\partial x_2^2}
     \end{vmatrix}
@@ -645,7 +649,30 @@ For $f(x, y)$:
 \subsection{Taylor Series}
 
 \[
-    f(x) = \sum_{n=0}^{\infty} \frac{\left(h\frac{\partial}{\partial x} + k\frac{\partial}{\partial y}\right)^n}{n!} f(x_0, y_0)
+    f(\mathbf{x}) = \sum_{|\boldsymbol{\alpha}|=0}^{\infty} \frac{D^{\boldsymbol{\alpha}} f(\mathbf{a})}{\boldsymbol{\alpha}!} (\mathbf{x} - \mathbf{a})^{\boldsymbol{\alpha}}
+\]
+where:
+\begin{itemize}
+    \item $\mathbf{x} = (x_1, x_2, \ldots, x_n) \in \mathbb{R}^n$ is the variable vector
+    \item $\mathbf{a} = (a_1, a_2, \ldots, a_n) \in \mathbb{R}^n$ is the expansion point
+    \item $\boldsymbol{\alpha} = (\alpha_1, \alpha_2, \ldots, \alpha_n)$ is a multi-index with $\alpha_i \geq 0$ for all $i$
+    \item $|\boldsymbol{\alpha}| = \alpha_1 + \alpha_2 + \cdots + \alpha_n$ is the order of the multi-index
+    \item $\boldsymbol{\alpha}! = \alpha_1! \alpha_2! \cdots \alpha_n!$ is the multi-index factorial
+    \item $(\mathbf{x} - \mathbf{a})^{\boldsymbol{\alpha}} = (x_1 - a_1)^{\alpha_1} (x_2 - a_2)^{\alpha_2} \cdots (x_n - a_n)^{\alpha_n}$
+    \item $D^{\boldsymbol{\alpha}} f(\mathbf{a}) = \frac{\partial^{|\boldsymbol{\alpha}|} f}{\partial x_1^{\alpha_1} \partial x_2^{\alpha_2} \cdots \partial x_n^{\alpha_n}}\bigg|_{\mathbf{x}=\mathbf{a}}$ is the mixed partial derivative of order $|\boldsymbol{\alpha}|$ evaluated at $\mathbf{a}$
+\end{itemize}
+Let $\mathbf{h} = \mathbf{x} - \mathbf{a}$:
+\[
+    f(\mathbf{a} + \mathbf{h}) = \sum_{|\boldsymbol{\alpha}|=0}^{\infty} \frac{D^{\boldsymbol{\alpha}} f(\mathbf{a})}{\boldsymbol{\alpha}!} \mathbf{h}^{\boldsymbol{\alpha}}
+\]
+
+\subsubsection{Second Order Taylor Series}
+\[
+    f(\mathbf{x}) \approx f(\mathbf{a}) + \nabla f(\mathbf{a})^T (\mathbf{x}-\mathbf{a}) + \frac{1}{2} (\mathbf{x}-\mathbf{a})^T \mathbf{H}(\mathbf{a}) (\mathbf{x}-\mathbf{a})
+\]
+Let $\mathbf{h} = \mathbf{x} - \mathbf{a}$:
+\[
+    f(\mathbf{a} + \mathbf{h}) \approx f(\mathbf{a}) + \nabla f(\mathbf{a})^T \mathbf{h} + \frac{1}{2} \mathbf{h}^T \mathbf{H}(\mathbf{a}) \mathbf{h}
 \]
 
 \subsection{Applications for Bivariable Derivatives}
@@ -694,13 +721,13 @@ For $F(x, y, z) = 0$:
 \]
 
 \[
-    \det(H) \geq 0
+    \det(\mathbf{H}) \geq 0
 \]
 
 \begin{itemize}
-    \item Local Maximum: $\det(H) > 0$, $\frac{\partial^2 f}{\partial x_1^2} < 0$
-    \item Local Minimum: $\det(H) > 0$, $\frac{\partial^2 f}{\partial x_1^2} > 0$
-    \item Saddle Point: $\det(H) < 0$
+    \item Local Maximum: $\det(\mathbf{H}) > 0$, $\frac{\partial^2 f}{\partial x_1^2} < 0$
+    \item Local Minimum: $\det(\mathbf{H}) > 0$, $\frac{\partial^2 f}{\partial x_1^2} > 0$
+    \item Saddle Point: $\det(\mathbf{H}) < 0$
 \end{itemize}
 
 \subsubsection{Conditional Extrema}
@@ -719,7 +746,7 @@ For $F(x, y, z) = 0$:
 \subsection{Multiple Integrals}
 
 \[
-    \iint_D f(x, y) dx dy = \iint_{D'} f(x(u, v), y(u, v)) \det(J) du dv
+    \iint_D f(x, y) dx dy = \iint_{D'} f(x(u, v), y(u, v)) \det(\mathbf{J}) du dv
 \]
 
 \subsubsection{Double Integral}
@@ -790,7 +817,7 @@ For parametric curve:
 \subsubsection{Conversion between two types of Line Integrals}
 
 \[
-    \tau = \phi'(t) i + \psi'(t) j + \omega'(t) k
+    \boldsymbol{\tau} = \phi'(t) \mathbf{i} + \psi'(t) \mathbf{j} + \omega'(t) \mathbf{k}
 \]
 \[
     \int_\Gamma P dx + Q dy + R dz = \int_\Gamma (P \cos \alpha + Q \cos \beta + R \cos \gamma) ds
