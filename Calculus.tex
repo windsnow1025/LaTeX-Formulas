@@ -711,23 +711,17 @@ For $F(x, y, z) = 0$:
     F_x'(x_0, y_0, z_0)(x - x_0) + F_y'(x_0, y_0, z_0)(y - y_0) + F_z'(x_0, y_0, z_0)(z - z_0) = 0
 \]
 
-\subsubsection{Extrema}
+\subsubsection{Critical Points}
 
 \[
-    \begin{cases}
-        f_x' = 0 \\
-        f_y' = 0
-    \end{cases}
-\]
-
-\[
-    \det(\mathbf{H}) \geq 0
+    \nabla f = \mathbf{0}
 \]
 
 \begin{itemize}
-    \item Local Maximum: $\det(\mathbf{H}) > 0$, $\frac{\partial^2 f}{\partial x_1^2} < 0$
-    \item Local Minimum: $\det(\mathbf{H}) > 0$, $\frac{\partial^2 f}{\partial x_1^2} > 0$
-    \item Saddle Point: $\det(\mathbf{H}) < 0$
+    \item \textbf{Local Minimum}: $\mathbf{H} \succ 0$ (all eigenvalues $> 0$)
+    \item \textbf{Local Maximum}: $\mathbf{H} \prec 0$ (all eigenvalues $< 0$)
+    \item \textbf{Saddle Point}: $\mathbf{H}$ has both positive and negative eigenvalues
+    \item \textbf{Degenerate}: $\mathbf{H}$ has zero eigenvalues
 \end{itemize}
 
 \subsubsection{Conditional Extrema}
