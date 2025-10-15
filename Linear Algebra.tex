@@ -81,7 +81,7 @@ Expanded form~\ref{eq:mul}.
 \[
     A^T = (a_{ji})
 \]
-\textbf{Geometric Interpretation:} A dual transformation that reverses the direction of the mapping, from the original Codomain back to the Domain. It maps the original Column Space back to the original Row Space, preserving the principal stretching factors (Singular Values) of the transformation $A$.
+\textbf{Geometric Interpretation:} A dual transformation that reverses the direction of the mapping, from the Codomain back to the Domain. It maps the original Column Space back to the original Row Space, preserving the principal stretching factors (Singular Values) of the transformation $A$.
 \newline
 \textbf{Transpose Distribution Rule:}
 \[
@@ -228,6 +228,12 @@ All column vectors are unit vectors and orthogonal to each other.
 \]
 \textbf{Geometric Interpretation:} Preserves lengths and angles
 
+\subsection{Symmetric Matrix}
+\[
+    A = A^T
+\]
+\textbf{Geometric Interpretation:} Scaling Transformation along orthogonal basis.
+
 
 \newpage
 \section{Matrix Decomposision}
@@ -286,7 +292,7 @@ A symmetric matrix $A \in \mathbb{R}^{n \times n}$ is \textbf{positive semi-defi
 
 Square matrix $A \in \mathbb{R}^{n \times n}$ can be decomposed as ($A$ is \textbf{similar} to $D$):
 \[
-    A = P \LambdaP ^{-1}
+    A = P \Lambda P ^{-1}
 \]
 where:
 \begin{itemize}
