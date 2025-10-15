@@ -172,8 +172,12 @@
 
 \subsection{Covariance Matrix}
 \[
-    \Sigma_{ij} = \text{Cov}(X_i, X_j)
+    \Sigma = E[(X - E[X])(X - E[X])^T]
 \]
+\textbf{Properties:}
+\begin{itemize}
+    \item \(Y = AX + b\): \(\text{Cov}(Y) = A \, \text{Cov}(X) \, A^T\)
+\end{itemize}
 
 \subsection{Correlation Coefficient}
 \[
