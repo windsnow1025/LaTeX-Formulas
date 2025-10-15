@@ -45,37 +45,37 @@
 
 \subsection{Mutually Exclusive Events}
 \[
-    P(A \cap B) = 0
+    \Pr(A \cap B) = 0
 \]
 
 \subsection{Complementary Events}
 \[
-    P(A \cap B) = 0
+    \Pr(A \cap B) = 0
 \]
 \[
-    P(A) + P(B) = 1
+    \Pr(A) + \Pr(B) = 1
 \]
 
 \subsection{Independent Events}
 \[
-    P(A \cap B) = P(A)P(B)
+    \Pr(A \cap B) = \Pr(A)\Pr(B)
 \]
 \[
-    P(A|B) = P(A)
+    \Pr(A|B) = \Pr(A)
 \]
 \[
-    P(B|A) = P(B)
+    \Pr(B|A) = \Pr(B)
 \]
 
 \paragraph{Conditional Independence: }\( A \perp\!\!\!\perp B \mid C \)
 \[
-    P(A \cap B \mid C) = P(A \mid C) P(B \mid C)
+    \Pr(A \cap B \mid C) = \Pr(A \mid C) \Pr(B \mid C)
 \]
 \[
-    P(A \mid B, C) = P(A \mid C)
+    \Pr(A \mid B, C) = \Pr(A \mid C)
 \]
 \[
-    P(B \mid A, C) = P(B \mid C)
+    \Pr(B \mid A, C) = \Pr(B \mid C)
 \]
 
 
@@ -84,32 +84,32 @@
 
 \subsection{Complement Rule}
 \[
-    P(\bar{A}) = 1 - P(A)
+    \Pr(\bar{A}) = 1 - \Pr(A)
 \]
 
 \subsection{Addition Law}
 \[
-    P(A \cup B) = P(A) + P(B) - P(A \cap B)
+    \Pr(A \cup B) = \Pr(A) + \Pr(B) - \Pr(A \cap B)
 \]
 
 \subsection{Subtraction Law}
 \[
-    P(A \setminus B) = P(A \cap \bar{B}) = P(A) - P(A \cap B)
+    \Pr(A \setminus B) = \Pr(A \cap \bar{B}) = \Pr(A) - \Pr(A \cap B)
 \]
 
 \subsection{Conditional Probability}
 \[
-    P(A|B) = \frac{P(A \cap B)}{P(B)}
+    \Pr(A|B) = \frac{\Pr(A \cap B)}{\Pr(B)}
 \]
 
 \subsection{Law of Total Probability}
 \[
-    P(A) = \sum_{i=1}^{k} P(B_i \cap A) = \sum_{i=1}^{k} P(B_i)P(A|B_i)
+    \Pr(A) = \sum_{i=1}^{k} \Pr(B_i \cap A) = \sum_{i=1}^{k} \Pr(B_i)\Pr(A|B_i)
 \]
 
 \subsection{Bayes Theorem}
 \[
-    P(B_i|A) = \frac{P(B_i)P(A|B_i)}{P(A)}
+    \Pr(B_i|A) = \frac{\Pr(B_i)\Pr(A|B_i)}{\Pr(A)}
 \]
 
 \newpage
@@ -120,7 +120,7 @@
     \mu = \mathbb{E}_X[X] = \int_{-\infty}^{+\infty} x f_X(x) dx
 \]
 \[
-    \mu = \mathbb{E}_X[X] = \sum_{x} x P(X=x)
+    \mu = \mathbb{E}_X[X] = \sum_{x} x \Pr(X=x)
 \]
 \textbf{Properties:}
 \begin{itemize}
@@ -182,23 +182,23 @@
 \textbf{Properties:}
 \begin{itemize}
     \item \( |\rho_{X,Y}| \le 1 \)
-    \item \( |\rho_{X,Y}| = 1 \Leftrightarrow (\exists a)(\exists b)(P(Y=aX+b)=1), (a>0, \rho_{X,Y}=1; a<0, \rho_{X,Y}=-1) \)
+    \item \( |\rho_{X,Y}| = 1 \Leftrightarrow (\exists a)(\exists b)(\Pr(Y=aX+b)=1), (a>0, \rho_{X,Y}=1; a<0, \rho_{X,Y}=-1) \)
     \item \( \rho_{aX + b, cY + d} = \rho_{X,Y} \)
 \end{itemize}
 
 \subsection{Markov's Inequality}
 If \( X \geq 0 \), for any \( a > 0 \):
 \[
-    P(X \geq a) \leq \frac{\mathbb{E}[X]}{a}
+    \Pr(X \geq a) \leq \frac{\mathbb{E}[X]}{a}
 \]
 
 \subsection{Chebyshev's Inequality}
 For any \( \varepsilon > 0 \):
 \[
-    P(|X-\mathbb{E}[X]| \ge \varepsilon) \le \frac{Var(X)}{\varepsilon^2}
+    \Pr(|X-\mathbb{E}[X]| \ge \varepsilon) \le \frac{Var(X)}{\varepsilon^2}
 \]
 \[
-    P(|X-\mathbb{E}[X]| < \varepsilon) \ge 1 - \frac{Var(X)}{\varepsilon^2}
+    \Pr(|X-\mathbb{E}[X]| < \varepsilon) \ge 1 - \frac{Var(X)}{\varepsilon^2}
 \]
 
 \newpage
@@ -207,18 +207,18 @@ For any \( \varepsilon > 0 \):
 \subsection{Probability Mass Function}
 For a discrete random variable, the Probability Mass Function \( p(x) \) is defined as:
 \[
-    P(X=x) = p(x)
+    \Pr(X=x) = p(x)
 \]
 
 \subsection{Probability Density Function}
 For a continuous random variable, the Probability Density Function \( f(x) \) is defined as:
 \[
-    P(a \le x \le b) = \int_{a}^{b} f_X(x)dx
+    \Pr(a \le x \le b) = \int_{a}^{b} f_X(x)dx
 \]
 
 \subsection{Cumulative Distribution Function}
 \[
-    F(x) = P(X \le x) = \int_{-\infty}^{x} f_X(t)dt
+    F(x) = \Pr(X \le x) = \int_{-\infty}^{x} f_X(t)dt
 \]
 
 \subsubsection{Cumulative Distribution Function of a function}
@@ -226,7 +226,7 @@ For a continuous random variable, the Probability Density Function \( f(x) \) is
     Y=g(X)
 \]
 \[
-    F(y) = P(Y \le y) = \int_{g(x) \le y} f_X(x)dx
+    F(y) = \Pr(Y \le y) = \int_{g(x) \le y} f_X(x)dx
 \]
 
 \subsection{Discrete Probability Distributions}
@@ -275,12 +275,12 @@ The number of trials needed to get the first success in a sequence of independen
 
 \subsubsection{Poisson Distribution}
 The number of events occurring in an interval of time, given an average rate \( \lambda \) of occurrence.
-\[ X \sim P(\lambda) \]
+\[ X \sim \Pr(\lambda) \]
 \[ f(x) = \frac{\lambda^x e^{-\lambda}}{x!}, \quad \lambda>0, x=0,1,\dots \]
 \[ \mu = \sigma^2 = \lambda \]
 \textbf{Derivation (Poisson Limit Theorem):}
 \[
-    B(n, p) \xrightarrow{n \to \infty,\, p \to 0} P(\lambda = np)
+    B(n, p) \xrightarrow{n \to \infty,\, p \to 0} \Pr(\lambda = np)
 \]
 
 \subsection{Continuous Probability Distributions}
@@ -328,7 +328,7 @@ The waiting time for the next event in a Poisson process with an average rate \(
 \]
 Derivation from Poisson:
 \[
-    P(X>x) = f_{\text{Poisson}(\lambda x)}(0)
+    \Pr(X>x) = f_{\text{Poisson}(\lambda x)}(0)
 \]
 
 \subsubsection{Gamma Distribution}
@@ -345,7 +345,7 @@ The waiting time for the \( r^{th} \) event in a Poisson process with an average
 \]
 Derivation from Poisson:
 \[
-    P(X > x) = \sum_{k=0}^{r-1} f_{\text{Poisson}(\lambda x)}(k)
+    \Pr(X > x) = \sum_{k=0}^{r-1} f_{\text{Poisson}(\lambda x)}(k)
 \]
 
 \subsubsection{Normal Distribution}
@@ -373,7 +373,7 @@ Derivation from Poisson:
 \subsection{Probability Distribution Function}
 For two continuous random variables, the Probability Density Function \( f(x,y) \) is defined as:
 \[
-    P((X,Y) \in A) = \iint_{A} f(x,y) dx dy
+    \Pr((X,Y) \in A) = \iint_{A} f(x,y) dx dy
 \]
 
 \subsection{Cumulative Distribution Function}
