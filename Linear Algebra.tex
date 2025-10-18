@@ -257,14 +257,14 @@ Symmetric matrix $A \in \mathbb{R}^{n \times n}$ can be decomposed as:
 \]
 where:
 \begin{itemize}
-    \item $Q$ is an orthogonal matrix whose columns are the Eigenvectors of $A$.
+    \item $Q$ is an orthogonal matrix whose columns are a set of orthonormal Eigenvectors of $A$.
     \item $\Lambda$ is a diagonal matrix whose diagonal entries are the Eigenvalues of $A$.
 \end{itemize}
 \textbf{Geometric Interpretation:}
 \begin{enumerate}
-    \item $Q^T$: Change the basis of the vector space to the Eigenvector basis.
+    \item $Q^T$: Rotate or reflect the basis of the vector space to the Eigenvector basis.
     \item $\Lambda$: Apply a scaling transformation along the new axes by the Eigenvalues.
-    \item $Q$: Change the basis of the vector space back to the standard basis.
+    \item $Q$: Rotate or reflect the basis of the vector space back to the standard basis.
 \end{enumerate}
 
 \subsection{Positive Definite}
@@ -338,7 +338,7 @@ where:
 
 \textbf{Geometric Interpretation:}
 \begin{enumerate}
-    \item \textbf{$V^T$:} Rotate the Domain $\mathbb{R}^n$ from the standard basis to the principal directions defined by Right Singular Vectors:
+    \item \textbf{$V^T$:} Rotate or reflect the Domain $\mathbb{R}^n$ from the standard basis to the principal directions defined by Right Singular Vectors:
     \begin{itemize}
         \item The first $r$ standard basis vectors align with the orthonormal basis of $\text{Row}(A)$
         \item The last $n-r$ standard basis vectors align with the orthonormal basis of $\ker(A)$
@@ -351,7 +351,7 @@ where:
         \item Map the $\text{Row}(A)$ directions to the $\text{Col}(A)$ directions
     \end{itemize}
 
-    \item \textbf{$U$:} Rotate the Codomain $\mathbb{R}^m$ from the principal directions defined by Left Singular Vectors to the standard basis:
+    \item \textbf{$U$:} Rotate or reflect the Codomain $\mathbb{R}^m$ from the principal directions defined by Left Singular Vectors to the standard basis:
     \begin{itemize}
         \item The orthonormal basis of $\text{Col}(A)$ aligns with the first $r$ standard basis vectors
         \item The orthonormal basis of $\operatorname{coker}(A)$ aligns with the last $m-r$ standard basis vectors
@@ -372,7 +372,7 @@ where $U \in \mathbb{R}^{m \times m}$ and $V \in \mathbb{R}^{n \times n}$ are or
 \[
     AA^T = (U \Sigma V^T)(U \Sigma V^T)^T = U \Sigma V^T V \Sigma^T U^T = U \Sigma \Sigma^T U^T
 \]
-Notice that these expressions are in the form of Eigen Decomposition:
+Notice that these expressions are in the form of Spectral Decomposition:
 \begin{itemize}
     \item $A^T A = V (\Sigma^T \Sigma) V^T$ where $V$ is orthogonal and $\Sigma^T \Sigma$ is diagonal
     \item $AA^T = U (\Sigma \Sigma^T) U^T$ where $U$ is orthogonal and $\Sigma \Sigma^T$ is diagonal
