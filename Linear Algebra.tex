@@ -23,7 +23,6 @@
 \tableofcontents
 
 \newpage
-
 \section{Matrix}
 Matrix $A \in \mathbb{R}^{m \times n}$ defines a Linear Transformation from Domain $\mathbb{R}^n$ to Codomain $\mathbb{R}^m$.
 \newline
@@ -51,43 +50,37 @@ The \textbf{Outer Product} of two vectors $\mathbf{a} \in \mathbb{R}^m$ and $\ma
 \]
 Expanded form~\ref{eq:outerprod}.
 
-\subsection{Matrix-Vector Multiplication}
+\subsection{Matrix and Vector Multiplication}
+
+\subsubsection{Matrix and Column Vector Multiplication}
 Apply Linear Transformation $A \in \mathbb{R}^{m \times n}$ to vector $\mathbf{x} \in \mathbb{R}^n$ and produce a new vector $A\mathbf{x} \in \mathbb{R}^m$.
 \[
     A\mathbf{x} = \sum_{j=1}^n x_j \mathbf{a}_j
 \]
 Expanded form~\ref{eq:matvec}.
 \newline
+\textbf{Geometric Interpretation:} Map the standard basis vectors in the Domain $\mathbb{R}^n$ to the column vectors in the Codomain $\mathbb{R}^m$.
+
+\subsubsection{Row Vector and Matrix Multiplication}
 Apply Linear Transformation $A \in \mathbb{R}^{m \times n}$ to a row vector $\mathbf{y}^T \in \mathbb{R}^{1 \times m}$ from the left and produce a new row vector $\mathbf{y}^T A \in \mathbb{R}^{1 \times n}$.
 \[
     \mathbf{y}^T A = \sum_{i=1}^m y_i \mathbf{a}_i^T
 \]
 Expanded form~\ref{eq:rowvecmat}.
+\newline
+\textbf{Geometric Interpretation:} Map the standard basis vectors in the Codomain $\mathbb{R}^m$ to the row vectors in the Domain $\mathbb{R}^n$.
 
-
-\subsection{Matrix-Matrix Multiplication}
+\subsection{Matrix and Matrix Multiplication}
 Apply transformation $B$, then apply transformation $A$.
 \[
     (AB)_{*j} = A\mathbf{b}_j
 \]
 Expanded form~\ref{eq:mul}.
-
-\subsection{Associative Law}
+\newline
+\textbf{Associative Law:}
 \[
     (AB)C = A(BC)
 \]
-
-\subsection{Transpose}
-\[
-    A^T = (a_{ji})
-\]
-\textbf{Geometric Interpretation:} A dual transformation that reverses the direction of the mapping, from the Codomain back to the Domain. It maps the original Column Space back to the original Row Space, preserving the principal stretching factors (Singular Values) of the transformation $A$.
-\newline
-\textbf{Transpose Distribution Rule:}
-\[
-    (AB)^T = B^T A^T
-\]
-Expanded form~\ref{eq:trans}.
 
 \subsection{Inverse}
 Reverses the transformation of $A$
@@ -120,7 +113,21 @@ The \textbf{determinant} of a square matrix $A \in \mathbb{R}^{n \times n}$ is d
     \item \textbf{$n \times n$ Matrix:}~\ref{subsec:cofactor}.
 \end{itemize}
 
+\subsection{Transpose}
+\[
+    (A^T)_{ij} = a_{ji}
+\]
+Expanded form~\ref{eq:trans}.
+\newline
+\textbf{Geometric Interpretation:} Preserves the scaling factors of $A$ but reverses the rotation/reflection directions of $A$ by swapping domain and codomain orientations.
+\newline
+\textbf{Transpose Distribution Rule:}
+\[
+    (AB)^T = B^T A^T
+\]
 
+
+\newpage
 \section{Vecctor Spaces and Subspaces}
 
 \subsection{Linear Independence}
@@ -226,13 +233,18 @@ All column vectors are unit vectors and orthogonal to each other.
 \[
     Q^T = Q^{-1}
 \]
-\textbf{Geometric Interpretation:} Preserves lengths and angles
+\textbf{Geometric Interpretation:} Rotation or reflection
 
 \subsection{Symmetric Matrix}
 \[
     A = A^T
 \]
 \textbf{Geometric Interpretation:} Scaling Transformation along orthogonal basis.
+\newline
+\textbf{Properties:}
+\begin{itemize}
+    \item Eigenvectors corresponding to distinct eigenvalues are orthogonal.
+\end{itemize}
 
 
 \newpage
@@ -257,14 +269,14 @@ Symmetric matrix $A \in \mathbb{R}^{n \times n}$ can be decomposed as:
 \]
 where:
 \begin{itemize}
-    \item $Q$ is an orthogonal matrix whose columns are the Eigenvectors of $A$.
+    \item $Q$ is an orthogonal matrix whose columns are a set of orthonormal Eigenvectors of $A$.
     \item $\Lambda$ is a diagonal matrix whose diagonal entries are the Eigenvalues of $A$.
 \end{itemize}
 \textbf{Geometric Interpretation:}
 \begin{enumerate}
-    \item $Q^T$: Change the basis of the vector space to the Eigenvector basis.
+    \item $Q^T$: Rotate or reflect the basis of the vector space to the Eigenvector basis.
     \item $\Lambda$: Apply a scaling transformation along the new axes by the Eigenvalues.
-    \item $Q$: Change the basis of the vector space back to the standard basis.
+    \item $Q$: Rotate or reflect the basis of the vector space back to the standard basis.
 \end{enumerate}
 
 \subsection{Positive Definite}
@@ -311,7 +323,7 @@ where:
 \subsubsection{Singular Vector \& Singular Value}
 For any matrix $A \in \mathbb{R}^{m \times n}$ with rank $r$:
 \begin{itemize}
-    \item \textbf{Singular Values:} $\sigma_1 \geq \cdots \geq \sigma_r > 0$ represent the stretching factors along the principal directions of the transformation.
+    \item \textbf{Singular Values:} $\sigma_1 \geq \cdots \geq \sigma_r > 0$ represent the scaling factors along the principal directions of the transformation.
     \item \textbf{Right Singular Vectors:} Orthonormal basis for the Domain subspaces:
         \begin{itemize}
             \item First $r$ columns of $V$: orthonormal basis for $\text{Row}(A)$
@@ -327,18 +339,19 @@ For any matrix $A \in \mathbb{R}^{m \times n}$ with rank $r$:
 \subsubsection{SVD Formula}
 Any matrix $A \in \mathbb{R}^{m \times n}$ can be decomposed as:
 \[
-    A = U \Sigma V^T
+    A = U \Sigma V^T = \sum_{i=1}^{r} \sigma_i \mathbf{u}_i \mathbf{v}_i^T
 \]
 where:
 \begin{itemize}
-    \item $V \in \mathbb{R}^{n \times n}$ is an orthogonal matrix whose columns are the \textbf{Right Singular Vectors} of $A$.
-    \item $U \in \mathbb{R}^{m \times m}$ is an orthogonal matrix whose columns are the \textbf{Left Singular Vectors} of $A$.
-    \item $\Sigma \in \mathbb{R}^{m \times n}$ is a diagonal matrix whose diagonal entries are the \textbf{Singular Values} of $A$.
+    \item $V \in \mathbb{R}^{n \times n}$ is an orthogonal matrix whose columns $\mathbf{v}_i$ are the \textbf{Right Singular Vectors} of $A$.
+    \item $U \in \mathbb{R}^{m \times m}$ is an orthogonal matrix whose columns $\mathbf{u}_i$ are the \textbf{Left Singular Vectors} of $A$.
+    \item $\Sigma \in \mathbb{R}^{m \times n}$ is a diagonal matrix whose diagonal entries $\sigma_i$ are the \textbf{Singular Values} of $A$.
+    \item $r = \operatorname{rank}(A)$ is the number of non-zero singular values.
 \end{itemize}
-
+\newline
 \textbf{Geometric Interpretation:}
 \begin{enumerate}
-    \item \textbf{$V^T$:} Rotate the Domain $\mathbb{R}^n$ from the standard basis to the principal directions defined by Right Singular Vectors:
+    \item \textbf{$V^T$:} Rotate or reflect the Domain $\mathbb{R}^n$ from the standard basis to the principal directions defined by Right Singular Vectors:
     \begin{itemize}
         \item The first $r$ standard basis vectors align with the orthonormal basis of $\text{Row}(A)$
         \item The last $n-r$ standard basis vectors align with the orthonormal basis of $\ker(A)$
@@ -351,7 +364,7 @@ where:
         \item Map the $\text{Row}(A)$ directions to the $\text{Col}(A)$ directions
     \end{itemize}
 
-    \item \textbf{$U$:} Rotate the Codomain $\mathbb{R}^m$ from the principal directions defined by Left Singular Vectors to the standard basis:
+    \item \textbf{$U$:} Rotate or reflect the Codomain $\mathbb{R}^m$ from the principal directions defined by Left Singular Vectors to the standard basis:
     \begin{itemize}
         \item The orthonormal basis of $\text{Col}(A)$ aligns with the first $r$ standard basis vectors
         \item The orthonormal basis of $\operatorname{coker}(A)$ aligns with the last $m-r$ standard basis vectors
@@ -372,7 +385,7 @@ where $U \in \mathbb{R}^{m \times m}$ and $V \in \mathbb{R}^{n \times n}$ are or
 \[
     AA^T = (U \Sigma V^T)(U \Sigma V^T)^T = U \Sigma V^T V \Sigma^T U^T = U \Sigma \Sigma^T U^T
 \]
-Notice that these expressions are in the form of Eigen Decomposition:
+Notice that these expressions are in the form of Spectral Decomposition:
 \begin{itemize}
     \item $A^T A = V (\Sigma^T \Sigma) V^T$ where $V$ is orthogonal and $\Sigma^T \Sigma$ is diagonal
     \item $AA^T = U (\Sigma \Sigma^T) U^T$ where $U$ is orthogonal and $\Sigma \Sigma^T$ is diagonal
