@@ -240,7 +240,7 @@ For a continuous random variable, the Probability Density Function \( f(x) \) is
     X \sim U\{a, a+1, \dots, b\}
 \]
 \[
-    f(x) =
+    p(x) =
     \begin{cases}
         \frac{1}{n}, & x \in \{a, a+1, \dots, b\} \\
         0, & \text{otherwise}
@@ -258,21 +258,21 @@ where $n = b - a + 1$.
 \subsubsection{Bernoulli Distribution}
 Probability of success in a single trial with only two outcomes.
 \[ X \sim B(1,p) \]
-\[ f(x) = p^x (1-p)^{1-x}, \quad x=0,1 \]
+\[ p(x) = p^x (1-p)^{1-x}, \quad x=0,1 \]
 \[ \mu = p \]
 \[ \sigma^2 = p(1-p) \]
 
 \subsubsection{Binomial Distribution}
 The number of successes in \( n \) independent Bernoulli trails.
 \[ X \sim B(n,p) \]
-\[ f(x) = \binom{n}{x} p^x (1-p)^{n-x}, \quad x=0,1,\dots,n \]
+\[ p(x) = \binom{n}{x} p^x (1-p)^{n-x}, \quad x=0,1,\dots,n \]
 \[ \mu = np \]
 \[ \sigma^2 = np(1-p) \]
 
 \subsubsection{Geometric Distribution}
 The number of trials needed to get the first success in a sequence of independent Bernoulli trials.
 \[ X \sim G(p) \]
-\[ f(x) = (1-p)^{x-1}p, \quad x=1,2,\dots \]
+\[ p(x) = (1-p)^{x-1}p, \quad x=1,2,\dots \]
 \[ F(x) = 1 - (1-p)^x \]
 \[ \mu = \frac{1}{p} \]
 \[ \sigma^2 = \frac{1-p}{p^2} \]
@@ -280,7 +280,7 @@ The number of trials needed to get the first success in a sequence of independen
 \subsubsection{Poisson Distribution}
 The number of events occurring in an interval of time, given an average rate \( \lambda \) of occurrence.
 \[ X \sim \Pr(\lambda) \]
-\[ f(x) = \frac{\lambda^x e^{-\lambda}}{x!}, \quad \lambda>0, x=0,1,\dots \]
+\[ p(x) = \frac{\lambda^x e^{-\lambda}}{x!}, \quad \lambda>0, x=0,1,\dots \]
 \[ \mu = \sigma^2 = \lambda \]
 \textbf{Derivation (Poisson Limit Theorem):}
 \[
