@@ -13,6 +13,8 @@
 \usepackage{graphicx}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
 \usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta, quotes}
 
 \title{Linear Algebra}
 \date{}
@@ -42,6 +44,12 @@ The \textbf{Inner Product} (Dot Product) of two vectors $\mathbf{a}, \mathbf{b} 
     \langle \mathbf{a}, \mathbf{b} \rangle = \mathbf{a}^T \mathbf{b} = \sum_{i=1}^n a_i b_i
 \]
 Expanded form~\ref{eq:innerprod}.
+
+\subsection{Norm}
+The Euclidean Norm or $L^2$-norm of a vector $\mathbf{x} \in \mathbb{R}^n$, denoted as $\|\mathbf{x}\|$ or $\|\mathbf{x}\|_2$, is a measure of its Euclidean length.
+\[
+    \|\mathbf{x}\|^2 = \langle \mathbf{x}, \mathbf{x} \rangle = \mathbf{x}^T \mathbf{x}
+\]
 
 \subsection{Outer Product}
 The \textbf{Outer Product} of two vectors $\mathbf{a} \in \mathbb{R}^m$ and $\mathbf{b} \in \mathbb{R}^n$ is an $m \times n$ matrix:
@@ -117,6 +125,9 @@ The \textbf{determinant} of a square matrix $A \in \mathbb{R}^{n \times n}$ is d
 \[
     (A^T)_{ij} = a_{ji}
 \]
+\[
+    \langle A\mathbf{x}, \mathbf{y} \rangle = \langle \mathbf{x}, A^T\mathbf{y} \rangle
+\]
 Expanded form~\ref{eq:trans}.
 \newline
 \textbf{Geometric Interpretation:} Preserves the scaling factors of $A$ but reverses the rotation/reflection directions of $A$ by swapping domain and codomain orientations.
@@ -177,10 +188,14 @@ The \textbf{Left Null Space} (or \textbf{Cokernel}) of a matrix $A \in \mathbb{R
 The \textbf{Rank} of a matrix $A$ is the dimension of the Column Space or Row Space of $A$.
 \newline
 \textbf{Codomain:}
+\newline
+The Column Space is the \textbf{orthogonal complement} of the Left Null Space: $\text{Col}(A) = (\operatorname{coker}(A))^{\perp}$
 \[
     \operatorname{rank}(A) + \dim(\operatorname{coker}(A)) = m
 \]
 \textbf{Domain:}
+\newline
+The Row Space is the \textbf{orthogonal complement} of the Null Space: $\text{Row}(A) = (\ker(A))^{\perp}$
 \[
     \operatorname{rank}(A) + \dim(\ker(A)) = n
 \]
@@ -413,7 +428,7 @@ where $\Sigma^+ \in \mathbb{R}^{n \times m}$ is defined element-wise as:
 
 \subsection{Normal Equations}
 
-For any linear system $A\mathbf{x} = \mathbf{b}$ where $A \in \mathbb{R}^{m \times n}$, the \textbf{Normal Equations} are:
+Minimize $\|A\mathbf{x} - \mathbf{b}\|^2$ for linear system $A\mathbf{x} = \mathbf{b}$ where $A \in \mathbb{R}^{m \times n}$,
 \[
     A^T A \mathbf{x} = A^T \mathbf{b}
 \]
@@ -475,6 +490,61 @@ The determinant of a matrix can be calculated using Cofactor Expansion (or Lapla
     \det(A) = \sum_{j=1}^{n} (-1)^{i+j} a_{ij} M_{ij}
 \]
 where $M_{ij}$ is the determinant of the submatrix obtained by removing the $i$-th row and $j$-th column.
+
+
+\newpage
+\section{Conceptual Mind Map}
+
+\begin{figure}[h!]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+    node distance=1.2cm and 1.5cm,
+    concept/.style={align=center, draw, rounded corners=2pt},
+    label/.style={sloped, font=\footnotesize, midway},
+    arrow/.style={-Stealth, thick}
+]
+    % NODES
+    \node[concept] (transpose_geo) {Def (Geometric) \\ Transpose \\ \footnotesize{Reverses Rotation/Reflection, Preserves Scaling}};
+    \node[concept, below right=0cm and 4cm of transpose_geo] (dot_prod_geo) {Def (Geometric) \\ Dot Product \\ \footnotesize{Projection Measurement + Scaling}};
+
+    \node[concept, below left=4cm and 0.5cm of transpose_geo] (symmetric) {Symmetric Matrix \\ $A^T=A$ \\ has orthogonal eigenvectors};
+    \node[concept, right=1cm of symmetric] (orthogonal) {Orthogonal Matrix \\ $Q^T=Q^{-1}$};
+    \node[concept, below right=4cm and 0cm of transpose_geo] (preserves_dot) {Preserves Dot Product \\ $(Ax) \cdot y = x \cdot (A^T y)$};
+    \node[concept, below right=1.5cm and 0.5cm of transpose_geo] (projection) {Projection Matrix \\ $P^T=P$};
+
+    \node[concept, below=2.5cm of symmetric] (spectral) {Spectral Decomposition \\ $A = Q \Lambda Q^T$};
+    \node[concept, below=1.5cm of preserves_dot] (transpose_alg) {Transpose (Algebraic) \\ $(A^T)_{ij} = a_{ji}$};
+    \node[concept, below=5cm of dot_prod_geo] (dot_prod_alg) {Dot Product (Algebraic) \\ $x \cdot y = \sum x_n y_n$};
+
+    \node[concept, below=1.5cm of dot_prod_alg] (dot_prod_transpose) {Dot Product $\Leftrightarrow$ Transpose \\ $x \cdot y = x^T y$};
+    \node[concept, below=1.5cm of dot_prod_transpose] (dist_rule) {Distribution Rule \\ $(AB)^T = B^T A^T$};
+    \node[concept, below left=2cm and 4cm of dist_rule] (svd) {Singular Value Decomposition \\ $A = U \Sigma V^T$};
+
+    % EDGES
+    \draw[arrow] (transpose_geo) to[out=-135, in=90] node[label, above] {(scaling on orthogonal basis only)} (symmetric);
+    \draw[arrow] (transpose_geo) to[out=-135, in=90] node[label, above] {(rotation only)} (orthogonal);
+    \draw[arrow] (transpose_geo) to[out=-90, in=135] node[label, above] {(reverse rotation/reflection to perserve)} (preserves_dot);
+    \draw[arrow] (transpose_geo) to[out=-45, in=135] node[label, above] {(only scale nullspace basis to 0)} (projection);
+
+    \draw[arrow] (symmetric) to[out=-90, in=90] (spectral);
+    \draw[arrow] (orthogonal) to[out=-90, in=45] (spectral);
+
+    \draw[arrow] (dot_prod_geo) to[out=-90, in=90] node[label, above] {(symmetry of scalar projection)} (dot_prod_alg);
+    \draw[arrow] (dot_prod_geo) to[out=-135, in=45] (preserves_dot);
+
+    \draw[arrow] (preserves_dot) to[out=-90, in=90] (transpose_alg);
+    \draw[arrow] (transpose_alg) to[out=-90, in=135] (dot_prod_transpose);
+    \draw[arrow] (dot_prod_alg) to[out=-90, in=90] (dot_prod_transpose);
+
+    \draw[arrow] (dot_prod_transpose) to[out=-90, in=90] (dist_rule);
+
+    \draw[arrow] (spectral) to[out=-90, in=135] (svd);
+    \draw[arrow] (dist_rule) to[out=-90, in=45] (svd);
+
+\end{tikzpicture}
+}
+\end{figure}
 
 
 \newpage
