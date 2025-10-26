@@ -83,7 +83,9 @@ Apply transformation $B$, then apply transformation $A$.
 \[
     (AB)_{*j} = A\mathbf{b}_j
 \]
-Expanded form~\ref{eq:mul}.
+Inner Product view: expanded form~\ref{eq:mul_inner}.
+\newline
+Outer Product view: expanded form~\ref{eq:mul_outer}.
 \newline
 \textbf{Associative Law:}
 \[
@@ -91,7 +93,7 @@ Expanded form~\ref{eq:mul}.
 \]
 
 \subsection{Inverse}
-Reverses the transformation of $A$
+Reverses the transformation of $A$.
 \[
     A A^{-1} = A^{-1} A = I_n
 \]
@@ -106,19 +108,35 @@ Reverses the transformation of $A$
 Calculation~\ref{subsec:gauss}.
 
 \subsection{Determinant}
-The \textbf{determinant} of a square matrix $A \in \mathbb{R}^{n \times n}$ is denoted as $\det(A)$ or $|A|$.
-\newline
-\textbf{Geometric Interpretation:} The scaling factor of the transformation $A$.
+The \textbf{determinant} of a square matrix $A \in \mathbb{R}^{n \times n}$ is denoted as:
+\[
+    \det(A)
+\]
+\textbf{Geometric Interpretation:} The oriented volume change factor.
 \newline
 \textbf{Properties:}
 \begin{itemize}
-    \item A square matrix $A \in \mathbb{R}^{n \times n}$ has Full Rank iff $\det(A) \neq 0$.
+    \item $A \in \mathbb{R}^{n \times n}$ has Full Rank iff $\det(A) \neq 0$.
+    \item \textbf{Determinant as the product of eigenvalues}: $\det(A) = \prod_{i=1}^n \lambda_i$.
 \end{itemize}
 \newline
 \textbf{Calculation:}
 \begin{itemize}
     \item \textbf{$2 \times 2$ Matrix:} For $A = \begin{bmatrix} a & b \\ c & d \end{bmatrix}$, $\det(A) = ad - bc$
     \item \textbf{$n \times n$ Matrix:}~\ref{subsec:cofactor}.
+\end{itemize}
+
+\subsection{Trace}
+The \textbf{trace} of a square matrix $A \in \mathbb{R}^{n \times n}$ is the sum of the elements on the main diagonal:
+\[
+    \operatorname{tr}(A) = \sum_{i=1}^n a_{ii}
+\]
+\textbf{Geometric Interpretation:} The rate of change of oriented volume. Viewing the Matrix as a Vector Field, the trace is its divergence.
+\newline
+\textbf{Properties:}
+\begin{itemize}
+    \item \textbf{Trace as the sum of eigenvalues}: $\operatorname{tr}(A) = \sum_{i=1}^n \lambda_i$.
+    \item \textbf{Cyclic Property}: $\operatorname{tr}(AB) = \operatorname{tr}(BA)$.
 \end{itemize}
 
 \subsection{Transpose}
@@ -240,7 +258,7 @@ Expanded form~\ref{eq:diagm}.
 \]
 Expanded form~\ref{eq:diagminv}.
 
-\subsection{Orthogonal Matrix}
+\subsection{Orthogonal Matrix (Unitary Matrix)}
 All column vectors are unit vectors and orthogonal to each other.
 \[
     Q^T Q = Q Q^T = I_n
@@ -278,7 +296,7 @@ Calculation:
 
 \subsection{Spectral Decomposition}
 
-Symmetric matrix $A \in \mathbb{R}^{n \times n}$ can be decomposed as:
+Symmetric Matrix $A \in \mathbb{R}^{n \times n}$ can be decomposed as:
 \[
     A = Q \Lambda Q^T
 \]
@@ -293,27 +311,6 @@ where:
     \item $\Lambda$: Apply a scaling transformation along the new axes by the Eigenvalues.
     \item $Q$: Rotate or reflect the basis of the vector space back to the standard basis.
 \end{enumerate}
-
-\subsection{Positive Definite}
-A symmetric matrix $A \in \mathbb{R}^{n \times n}$ is \textbf{positive definite}, denoted as $A \succ 0$, if for any nonzero vector $\mathbf{x} \in \mathbb{R}^n$,
-\[
-    \mathbf{x}^T A \mathbf{x} > 0
-\]
-\textbf{Properties:}
-\begin{itemize}
-    \item All Eigenvalues of $A$ are positive. (Proof via Spectral Decomposition)
-    \item $A$ is invertible, and $A^{-1}$ is also positive definite.
-\end{itemize}
-
-\subsection{Positive Semi-Definite}
-A symmetric matrix $A \in \mathbb{R}^{n \times n}$ is \textbf{positive semi-definite}, denoted as $A \succeq 0$, if for any vector $\mathbf{x} \in \mathbb{R}^n$,
-\[
-    \mathbf{x}^T A \mathbf{x} \geq 0
-\]
-\textbf{Properties:}
-\begin{itemize}
-    \item All Eigenvalues of $A$ are non-negative. (Proof via Spectral Decomposition)
-\end{itemize}
 
 \subsection{Eigen Decomposition}
 
@@ -333,22 +330,34 @@ where:
     \item $P$: Change the basis of the vector space back to the standard basis.
 \end{enumerate}
 
-\subsection{Singular Value Decomposition}
+\subsection{Singular Value Decomposition (SVD)}
 
 \subsubsection{Singular Vector \& Singular Value}
 For any matrix $A \in \mathbb{R}^{m \times n}$ with rank $r$:
 \begin{itemize}
     \item \textbf{Singular Values:} $\sigma_1 \geq \cdots \geq \sigma_r > 0$ represent the scaling factors along the principal directions of the transformation.
-    \item \textbf{Right Singular Vectors:} Orthonormal basis for the Domain subspaces:
+    \item \textbf{Right Singular Vectors (Column Vectors of $V$):} Orthonormal basis for the Domain subspaces:
         \begin{itemize}
             \item First $r$ columns of $V$: orthonormal basis for $\text{Row}(A)$
             \item Last $n-r$ columns of $V$: orthonormal basis for $\ker(A)$
         \end{itemize}
-    \item \textbf{Left Singular Vectors} Orthonormal basis for the Codomain subspaces:
+    \item \textbf{Left Singular Vectors (Column Vectors of $U$):} Orthonormal basis for the Codomain subspaces:
         \begin{itemize}
             \item First $r$ columns of $U$: orthonormal basis for $\text{Col}(A)$
             \item Last $m-r$ columns of $U$: orthonormal basis for $\operatorname{coker}(A)$
         \end{itemize}
+\end{itemize}
+\textbf{Relationship to Eigen Decomposition:}
+\begin{itemize}
+    \item \textbf{Right Singular Vectors:}  Orthonormal eigenvectors of $A^T A$.
+    \item \textbf{Left Singular Vectors:} Orthonormal eigenvectors of $AA^T$.
+    \item \textbf{Singular Values:}
+    \[
+        A^T A \mathbf{v}_i = \lambda_i \mathbf{v}_i \quad \text{and} \quad \sigma_i = \sqrt{\lambda_i}
+    \]
+    \[
+        AA^T \mathbf{u}_i = \lambda_i \mathbf{u}_i \quad \text{and} \quad \sigma_i = \sqrt{\lambda_i}
+    \]
 \end{itemize}
 
 \subsubsection{SVD Formula}
@@ -386,7 +395,7 @@ where:
     \end{itemize}
 \end{enumerate}
 
-\subsubsection{SVD Derivation}
+\subsubsection{Derivation}
 Assume that matrix $A \in \mathbb{R}^{m \times n}$ can be decomposed as:
 \[
     A = U \Sigma V^T
@@ -407,9 +416,17 @@ Notice that these expressions are in the form of Spectral Decomposition:
 \end{itemize}
 Therefore: $V$ contains the Eigenvectors of $A^T A$, and $\sigma_i = \sqrt{\lambda_i}$. $U$ contains the Eigenvectors of $AA^T$, and $\sigma_i = \sqrt{\lambda_i}$.
 
+\subsection{Frobenius Norm}
+For a matrix $A \in \mathbb{R}^{m \times n}$:
+\[
+    \|A\|_F = \sqrt{\sum_{i=1}^m \sum_{j=1}^n a_{ij}^2}
+\]
 
-\newpage
-\section{Pseudo Inverse and Normal Equations}
+\subsection{Low-Rank Approximation (LoRA)}
+Eckart-Young-Mirsky Theorem:
+\[
+    \underset{\operatorname{rank}(\tilde{A})=k}{\operatorname{argmin}} \|A - \tilde{A}\|_F = \sum_{i=1}^{k} \sigma_i \mathbf{u}_i \mathbf{v}_i^T
+\]
 
 \subsection{Pseudo Inverse}
 
@@ -426,32 +443,70 @@ where $\Sigma^+ \in \mathbb{R}^{n \times m}$ is defined element-wise as:
     \end{cases}
 \]
 
+
+\newpage
+\section{Projection}
+
 \subsection{Normal Equations}
 
 Minimize $\|A\mathbf{x} - \mathbf{b}\|^2$ for linear system $A\mathbf{x} = \mathbf{b}$ where $A \in \mathbb{R}^{m \times n}$,
 \[
     A^T A \mathbf{x} = A^T \mathbf{b}
 \]
-\textbf{Derivation:} To minimize $\|A\mathbf{x} - \mathbf{b}\|^2$, the residual $A\mathbf{x} - \mathbf{b}$ is orthogonal to the column space of $A$, i.e., it belongs to the left null space $\operatorname{coker}(A)$
+\textbf{Derivation:} To minimize $\|A\mathbf{x} - \mathbf{b}\|^2$, the residual $A\mathbf{x} - \mathbf{b}$ is orthogonal to the column space of $A$, i.e., it belongs to the left null space $\operatorname{coker}(A)$:
 \[
     A^T(A\mathbf{x} - \mathbf{b}) = \mathbf{0}
 \]
+
+\subsection{Projection Matrix}
+
+The \textbf{Projection Matrix} $P$ projects a vector $\mathbf{b}$ onto the Column Space of a matrix $A \in \mathbb{R}^{m \times n}$ to produce the projected vector $\mathbf{p}$.
+\[
+    \mathbf{p} = P\mathbf{b}
+\]
+If the columns of $A$ are Linearly Independent, then $A^TA$ is invertible, and the Projection Matrix is given by:
+\[
+    P = A(A^TA)^{-1}A^T
+\]
+Derived by Normal Equations.
+\newline
+\textbf{Projection onto a Vector:}
+\newline
+Project onto a line spanned by a non-zero vector $\mathbf{a} \in \mathbb{R}^m$:
+\[
+    P = \frac{\mathbf{a}\mathbf{a}^T}{\mathbf{a}^T\mathbf{a}}
+\]
+\textbf{Projection onto an Orthonormal Basis:}
+\newline
+If the columns of matrix $Q \in \mathbb{R}^{m \times n}$ form an orthonormal basis for the subspace:
+\[
+    P = Q(Q^TQ)^{-1}Q^T = QIQ^T = QQ^T
+\]
+\textbf{Properties:}
+\begin{itemize}
+    \item \textbf{Idempotency:} $P^2 = P$.
+    \item \textbf{Symmetry:} $P^T = P$.
+    \item \textbf{Trace equals Rank:} $\operatorname{tr}(P) = \operatorname{rank}(P)$.
+    \newline
+    Derivation: The eigenvalues of a Projection Matrix are 1 for its projection subspace and 0 for its null space: $\operatorname{tr}(P) = \sum_{i=1}^m \lambda_i = \sum_{\lambda_i=1} 1 = \operatorname{rank}(P)$.
+\end{itemize}
 
 
 \newpage
 \section{Quadratic Form}
 
 \subsection{Quadratic Form}
-For a vector $\mathbf{x} \in \mathbb{R}^n$, a quadratic form is:
+For a vector $\mathbf{x} \in \mathbb{R}^n$, a Symmetric Matrix $A \in \mathbb{R}^{n \times n}$ determines a \textbf{Quadratic Form}:
 \[
-    q(\mathbf{x}) = \mathbf{x}^T A \mathbf{x}
+    q(\mathbf{x}) = \mathbf{x}^T A \mathbf{x} = \sum_{i=1}^n \sum_{j=1}^n a_{ij} x_i x_j
 \]
-where $A \in \mathbb{R}^{n \times n}$ is a symmetric matrix.
 
-\subsection{Geometric Interpretation}
+\subsubsection{Geometric Interpretation}
 The quadratic form $q(\mathbf{x}) = \mathbf{x}^T A \mathbf{x}$ describes the geometry of a quadric surface.
-
-\paragraph{Apply Spectral Decomposition:}
+\newline
+\textbf{Derivation:}
+\newline
+Apply Spectral Decomposition:
 \[
     q(\mathbf{x}) = \mathbf{x}^T (Q \Lambda Q^T) \mathbf{x} = (\mathbf{x}^T Q) \Lambda (Q^T \mathbf{x})
 \]
@@ -459,10 +514,31 @@ Define $\mathbf{y} = Q^T \mathbf{x}$:
 \[
     q(\mathbf{y}) = \mathbf{y}^T \Lambda \mathbf{y} = \sum_{i=1}^n \lambda_i y_i^2
 \]
-\begin{enumerate}
+\begin{itemize}
     \item The \textbf{Eigenvectors} of $A$ (columns of $Q$) define the \textbf{principal axes} of the geometric shape.
     \item The \textbf{Eigenvalues} $\lambda_i$ of $A$ \textbf{scales} the length of each semi-axis by $1/\sqrt{\lambda_i}$.
-\end{enumerate}
+\end{itemize}
+
+\subsection{Positive Definite}
+A Symmetric Matrix $A \in \mathbb{R}^{n \times n}$ is \textbf{positive definite}, denoted as $A \succ 0$, if for any nonzero vector $\mathbf{x} \in \mathbb{R}^n$,
+\[
+    \mathbf{x}^T A \mathbf{x} > 0
+\]
+\textbf{Properties:}
+\begin{itemize}
+    \item All Eigenvalues of $A$ are positive.
+    \item $A$ is invertible, and $A^{-1}$ is also positive definite.
+\end{itemize}
+
+\subsection{Positive Semi-Definite}
+A Symmetric Matrix $A \in \mathbb{R}^{n \times n}$ is \textbf{positive semi-definite}, denoted as $A \succeq 0$, if for any vector $\mathbf{x} \in \mathbb{R}^n$,
+\[
+    \mathbf{x}^T A \mathbf{x} \geq 0
+\]
+\textbf{Properties:}
+\begin{itemize}
+    \item All Eigenvalues of $A$ are non-negative.
+\end{itemize}
 
 
 \newpage
@@ -653,17 +729,56 @@ where $M_{ij}$ is the determinant of the submatrix obtained by removing the $i$-
         \label{eq:rowvecmat}
     \end{equation}
 
-    \item \textbf{Matrix-Matrix Multiplication:}
+    \item \textbf{Matrix-Matrix Multiplication - Inner Product View:}
+
+    \begin{equation}
+        AB =
+        \left[
+            \begin{array}{c}
+                - \mathbf{a}_1^T - \\
+                \vdots \\
+                - \mathbf{a}_m^T -
+            \end{array}
+        \right]
+        \left[
+            \begin{array}{ccc}
+                | &        & | \\
+                \mathbf{b}_1 & \cdots & \mathbf{b}_n \\
+                | &        & |
+            \end{array}
+        \right]
+        =
+        \left[
+            \begin{array}{ccc}
+                \mathbf{a}_1^T \mathbf{b}_1 & \cdots & \mathbf{a}_1^T \mathbf{b}_n \\
+                \vdots & \ddots & \vdots \\
+                \mathbf{a}_m^T \mathbf{b}_1 & \cdots & \mathbf{a}_m^T \mathbf{b}_n
+            \end{array}
+        \right]
+        \label{eq:mul_inner}
+    \end{equation}
+
+    \item \textbf{Matrix-Matrix Multiplication - Outer Product View:}
+
     \begin{equation}
         AB =
         \left[
             \begin{array}{ccc}
                 | &        & | \\
-                A\mathbf{b}_1 & \cdots & A\mathbf{b}_p \\
+                \mathbf{a}_1 & \cdots & \mathbf{a}_n \\
                 | &        & |
             \end{array}
         \right]
-        \label{eq:mul}
+        \left[
+            \begin{array}{c}
+                - \mathbf{b}_1^T - \\
+                \vdots \\
+                - \mathbf{b}_n^T -
+            \end{array}
+        \right]
+        =
+        \mathbf{a}_1 \mathbf{b}_1^T + \mathbf{a}_2 \mathbf{b}_2^T + \cdots + \mathbf{a}_n \mathbf{b}_n^T
+        \label{eq:mul_outer}
     \end{equation}
 
     \item \textbf{Transpose:}
