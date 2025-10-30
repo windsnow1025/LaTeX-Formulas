@@ -188,14 +188,14 @@ The \textbf{Row Space} of a matrix $A \in \mathbb{R}^{m \times n}$ is the subspa
     \text{Row}(A) = \{ \mathbf{y}^T A : \mathbf{y} \in \mathbb{R}^m \}
 \]
 \[
-    \text{Row}(A) = \text{Col}(A^T)
+    \text{Row}(A) = \text{Col}(A^T) = \{ A^T\mathbf{y} : \mathbf{y} \in \mathbb{R}^m \}
 \]
 \textbf{Geometric Interpretation:} The subspace of the Domain containing the component of any input vector that is \textbf{preserved and transformed} by $A$.
 
 \subsection{Left Null Space}
 The \textbf{Left Null Space} (or \textbf{Cokernel}) of a matrix $A \in \mathbb{R}^{m \times n}$ is:
 \[
-    \operatorname{coker}(A) = \{ \mathbf{x} \in \mathbb{R}^m : \mathbf{x}^T A = \mathbf{0}^T \}
+    \operatorname{coker}(A) = \{ \mathbf{y} \in \mathbb{R}^m : \mathbf{y}^T A = \mathbf{0}^T \}
 \]
 \[
     \operatorname{coker}(A) = \ker(A^T) = \{ \mathbf{y} \in \mathbb{R}^m : A^T \mathbf{y} = \mathbf{0} \}
@@ -445,18 +445,51 @@ where $\Sigma^+ \in \mathbb{R}^{n \times m}$ is defined element-wise as:
 
 
 \newpage
-\section{Projection}
+\section{Linear System}
+
+A system of linear equations is defined by:
+\[
+    A\mathbf{x} = \mathbf{b}
+\]
+where the coefficient matrix $A \in \mathbb{R}^{m \times n}$, the vector of unknowns $\mathbf{x} \in \mathbb{R}^n$, the constant vector $\mathbf{b} \in \mathbb{R}^m$.
+\paragraph{Types of Linear Systems}
+\begin{itemize}
+    \item \textbf{Square System}: $m = n$
+    \item \textbf{Underdetermined System}: $m < n$
+    \item \textbf{Overdetermined System}: $m > n$
+\end{itemize}
+
+\subsection{Solutions}
+The general solution with the \textbf{minimum Euclidean norm} $\|\mathbf{x}\|$ is given by:
+\[
+    \mathbf{x} = A^+ \mathbf{b}
+\]
+\begin{itemize}
+    \item If square matrix $A$ is invertible: unique solution is given by: $\mathbf{x} = A^{-1} \mathbf{b}$.
+    \item If $\ker(A) \neq \{\mathbf{0}\}$ and $\mathbf{b} \in \text{Col}(A)$: there are infinite solutions. The solution with the \textbf{minimum Euclidean norm} $\|\mathbf{x}\|$ is given by $\mathbf{x} = A^+ \mathbf{b}$.
+    \item If $\mathbf{b} \notin \text{Col}(A)$: no exact solution exists. The approximate solution (set) is found by solving \textbf{Normal Equations}.
+\end{itemize}
+
+\subsection{Ordinary Least Squares}
+When no exact solution exists, the approximate solution (set) is found by minimizing the squared Euclidean norm of the residual vector:
+\[
+    \min_{\mathbf{x}} \|A\mathbf{x} - \mathbf{b}\|^2
+\]
 
 \subsection{Normal Equations}
-
-Minimize $\|A\mathbf{x} - \mathbf{b}\|^2$ for linear system $A\mathbf{x} = \mathbf{b}$ where $A \in \mathbb{R}^{m \times n}$,
+Solution to Ordinary Least Squares:
 \[
     A^T A \mathbf{x} = A^T \mathbf{b}
 \]
-\textbf{Derivation:} To minimize $\|A\mathbf{x} - \mathbf{b}\|^2$, the residual $A\mathbf{x} - \mathbf{b}$ is orthogonal to the column space of $A$, i.e., it belongs to the left null space $\operatorname{coker}(A)$:
-\[
-    A^T(A\mathbf{x} - \mathbf{b}) = \mathbf{0}
-\]
+\begin{itemize}
+    \item If $A^T A$ is invertible ($A$ has full column rank), the unique solution is given by: $\mathbf{x} = (A^T A)^{-1} A^T \mathbf{b}$.
+    \item If $A^T A$ is not invertible ($A$ does not have full column rank), the solution with the \textbf{minimum Euclidean norm} $\|\mathbf{x}\|$ in the solution set is given by: $\mathbf{x} = A^+ \mathbf{b}$.
+\end{itemize}
+\textbf{Derivation:} To minimize $\|A\mathbf{x} - \mathbf{b}\|^2$, the residual $A\mathbf{x} - \mathbf{b}$ is orthogonal to the column space of $A$, i.e., it belongs to the left null space $\operatorname{coker}(A)$: $A^T(A\mathbf{x} - \mathbf{b}) = \mathbf{0}$.
+
+
+\newpage
+\section{Projection}
 
 \subsection{Projection Matrix}
 
@@ -496,17 +529,24 @@ If the columns of matrix $Q \in \mathbb{R}^{m \times n}$ form an orthonormal bas
 \section{Quadratic Form}
 
 \subsection{Quadratic Form}
+
 For a vector $\mathbf{x} \in \mathbb{R}^n$, a Symmetric Matrix $A \in \mathbb{R}^{n \times n}$ determines a \textbf{Quadratic Form}:
 \[
     q(\mathbf{x}) = \mathbf{x}^T A \mathbf{x} = \sum_{i=1}^n \sum_{j=1}^n a_{ij} x_i x_j
 \]
+\textbf{Derivation of Symmetric:}
+\newline
+For a vector $\mathbf{x} \in \mathbb{R}^n$ and any square matrix $A \in \mathbb{R}^{n \times n}$, a \textbf{Quadratic Form} is defined as $q(\mathbf{x}) = \mathbf{x}^T A \mathbf{x}$.
+Since $\mathbf{x}^T A \mathbf{x}$ is a scalar, $\mathbf{x}^T A \mathbf{x} = (\mathbf{x}^T A \mathbf{x})^T = \mathbf{x}^T A^T \mathbf{x}$, so can write the Quadratic Form as:
+\[
+    \mathbf{x}^T A \mathbf{x} = \frac{1}{2} (\mathbf{x}^T A \mathbf{x} + \mathbf{x}^T A^T \mathbf{x}) = \mathbf{x}^T \left( \frac{A + A^T}{2} \right) \mathbf{x}
+\]
+where $\frac{A + A^T}{2}$ is always symmetric.
+\newline
+Thus, without loss of generality, the matrix defining a quadratic form is assumed to be symmetric.
 
-\subsubsection{Geometric Interpretation}
-The quadratic form $q(\mathbf{x}) = \mathbf{x}^T A \mathbf{x}$ describes the geometry of a quadric surface.
-\newline
-\textbf{Derivation:}
-\newline
-Apply Spectral Decomposition:
+\subsubsection{Principal Axis Theorem}
+Apply Spectral Decomposition to $A$:
 \[
     q(\mathbf{x}) = \mathbf{x}^T (Q \Lambda Q^T) \mathbf{x} = (\mathbf{x}^T Q) \Lambda (Q^T \mathbf{x})
 \]
