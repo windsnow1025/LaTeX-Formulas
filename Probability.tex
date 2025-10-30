@@ -127,6 +127,8 @@
     \item \( \mathbb{E}[c] = c \)
     \item \( \mathbb{E}[aX+bY] = a\mathbb{E}[X] + b\mathbb{E}[Y] \)
     \item \( \mathbb{E}[XY] = \mathbb{E}[X]\mathbb{E}[Y] + \text{Cov}(X,Y) \)
+    \item \( \mathbb{E}[(X-a)^2] = (\mathbb{E}[X]-a)^2 + \text{Var}(X) \)
+    \item \( X, Y \) i.i.d. with \( \sigma^2 \): \( \mathbb{E}[(X-Y)^2] = 2\sigma^2 \)
 \end{itemize}
 
 \subsubsection{Expected Value of a function}
@@ -461,6 +463,7 @@ Define \( \mathbf{y} = Q^\top (\mathbf{x} - \boldsymbol{\mu}) \):
 \]
 
 \subsection{Multivariate Normal Distribution}
+\[ \mathbf{X} \sim \mathcal{N}(\boldsymbol{\mu}, \Sigma) \]
 \[
     f(\mathbf{x}; \boldsymbol{\mu}, \Sigma) = \frac{1}{\sqrt{(2\pi)^d\det(\Sigma)}} \exp\left(-\frac{1}{2}(\mathbf{x} - \boldsymbol{\mu})^\top \Sigma^{-1} (\mathbf{x} - \boldsymbol{\mu})\right)
 \]
