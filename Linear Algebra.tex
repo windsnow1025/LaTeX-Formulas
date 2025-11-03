@@ -466,24 +466,18 @@ The general solution with the \textbf{minimum Euclidean norm} $\|\mathbf{x}\|$ i
 \]
 \begin{itemize}
     \item If square matrix $A$ is invertible: unique solution is given by: $\mathbf{x} = A^{-1} \mathbf{b}$.
-    \item If $\ker(A) \neq \{\mathbf{0}\}$ and $\mathbf{b} \in \text{Col}(A)$: there are infinite solutions. The solution with the \textbf{minimum Euclidean norm} $\|\mathbf{x}\|$ is given by $\mathbf{x} = A^+ \mathbf{b}$.
-    \item If $\mathbf{b} \notin \text{Col}(A)$: no exact solution exists. The approximate solution (set) is found by solving \textbf{Normal Equations}.
+    \item If $\ker(A) \neq \{\mathbf{0}\}$ and $\mathbf{b} \in \text{Col}(A)$: there are infinite solutions. The solution with the minimum Euclidean norm $\|\mathbf{x}\|$ is given by $\mathbf{x} = A^+ \mathbf{b}$.
+    \item If $\mathbf{b} \notin \text{Col}(A)$: no exact solution exists. One approximate solution is found by minimizing Ordinary Least Squares.
 \end{itemize}
 
-\subsection{Ordinary Least Squares}
-When no exact solution exists, the approximate solution (set) is found by minimizing the squared Euclidean norm of the residual vector:
-\[
-    \min_{\mathbf{x}} \|A\mathbf{x} - \mathbf{b}\|^2
-\]
-
 \subsection{Normal Equations}
-Solution to Ordinary Least Squares:
+Solution to Ordinary Least Squares $\displaystyle \min_{\mathbf{x}} \|A\mathbf{x} - \mathbf{b}\|^2$:
 \[
     A^T A \mathbf{x} = A^T \mathbf{b}
 \]
 \begin{itemize}
     \item If $A^T A$ is invertible ($A$ has full column rank), the unique solution is given by: $\mathbf{x} = (A^T A)^{-1} A^T \mathbf{b}$.
-    \item If $A^T A$ is not invertible ($A$ does not have full column rank), the solution with the \textbf{minimum Euclidean norm} $\|\mathbf{x}\|$ in the solution set is given by: $\mathbf{x} = A^+ \mathbf{b}$.
+    \item If $A^T A$ is not invertible ($A$ does not have full column rank), the solution with the minimum Euclidean norm $\|\mathbf{x}\|$ in the solution set is given by: $\mathbf{x} = A^+ \mathbf{b}$.
 \end{itemize}
 \textbf{Derivation:} To minimize $\|A\mathbf{x} - \mathbf{b}\|^2$, the residual $A\mathbf{x} - \mathbf{b}$ is orthogonal to the column space of $A$, i.e., it belongs to the left null space $\operatorname{coker}(A)$: $A^T(A\mathbf{x} - \mathbf{b}) = \mathbf{0}$.
 
