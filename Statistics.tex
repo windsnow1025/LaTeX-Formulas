@@ -177,6 +177,27 @@ Found $\hat{\theta}$ by solving:
     \frac{\partial \ell(\theta)}{\partial \theta_i} = 0
 \]
 
+\subsubsection{Linear Regression (Ordinary Least Squares)}
+For a \textbf{Linear Regression} model in matrix form:
+\[
+    A\mathbf{x} = \mathbf{b}
+\]
+where $\mathbf{b} \notin \text{Col}(A)$ and $\boldsymbol{\epsilon} = \mathbf{b} - A\mathbf{x} \sim \mathcal{N}(\mathbf{0}, \sigma^2 I)$.
+\newline
+The optimal approximate solution (set) is found by minimizing the \textbf{Ordinary Least Squares}:
+\[
+    \min_{\mathbf{x}} \|A\mathbf{x} - \mathbf{b}\|^2
+\]
+
+\subsubsection{Ridge Regression (L2 Regularization)}
+\textbf{Ridge Regression} is a regularized version of Linear Regression that uses \textbf{L2 Regularization}.
+\newline
+In the framework of Maximum A Posteriori (MAP) estimation, assume prior distribution $\mathbf{x} \sim \mathcal{N}(\mathbf{0}, \tau^2 I)$, the optimal solution of Ordinary Least Square is found by:
+\[
+    \min_{\mathbf{x}} \|A\mathbf{x} - \mathbf{b}\|^2 + \lambda\|\mathbf{x}\|_2^2
+\]
+where the regularization parameter $\displaystyle \lambda = \frac{\sigma^2}{\tau^2}$.
+
 
 \newpage
 \section{Interval Estimation}
