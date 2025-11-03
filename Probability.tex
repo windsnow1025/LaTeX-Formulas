@@ -67,7 +67,7 @@
     \Pr(B|A) = \Pr(B)
 \]
 
-\paragraph{Conditional Independence: }\( A \perp\!\!\!\perp B \mid C \)
+\paragraph{Conditional Independence: }$ A \perp\!\!\!\perp B \mid C $
 \[
     \Pr(A \cap B \mid C) = \Pr(A \mid C) \Pr(B \mid C)
 \]
@@ -124,11 +124,11 @@
 \]
 \textbf{Properties:}
 \begin{itemize}
-    \item \( \mathbb{E}[c] = c \)
-    \item \( \mathbb{E}[aX+bY] = a\mathbb{E}[X] + b\mathbb{E}[Y] \)
-    \item \( \mathbb{E}[XY] = \mathbb{E}[X]\mathbb{E}[Y] + \text{Cov}(X,Y) \)
-    \item \( \mathbb{E}[(X-a)^2] = (\mathbb{E}[X]-a)^2 + \text{Var}(X) \)
-    \item \( X, Y \) i.i.d. with \( \sigma^2 \): \( \mathbb{E}[(X-Y)^2] = 2\sigma^2 \)
+    \item $ \mathbb{E}[c] = c $
+    \item $ \mathbb{E}[aX+bY] = a\mathbb{E}[X] + b\mathbb{E}[Y] $
+    \item $ \mathbb{E}[XY] = \mathbb{E}[X]\mathbb{E}[Y] + \text{Cov}(X,Y) $
+    \item $ \mathbb{E}[(X-a)^2] = (\mathbb{E}[X]-a)^2 + \text{Var}(X) $
+    \item $ X, Y $ i.i.d. with $ \sigma^2 $: $ \mathbb{E}[(X-Y)^2] = 2\sigma^2 $
 \end{itemize}
 
 \subsubsection{Expected Value of a function}
@@ -147,10 +147,10 @@
 \]
 \textbf{Properties:}
 \begin{itemize}
-    \item \( Var(c) = 0 \)
-    \item \( Var(cX) = c^2 Var(X) \)
-    \item \( Var(X+c) = Var(X) \)
-    \item \( Var(X \pm Y) = Var(X) + Var(Y) \pm 2\text{Cov}(X,Y) \)
+    \item $ Var(c) = 0 $
+    \item $ Var(cX) = c^2 Var(X) $
+    \item $ Var(X+c) = Var(X) $
+    \item $ Var(X \pm Y) = Var(X) + Var(Y) \pm 2\text{Cov}(X,Y) $
 \end{itemize}
 
 \subsection{Standard Deviation}
@@ -164,12 +164,12 @@
 \]
 \textbf{Properties:}
 \begin{itemize}
-    \item \( \text{Cov}(X, X) = \text{Var}(X) \)
-    \item \( \text{Cov}(X,Y) = \text{Cov}(Y,X) \)
-    \item \( \text{Cov}(aX, bY) = ab\,\text{Cov}(X,Y) \)
-    \item \( \text{Cov}(c,X) = 0 \)
-    \item \( \text{Cov}(X_1+X_2, Y) = \text{Cov}(X_1,Y) + \text{Cov}(X_2,Y) \)
-    \item If X and Y are mutually independent, \( \text{Cov}(X,Y) = 0 \)
+    \item $ \text{Cov}(X, X) = \text{Var}(X) $
+    \item $ \text{Cov}(X,Y) = \text{Cov}(Y,X) $
+    \item $ \text{Cov}(aX, bY) = ab\,\text{Cov}(X,Y) $
+    \item $ \text{Cov}(c,X) = 0 $
+    \item $ \text{Cov}(X_1+X_2, Y) = \text{Cov}(X_1,Y) + \text{Cov}(X_2,Y) $
+    \item If X and Y are mutually independent, $ \text{Cov}(X,Y) = 0 $
 \end{itemize}
 
 \subsection{Covariance Matrix}
@@ -178,7 +178,7 @@
 \]
 \textbf{Properties:}
 \begin{itemize}
-    \item \(\text{Cov}(AX + b) = A \, \text{Cov}(X) \, A^T\)
+    \item $\text{Cov}(AX + b) = A \, \text{Cov}(X) \, A^T$
 \end{itemize}
 
 \subsection{Correlation Coefficient}
@@ -187,19 +187,19 @@
 \]
 \textbf{Properties:}
 \begin{itemize}
-    \item \( |\rho_{X,Y}| \le 1 \)
-    \item \( |\rho_{X,Y}| = 1 \Leftrightarrow (\exists a)(\exists b)(\Pr(Y=aX+b)=1), (a>0, \rho_{X,Y}=1; a<0, \rho_{X,Y}=-1) \)
-    \item \( \rho_{aX + b, cY + d} = \rho_{X,Y} \)
+    \item $ |\rho_{X,Y}| \le 1 $
+    \item $ |\rho_{X,Y}| = 1 \Leftrightarrow (\exists a)(\exists b)(\Pr(Y=aX+b)=1), (a>0, \rho_{X,Y}=1; a<0, \rho_{X,Y}=-1) $
+    \item $ \rho_{aX + b, cY + d} = \rho_{X,Y} $
 \end{itemize}
 
 \subsection{Markov's Inequality}
-If \( X \geq 0 \), for any \( a > 0 \):
+If $ X \geq 0 $, for any $ a > 0 $:
 \[
     \Pr(X \geq a) \leq \frac{\mathbb{E}[X]}{a}
 \]
 
 \subsection{Chebyshev's Inequality}
-For any \( \varepsilon > 0 \):
+For any $ \varepsilon > 0 $:
 \[
     \Pr(|X-\mathbb{E}[X]| \ge \varepsilon) \le \frac{Var(X)}{\varepsilon^2}
 \]
@@ -211,13 +211,13 @@ For any \( \varepsilon > 0 \):
 \section{One-dimensional Random Variables}
 
 \subsection{Probability Mass Function}
-For a discrete random variable, the Probability Mass Function \( p(x) \) is defined as:
+For a discrete random variable, the Probability Mass Function $ p(x) $ is defined as:
 \[
     \Pr(X=x) = p(x)
 \]
 
 \subsection{Probability Density Function}
-For a continuous random variable, the Probability Density Function \( f(x) \) is defined as:
+For a continuous random variable, the Probability Density Function $ f(x) $ is defined as:
 \[
     \Pr(a \le x \le b) = \int_{a}^{b} f_X(x)dx
 \]
@@ -265,7 +265,7 @@ Probability of success in a single trial with only two outcomes.
 \[ \sigma^2 = p(1-p) \]
 
 \subsubsection{Binomial Distribution}
-The number of successes in \( n \) independent Bernoulli trails.
+The number of successes in $ n $ independent Bernoulli trails.
 \[ X \sim B(n,p) \]
 \[ p(x) = \binom{n}{x} p^x (1-p)^{n-x}, \quad x=0,1,\dots,n \]
 \[ \mu = np \]
@@ -280,7 +280,7 @@ The number of trials needed to get the first success in a sequence of independen
 \[ \sigma^2 = \frac{1-p}{p^2} \]
 
 \subsubsection{Poisson Distribution}
-The number of events occurring in an interval of time, given an average rate \( \lambda \) of occurrence.
+The number of events occurring in an interval of time, given an average rate $ \lambda $ of occurrence.
 \[ X \sim \Pr(\lambda) \]
 \[ p(x) = \frac{\lambda^x e^{-\lambda}}{x!}, \quad \lambda>0, x=0,1,\dots \]
 \[ \mu = \sigma^2 = \lambda \]
@@ -318,7 +318,7 @@ The number of events occurring in an interval of time, given an average rate \( 
 \]
 
 \subsubsection{Exponential Distribution}
-The waiting time for the next event in a Poisson process with an average rate \( \lambda \).
+The waiting time for the next event in a Poisson process with an average rate $ \lambda $.
 \[ X \sim E(\lambda) \]
 \[
     f(x) = \lambda e^{-\lambda x}, \quad x \geq 0
@@ -338,7 +338,7 @@ Derivation from Poisson:
 \]
 
 \subsubsection{Gamma Distribution}
-The waiting time for the \( r^{th} \) event in a Poisson process with an average rate \( \lambda \).
+The waiting time for the $ r^{th} $ event in a Poisson process with an average rate $ \lambda $.
 \[ X \sim \mathrm{Gamma}(r, \lambda) \]
 \[
     f(x) = \frac{\lambda^r x^{r-1} e^{-\lambda x}}{(r-1)!}, \quad x \geq 0
@@ -377,7 +377,7 @@ Derivation from Poisson:
 \section{Two-dimensional Continuous Random Variable}
 
 \subsection{Probability Distribution Function}
-For two continuous random variables, the Probability Density Function \( f(x,y) \) is defined as:
+For two continuous random variables, the Probability Density Function $ f(x,y) $ is defined as:
 \[
     \Pr((X,Y) \in A) = \iint_{A} f(x,y) dx dy
 \]
@@ -433,8 +433,8 @@ For two continuous random variables, the Probability Density Function \( f(x,y) 
 
 \textbf{Properties:}
 \begin{itemize}
-    \item \( X \sim \mathcal{N}(\mu_1, \sigma_1^2), Y \sim \mathcal{N}(\mu_2, \sigma_2^2) \)
-    \item X and Y are mutually independent iff, \( \rho = 0 \)
+    \item $ X \sim \mathcal{N}(\mu_1, \sigma_1^2), Y \sim \mathcal{N}(\mu_2, \sigma_2^2) $
+    \item X and Y are mutually independent iff, $ \rho = 0 $
 \end{itemize}
 
 \subsection{Standard Bivariate Normal Distribution}
@@ -457,7 +457,7 @@ For two continuous random variables, the Probability Density Function \( f(x,y) 
 \[
     \Delta^2 = (\mathbf{x} - \boldsymbol{\mu})^\top (Q \Lambda^{-1} Q^\top) (\mathbf{x} - \boldsymbol{\mu})
 \]
-Define \( \mathbf{y} = Q^\top (\mathbf{x} - \boldsymbol{\mu}) \):
+Define $ \mathbf{y} = Q^\top (\mathbf{x} - \boldsymbol{\mu}) $:
 \[
     \Delta^2 = \mathbf{y}^\top \Lambda^{-1} \mathbf{y} = \sum_{i=1}^{d} \frac{y_i^2}{\lambda_i}
 \]
@@ -472,24 +472,34 @@ Define \( \mathbf{y} = Q^\top (\mathbf{x} - \boldsymbol{\mu}) \):
 \newpage
 \section{Information Theory}
 
-\subsection{Quantities of Information}
+Let $X$ be a random variable with outcomes in the set $\mathcal{X}$, with $p(x) = \Pr(X=x)$.
+
+\subsection{Self-Information}
+The \textbf{Self-Information} (or surprisal) of an outcome $x \in \mathcal{X}$ is defined as:
 \[
-    I(m) = -\log(p(m))
+    I(x) = -\log_2 p(x)
 \]
 
 \subsection{Entropy}
+The \textbf{Entropy} of $X$ measures the average uncertainty of the random variable.
 \[
-    H(P) = \mathbb{E}[I(X)] = \sum_{i=1}^{n} p_i \cdot I(p_i) = -\sum_{i=1}^{n} p_i \log_2 p_i
+    H(X) = \mathbb{E}[I(X)] = \mathbb{E}[-\log_2 p(X)] = -\sum_{x \in \mathcal{X}} p(x) \log_2 p(x)
 \]
 
-\subsection{KL Divergence}
+\subsection{Cross-Entropy}
+Let $P$ and $Q$ be two probability distributions over $\mathcal{X}$, with PMFs $p(x)$ and $q(x)$ respectively.
+\textbf{Cross-Entropy} measures the average surprisal of events drawn from a true distribution $P$, with a hypothesis distribution $Q$.
 \[
-    D_{KL}(P||Q) = \sum_{i=1}^{n} p_i (I(q_i) - I(p_i)) = (-\sum_{i=1}^{n} p_i \log q_i) - (-\sum_{i=1}^{n} p_i \log p_i)
+    H(P, Q) = \mathbb{E}_p[I_q(X)] = -\sum_{x \in \mathcal{X}} p(x) \log_2 q(x)
 \]
 
-\subsection{Cross Entropy}
+\subsection{Kullback-Leibler (KL) Divergence}
+The \textbf{KL Divergence} (or relative entropy) of $Q$ from $P$ measures the extra average surprisal caused by the divergence of $Q$ from $P$.
 \[
-    H(P, Q) = -\sum_{i=1}^{n} p_i \log q_i
+    D_{KL}(P||Q) = H(P, Q) - H(P)
+\]
+\[
+    D_{KL}(P||Q) = \mathbb{E}_p\left[\log_2 \frac{p(X)}{q(X)}\right] = \sum_{x \in \mathcal{X}} p(x) \log_2 \frac{p(x)}{q(x)}
 \]
 
 \end{document}
