@@ -35,7 +35,7 @@
     \item $\text{Var}(\overline{X}) = \frac{\sigma^2}{n}$
 \end{itemize}
 
-\subsection{Sample Variance (Unbiased)}
+\subsection{Sample Variance}
 \[
     S^2 = \frac{1}{n-1}\sum_{i=1}^{n}(X_i - \overline{X})^2 = \frac{1}{n-1}\left(\sum_{i=1}^{n} X_i^2 - n\overline{X}^2\right)
 \]
@@ -44,22 +44,79 @@
     \item $\mathbb{E}[S^2] = \sigma^2$
 \end{itemize}
 
+\subsection{Sample Covariance}
+\[
+    S_{XY} = \frac{1}{n-1}\sum_{i=1}^{n}(X_i - \overline{X})(Y_i - \overline{Y})
+\]
+\textbf{Properties:}
+\begin{itemize}
+    \item $\mathbb{E}[S_{XY}] = \operatorname{Cov}(X,Y)$
+\end{itemize}
+
+\subsection{Sample Covariance Matrix}
+\[
+    S = \frac{1}{n-1}\sum_{i=1}^{n}(\mathbf{X}_i - \overline{\mathbf{X}})(\mathbf{X}_i - \overline{\mathbf{X}})^\top
+\]
+\textbf{Properties:}
+\begin{itemize}
+    \item $\mathbb{E}[S] = \Sigma$
+\end{itemize}
+
+\subsection{Principal Component Analysis (PCA)}
+
+\textbf{Objective:} Find the \textbf{Best Fitting Subspace (BFS)} that minimizes the reconstruction error (squared distance from data points to the subspace).
+\newline
+\textbf{Data matrix} $X \in \mathbb{R}^{n \times d}$:
+\[
+    X =
+    \begin{bmatrix}
+        - \mathbf{x}_1^T - \\
+        \vdots \\
+        - \mathbf{x}_n^T -
+    \end{bmatrix}
+\]
+\textbf{Centered Data Matrix} $B$:
+\[
+    B = X - \overline{X}
+\]
+\newline
+\textbf{SVD} of $B$:
+\[
+    B = U \Sigma V^T
+\]
+The best-fitting $k$-dimensional subspace is spanned by the first $k$ principal components $\mathbf{v}_1, \dots, \mathbf{v}_d$:
+\[
+    \text{span}(\mathbf{v}_1, \dots, \mathbf{v}_k)
+\]
+\subsubsection{Derivation}
+
+By Pythagorean theorem, minimizing reconstruction error is equivalent to maximizing the variance of projections.
+\newline
+\textbf{Sample Covariance Matrix} $S$:
+\[
+    S = \frac{1}{n-1} B^T B
+\]
+\textbf{Spectral Decomposition} of Covariance Matrix:
+\[
+    S = \frac{1}{n-1} (U \Sigma V^T)^T (U \Sigma V^T) = V \left( \frac{\Sigma^T \Sigma}{n-1} \right) V^T
+\]
+where $\displaystyle \lambda_i = \frac{\sigma_i^2}{n-1}$ and $S \mathbf{v}_{i} = \mathbf{v}_{i} \lambda_i$.
+\newline
+Project Centered Data Matrix onto $\mathbf{v}$:
+\[
+    \text{Var}(B\mathbf{v}) = \frac{1}{n-1} \| B\mathbf{v} \|_2^2 = \frac{1}{n-1} \mathbf{v}^T B^T B \mathbf{v} = \mathbf{v}^T S \mathbf{v}
+\]
+Project Centered Data Matrix onto Right Singular Vectors:
+\[
+    \text{Var}(B\mathbf{v}_i) = \mathbf{v}_i^T S \mathbf{v}_i = \mathbf{v}_i^T \lambda_i \mathbf{v}_i = \lambda_i = \frac{\sigma_i^2}{n-1}
+\]
+By the orthogonality of the principal components, maximizing the total projected variance is equivalent to maximizing the variances along each individual principal component direction.
+
 \subsection{Central Limit Theorem}
 
 Let $X_1, X_2, \ldots, X_n$ be i.i.d. (independent and identically distributed) random variables with mean $\mu$ and variance $\sigma^2$:
 \[
     \overline{X}_n \overset{d}{\rightarrow} \mathcal{N}\left(\mu, \frac{\sigma^2}{n}\right) \text{ as } n \rightarrow \infty
-\]
-
-\subsection{Order Statistics}
-
-\textbf{Maximum:}
-\[
-    F_{\max}(x) = P\left(\max(X_1, X_2, \ldots, X_n) \leq x\right) = F^n(x)
-\]
-\textbf{Minimum:}
-\[
-    F_{\min}(x) = P\left(\min(X_1, X_2, \ldots, X_n) \leq x\right) = 1 - (1 - F(x))^n
 \]
 
 
@@ -160,13 +217,14 @@ The Moment Generating Function is the Laplace Transform of the Probability Densi
     M_X(t) = \mathbb{E}[e^{tX}] = \sum_{n=0}^{\infty} \frac{\mu_n' t^n}{n!}
 \]
 
-\subsection{Maximum Likelihood Estimation}
-\[
-    \hat{\theta} = \arg\max_\theta L(\theta)
-\]
-where the likelihood function is:
+\subsection{Maximum Likelihood Estimation (MLE)}
+Likelihood Function:
 \[
     L(\theta) = \prod_{i=1}^{n} p(x_i|\theta)
+\]
+Maximum Likelihood:
+\[
+    \hat{\theta} = \arg\max_\theta L(\theta)
 \]
 Log likelihood:
 \[
@@ -184,15 +242,15 @@ For a \textbf{Linear Regression} model in matrix form:
 \]
 where $\mathbf{b} \notin \text{Col}(A)$ and $\boldsymbol{\epsilon} = \mathbf{b} - A\mathbf{x} \sim \mathcal{N}(\mathbf{0}, \sigma^2 I)$.
 \newline
-The optimal approximate solution (set) is found by minimizing the \textbf{Ordinary Least Squares}:
+By MLE, the optimal approximate solution (set) is found by minimizing the \textbf{Ordinary Least Squares (OLS)}:
 \[
     \min_{\mathbf{x}} \|A\mathbf{x} - \mathbf{b}\|^2
 \]
 
-\subsubsection{Ridge Regression (L2 Regularization)}
+\subsubsection{Ridge Regression (OLS + L2 Regularization)}
 \textbf{Ridge Regression} is a regularized version of Linear Regression that uses \textbf{L2 Regularization}.
 \newline
-In the framework of Maximum A Posteriori (MAP) estimation, assume prior distribution $\mathbf{x} \sim \mathcal{N}(\mathbf{0}, \tau^2 I)$, the optimal solution of Ordinary Least Square is found by:
+In Maximum A Posteriori (MAP) estimation framework, assume prior distribution $\mathbf{x} \sim \mathcal{N}(\mathbf{0}, \tau^2 I)$. By MLE, the optimal solution of OLS is found by:
 \[
     \min_{\mathbf{x}} \|A\mathbf{x} - \mathbf{b}\|^2 + \lambda\|\mathbf{x}\|_2^2
 \]
