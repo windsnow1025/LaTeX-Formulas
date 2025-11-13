@@ -126,7 +126,7 @@
 \begin{itemize}
     \item $ \mathbb{E}[c] = c $
     \item $ \mathbb{E}[aX+bY] = a\mathbb{E}[X] + b\mathbb{E}[Y] $
-    \item $ \mathbb{E}[XY] = \mathbb{E}[X]\mathbb{E}[Y] + \text{Cov}(X,Y) $
+    \item $ \mathbb{E}[XY] = \mathbb{E}[X]\mathbb{E}[Y] + \operatorname{cov}(X,Y) $
     \item $ \mathbb{E}[(X-a)^2] = (\mathbb{E}[X]-a)^2 + \text{Var}(X) $
     \item $ X, Y $ i.i.d. with $ \sigma^2 $: $ \mathbb{E}[(X-Y)^2] = 2\sigma^2 $
 \end{itemize}
@@ -150,7 +150,7 @@
     \item $ Var(c) = 0 $
     \item $ Var(cX) = c^2 Var(X) $
     \item $ Var(X+c) = Var(X) $
-    \item $ Var(X \pm Y) = Var(X) + Var(Y) \pm 2\text{Cov}(X,Y) $
+    \item $ Var(X \pm Y) = Var(X) + Var(Y) \pm 2\operatorname{cov}(X,Y) $
 \end{itemize}
 
 \subsection{Standard Deviation}
@@ -160,30 +160,30 @@
 
 \subsection{Covariance}
 \[
-    \text{Cov}(X,Y) = \mathbb{E}[(X-\mathbb{E}[X])(Y-\mathbb{E}[Y])] = \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y]
+    \operatorname{cov}(X,Y) = \mathbb{E}[(X-\mathbb{E}[X])(Y-\mathbb{E}[Y])] = \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y]
 \]
 \textbf{Properties:}
 \begin{itemize}
-    \item $ \text{Cov}(X, X) = \text{Var}(X) $
-    \item $ \text{Cov}(X,Y) = \text{Cov}(Y,X) $
-    \item $ \text{Cov}(aX, bY) = ab\,\text{Cov}(X,Y) $
-    \item $ \text{Cov}(c,X) = 0 $
-    \item $ \text{Cov}(X_1+X_2, Y) = \text{Cov}(X_1,Y) + \text{Cov}(X_2,Y) $
-    \item If X and Y are mutually independent, $ \text{Cov}(X,Y) = 0 $
+    \item $ \operatorname{cov}(X, X) = \text{Var}(X) $
+    \item $ \operatorname{cov}(X,Y) = \operatorname{cov}(Y,X) $
+    \item $ \operatorname{cov}(aX, bY) = ab\,\operatorname{cov}(X,Y) $
+    \item $ \operatorname{cov}(c,X) = 0 $
+    \item $ \operatorname{cov}(X_1+X_2, Y) = \operatorname{cov}(X_1,Y) + \operatorname{cov}(X_2,Y) $
+    \item If X and Y are mutually independent, $ \operatorname{cov}(X,Y) = 0 $
 \end{itemize}
 
 \subsection{Covariance Matrix}
 \[
-    \Sigma = E[(X - E[X])(X - E[X])^T]
+    \operatorname{cov}(\mathbf{X}) = \Sigma = E[(\mathbf{X} - E[\mathbf{X}])(\mathbf{X} - E[\mathbf{X}])^T]
 \]
 \textbf{Properties:}
 \begin{itemize}
-    \item $\text{Cov}(AX + b) = A \, \text{Cov}(X) \, A^T$
+    \item $\operatorname{cov}(A\mathbf{X} + b) = A \, \operatorname{cov}(\mathbf{X}) \, A^T$
 \end{itemize}
 
 \subsection{Correlation Coefficient}
 \[
-    \rho_{X,Y} = \frac{\text{Cov}(X,Y)}{\sigma_X\sigma_Y}
+    \rho_{X,Y} = \frac{\operatorname{cov}(X,Y)}{\sigma_X\sigma_Y}
 \]
 \textbf{Properties:}
 \begin{itemize}
