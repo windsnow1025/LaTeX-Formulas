@@ -83,10 +83,11 @@ Apply transformation $B$, then apply transformation $A$.
 \[
     (AB)_{*j} = A\mathbf{b}_j
 \]
-Inner Product view: expanded form~\ref{eq:mul_inner}.
-\newline
-Outer Product view: expanded form~\ref{eq:mul_outer}.
-\newline
+\begin{itemize}
+    \item Inner Product view: expanded form~\ref{eq:mul_inner}.
+    \item Outer Product view: expanded form~\ref{eq:mul_outer}.
+    \item Column-wise view: expanded form~\ref{eq:mul_colwise}.
+\end{itemize}
 \textbf{Associative Law:}
 \[
     (AB)C = A(BC)
@@ -285,11 +286,21 @@ All column vectors are unit vectors and orthogonal to each other.
 
 \subsection{Eigenvector \& Eigenvalue}
 
-A unit \textbf{Eigenvector} $\|\mathbf{v}\| = 1$ of a matrix $A \in \mathbb{R}^{n \times n}$ is scaled by its corresponding \textbf{Eigenvalue} $\lambda$ when the transformation $A$ is applied.
+An unit \textbf{Eigenvector} $\|\mathbf{v}\| = 1$ of a Symmetric Matrix $A \in \mathbb{R}^{n \times n}$ is scaled by its corresponding \textbf{Eigenvalue} $\lambda$ when the transformation $A$ is applied.
 \[
     A\mathbf{v} = \lambda \mathbf{v}
 \]
-Calculation:
+\textbf{Matrix Form:}
+\[
+    AV = V\Lambda
+\]
+where:
+\begin{itemize}
+    \item $V$ is a matrix whose columns are the Eigenvectors of $A$.
+    \item $\Lambda$ is a diagonal matrix whose diagonal entries are the Eigenvalues $A$.
+\end{itemize}
+\newline
+\textbf{Calculation:}
 \[
     \det(A - \lambda I) = 0
 \]
@@ -314,7 +325,7 @@ where:
 
 \subsection{Eigen Decomposition}
 
-Square matrix $A \in \mathbb{R}^{n \times n}$ can be decomposed as ($A$ is \textbf{similar} to $D$):
+Square matrix $A \in \mathbb{R}^{n \times n}$ can be decomposed as ($A$ is \textbf{similar} to $\Lambda$):
 \[
     A = P \Lambda P ^{-1}
 \]
@@ -334,30 +345,36 @@ where:
 
 \subsubsection{Singular Vector \& Singular Value}
 For any matrix $A \in \mathbb{R}^{m \times n}$ with rank $r$:
+
 \begin{itemize}
-    \item \textbf{Singular Values:} $\sigma_1 \geq \cdots \geq \sigma_r > 0$ represent the scaling factors along the principal directions of the transformation.
-    \item \textbf{Right Singular Vectors (Column Vectors of $V$):} Orthonormal basis for the Domain subspaces:
+    \item \textbf{Right Singular Vectors:} The columns of $V$ are the orthonormal eigenvectors of $A^T A$.
+    \[
+        A^T A V = V \Lambda
+    \]
+    where $\Lambda$ is a diagonal matrix of the eigenvalues of $A^T A$.
+    \item \textbf{Left Singular Vectors:} The columns of $U$ are the orthonormal eigenvectors of $AA^T$.
+    \[
+        AA^T U = U \Lambda
+    \]
+    where $\Lambda$ is a diagonal matrix of the eigenvalues of $AA^T$.
+    \item \textbf{Singular Values:} The square roots of the non-zero eigenvalues of both $A^T A$ and $AA^T$.
+    \[
+        \Sigma_{ii} = \sqrt{\Lambda_{ii}}
+    \]
+\end{itemize}
+\textbf{Geometric Interpretation:}
+\begin{itemize}
+    \item \textbf{Right Singular Vectors:} Orthonormal basis for the Domain subspaces:
         \begin{itemize}
             \item First $r$ columns of $V$: orthonormal basis for $\text{Row}(A)$
             \item Last $n-r$ columns of $V$: orthonormal basis for $\ker(A)$
         \end{itemize}
-    \item \textbf{Left Singular Vectors (Column Vectors of $U$):} Orthonormal basis for the Codomain subspaces:
+    \item \textbf{Left Singular Vectors:} Orthonormal basis for the Codomain subspaces:
         \begin{itemize}
             \item First $r$ columns of $U$: orthonormal basis for $\text{Col}(A)$
             \item Last $m-r$ columns of $U$: orthonormal basis for $\operatorname{coker}(A)$
         \end{itemize}
-\end{itemize}
-\textbf{Relationship to Eigen Decomposition:}
-\begin{itemize}
-    \item \textbf{Right Singular Vectors:}  Orthonormal eigenvectors of $A^T A$.
-    \item \textbf{Left Singular Vectors:} Orthonormal eigenvectors of $AA^T$.
-    \item \textbf{Singular Values:}
-    \[
-        A^T A \mathbf{v}_i = \lambda_i \mathbf{v}_i \quad \text{and} \quad \sigma_i = \sqrt{\lambda_i}
-    \]
-    \[
-        AA^T \mathbf{u}_i = \lambda_i \mathbf{u}_i \quad \text{and} \quad \sigma_i = \sqrt{\lambda_i}
-    \]
+    \item \textbf{Singular Values:} Scaling factors along the principal directions of the transformation.
 \end{itemize}
 
 \subsubsection{SVD Formula}
@@ -813,6 +830,27 @@ where $M_{ij}$ is the determinant of the submatrix obtained by removing the $i$-
         =
         \mathbf{a}_1 \mathbf{b}_1^T + \mathbf{a}_2 \mathbf{b}_2^T + \cdots + \mathbf{a}_n \mathbf{b}_n^T
         \label{eq:mul_outer}
+    \end{equation}
+
+    \item \textbf{Matrix-Matrix Multiplication - Column-wise View:}
+    \begin{equation}
+        A B = A
+        \left[
+            \begin{array}{ccc}
+                | &        & | \\
+                \mathbf{b}_1 & \cdots & \mathbf{b}_n \\
+                | &        & |
+            \end{array}
+        \right]
+        =
+        \left[
+            \begin{array}{ccc}
+                | &        & | \\
+                A\mathbf{b}_1 & \cdots & A\mathbf{b}_n \\
+                | &        & |
+            \end{array}
+        \right]
+        \label{eq:mul_colwise}
     \end{equation}
 
     \item \textbf{Transpose:}
