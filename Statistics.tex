@@ -101,7 +101,7 @@
     \arg\min_{W} \text{cost}(W) = \arg\max_{W = \text{span}(\{\mathbf{q}_j\}_{j=1}^{k})} \sum_{j=1}^{k} \text{gain}(\mathbf{q}_j)
 \]
 
-\subsection{PCA}
+\subsubsection{PCA}
 
 \textbf{Objective:} Find the $k$-BFS for centered data.
 \newline
@@ -123,40 +123,41 @@
 \[
     B = U \Sigma V^T
 \]
-The $k$-BFS is spanned by the first $k$ principal components:
+The $k$-BFS is spanned by the first $k$ \textbf{Principal Components}:
 \[
     W = \text{span}(\{\mathbf{v}_i\}_{i=1}^{k})
 \]
+where $\mathbf{v}_i$ are the \textbf{Right Singular Vectors}.
 
 \subsubsection{Derivation}
 
 \begin{enumerate}
-    \item Minimizing reconstruction error is equivalent to maximizing the sum of squared projections onto the Orthonormal Basis vectors.
+    \item Let $W = \text{span}(\{\mathbf{v}_j\}_{j=1}^{k})$ where $\{\mathbf{v}_j\}_{j=1}^{k}$ is an Orthonormal Basis.
     \[
-        \arg\min_{W} \text{cost}(W) = \sum_{j=1}^{k} \sum_{i=1}^{n} \langle \mathbf{b}_i, \mathbf{v}_j \rangle^2
+        \arg\min_{W} \text{cost}(W) = \arg\max_{W} \sum_{j=1}^{k} \sum_{i=1}^{n} \langle \mathbf{b}_i, \mathbf{v}_j \rangle^2
     \]
     \[
         \sum_{i=1}^{n} \langle \mathbf{b}_i, \mathbf{v}_j \rangle^2 = \|B\mathbf{v}_j\|^2
     \]
     \[
-        \arg\min_{W} \text{cost}(W) = \sum_{i=1}^{k} \|B\mathbf{v}_i\|^2 = \sum_{i=1}^{k} \text{Var}(B\mathbf{v}_i)
+        \arg\min_{W} \text{cost}(W) = \arg\max_{W} \sum_{i=1}^{k} \|B\mathbf{v}_i\|^2 = \arg\max_{W} \sum_{i=1}^{k} \text{Var}(B\mathbf{v}_i)
     \]
 
-    \item \textbf{Spectral Decomposition} of \textbf{Sample Covariance Matrix}:
+    \item \textbf{Variance} of Projection:
     \[
         S = \frac{1}{n-1} B^T B
     \]
     \[
+        \text{Var}(B\mathbf{v}_i) = \frac{1}{n-1} \| B\mathbf{v}_i \|_2^2 = \frac{1}{n-1} \mathbf{v}{_i}^T B^T B \mathbf{v}_i = \mathbf{v}_i^T S \mathbf{v}_i
+    \]
+
+    \item \textbf{Spectral Decomposition} of \textbf{Sample Covariance Matrix}:
+    \[
         S = \frac{1}{n-1} (U \Sigma V^T)^T (U \Sigma V^T) = V \left( \frac{\Sigma^T \Sigma}{n-1} \right) V^T
     \]
-    where $\displaystyle \lambda_i = \frac{\sigma_i^2}{n-1}$ and $S \mathbf{v}_{i} = \mathbf{v}_{i} \lambda_i$.
-
-    \item Project Centered Data Matrix onto a vector $\mathbf{v}$:
-    \[
-        \text{Var}(B\mathbf{v}) = \frac{1}{n-1} \| B\mathbf{v} \|_2^2 = \frac{1}{n-1} \mathbf{v}^T B^T B \mathbf{v} = \mathbf{v}^T S \mathbf{v}
-    \]
-
-    \item Project Centered Data Matrix onto Right Singular Vectors:
+    where $S \mathbf{v}_{i} = \mathbf{v}_{i} \lambda_i$ and $\displaystyle \lambda_i = \frac{\sigma_i^2}{n-1}$.
+    \newline
+    Let $\mathbf{v}_i$ be \textbf{Right Singular Vectors}:
     \[
         \text{Var}(B\mathbf{v}_i) = \mathbf{v}_i^T S \mathbf{v}_i = \mathbf{v}_i^T \lambda_i \mathbf{v}_i = \lambda_i = \frac{\sigma_i^2}{n-1}
     \]
