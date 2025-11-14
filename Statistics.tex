@@ -66,40 +66,74 @@
 
 \subsubsection{Best Fitting Subspace (BFS)}
 
-\textbf{Target:}
-\[
-    \arg\min_{W} \text{cost}(W)
-\]
-\textbf{Cost Function:}
-\[
-    \text{cost}(W) = \sum_{i=1}^{n} \|\mathbf{a}_i - P_W \mathbf{a}_i\|^2
-\]
-\textbf{By Pythagorean Theorem:}
-\[
-    \|\mathbf{a}_i - P_W \mathbf{a}_i\|^2 = \|\mathbf{a}_i\|^2 - \|P_W \mathbf{a}_i\|^2
-\]
-\[
-    \text{cost}(W) = \sum_{i=1}^{n} \|\mathbf{a}_i\|^2 - \sum_{i=1}^{n} \|P_W \mathbf{a}_i\|^2
-\]
-\textbf{Define Gain:}
-\[
-    \text{gain}(W) = \sum_{i=1}^{n} \|P_W \mathbf{a}_i\|^2
-\]
-\textbf{Orthonormal Basis} $\{\mathbf{q}_j\}_{j=1}^{k}$ for $W$:
-\[
-    \text{gain}(\{\mathbf{q}_j\}_{j=1}^{k}) = \sum_{i=1}^{n} \|P_W \mathbf{a}_i\|^2
-\]
-\textbf{By Parseval's Identity:}
-\[
-    \|P_W \mathbf{a}_i\|^2 = \sum_{j=1}^{k} \langle \mathbf{a}_i, \mathbf{q}_j \rangle^2
-\]
-\[
-    \text{gain}(\{\mathbf{q}_j\}_{j=1}^{k}) = \sum_{i=1}^{n} \sum_{j=1}^{k} \langle \mathbf{a}_i, \mathbf{q}_j \rangle^2 = \sum_{j=1}^{k} \sum_{i=1}^{n} \langle \mathbf{a}_i, \mathbf{q}_j \rangle^2 = \sum_{j=1}^{k} \text{gain}(\mathbf{q}_j)
-\]
-\textbf{Therefore:}
-\[
-    \arg\min_{W} \text{cost}(W) = \arg\max_{W = \text{span}(\{\mathbf{q}_j\}_{j=1}^{k})} \sum_{j=1}^{k} \text{gain}(\mathbf{q}_j)
-\]
+\begin{enumerate}
+    \item \textbf{Objective:}
+    \[
+        \arg\min_{W} \text{cost}(W)
+    \]
+    where \textbf{Cost Function:}
+    \[
+        \text{cost}(W) = \sum_{i=1}^{n} \|\mathbf{a}_i - P_W \mathbf{a}_i\|^2
+    \]
+
+    \item By the \textbf{Pythagorean Theorem:}
+    \[
+        \|\mathbf{a}_i - P_W \mathbf{a}_i\|^2 = \|\mathbf{a}_i\|^2 - \|P_W \mathbf{a}_i\|^2
+    \]
+    \[
+        \sum_{i=1}^{n} \|\mathbf{a}_i - P_W \mathbf{a}_i\|^2 = \sum_{i=1}^{n} \|\mathbf{a}_i\|^2 - \sum_{i=1}^{n} \|P_W \mathbf{a}_i\|^2
+    \]
+
+    \item Let $\{\mathbf{q}_j\}_{j=1}^{k}$ be an \textbf{orthonormal basis} for $W$.
+    By \textbf{Parseval's Identity:}
+    \[
+        \|P_W \mathbf{a}_i\|^2 = \sum_{j=1}^{k} \langle \mathbf{a}_i, \mathbf{q}_j \rangle^2
+    \]
+    \[
+        \sum_{i=1}^{n} \|P_W \mathbf{a}_i\|^2
+        = \sum_{i=1}^{n} \sum_{j=1}^{k} \langle \mathbf{a}_i, \mathbf{q}_j \rangle^2
+        = \sum_{j=1}^{k} \sum_{i=1}^{n} \langle \mathbf{a}_i, \mathbf{q}_j \rangle^2
+    \]
+
+    \item Define Matrix $A$:
+    \[
+        A =
+        \begin{bmatrix}
+            - \mathbf{a}_1^T - \\
+            \vdots \\
+            - \mathbf{a}_n^T -
+        \end{bmatrix}
+    \]
+    \[
+        \sum_{i=1}^{n} \langle \mathbf{a}_i, \mathbf{q}_j \rangle^2 = \|A\mathbf{q}_j\|^2 = \mathbf{q}{_i}^T A^T A \mathbf{q}_i
+    \]
+
+    \item New Objective Function:
+    \[
+        \arg\min_{W} \text{cost}(W) = \arg\max_{W} \sum_{j=1}^{k} \mathbf{q}{_i}^T A^T A \mathbf{q}_i
+    \]
+
+    \item \textbf{Greedy Algorithm:}
+    \newline
+    Object: \textbf{Conditional Maximization:}
+    \[
+        \arg\max_{\|\mathbf{q}\|=1} \mathbf{q}^T A^T A \mathbf{q}
+    \]
+    By \textbf{Lagrange Multiplier Method}:
+    \[
+        \mathcal{L}(\mathbf{q}_i, \lambda) = \mathbf{q}_i^T A^T A \mathbf{q}_i - \lambda(\mathbf{q}_i^T \mathbf{q}_i - 1)
+    \]
+    \[
+        \frac{\partial \mathcal{L}}{\partial \mathbf{q}_i} = 2 A^T A \mathbf{q}_i - 2\lambda\mathbf{q}_i = \mathbf{0}
+    \]
+    \[
+        A^T A \mathbf{q}_i = \lambda\mathbf{q}_i
+    \]
+    i.e., $\mathbf{q}_i$ are \textbf{Eigenvectors} of $A^T A$.
+    \[
+        \mathbf{q}_i^T A^T A \mathbf{q}_i = \mathbf{q}_i^T \lambda \mathbf{q}_i = \lambda
+    \]
+\end{enumerate}
 
 \subsubsection{PCA}
 
@@ -132,18 +166,12 @@ where $\mathbf{v}_i$ are the \textbf{Right Singular Vectors}.
 \subsubsection{Derivation}
 
 \begin{enumerate}
-    \item Let $W = \text{span}(\{\mathbf{v}_j\}_{j=1}^{k})$ where $\{\mathbf{v}_j\}_{j=1}^{k}$ is an Orthonormal Basis.
-    \[
-        \arg\min_{W} \text{cost}(W) = \arg\max_{W} \sum_{j=1}^{k} \sum_{i=1}^{n} \langle \mathbf{b}_i, \mathbf{v}_j \rangle^2
-    \]
-    \[
-        \sum_{i=1}^{n} \langle \mathbf{b}_i, \mathbf{v}_j \rangle^2 = \|B\mathbf{v}_j\|^2
-    \]
+    \item Let $\{\mathbf{v}_j\}_{j=1}^{k}$ be \textbf{Orthonormal Basis} for $W$.
     \[
         \arg\min_{W} \text{cost}(W) = \arg\max_{W} \sum_{i=1}^{k} \|B\mathbf{v}_i\|^2 = \arg\max_{W} \sum_{i=1}^{k} \text{Var}(B\mathbf{v}_i)
     \]
 
-    \item \textbf{Variance} of Projection:
+    \item \textbf{Variance of Projection:}
     \[
         S = \frac{1}{n-1} B^T B
     \]
@@ -151,21 +179,43 @@ where $\mathbf{v}_i$ are the \textbf{Right Singular Vectors}.
         \text{Var}(B\mathbf{v}_i) = \frac{1}{n-1} \| B\mathbf{v}_i \|_2^2 = \frac{1}{n-1} \mathbf{v}{_i}^T B^T B \mathbf{v}_i = \mathbf{v}_i^T S \mathbf{v}_i
     \]
 
+    \item \textbf{Maximize the Projection:}
+    \[
+        \arg\max_{\|\mathbf{v}\|=1} \mathbf{v}^T S \mathbf{v}
+    \]
+    By \textbf{Lagrange Multiplier Method}:
+    \[
+        \mathcal{L}(\mathbf{v}_i, \lambda) = \mathbf{v}_i^T S \mathbf{v}_i - \lambda(\mathbf{v}_i^T \mathbf{v}_i - 1)
+    \]
+    \[
+        \frac{\partial \mathcal{L}}{\partial \mathbf{v}_i} = 2S\mathbf{v}_i - 2\lambda\mathbf{v}_i = \mathbf{0}
+    \]
+    \[
+        S\mathbf{v}_i = \lambda\mathbf{v}_i
+    \]
+    i.e., $\mathbf{v}_i$ are \textbf{Eigenvectors} of $S$.
+    \[
+        \text{Var}(B\mathbf{v}_i) = \mathbf{v}_i^T S \mathbf{v}_i = \mathbf{v}_i^T \lambda \mathbf{v}_i = \lambda
+    \]
+
     \item \textbf{Spectral Decomposition} of \textbf{Sample Covariance Matrix}:
     \[
         S = \frac{1}{n-1} (U \Sigma V^T)^T (U \Sigma V^T) = V \left( \frac{\Sigma^T \Sigma}{n-1} \right) V^T
     \]
-    where $S \mathbf{v}_{i} = \mathbf{v}_{i} \lambda_i$ and $\displaystyle \lambda_i = \frac{\sigma_i^2}{n-1}$.
-    \newline
-    Let $\mathbf{v}_i$ be \textbf{Right Singular Vectors}:
+    where $S \mathbf{v}_{i} = \mathbf{v}_{i} \lambda_i$ and $\displaystyle \lambda_i = \frac{\sigma_i^2}{n-1}$, $\mathbf{v}_i$ are \textbf{Right Singular Vectors} of $B$.
     \[
-        \text{Var}(B\mathbf{v}_i) = \mathbf{v}_i^T S \mathbf{v}_i = \mathbf{v}_i^T \lambda_i \mathbf{v}_i = \lambda_i = \frac{\sigma_i^2}{n-1}
+        \text{Var}(B\mathbf{v}_i) = \lambda = \frac{\sigma^2}{n-1}
+    \]
+
+    \item \textbf{Therefore:}
+    \[
+        \arg\min_{W} \text{cost}(W) = \arg\max_{W} \sum_{i=1}^{k} \sigma_i^2
     \]
 \end{enumerate}
 
 \subsection{Central Limit Theorem}
 
-Let $X_1, X_2, \ldots, X_n$ be i.i.d. (independent and identically distributed) random variables with mean $\mu$ and variance $\sigma^2$:
+Let $\{X_i\}_{i=1}^{n}$ be i.i.d. (independent and identically distributed) random variables with mean $\mu$ and variance $\sigma^2$:
 \[
     \overline{X}_n \overset{d}{\rightarrow} \mathcal{N}\left(\mu, \frac{\sigma^2}{n}\right) \text{ as } n \rightarrow \infty
 \]
