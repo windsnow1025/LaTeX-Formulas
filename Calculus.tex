@@ -221,18 +221,38 @@ Let $h = x - a$:
     \cos x = \sum_{n=0}^{\infty} \frac{(-1)^n}{(2n)!} x^{2n}
 \]
 
+\subsection{Optimization}
+
+\subsubsection{Extrema}
+
+\[
+    y' = 0
+\]
+
+\subsubsection{Conditional Extrema}
+
+Find $x$ such that $f(x)$ is extremal, subject to $g(x) = 0$.
+\newline
+\textbf{Lagrangian Function:}
+\[
+    \mathcal{L}(x, \lambda) = f(x) + \lambda g(x).
+\]
+where $\lambda$ is the \textbf{Lagrange Multiplier}.
+\newline
+Solve:
+\[
+    \begin{cases}
+        \frac{\partial \mathcal{L}}{\partial x} = f'(x) + \lambda g'(x) = 0 \\
+        \frac{\partial \mathcal{L}}{\partial \lambda} = g(x) = 0
+    \end{cases}
+\]
+
 \subsection{Applications for Derivatives}
 
 \subsubsection{Tangent Line Equation}
 
 \[
     y - y_0 = y'(x - x_0)
-\]
-
-\subsubsection{Extrema}
-
-\[
-    y' = 0
 \]
 
 \subsubsection{Arc Length}
@@ -706,6 +726,39 @@ Let $\mathbf{h} = \mathbf{x} - \mathbf{a}$:
     f(\mathbf{a} + \mathbf{h}) \approx f(\mathbf{a}) + \nabla f(\mathbf{a})^T \mathbf{h} + \frac{1}{2} \mathbf{h}^T \mathbf{H}(\mathbf{a}) \mathbf{h}
 \]
 
+\subsection{Optimization}
+
+\subsubsection{Critical Points}
+
+\[
+    \nabla f = \mathbf{0}
+\]
+
+\begin{itemize}
+    \item \textbf{Local Minimum}: $\mathbf{H} \succ 0$ (all eigenvalues $> 0$)
+    \item \textbf{Local Maximum}: $\mathbf{H} \prec 0$ (all eigenvalues $< 0$)
+    \item \textbf{Saddle Point}: $\mathbf{H}$ has both positive and negative eigenvalues
+    \item \textbf{Degenerate}: $\mathbf{H}$ has zero eigenvalues
+\end{itemize}
+
+\subsubsection{Conditional Extrema}
+
+Find $\mathbf{x}$ such that $f(\mathbf{x})$ is extremal, subject to $g(\mathbf{x}) = 0$.
+\newline
+\textbf{Lagrangian Function:}
+\[
+    \mathcal{L}(\mathbf{x}, \lambda) = f(\mathbf{x}) + \langle \lambda, g(\mathbf{x}) \rangle
+\]
+where $\lambda$ is the \textbf{Lagrange Multiplier}.
+\newline
+Solve:
+\[
+    \begin{cases}
+        \frac{\partial \mathcal{L}}{\partial \mathbf{x}} = f'(\mathbf{x}) + \lambda g'(\mathbf{x}) = \mathbf{0} \\
+        \frac{\partial \mathcal{L}}{\partial \lambda} = g(\mathbf{x}) = 0
+    \end{cases}
+\]
+
 \subsection{Applications for Bivariable Derivatives}
 
 \subsubsection{Tangent Line Equation}
@@ -740,32 +793,6 @@ Let $\mathbf{h} = \mathbf{x} - \mathbf{a}$:
 For $F(x, y, z) = 0$:
 \[
     F_x'(x_0, y_0, z_0)(x - x_0) + F_y'(x_0, y_0, z_0)(y - y_0) + F_z'(x_0, y_0, z_0)(z - z_0) = 0
-\]
-
-\subsubsection{Critical Points}
-
-\[
-    \nabla f = \mathbf{0}
-\]
-
-\begin{itemize}
-    \item \textbf{Local Minimum}: $\mathbf{H} \succ 0$ (all eigenvalues $> 0$)
-    \item \textbf{Local Maximum}: $\mathbf{H} \prec 0$ (all eigenvalues $< 0$)
-    \item \textbf{Saddle Point}: $\mathbf{H}$ has both positive and negative eigenvalues
-    \item \textbf{Degenerate}: $\mathbf{H}$ has zero eigenvalues
-\end{itemize}
-
-\subsubsection{Conditional Extrema}
-
-\[
-    L(x, y) = f(x, y) + \lambda \phi(x, y)
-\]
-\[
-    \begin{cases}
-        L_x'(x, y) = 0 \\
-        L_y'(x, y) = 0 \\
-        \phi(x, y) = 0
-    \end{cases}
 \]
 
 \subsection{Multiple Integrals}
