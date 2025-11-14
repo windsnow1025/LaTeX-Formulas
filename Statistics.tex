@@ -64,7 +64,46 @@
 
 \subsection{Principal Component Analysis (PCA)}
 
-\textbf{Objective:} Find the \textbf{Best Fitting Subspace (BFS)} that minimizes the reconstruction error (squared distance from data points to the subspace).
+\subsubsection{Best Fitting Subspace (BFS)}
+
+\textbf{Target:}
+\[
+    \arg\min_{W} \text{cost}(W)
+\]
+\textbf{Cost Function:}
+\[
+    \text{cost}(W) = \sum_{i=1}^{n} \|\mathbf{a}_i - P_W \mathbf{a}_i\|^2
+\]
+\textbf{By Pythagorean Theorem:}
+\[
+    \|\mathbf{a}_i - P_W \mathbf{a}_i\|^2 = \|\mathbf{a}_i\|^2 - \|P_W \mathbf{a}_i\|^2
+\]
+\[
+    \text{cost}(W) = \sum_{i=1}^{n} \|\mathbf{a}_i\|^2 - \sum_{i=1}^{n} \|P_W \mathbf{a}_i\|^2
+\]
+\textbf{Define Gain:}
+\[
+    \text{gain}(W) = \sum_{i=1}^{n} \|P_W \mathbf{a}_i\|^2
+\]
+\textbf{Orthonormal Basis} $\{\mathbf{q}_j\}_{j=1}^{k}$ for $W$:
+\[
+    \text{gain}(\{\mathbf{q}_j\}_{j=1}^{k}) = \sum_{i=1}^{n} \|P_W \mathbf{a}_i\|^2
+\]
+\textbf{By Parseval's Identity:}
+\[
+    \|P_W \mathbf{a}_i\|^2 = \sum_{j=1}^{k} \langle \mathbf{a}_i, \mathbf{q}_j \rangle^2
+\]
+\[
+    \text{gain}(\{\mathbf{q}_j\}_{j=1}^{k}) = \sum_{i=1}^{n} \sum_{j=1}^{k} \langle \mathbf{a}_i, \mathbf{q}_j \rangle^2 = \sum_{j=1}^{k} \sum_{i=1}^{n} \langle \mathbf{a}_i, \mathbf{q}_j \rangle^2 = \sum_{j=1}^{k} \text{gain}(\mathbf{q}_j)
+\]
+\textbf{Therefore:}
+\[
+    \arg\min_{W} \text{cost}(W) = \arg\max_{W = \text{span}(\{\mathbf{q}_j\}_{j=1}^{k})} \sum_{j=1}^{k} \text{gain}(\mathbf{q}_j)
+\]
+
+\subsection{PCA}
+
+\textbf{Objective:} Find the $k$-BFS for centered data.
 \newline
 \textbf{Data matrix} $X \in \mathbb{R}^{n \times d}$:
 \[
@@ -84,33 +123,44 @@
 \[
     B = U \Sigma V^T
 \]
-The best-fitting $k$-dimensional subspace is spanned by the first $k$ principal components $\mathbf{v}_1, \dots, \mathbf{v}_d$:
+The $k$-BFS is spanned by the first $k$ principal components:
 \[
-    \text{span}(\mathbf{v}_1, \dots, \mathbf{v}_k)
+    W = \text{span}(\{\mathbf{v}_i\}_{i=1}^{k})
 \]
+
 \subsubsection{Derivation}
 
-By Pythagorean theorem, minimizing reconstruction error is equivalent to maximizing the variance of projections.
-\newline
-\textbf{Sample Covariance Matrix} $S$:
-\[
-    S = \frac{1}{n-1} B^T B
-\]
-\textbf{Spectral Decomposition} of Covariance Matrix:
-\[
-    S = \frac{1}{n-1} (U \Sigma V^T)^T (U \Sigma V^T) = V \left( \frac{\Sigma^T \Sigma}{n-1} \right) V^T
-\]
-where $\displaystyle \lambda_i = \frac{\sigma_i^2}{n-1}$ and $S \mathbf{v}_{i} = \mathbf{v}_{i} \lambda_i$.
-\newline
-Project Centered Data Matrix onto $\mathbf{v}$:
-\[
-    \text{Var}(B\mathbf{v}) = \frac{1}{n-1} \| B\mathbf{v} \|_2^2 = \frac{1}{n-1} \mathbf{v}^T B^T B \mathbf{v} = \mathbf{v}^T S \mathbf{v}
-\]
-Project Centered Data Matrix onto Right Singular Vectors:
-\[
-    \text{Var}(B\mathbf{v}_i) = \mathbf{v}_i^T S \mathbf{v}_i = \mathbf{v}_i^T \lambda_i \mathbf{v}_i = \lambda_i = \frac{\sigma_i^2}{n-1}
-\]
-By the orthogonality of the principal components, maximizing the total projected variance is equivalent to maximizing the variances along each individual principal component direction.
+\begin{enumerate}
+    \item Minimizing reconstruction error is equivalent to maximizing the sum of squared projections onto the Orthonormal Basis vectors.
+    \[
+        \arg\min_{W} \text{cost}(W) = \sum_{j=1}^{k} \sum_{i=1}^{n} \langle \mathbf{b}_i, \mathbf{v}_j \rangle^2
+    \]
+    \[
+        \sum_{i=1}^{n} \langle \mathbf{b}_i, \mathbf{v}_j \rangle^2 = \|B\mathbf{v}_j\|^2
+    \]
+    \[
+        \arg\min_{W} \text{cost}(W) = \sum_{i=1}^{k} \|B\mathbf{v}_i\|^2 = \sum_{i=1}^{k} \text{Var}(B\mathbf{v}_i)
+    \]
+
+    \item \textbf{Spectral Decomposition} of \textbf{Sample Covariance Matrix}:
+    \[
+        S = \frac{1}{n-1} B^T B
+    \]
+    \[
+        S = \frac{1}{n-1} (U \Sigma V^T)^T (U \Sigma V^T) = V \left( \frac{\Sigma^T \Sigma}{n-1} \right) V^T
+    \]
+    where $\displaystyle \lambda_i = \frac{\sigma_i^2}{n-1}$ and $S \mathbf{v}_{i} = \mathbf{v}_{i} \lambda_i$.
+
+    \item Project Centered Data Matrix onto a vector $\mathbf{v}$:
+    \[
+        \text{Var}(B\mathbf{v}) = \frac{1}{n-1} \| B\mathbf{v} \|_2^2 = \frac{1}{n-1} \mathbf{v}^T B^T B \mathbf{v} = \mathbf{v}^T S \mathbf{v}
+    \]
+
+    \item Project Centered Data Matrix onto Right Singular Vectors:
+    \[
+        \text{Var}(B\mathbf{v}_i) = \mathbf{v}_i^T S \mathbf{v}_i = \mathbf{v}_i^T \lambda_i \mathbf{v}_i = \lambda_i = \frac{\sigma_i^2}{n-1}
+    \]
+\end{enumerate}
 
 \subsection{Central Limit Theorem}
 
