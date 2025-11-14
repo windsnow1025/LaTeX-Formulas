@@ -513,19 +513,6 @@ If the columns of $A$ are Linearly Independent, then $A^TA$ is invertible, and t
     P = A(A^TA)^{-1}A^T
 \]
 Derived by Normal Equations.
-\newline
-\textbf{Projection onto a Vector:}
-\newline
-Project onto a line spanned by a non-zero vector $\mathbf{a} \in \mathbb{R}^m$:
-\[
-    P = \frac{\mathbf{a}\mathbf{a}^T}{\mathbf{a}^T\mathbf{a}}
-\]
-\textbf{Projection onto an Orthonormal Basis:}
-\newline
-If the columns of matrix $Q \in \mathbb{R}^{m \times n}$ form an orthonormal basis for the subspace:
-\[
-    P = Q(Q^TQ)^{-1}Q^T = QIQ^T = QQ^T
-\]
 \textbf{Properties:}
 \begin{itemize}
     \item \textbf{Idempotency:} $P^2 = P$.
@@ -534,6 +521,26 @@ If the columns of matrix $Q \in \mathbb{R}^{m \times n}$ form an orthonormal bas
     \newline
     Derivation: The eigenvalues of a Projection Matrix are 1 for its projection subspace and 0 for its null space: $\operatorname{tr}(P) = \sum_{i=1}^m \lambda_i = \sum_{\lambda_i=1} 1 = \operatorname{rank}(P)$.
 \end{itemize}
+
+\subsubsection{Projection onto a Vector}
+
+Project onto a line spanned by a non-zero vector $\mathbf{a} \in \mathbb{R}^m$:
+\[
+    P = \frac{\mathbf{a}\mathbf{a}^T}{\mathbf{a}^T\mathbf{a}}
+\]
+
+\subsubsection{Projection onto an Orthonormal Basis}
+
+If the columns of matrix $Q \in \mathbb{R}^{m \times n}$ form an Orthonormal Basis for the subspace:
+\[
+    P = Q(Q^TQ)^{-1}Q^T = QIQ^T = QQ^T
+\]
+
+\subsection{Parseval's Identity}
+For a vector $\mathbf{x} \in \mathbb{R}^n$ and an Orthonormal Basis $\{\mathbf{q}_i\}_{i=1}^n$:
+\[
+    \|\mathbf{x}\|^2 = \sum_{i=1}^n (\mathbf{x}^T \mathbf{q}_i)^2
+\]
 
 
 \newpage
