@@ -354,12 +354,14 @@ $\frac{\sigma_1^2}{\sigma_2^2}$ & $S_1^2, S_2^2$ & $\frac{S_1^2/S_2^2}{\sigma_1^
 \[
     B = X - \overline{X}
 \]
-\newline
-The $k$-BFS is spanned by the first $k$ \textbf{Principal Components}:
+\textbf{Principal Components} $\mathbf{v}_i$ are the \textbf{Right Singular Vectors} of $B$.
 \[
     W = \text{span}(\{\mathbf{v}_i\}_{i=1}^{k})
 \]
-where $\mathbf{v}_i$ are the \textbf{Right Singular Vectors} of $B$.
+\textbf{Scores} are the data projected onto \textbf{Principal Components}.
+\[
+    T = BV
+\]
 \newline
 \textbf{Variance:}
 \[
