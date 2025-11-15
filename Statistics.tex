@@ -62,157 +62,6 @@
     \item $\mathbb{E}[S] = \Sigma$
 \end{itemize}
 
-\subsection{Principal Component Analysis (PCA)}
-
-\subsubsection{Best Fitting Subspace (BFS)}
-
-\begin{enumerate}
-    \item \textbf{Objective:}
-    \[
-        \arg\min_{W} \text{cost}(W)
-    \]
-    where \textbf{Cost Function:}
-    \[
-        \text{cost}(W) = \sum_{i=1}^{n} \|\mathbf{a}_i - P_W \mathbf{a}_i\|^2
-    \]
-
-    \item By the \textbf{Pythagorean Theorem:}
-    \[
-        \|\mathbf{a}_i - P_W \mathbf{a}_i\|^2 = \|\mathbf{a}_i\|^2 - \|P_W \mathbf{a}_i\|^2
-    \]
-    \[
-        \sum_{i=1}^{n} \|\mathbf{a}_i - P_W \mathbf{a}_i\|^2 = \sum_{i=1}^{n} \|\mathbf{a}_i\|^2 - \sum_{i=1}^{n} \|P_W \mathbf{a}_i\|^2
-    \]
-
-    \item Let $\{\mathbf{q}_j\}_{j=1}^{k}$ be an \textbf{orthonormal basis} for $W$.
-    By \textbf{Parseval's Identity:}
-    \[
-        \|P_W \mathbf{a}_i\|^2 = \sum_{j=1}^{k} \langle \mathbf{a}_i, \mathbf{q}_j \rangle^2
-    \]
-    \[
-        \sum_{i=1}^{n} \|P_W \mathbf{a}_i\|^2
-        = \sum_{i=1}^{n} \sum_{j=1}^{k} \langle \mathbf{a}_i, \mathbf{q}_j \rangle^2
-        = \sum_{j=1}^{k} \sum_{i=1}^{n} \langle \mathbf{a}_i, \mathbf{q}_j \rangle^2
-    \]
-
-    \item Define Matrix $A$:
-    \[
-        A =
-        \begin{bmatrix}
-            - \mathbf{a}_1^T - \\
-            \vdots \\
-            - \mathbf{a}_n^T -
-        \end{bmatrix}
-    \]
-    \[
-        \sum_{i=1}^{n} \langle \mathbf{a}_i, \mathbf{q}_j \rangle^2 = \|A\mathbf{q}_j\|^2 = \mathbf{q}{_i}^T A^T A \mathbf{q}_i
-    \]
-
-    \item New Objective Function:
-    \[
-        \arg\min_{W} \text{cost}(W) = \arg\max_{W} \sum_{j=1}^{k} \mathbf{q}{_i}^T A^T A \mathbf{q}_i
-    \]
-
-    \item \textbf{Greedy Algorithm:}
-    \newline
-    Object: \textbf{Conditional Maximization:}
-    \[
-        \arg\max_{\|\mathbf{q}\|=1} \mathbf{q}^T A^T A \mathbf{q}
-    \]
-    By \textbf{Lagrange Multiplier Method}:
-    \[
-        \mathcal{L}(\mathbf{q}_i, \lambda) = \mathbf{q}_i^T A^T A \mathbf{q}_i - \lambda(\mathbf{q}_i^T \mathbf{q}_i - 1)
-    \]
-    \[
-        \frac{\partial \mathcal{L}}{\partial \mathbf{q}_i} = 2 A^T A \mathbf{q}_i - 2\lambda\mathbf{q}_i = \mathbf{0}
-    \]
-    \[
-        A^T A \mathbf{q}_i = \lambda\mathbf{q}_i
-    \]
-    i.e., $\mathbf{q}_i$ are \textbf{Eigenvectors} of $A^T A$.
-    \[
-        \mathbf{q}_i^T A^T A \mathbf{q}_i = \mathbf{q}_i^T \lambda \mathbf{q}_i = \lambda
-    \]
-\end{enumerate}
-
-\subsubsection{PCA}
-
-\textbf{Objective:} Find the $k$-BFS for centered data.
-\newline
-\textbf{Data matrix} $X \in \mathbb{R}^{n \times d}$:
-\[
-    X =
-    \begin{bmatrix}
-        - \mathbf{x}_1^T - \\
-        \vdots \\
-        - \mathbf{x}_n^T -
-    \end{bmatrix}
-\]
-\textbf{Centered Data Matrix} $B$:
-\[
-    B = X - \overline{X}
-\]
-\newline
-\textbf{SVD} of $B$:
-\[
-    B = U \Sigma V^T
-\]
-The $k$-BFS is spanned by the first $k$ \textbf{Principal Components}:
-\[
-    W = \text{span}(\{\mathbf{v}_i\}_{i=1}^{k})
-\]
-where $\mathbf{v}_i$ are the \textbf{Right Singular Vectors}.
-
-\subsubsection{Derivation}
-
-\begin{enumerate}
-    \item Let $\{\mathbf{v}_j\}_{j=1}^{k}$ be \textbf{Orthonormal Basis} for $W$.
-    \[
-        \arg\min_{W} \text{cost}(W) = \arg\max_{W} \sum_{i=1}^{k} \|B\mathbf{v}_i\|^2 = \arg\max_{W} \sum_{i=1}^{k} \text{Var}(B\mathbf{v}_i)
-    \]
-
-    \item \textbf{Variance of Projection:}
-    \[
-        S = \frac{1}{n-1} B^T B
-    \]
-    \[
-        \text{Var}(B\mathbf{v}_i) = \frac{1}{n-1} \| B\mathbf{v}_i \|_2^2 = \frac{1}{n-1} \mathbf{v}{_i}^T B^T B \mathbf{v}_i = \mathbf{v}_i^T S \mathbf{v}_i
-    \]
-
-    \item \textbf{Maximize the Projection:}
-    \[
-        \arg\max_{\|\mathbf{v}\|=1} \mathbf{v}^T S \mathbf{v}
-    \]
-    By \textbf{Lagrange Multiplier Method}:
-    \[
-        \mathcal{L}(\mathbf{v}_i, \lambda) = \mathbf{v}_i^T S \mathbf{v}_i - \lambda(\mathbf{v}_i^T \mathbf{v}_i - 1)
-    \]
-    \[
-        \frac{\partial \mathcal{L}}{\partial \mathbf{v}_i} = 2S\mathbf{v}_i - 2\lambda\mathbf{v}_i = \mathbf{0}
-    \]
-    \[
-        S\mathbf{v}_i = \lambda\mathbf{v}_i
-    \]
-    i.e., $\mathbf{v}_i$ are \textbf{Eigenvectors} of $S$.
-    \[
-        \text{Var}(B\mathbf{v}_i) = \mathbf{v}_i^T S \mathbf{v}_i = \mathbf{v}_i^T \lambda \mathbf{v}_i = \lambda
-    \]
-
-    \item \textbf{Spectral Decomposition} of \textbf{Sample Covariance Matrix}:
-    \[
-        S = \frac{1}{n-1} (U \Sigma V^T)^T (U \Sigma V^T) = V \left( \frac{\Sigma^T \Sigma}{n-1} \right) V^T
-    \]
-    where $S \mathbf{v}_{i} = \mathbf{v}_{i} \lambda_i$ and $\displaystyle \lambda_i = \frac{\sigma_i^2}{n-1}$, $\mathbf{v}_i$ are \textbf{Right Singular Vectors} of $B$.
-    \[
-        \text{Var}(B\mathbf{v}_i) = \lambda = \frac{\sigma^2}{n-1}
-    \]
-
-    \item \textbf{Therefore:}
-    \[
-        \arg\min_{W} \text{cost}(W) = \arg\max_{W} \sum_{i=1}^{k} \sigma_i^2
-    \]
-\end{enumerate}
-
 \subsection{Central Limit Theorem}
 
 Let $\{X_i\}_{i=1}^{n}$ be i.i.d. (independent and identically distributed) random variables with mean $\mu$ and variance $\sigma^2$:
@@ -400,5 +249,133 @@ $\frac{\sigma_1^2}{\sigma_2^2}$ & $S_1^2, S_2^2$ & $\frac{S_1^2/S_2^2}{\sigma_1^
 \hline
 \end{tabular}
 \end{table}
+
+\section{Principal Component Analysis (PCA)}
+
+\subsection{Best Fitting Subspace (BFS)}
+
+\begin{enumerate}
+    \item \textbf{Objective:}
+    \[
+        \arg\min_{W} \text{cost}(W)
+    \]
+    where \textbf{Cost Function:}
+    \[
+        \text{cost}(W) = \sum_{i=1}^{n} \|\mathbf{a}_i - P_W \mathbf{a}_i\|^2
+    \]
+
+    \item By the \textbf{Pythagorean Theorem:}
+    \[
+        \|\mathbf{a}_i - P_W \mathbf{a}_i\|^2 = \|\mathbf{a}_i\|^2 - \|P_W \mathbf{a}_i\|^2
+    \]
+    \[
+        \sum_{i=1}^{n} \|\mathbf{a}_i - P_W \mathbf{a}_i\|^2 = \sum_{i=1}^{n} \|\mathbf{a}_i\|^2 - \sum_{i=1}^{n} \|P_W \mathbf{a}_i\|^2
+    \]
+
+    \item Let $\{\mathbf{q}_j\}_{j=1}^{k}$ be an \textbf{orthonormal basis} for $W$.
+    By \textbf{Parseval's Identity:}
+    \[
+        \|P_W \mathbf{a}_i\|^2 = \sum_{j=1}^{k} \langle \mathbf{a}_i, \mathbf{q}_j \rangle^2
+    \]
+    \[
+        \sum_{i=1}^{n} \|P_W \mathbf{a}_i\|^2
+        = \sum_{i=1}^{n} \sum_{j=1}^{k} \langle \mathbf{a}_i, \mathbf{q}_j \rangle^2
+        = \sum_{j=1}^{k} \sum_{i=1}^{n} \langle \mathbf{a}_i, \mathbf{q}_j \rangle^2
+    \]
+
+    \item Define Matrix $A$:
+    \[
+        A =
+        \begin{bmatrix}
+            - \mathbf{a}_1^T - \\
+            \vdots \\
+            - \mathbf{a}_n^T -
+        \end{bmatrix}
+    \]
+    \[
+        \sum_{i=1}^{n} \langle \mathbf{a}_i, \mathbf{q}_j \rangle^2 = \|A\mathbf{q}_j\|^2 = \mathbf{q}_{j}^T A^T A \mathbf{q}_j
+    \]
+
+    \item New Objective Function:
+    \[
+        \arg\min_{W} \text{cost}(W) = \arg\max_{W} \sum_{i=1}^{k} \mathbf{q}_i^T A^T A \mathbf{q}_i
+    \]
+
+    \item \textbf{Greedy Algorithm:}
+    \newline
+    Object: \textbf{Conditional Maximization:}
+    \[
+        \arg\max_{\|\mathbf{q}_i\|=1} \mathbf{q}_i^T A^T A \mathbf{q}_i
+    \]
+    By \textbf{Lagrange Multiplier Method}:
+    \[
+        \mathcal{L}(\mathbf{q}_i, \lambda) = \mathbf{q}_i^T A^T A \mathbf{q}_i - \lambda(\mathbf{q}_i^T \mathbf{q}_i - 1)
+    \]
+    \[
+        \frac{\partial \mathcal{L}}{\partial \mathbf{q}_i} = 2 A^T A \mathbf{q}_i - 2\lambda\mathbf{q}_i = \mathbf{0}
+    \]
+    \[
+        A^T A \mathbf{q}_i = \lambda\mathbf{q}_i
+    \]
+    Solutions:
+    \begin{itemize}
+        \item $\mathbf{q}_i = \mathbf{v}_i$ is an \textbf{Eigenvector} of $A^T A$
+        \item $\lambda = \lambda_i$ is an \textbf{Eigenvalue} of $A^T A$
+        \item $\mathbf{q}_i = \mathbf{v}_i$ is a \textbf{Right Singular Vector} of $A$
+        \item $\sigma_i = \sqrt{\lambda_i}$ is a \textbf{Singular Value} of $A$
+    \end{itemize}
+    \[
+        \mathbf{q}_i^T A^T A \mathbf{q}_i = \mathbf{v}_i^T \lambda_i \mathbf{v}_i = \lambda_i = \sigma_i^2
+    \]
+
+    \item Therefore:
+    \[
+        \arg\min_{W} \text{cost}(W) = \arg\max_{W} \sum_{j=1}^{k} \sigma_i^2
+    \]
+    \[
+        W = \text{span}(\{\mathbf{v}_i\}_{i=1}^{k})
+    \]
+\end{enumerate}
+
+\subsection{PCA}
+
+\textbf{Objective:} Find the $k$-BFS for centered data.
+\newline
+\textbf{Data matrix} $X \in \mathbb{R}^{n \times d}$:
+\[
+    X =
+    \begin{bmatrix}
+        - \mathbf{x}_1^T - \\
+        \vdots \\
+        - \mathbf{x}_n^T -
+    \end{bmatrix}
+\]
+\textbf{Centered Data Matrix} $B$:
+\[
+    B = X - \overline{X}
+\]
+\newline
+The $k$-BFS is spanned by the first $k$ \textbf{Principal Components}:
+\[
+    W = \text{span}(\{\mathbf{v}_i\}_{i=1}^{k})
+\]
+where $\mathbf{v}_i$ are the \textbf{Right Singular Vectors} of $B$.
+\newline
+\textbf{Variance:}
+\[
+    \text{Var}(B\mathbf{v}_i) = \frac{1}{n-1} \|B\mathbf{v}_i\|^2
+\]
+\[
+    \arg\min_{W} \text{cost}(W) = \arg\max_{W} \sum_{i=1}^{k} \text{Var}(B\mathbf{v}_i)
+\]
+\textbf{Sample Covariance Matrix:}
+\[
+    S = \frac{1}{n-1} B^T B
+\]
+Let $\lambda_i$ be an \textbf{Eigenvalue} of $S$, $\sigma_i$ be an \textbf{Right Singular Value} of $B$.
+\[
+    \lambda_i = \frac{\sigma_i^2}{n-1}
+\]
+
 
 \end{document}
