@@ -542,28 +542,42 @@ Characteristic Equation: $r^2 + pr + q = 0$
 
 \subsection{Numerator Layout}
 
-$f: \mathbb{R}^n \to \mathbb{R}^m$, $Y = f(X)$
+$f: \mathbb{R}^n \to \mathbb{R}^m$, $\mathbf{y} = f(\mathbf{x})$
 \[
-    \left[\frac{\partial Y}{\partial X}\right]_{i,j} = \frac{\partial Y_{i}}{\partial X_{j}}
+    \left[\frac{\partial \mathbf{y}}{\partial \mathbf{x}}\right]_{i,j} = \frac{\partial \mathbf{y}_{i}}{\partial \mathbf{x}_{j}}
 \]
 \[
-    \frac{\partial Y}{\partial X} \in \mathbb{R}^{m\times n}
+    \frac{\partial \mathbf{y}}{\partial \mathbf{x}} \in \mathbb{R}^{m\times n}
+\]
+
+\subsection{Denominator Layout}
+
+$f: \mathbb{R}^n \to \mathbb{R}^m$, $\mathbf{y} = f(\mathbf{x})$
+\[
+    \left[\frac{\partial \mathbf{y}}{\partial \mathbf{x}}\right]_{j,i} = \frac{\partial \mathbf{y}_{i}}{\partial \mathbf{x}_{j}}
+\]
+\[
+    \frac{\partial \mathbf{y}}{\partial \mathbf{x}} \in \mathbb{R}^{n\times m}
 \]
 
 
 \subsection{Derivative of Scalar-valued Function}
 
-$f: \mathbb{R}^n \to \mathbb{R}$, $f = f(\mathbf{x})$
+$f: \mathbb{R}^n \to \mathbb{R}$, $f = f(\mathbf{x})$. Use \textbf{Denominator Layout}.
 
 \subsubsection{Gradient}
 
 \[
-    \nabla f = \frac{\partial f}{\partial \mathbf{x}^T} =
+    \nabla f = \frac{\partial f}{\partial \mathbf{x}} =
     \begin{bmatrix}
         \frac{\partial f}{\partial x_1} \\
         \vdots \\
         \frac{\partial f}{\partial x_n}
     \end{bmatrix}
+\]
+\textbf{Quadratic Form:}
+\[
+    \nabla f(\mathbf{x}) = (A + A^T)\mathbf{x}
 \]
 
 \subsubsection{Hessian Matrix}
@@ -583,7 +597,7 @@ The Jacobian matrix of the Gradient of $f$.
 
 \subsection{Derivative of Vector-valued Function}
 
-$\mathbf{f}: \mathbb{R}^n \to \mathbb{R}^m$, $\mathbf{f}(\mathbf{x}) = \mathbf{y}$
+$\mathbf{f}: \mathbb{R}^n \to \mathbb{R}^m$, $\mathbf{f}(\mathbf{x}) = \mathbf{y}$. Use \textbf{Numerator Layout}.
 
 \subsubsection{Jacobian Matrix}
 
