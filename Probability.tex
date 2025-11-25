@@ -45,71 +45,78 @@
 
 \subsection{Mutually Exclusive Events}
 \[
-    \Pr(A \cap B) = 0
+    \mathbb{P}(A \cap B) = 0
 \]
 
 \subsection{Complementary Events}
 \[
-    \Pr(A \cap B) = 0
+    \mathbb{P}(A \cap B) = 0
 \]
 \[
-    \Pr(A) + \Pr(B) = 1
+    \mathbb{P}(A) + \mathbb{P}(B) = 1
 \]
 
 \subsection{Independent Events}
 \[
-    \Pr(A \cap B) = \Pr(A)\Pr(B)
+    \mathbb{P}(A \cap B) = \mathbb{P}(A)\mathbb{P}(B)
 \]
 \[
-    \Pr(A|B) = \Pr(A)
+    \mathbb{P}(A|B) = \mathbb{P}(A)
 \]
 \[
-    \Pr(B|A) = \Pr(B)
+    \mathbb{P}(B|A) = \mathbb{P}(B)
 \]
 
-\paragraph{Conditional Independence: }$ A \perp\!\!\!\perp B \mid C $
+\subsubsection{Conditional Independence}
 \[
-    \Pr(A \cap B \mid C) = \Pr(A \mid C) \Pr(B \mid C)
+    A \perp\!\!\!\perp B \mid C
 \]
 \[
-    \Pr(A \mid B, C) = \Pr(A \mid C)
+    \mathbb{P}(A \cap B \mid C) = \mathbb{P}(A \mid C) \mathbb{P}(B \mid C)
 \]
 \[
-    \Pr(B \mid A, C) = \Pr(B \mid C)
+    \mathbb{P}(A \mid B, C) = \mathbb{P}(A \mid C)
+\]
+\[
+    \mathbb{P}(B \mid A, C) = \mathbb{P}(B \mid C)
 \]
 
+\subsection{Boole's Inequality (Union Bound)}
+\[
+    \mathbb{P}\left(\bigcup_{i=1}^{n} A_i\right) \leq \sum_{i=1}^{n} \mathbb{P}(A_i)
+\]
 
 \newpage
 \section{Laws of Probability}
 
 \subsection{Complement Rule}
 \[
-    \Pr(\bar{A}) = 1 - \Pr(A)
+    \mathbb{P}(\bar{A}) = 1 - \mathbb{P}(A)
 \]
 
 \subsection{Addition Law}
 \[
-    \Pr(A \cup B) = \Pr(A) + \Pr(B) - \Pr(A \cap B)
+    \mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A \cap B)
 \]
 
 \subsection{Subtraction Law}
 \[
-    \Pr(A \setminus B) = \Pr(A \cap \bar{B}) = \Pr(A) - \Pr(A \cap B)
+    \mathbb{P}(A \setminus B) = \mathbb{P}(A \cap \bar{B}) = \mathbb{P}(A) - \mathbb{P}(A \cap B)
 \]
 
 \subsection{Conditional Probability}
 \[
-    \Pr(A|B) = \frac{\Pr(A \cap B)}{\Pr(B)}
+    \mathbb{P}(A|B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}
 \]
 
 \subsection{Law of Total Probability}
 \[
-    \Pr(A) = \sum_{i=1}^{k} \Pr(B_i \cap A) = \sum_{i=1}^{k} \Pr(B_i)\Pr(A|B_i)
+    \mathbb{P}(A) = \sum_{i=1}^{k} \mathbb{P}(B_i \cap A) = \sum_{i=1}^{k} \mathbb{P}(B_i)\mathbb{P}(A|B_i)
 \]
 
 \subsection{Bayes Theorem}
 \[
-    \Pr(B_i|A) = \frac{\Pr(B_i)\Pr(A|B_i)}{\Pr(A)}
+    \mathbb{P}(B_i|A) = \frac{\mathbb{P}(B_i)\mathbb{P}(A|B_i)}{\mathbb{P}(A)}
 \]
 
 \newpage
@@ -120,7 +127,7 @@
     \mu = \mathbb{E}_X[X] = \int_{-\infty}^{+\infty} x f_X(x) dx
 \]
 \[
-    \mu = \mathbb{E}_X[X] = \sum_{x} x \Pr(X=x)
+    \mu = \mathbb{E}_X[X] = \sum_{x} x \mathbb{P}(X=x)
 \]
 \textbf{Properties:}
 \begin{itemize}
@@ -188,23 +195,23 @@
 \textbf{Properties:}
 \begin{itemize}
     \item $ |\rho_{X,Y}| \le 1 $
-    \item $ |\rho_{X,Y}| = 1 \Leftrightarrow (\exists a)(\exists b)(\Pr(Y=aX+b)=1), (a>0, \rho_{X,Y}=1; a<0, \rho_{X,Y}=-1) $
+    \item $ |\rho_{X,Y}| = 1 \Leftrightarrow (\exists a)(\exists b)(\mathbb{P}(Y=aX+b)=1), (a>0, \rho_{X,Y}=1; a<0, \rho_{X,Y}=-1) $
     \item $ \rho_{aX + b, cY + d} = \rho_{X,Y} $
 \end{itemize}
 
 \subsection{Markov's Inequality}
 If $ X \geq 0 $, for any $ a > 0 $:
 \[
-    \Pr(X \geq a) \leq \frac{\mathbb{E}[X]}{a}
+    \mathbb{P}(X \geq a) \leq \frac{\mathbb{E}[X]}{a}
 \]
 
 \subsection{Chebyshev's Inequality}
 For any $ \varepsilon > 0 $:
 \[
-    \Pr(|X-\mathbb{E}[X]| \ge \varepsilon) \le \frac{Var(X)}{\varepsilon^2}
+    \mathbb{P}(|X-\mathbb{E}[X]| \ge \varepsilon) \le \frac{Var(X)}{\varepsilon^2}
 \]
 \[
-    \Pr(|X-\mathbb{E}[X]| < \varepsilon) \ge 1 - \frac{Var(X)}{\varepsilon^2}
+    \mathbb{P}(|X-\mathbb{E}[X]| < \varepsilon) \ge 1 - \frac{Var(X)}{\varepsilon^2}
 \]
 
 \newpage
@@ -213,18 +220,18 @@ For any $ \varepsilon > 0 $:
 \subsection{Probability Mass Function}
 For a discrete random variable, the Probability Mass Function $ p(x) $ is defined as:
 \[
-    \Pr(X=x) = p(x)
+    \mathbb{P}(X=x) = p(x)
 \]
 
 \subsection{Probability Density Function}
 For a continuous random variable, the Probability Density Function $ f(x) $ is defined as:
 \[
-    \Pr(a \le x \le b) = \int_{a}^{b} f_X(x)dx
+    \mathbb{P}(a \le x \le b) = \int_{a}^{b} f_X(x)dx
 \]
 
 \subsection{Cumulative Distribution Function}
 \[
-    F(x) = \Pr(X \le x) = \int_{-\infty}^{x} f_X(t)dt
+    F(x) = \mathbb{P}(X \le x) = \int_{-\infty}^{x} f_X(t)dt
 \]
 
 \subsubsection{Cumulative Distribution Function of a function}
@@ -232,7 +239,7 @@ For a continuous random variable, the Probability Density Function $ f(x) $ is d
     Y=g(X)
 \]
 \[
-    F(y) = \Pr(Y \le y) = \int_{g(x) \le y} f_X(x)dx
+    F(y) = \mathbb{P}(Y \le y) = \int_{g(x) \le y} f_X(x)dx
 \]
 
 \subsection{Discrete Probability Distributions}
@@ -281,12 +288,12 @@ The number of trials needed to get the first success in a sequence of independen
 
 \subsubsection{Poisson Distribution}
 The number of events occurring in an interval of time, given an average rate $ \lambda $ of occurrence.
-\[ X \sim \Pr(\lambda) \]
+\[ X \sim \mathbb{P}(\lambda) \]
 \[ p(x) = \frac{\lambda^x e^{-\lambda}}{x!}, \quad \lambda>0, x=0,1,\dots \]
 \[ \mu = \sigma^2 = \lambda \]
 \textbf{Derivation (Poisson Limit Theorem):}
 \[
-    B(n, p) \xrightarrow{n \to \infty,\, p \to 0} \Pr(\lambda = np)
+    B(n, p) \xrightarrow{n \to \infty,\, p \to 0} \mathbb{P}(\lambda = np)
 \]
 
 \subsection{Continuous Probability Distributions}
@@ -334,7 +341,7 @@ The waiting time for the next event in a Poisson process with an average rate $ 
 \]
 Derivation from Poisson:
 \[
-    \Pr(X>x) = f_{\text{Poisson}(\lambda x)}(0)
+    \mathbb{P}(X>x) = f_{\text{Poisson}(\lambda x)}(0)
 \]
 
 \subsubsection{Gamma Distribution}
@@ -351,7 +358,7 @@ The waiting time for the $ r^{th} $ event in a Poisson process with an average r
 \]
 Derivation from Poisson:
 \[
-    \Pr(X > x) = \sum_{k=0}^{r-1} f_{\text{Poisson}(\lambda x)}(k)
+    \mathbb{P}(X > x) = \sum_{k=0}^{r-1} f_{\text{Poisson}(\lambda x)}(k)
 \]
 
 \subsubsection{Normal Distribution}
@@ -379,7 +386,7 @@ Derivation from Poisson:
 \subsection{Probability Distribution Function}
 For two continuous random variables, the Probability Density Function $ f(x,y) $ is defined as:
 \[
-    \Pr((X,Y) \in A) = \iint_{A} f(x,y) dx dy
+    \mathbb{P}((X,Y) \in A) = \iint_{A} f(x,y) dx dy
 \]
 
 \subsection{Cumulative Distribution Function}
@@ -472,7 +479,7 @@ Define $ \mathbf{y} = Q^\top (\mathbf{x} - \boldsymbol{\mu}) $:
 \newpage
 \section{Information Theory}
 
-Let $X$ be a random variable with outcomes in the set $\mathcal{X}$, with $p(x) = \Pr(X=x)$.
+Let $X$ be a random variable with outcomes in the set $\mathcal{X}$, with $p(x) = \mathbb{P}(X=x)$.
 
 \subsection{Self-Information}
 The \textbf{Self-Information} (or surprisal) of an outcome $x \in \mathcal{X}$ is defined as:
