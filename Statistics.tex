@@ -322,7 +322,7 @@ $\frac{\sigma_1^2}{\sigma_2^2}$ & $S_1^2, S_2^2$ & $\frac{S_1^2/S_2^2}{\sigma_1^
         \item $\mathbf{q}_i = \mathbf{v}_i$ is an \textbf{Eigenvector} of $A^T A$
         \item $\lambda = \lambda_i$ is an \textbf{Eigenvalue} of $A^T A$
         \item $\mathbf{q}_i = \mathbf{v}_i$ is a \textbf{Right Singular Vector} of $A$
-        \item $\sigma_i = \sqrt{\lambda_i}$ is a \textbf{Singular Value} of $A$
+        \item $\sqrt{\lambda} = \sigma_i$ is a \textbf{Singular Value} of $A$
     \end{itemize}
     \[
         \mathbf{q}_i^T A^T A \mathbf{q}_i = \mathbf{v}_i^T \lambda_i \mathbf{v}_i = \lambda_i = \sigma_i^2
@@ -330,7 +330,7 @@ $\frac{\sigma_1^2}{\sigma_2^2}$ & $S_1^2, S_2^2$ & $\frac{S_1^2/S_2^2}{\sigma_1^
 
     \item Therefore:
     \[
-        \arg\min_{W} \text{cost}(W) = \arg\max_{W} \sum_{j=1}^{k} \sigma_i^2
+        \arg\min_{W} \text{cost}(W) = \arg\max_{W} \sum_{i=1}^{k} \sigma_i^2
     \]
     \[
         W = \text{span}(\{\mathbf{v}_i\}_{i=1}^{k})
