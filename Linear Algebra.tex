@@ -350,7 +350,7 @@ where $U \in \mathbb{R}^{m \times m}$ and $V \in \mathbb{R}^{n \times n}$ are or
 \]
 
 \subsubsection{Singular Vector \& Singular Value}
-For any matrix $A \in \mathbb{R}^{m \times n}$, $r = \operatorname{rank}(A)$:
+For a matrix $A \in \mathbb{R}^{m \times n}$ with $\operatorname{rank}(A) = r$:
 
 \begin{itemize}
     \item \textbf{Right Singular Vectors:} The columns $\mathbf{v}_i$ of $V \in \mathbb{R}^{n \times n}$ are the orthonormal eigenvectors of $A^T A$.
@@ -386,7 +386,7 @@ For any matrix $A \in \mathbb{R}^{m \times n}$, $r = \operatorname{rank}(A)$:
     \item \textbf{Singular Values:} Scaling factors along the principal directions of the transformation.
 \end{itemize}
 
-\subsubsection{Singular Value Decomposition (SVD)}
+\subsubsection{Full SVD}
 \[
     A = U \Sigma V^T = \sum_{i=1}^{r} \sigma_i \mathbf{u}_i \mathbf{v}_i^T
 \]
@@ -420,6 +420,26 @@ For any matrix $A \in \mathbb{R}^{m \times n}$, $r = \operatorname{rank}(A)$:
         \item The orthonormal basis of $\operatorname{coker}(A)$ aligns with the last $m-r$ standard basis vectors
     \end{itemize}
 \end{enumerate}
+
+\subsubsection{Reduced SVD}
+For a matrix $A \in \mathbb{R}^{m \times n}$ with $\operatorname{rank}(A) = r$, the \textbf{Reduced SVD} retains only the parts corresponding to non-zero singular values:
+\[
+    A = U_r \Sigma_r V_r^T = \sum_{i=1}^{r} \sigma_i \mathbf{u}_i \mathbf{v}_i^T
+\]
+where:
+\begin{itemize}
+    \item $U_r \in \mathbb{R}^{m \times r}$ consists of the first $r$ columns of $U$ (Orthonormal basis for $\text{Col}(A)$).
+    \item $\Sigma_r \in \mathbb{R}^{r \times r}$ is a \textbf{square} diagonal matrix containing the non-zero singular values $\sigma_1, \dots, \sigma_r$.
+    \item $V_r \in \mathbb{R}^{n \times r}$ consists of the first $r$ columns of $V$ (Orthonormal basis for $\text{Row}(A)$).
+\end{itemize}
+
+\paragraph{Spectral Decompositions:}
+\[
+    A^T A = (V_r \Sigma_r U_r^T) (U_r \Sigma_r V_r^T) = V_r \Sigma_r^2 V_r^T
+\]
+\[
+    A A^T = (U_r \Sigma_r V_r^T) (V_r \Sigma_r U_r^T) = U_r \Sigma_r^2 U_r^T
+\]
 
 \subsection{Frobenius Norm}
 For a matrix $A \in \mathbb{R}^{m \times n}$:
