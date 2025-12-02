@@ -336,18 +336,30 @@ Matrix $P$ \textbf{diagonalizes} matrix $A$.
 
 \subsection{Singular Value Decomposition (SVD)}
 
+\subsubsection{Derivation}
+Assume that matrix $A \in \mathbb{R}^{m \times n}$ can be decomposed as:
+\[
+    A = U \Sigma V^T
+\]
+where $U \in \mathbb{R}^{m \times m}$ and $V \in \mathbb{R}^{n \times n}$ are orthogonal matrices, and $\Sigma \in \mathbb{R}^{m \times n}$ is a diagonal matrix.
+\[
+    A^T A = (U \Sigma V^T)^T (U \Sigma V^T) = V \Sigma^T U^T U \Sigma V^T = V (\Sigma^T \Sigma) V^T
+\]
+\[
+    AA^T = (U \Sigma V^T)(U \Sigma V^T)^T = U \Sigma V^T V \Sigma^T U^T = U (\Sigma \Sigma^T) U^T
+\]
 
 \subsubsection{Singular Vector \& Singular Value}
-For any matrix $A \in \mathbb{R}^{m \times n}$ with rank $r$:
+For any matrix $A \in \mathbb{R}^{m \times n}$, $r = \operatorname{rank}(A)$:
 
 \begin{itemize}
-    \item \textbf{Right Singular Vectors:} The columns of $V \in \mathbb{R}^{n \times n}$ are the orthonormal eigenvectors of $A^T A$.
+    \item \textbf{Right Singular Vectors:} The columns $\mathbf{v}_i$ of $V \in \mathbb{R}^{n \times n}$ are the orthonormal eigenvectors of $A^T A$.
     \[
         A^T A V = V (\Sigma^T \Sigma)
     \]
     where $\Sigma^T \Sigma \in \mathbb{R}^{n \times n}$ is a diagonal matrix containing the eigenvalues of $A^T A$.
 
-    \item \textbf{Left Singular Vectors:} The columns of $U \in \mathbb{R}^{m \times m}$ are the orthonormal eigenvectors of $AA^T$.
+    \item \textbf{Left Singular Vectors:} The columns $\mathbf{u}_i$ of $U \in \mathbb{R}^{m \times m}$ are the orthonormal eigenvectors of $AA^T$.
     \[
         AA^T U = U (\Sigma \Sigma^T)
     \]
@@ -358,6 +370,7 @@ For any matrix $A \in \mathbb{R}^{m \times n}$ with rank $r$:
         \sigma_i = \sqrt{(\Sigma^T \Sigma)_{ii}} = \sqrt{(\Sigma \Sigma^T)_{ii}} \quad \text{for } i \le r
     \]
 \end{itemize}
+
 \paragraph{Geometric Interpretation:}
 \begin{itemize}
     \item \textbf{Right Singular Vectors:} Orthonormal basis for the Domain subspaces:
@@ -373,18 +386,19 @@ For any matrix $A \in \mathbb{R}^{m \times n}$ with rank $r$:
     \item \textbf{Singular Values:} Scaling factors along the principal directions of the transformation.
 \end{itemize}
 
-\subsubsection{SVD Formula}
-Any matrix $A \in \mathbb{R}^{m \times n}$ can be decomposed as:
+\subsubsection{Singular Value Decomposition (SVD)}
 \[
     A = U \Sigma V^T = \sum_{i=1}^{r} \sigma_i \mathbf{u}_i \mathbf{v}_i^T
 \]
-where:
-\begin{itemize}
-    \item $V \in \mathbb{R}^{n \times n}$ is an orthogonal matrix whose columns $\mathbf{v}_i$ are the \textbf{Right Singular Vectors} of $A$.
-    \item $U \in \mathbb{R}^{m \times m}$ is an orthogonal matrix whose columns $\mathbf{u}_i$ are the \textbf{Left Singular Vectors} of $A$.
-    \item $\Sigma \in \mathbb{R}^{m \times n}$ is a diagonal matrix whose diagonal entries $\sigma_i$ are the \textbf{Singular Values} of $A$.
-    \item $r = \operatorname{rank}(A)$ is the number of non-zero singular values.
-\end{itemize}
+
+\paragraph{Fundamental Relations:}
+\[
+    A \mathbf{v}_i = \sigma_i \mathbf{u}_i
+\]
+\[
+    A^T \mathbf{u}_i = \sigma_i \mathbf{v}_i
+\]
+
 \paragraph{Geometric Interpretation:}
 \begin{enumerate}
     \item \textbf{$V^T$:} Rotate or reflect the Domain $\mathbb{R}^n$ from the standard basis to the principal directions defined by Right Singular Vectors:
@@ -406,26 +420,6 @@ where:
         \item The orthonormal basis of $\operatorname{coker}(A)$ aligns with the last $m-r$ standard basis vectors
     \end{itemize}
 \end{enumerate}
-
-\subsubsection{Derivation}
-Assume that matrix $A \in \mathbb{R}^{m \times n}$ can be decomposed as:
-\[
-    A = U \Sigma V^T
-\]
-where $U \in \mathbb{R}^{m \times m}$ and $V \in \mathbb{R}^{n \times n}$ are orthogonal matrices, and $\Sigma \in \mathbb{R}^{m \times n}$ is a diagonal matrix.
-\paragraph{Compute $A^T A$ and $AA^T$:}
-\[
-    A^T A = (U \Sigma V^T)^T (U \Sigma V^T) = V \Sigma^T U^T U \Sigma V^T = V \Sigma^T \Sigma V^T
-\]
-\[
-    AA^T = (U \Sigma V^T)(U \Sigma V^T)^T = U \Sigma V^T V \Sigma^T U^T = U \Sigma \Sigma^T U^T
-\]
-Notice that these expressions are in the form of Spectral Decomposition:
-\begin{itemize}
-    \item $A^T A = V (\Sigma^T \Sigma) V^T$ where $V$ is orthogonal and $\Sigma^T \Sigma$ is diagonal
-    \item $AA^T = U (\Sigma \Sigma^T) U^T$ where $U$ is orthogonal and $\Sigma \Sigma^T$ is diagonal
-\end{itemize}
-Therefore: $V$ contains the Eigenvectors of $A^T A$, and $\sigma_i = \sqrt{\lambda_i}$. $U$ contains the Eigenvectors of $AA^T$, and $\sigma_i = \sqrt{\lambda_i}$.
 
 \subsection{Frobenius Norm}
 For a matrix $A \in \mathbb{R}^{m \times n}$:
