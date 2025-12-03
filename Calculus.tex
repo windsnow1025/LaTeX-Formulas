@@ -556,7 +556,9 @@ Characteristic Equation: $r^2 + pr + q = 0$
     df = \sum_{i=1}^n \frac{\partial f}{\partial x_i} dx_i
 \]
 
-\subsection{Numerator Layout}
+\subsection{Layouts}
+
+\subsubsection{Numerator Layout}
 
 $f: \mathbb{R}^n \to \mathbb{R}^m$, $\mathbf{y} = f(\mathbf{x})$
 \[
@@ -566,7 +568,7 @@ $f: \mathbb{R}^n \to \mathbb{R}^m$, $\mathbf{y} = f(\mathbf{x})$
     \frac{\partial \mathbf{y}}{\partial \mathbf{x}} \in \mathbb{R}^{m\times n}
 \]
 
-\subsection{Denominator Layout}
+\subsubsection{Denominator Layout}
 
 $f: \mathbb{R}^n \to \mathbb{R}^m$, $\mathbf{y} = f(\mathbf{x})$
 \[
@@ -576,64 +578,119 @@ $f: \mathbb{R}^n \to \mathbb{R}^m$, $\mathbf{y} = f(\mathbf{x})$
     \frac{\partial \mathbf{y}}{\partial \mathbf{x}} \in \mathbb{R}^{n\times m}
 \]
 
+\subsubsection{Conventions}
+
+\begin{itemize}
+    \item \textbf{Numerator Layout:} Chain Rule.
+    \begin{itemize}
+        \item Partial Derivatives
+        \item Jacobian Matrix
+    \end{itemize}
+
+    \item \textbf{Denominator Layout:} Preserves shape.
+    \begin{itemize}
+        \item Gradient
+        \item Hessian Matrix
+    \end{itemize}
+\end{itemize}
 
 \subsection{Derivative of Scalar-valued Function}
 
-$f: \mathbb{R}^n \to \mathbb{R}$, $f = f(\mathbf{x})$. Use \textbf{Denominator Layout}.
+$f: \mathbb{R}^n \to \mathbb{R}$, $f = f(\mathbf{x})$.
 
-\subsubsection{Gradient}
-
+\subsubsection{First-Order Derivative \& Gradient}
 \[
-    \nabla f = \frac{\partial f}{\partial \mathbf{x}} =
+    \nabla_\mathbf{x} f =
     \begin{bmatrix}
         \frac{\partial f}{\partial x_1} \\
         \vdots \\
         \frac{\partial f}{\partial x_n}
     \end{bmatrix}
 \]
-\textbf{Quadratic Form:}
 \[
-    \nabla f(\mathbf{x}) = (A + A^T)\mathbf{x}
+    \frac{\partial f}{\partial \mathbf{x}} = \nabla_\mathbf{x}^T f
 \]
 
-\subsubsection{Hessian Matrix}
+\subsubsection{Second-Order Derivative \& Hessian Matrix}
 Curvature of a function.
 \[
-    \mathbf{H} = \nabla^2 f =
+    \nabla^2_\mathbf{x} f = \mathbf{H}_\mathbf{x}(f) =
     \begin{bmatrix}
         \frac{\partial^2 f}{\partial x_1^2} & \cdots & \frac{\partial^2 f}{\partial x_1 \partial x_n} \\
         \vdots & \ddots & \vdots \\
         \frac{\partial^2 f}{\partial x_n \partial x_1} & \cdots & \frac{\partial^2 f}{\partial x_n^2}
     \end{bmatrix}
 \]
+\[
+    \frac{\partial^2 f}{\partial \mathbf{x} \partial \mathbf{x}^T} = \mathbf{H}_\mathbf{x}^T(f)
+\]
 The Jacobian matrix of the Gradient of $f$.
 \[
-    \mathbf{H}(f) = \mathbf{J}(\nabla f)
+    \mathbf{H}^T(f) = \mathbf{J}(\nabla f)
 \]
 
 \subsection{Derivative of Vector-valued Function}
 
-$\mathbf{f}: \mathbb{R}^n \to \mathbb{R}^m$, $\mathbf{f}(\mathbf{x}) = \mathbf{y}$. Use \textbf{Numerator Layout}.
+$\mathbf{f}: \mathbb{R}^n \to \mathbb{R}^m$, $\mathbf{f}(\mathbf{x}) = \mathbf{y}$.
 
-\subsubsection{Jacobian Matrix}
-
+\subsubsection{First-Order Derivative & Jacobian Matrix}
 \[
-    \mathbf{J} = \frac{\partial \mathbf{f}}{\partial \mathbf{x}} =
+    \mathbf{J_{\mathbf{y} \to \mathbf{x}}} =
     \begin{bmatrix}
         \frac{\partial y_1}{\partial x_1} & \cdots & \frac{\partial y_1}{\partial x_n} \\
         \vdots & \ddots & \vdots \\
         \frac{\partial y_m}{\partial x_1} & \cdots & \frac{\partial y_m}{\partial x_n}
     \end{bmatrix}
 \]
+\[
+    \frac{\partial \mathbf{y}}{\partial \mathbf{x}} = \mathbf{J_{\mathbf{y} \to \mathbf{x}}}
+\]
+
+\subsection{Matrix Derivative}
+
+\subsubsection{Quadratic Form}
+For symmetric matrix $A \in \mathbb{R}^{n \times n}$:
+\[
+    f(\mathbf{x}) = \frac{1}{2}\mathbf{x}^T A \mathbf{x}
+\]
+\[
+    \nabla f(\mathbf{x}) = \frac{1}{2}(A + A^T)\mathbf{x} = A\mathbf{x}
+\]
+\[
+    \mathbf{H}^T(f(\mathbf{x})) = A
+\]
+
+\subsubsection{Linear Transformation}
+For $A \in \mathbb{R}^{m \times n}$:
+\[
+    \mathbf{y} = A\mathbf{x}
+\]
+\[
+    \mathbf{J}_{\mathbf{y} \to \mathbf{x}} = \frac{\partial (A\mathbf{x})}{\partial \mathbf{x}} = A
+\]
+
 
 \subsection{Chain Rule}
 
+$f = f(x(\mathbf{t}))$
+\[
+    \frac{\partial f}{\partial t_j} = \frac{df}{dx} \frac{\partial x}{\partial t_j}
+\]
+\[
+    \nabla_{\mathbf{t}}^T f = \frac{df}{dx} \nabla_{\mathbf{t}}^T x
+\]
+\[
+    \frac{\partial f}{\partial \mathbf{t}} = \frac{df}{dx} \frac{\partial x}{\partial \mathbf{t}}
+\]
 $f = f(\mathbf{x}(\mathbf{t}))$
 \[
     \frac{\partial f}{\partial t_j} = \sum_{i=1}^n \frac{\partial f}{\partial x_i} \frac{\partial x_i}{\partial t_j}
 \]
 \[
-    \nabla_{\mathbf{t}} f = \mathbf{J}_{\mathbf{x} \to \mathbf{t}}^T \cdot \nabla_{\mathbf{x}} f
+    \nabla_{\mathbf{t}}^T f = \nabla_{\mathbf{x}}^T f \cdot \mathbf{J}_{\mathbf{x} \to \mathbf{t}}
+\]
+\[
+    \frac{\partial f}{\partial \mathbf{t}} = \frac{\partial f}{\partial \mathbf{x}} \frac{\partial \mathbf{x}}{\partial \mathbf{t}}
 \]
 $\mathbf{y} = \mathbf{f}(\mathbf{x}(\mathbf{t}))$
 \[
@@ -641,6 +698,9 @@ $\mathbf{y} = \mathbf{f}(\mathbf{x}(\mathbf{t}))$
 \]
 \[
     \mathbf{J}_{\mathbf{y} \to \mathbf{t}} = \mathbf{J}_{\mathbf{y} \to \mathbf{x}} \cdot \mathbf{J}_{\mathbf{x} \to \mathbf{t}}
+\]
+\[
+    \frac{\partial \mathbf{y}}{\partial \mathbf{t}} = \frac{\partial \mathbf{y}}{\partial \mathbf{x}} \frac{\partial \mathbf{x}}{\partial \mathbf{t}}
 \]
 
 \subsection{Directional Derivative}
