@@ -23,7 +23,7 @@
 \tableofcontents
 
 \newpage
-\section{Single Variable Calculus}
+\section{Limit}
 
 \subsection{Limit}
 
@@ -70,9 +70,18 @@
     (1 + ax)^b - 1 \sim abx
 \]
 
-\subsection{Derivative}
 
-\subsubsection{Basic Functions}
+\newpage
+\section{Derivative}
+
+\subsection{L'Hôpital's Rule}
+
+If $\lim_{x \to c} f(x) = \lim_{x \to c} g(x) = 0$ or $\pm\infty$:
+\[
+    \lim_{x \to c} \frac{f(x)}{g(x)} = \lim_{x \to c} \frac{f'(x)}{g'(x)}
+\]
+
+\subsection{Univariate Basic Functions}
 
 \[
     \frac{d}{dx} x^a = ax^{a-1}
@@ -120,6 +129,158 @@
     \frac{d}{dx} \operatorname{arccot} x = -\frac{1}{1 + x^2}
 \]
 
+\subsection{Layouts}
+
+\subsubsection{Numerator Layout}
+
+$f: \mathbb{R}^n \to \mathbb{R}^m$, $\mathbf{y} = f(\mathbf{x})$
+\[
+    \left[\frac{\partial \mathbf{y}}{\partial \mathbf{x}}\right]_{i,j} = \frac{\partial \mathbf{y}_{i}}{\partial \mathbf{x}_{j}}
+\]
+\[
+    \frac{\partial \mathbf{y}}{\partial \mathbf{x}} \in \mathbb{R}^{m\times n}
+\]
+
+\subsubsection{Denominator Layout}
+
+$f: \mathbb{R}^n \to \mathbb{R}^m$, $\mathbf{y} = f(\mathbf{x})$
+\[
+    \left[\frac{\partial \mathbf{y}}{\partial \mathbf{x}}\right]_{j,i} = \frac{\partial \mathbf{y}_{i}}{\partial \mathbf{x}_{j}}
+\]
+\[
+    \frac{\partial \mathbf{y}}{\partial \mathbf{x}} \in \mathbb{R}^{n\times m}
+\]
+
+\subsubsection{Conventions}
+
+\begin{itemize}
+    \item \textbf{Numerator Layout:} Chain Rule.
+    \begin{itemize}
+        \item Partial Derivatives
+        \item Jacobian Matrix
+    \end{itemize}
+
+    \item \textbf{Denominator Layout:} Preserves shape.
+    \begin{itemize}
+        \item Gradient
+        \item Hessian Matrix
+    \end{itemize}
+\end{itemize}
+
+\subsection{Scalar-valued Function}
+
+$f: \mathbb{R}^n \to \mathbb{R}$, $f = f(\mathbf{x})$.
+
+\subsubsection{First-Order Derivative \& Gradient}
+\[
+    \nabla_\mathbf{x} f =
+    \begin{bmatrix}
+        \frac{\partial f}{\partial x_1} \\
+        \vdots \\
+        \frac{\partial f}{\partial x_n}
+    \end{bmatrix}
+\]
+\[
+    \frac{\partial f}{\partial \mathbf{x}} = \nabla_\mathbf{x}^T f
+\]
+
+\subsubsection{Second-Order Derivative \& Hessian Matrix}
+Curvature of a function.
+\[
+    \nabla^2_\mathbf{x} f = \mathbf{H}_\mathbf{x}(f) =
+    \begin{bmatrix}
+        \frac{\partial^2 f}{\partial x_1^2} & \cdots & \frac{\partial^2 f}{\partial x_1 \partial x_n} \\
+        \vdots & \ddots & \vdots \\
+        \frac{\partial^2 f}{\partial x_n \partial x_1} & \cdots & \frac{\partial^2 f}{\partial x_n^2}
+    \end{bmatrix}
+\]
+\[
+    \frac{\partial^2 f}{\partial \mathbf{x} \partial \mathbf{x}^T} = \mathbf{H}_\mathbf{x}^T(f)
+\]
+The Jacobian matrix of the Gradient of $f$.
+\[
+    \mathbf{H}^T(f) = \mathbf{J}(\nabla f)
+\]
+
+\subsection{Vector-valued Function}
+
+$\mathbf{f}: \mathbb{R}^n \to \mathbb{R}^m$, $\mathbf{f}(\mathbf{x}) = \mathbf{y}$.
+
+\subsubsection{First-Order Derivative & Jacobian Matrix}
+\[
+    \mathbf{J_{\mathbf{y} \to \mathbf{x}}} =
+    \begin{bmatrix}
+        \frac{\partial y_1}{\partial x_1} & \cdots & \frac{\partial y_1}{\partial x_n} \\
+        \vdots & \ddots & \vdots \\
+        \frac{\partial y_m}{\partial x_1} & \cdots & \frac{\partial y_m}{\partial x_n}
+    \end{bmatrix}
+\]
+\[
+    \frac{\partial \mathbf{y}}{\partial \mathbf{x}} = \mathbf{J_{\mathbf{y} \to \mathbf{x}}}
+\]
+
+\subsection{Matrix Derivative}
+
+\subsubsection{Quadratic Form}
+For symmetric matrix $A \in \mathbb{R}^{n \times n}$:
+\[
+    f(\mathbf{x}) = \frac{1}{2}\mathbf{x}^T A \mathbf{x}
+\]
+\[
+    \nabla f(\mathbf{x}) = \frac{1}{2}(A + A^T)\mathbf{x} = A\mathbf{x}
+\]
+\[
+    \mathbf{H}^T(f(\mathbf{x})) = A
+\]
+
+\subsubsection{Linear Transformation}
+For $A \in \mathbb{R}^{m \times n}$:
+\[
+    \mathbf{y} = A\mathbf{x}
+\]
+\[
+    \mathbf{J}_{\mathbf{y} \to \mathbf{x}} = \frac{\partial (A\mathbf{x})}{\partial \mathbf{x}} = A
+\]
+
+\subsection{Chain Rule}
+
+$f = f(x(t))$
+\[
+    \frac{df}{dt} = \frac{df}{dx} \frac{dx}{dt}
+\]
+$f = f(x(\mathbf{t}))$
+\[
+    \frac{\partial f}{\partial t_j} = \frac{df}{dx} \frac{\partial x}{\partial t_j}
+\]
+\[
+    \nabla_{\mathbf{t}}^T f = \frac{df}{dx} \nabla_{\mathbf{t}}^T x
+\]
+\[
+    \frac{\partial f}{\partial \mathbf{t}} = \frac{df}{dx} \frac{\partial x}{\partial \mathbf{t}}
+\]
+$f = f(\mathbf{x}(\mathbf{t}))$
+\[
+    \frac{\partial f}{\partial t_j} = \sum_{i=1}^n \frac{\partial f}{\partial x_i} \frac{\partial x_i}{\partial t_j}
+\]
+\[
+    \nabla_{\mathbf{t}}^T f = \nabla_{\mathbf{x}}^T f \cdot \mathbf{J}_{\mathbf{x} \to \mathbf{t}}
+\]
+\[
+    \frac{\partial f}{\partial \mathbf{t}} = \frac{\partial f}{\partial \mathbf{x}} \frac{\partial \mathbf{x}}{\partial \mathbf{t}}
+\]
+$\mathbf{y} = \mathbf{f}(\mathbf{x}(\mathbf{t}))$
+\[
+    \frac{\partial \mathbf{y}}{\partial t_j} = \sum_{i=1}^n \frac{\partial \mathbf{y}}{\partial x_i} \frac{\partial x_i}{\partial t_j}
+\]
+\[
+    \mathbf{J}_{\mathbf{y} \to \mathbf{t}} = \mathbf{J}_{\mathbf{y} \to \mathbf{x}} \cdot \mathbf{J}_{\mathbf{x} \to \mathbf{t}}
+\]
+\[
+    \frac{\partial \mathbf{y}}{\partial \mathbf{t}} = \frac{\partial \mathbf{y}}{\partial \mathbf{x}} \frac{\partial \mathbf{x}}{\partial \mathbf{t}}
+\]
+
+\subsection{Rules of Derivative}
+
 \subsubsection{Combined Functions}
 
 \[
@@ -130,12 +291,6 @@
 \]
 \[
     \left(\frac{f}{g}\right)' = \frac{f'g - fg'}{g^2}
-\]
-
-\subsubsection{Chain Rule}
-
-\[
-    f'(g(x)) = f'(g(x)) \cdot g'(x)
 \]
 
 \subsubsection{Inverse Function}
@@ -153,10 +308,10 @@
     \end{cases}
 \]
 \[
-    \frac{dy}{dx} = \frac{\frac{dy}{dt}}{\frac{dx}{dt}}
+    \frac{dy}{dx} = \frac{y'(t)}{x'(t)}
 \]
 \[
-    \frac{d^2y}{dx^2} = \frac{d\frac{dy}{dx}}{dt} \cdot \frac{dt}{dx}
+    \frac{d^2y}{dx^2} = \frac{d(dy/dx)}{dt} \cdot \frac{dt}{dx}
 \]
 
 \subsubsection{Implicit Function}
@@ -168,21 +323,89 @@
     \frac{dy}{dx} = -\frac{F_x'}{F_y'}
 \]
 
-\subsubsection{Definite Integral with Variable Bounds}
+\subsection{Directional Derivative}
 
 \[
-    \frac{d}{dx} \int_a^x f(t) dt = f(x)
+    \nabla_u f(x) = \hat{u} \cdot \nabla f(x)
 \]
 
-\subsection{L'Hôpital's Rule}
+\subsection{Total Differential}
 
-If $\lim_{x \to c} f(x) = \lim_{x \to c} g(x) = 0$ or $\pm\infty$:
 \[
-    \lim_{x \to c} \frac{f(x)}{g(x)} = \lim_{x \to c} \frac{f'(x)}{g'(x)}
+    df = \sum_{i=1}^n \frac{\partial f}{\partial x_i} dx_i
 \]
 
-\subsection{Taylor Series}
+\subsection{Divergence}
+For a vector field $\mathbf{F}: \mathbb{R}^n \to \mathbb{R}^n$, where $\mathbf{F}(\mathbf{x}) = (F_1(\mathbf{x}), F_2(\mathbf{x}), \dots, F_n(\mathbf{x}))$:
+\[
+    \operatorname{div} \mathbf{F} = \nabla \cdot \mathbf{F} = \sum_{i=1}^n \frac{\partial F_i}{\partial x_i}
+\]
 
+\subsection{Curl}
+For a vector field $\mathbf{F} = P\mathbf{i} + Q\mathbf{j} + R\mathbf{k}$:
+\[
+    \operatorname{curl} \mathbf{F} = \nabla \times \mathbf{F} =
+    \begin{vmatrix}
+        \mathbf{i} & \mathbf{j} & \mathbf{k} \\
+        \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\
+        P & Q & R
+    \end{vmatrix}
+    = \left(\frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z}\right)\mathbf{i} + \left(\frac{\partial P}{\partial z} - \frac{\partial R}{\partial x}\right)\mathbf{j} + \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right)\mathbf{k}
+\]
+
+\subsection{Jacobian Determinant}
+
+\[
+    \det(\mathbf{J}) = \left|\frac{\partial y}{\partial x}\right| = \begin{vmatrix}
+                                                                        \frac{\partial y_1}{\partial x_1} & \cdots & \frac{\partial y_1}{\partial x_n} \\
+                                                                        \vdots & \ddots & \vdots \\
+                                                                        \frac{\partial y_m}{\partial x_1} & \cdots & \frac{\partial y_m}{\partial x_n}
+    \end{vmatrix}
+\]
+\[
+    dx = \left|\frac{\partial x}{\partial u}\right| du
+\]
+
+\subsection{System of Functions}
+
+\[
+    \begin{cases}
+        F(x, y, u(x, y), v(x, y)) = 0 \\
+        G(x, y, u(x, y), v(x, y)) = 0
+    \end{cases}
+\]
+\[
+    \det(\mathbf{J}) = \frac{\partial(F, G)}{\partial(u, v)}
+\]
+\[
+    \frac{\partial u}{\partial x} = -\frac{1}{\det(\mathbf{J})} \frac{\partial(F, G)}{\partial(x, v)} = -\frac{\begin{vmatrix} F_x' & F_v' \\ G_x' & G_v' \end{vmatrix}}{\begin{vmatrix} F_u' & F_v' \\ G_u' & G_v' \end{vmatrix}}
+\]
+\[
+    \frac{\partial v}{\partial x} = -\frac{1}{\det(\mathbf{J})} \frac{\partial(F, G)}{\partial(u, x)} = -\frac{\begin{vmatrix} F_u' & F_x' \\ G_u' & G_x' \end{vmatrix}}{\begin{vmatrix} F_u' & F_v' \\ G_u' & G_v' \end{vmatrix}}
+\]
+\[
+    \frac{\partial u}{\partial y} = -\frac{1}{\det(\mathbf{J})} \frac{\partial(F, G)}{\partial(y, v)} = -\frac{\begin{vmatrix} F_y' & F_v' \\ G_y' & G_v' \end{vmatrix}}{\begin{vmatrix} F_u' & F_v' \\ G_u' & G_v' \end{vmatrix}}
+\]
+\[
+    \frac{\partial v}{\partial y} = -\frac{1}{\det(\mathbf{J})} \frac{\partial(F, G)}{\partial(u, y)} = -\frac{\begin{vmatrix} F_u' & F_y' \\ G_u' & G_y' \end{vmatrix}}{\begin{vmatrix} F_u' & F_v' \\ G_u' & G_v' \end{vmatrix}}
+\]
+
+\subsection{Hessian Determinant}
+
+For $f(x, y)$:
+
+\[
+    \det(\mathbf{H}) = \begin{vmatrix}
+       \dfrac{\partial^2 f}{\partial x_1^2} & \frac{\partial^2 f}{\partial x_1 x_2} \\
+       \dfrac{\partial^2 f}{\partial x_2 x_1} & \frac{\partial^2 f}{\partial x_2^2}
+    \end{vmatrix}
+\]
+
+
+\newpage
+\section{Taylor Series}
+
+\subsection{Univariate Taylor Series}
 \[
     f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!}(x - a)^n
 \]
@@ -190,6 +413,36 @@ Let $h = x - a$:
 \[
     f(a + h) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!}h^n
 \]
+
+\subsection{Multivariate Taylor Series}
+\[
+    f(\mathbf{x}) = \sum_{|\boldsymbol{\alpha}|=0}^{\infty} \frac{D^{\boldsymbol{\alpha}} f(\mathbf{a})}{\boldsymbol{\alpha}!} (\mathbf{x} - \mathbf{a})^{\boldsymbol{\alpha}}
+\]
+where:
+\begin{itemize}
+    \item $\mathbf{x} = (x_1, x_2, \ldots, x_n) \in \mathbb{R}^n$ is the variable vector
+    \item $\mathbf{a} = (a_1, a_2, \ldots, a_n) \in \mathbb{R}^n$ is the expansion point
+    \item $\boldsymbol{\alpha} = (\alpha_1, \alpha_2, \ldots, \alpha_n)$ is a multi-index with $\alpha_i \geq 0$ for all $i$
+    \item $|\boldsymbol{\alpha}| = \alpha_1 + \alpha_2 + \cdots + \alpha_n$ is the order of the multi-index
+    \item $\boldsymbol{\alpha}! = \alpha_1! \alpha_2! \cdots \alpha_n!$ is the multi-index factorial
+    \item $(\mathbf{x} - \mathbf{a})^{\boldsymbol{\alpha}} = (x_1 - a_1)^{\alpha_1} (x_2 - a_2)^{\alpha_2} \cdots (x_n - a_n)^{\alpha_n}$
+    \item $D^{\boldsymbol{\alpha}} f(\mathbf{a}) = \frac{\partial^{|\boldsymbol{\alpha}|} f}{\partial x_1^{\alpha_1} \partial x_2^{\alpha_2} \cdots \partial x_n^{\alpha_n}}\bigg|_{\mathbf{x}=\mathbf{a}}$ is the mixed partial derivative of order $|\boldsymbol{\alpha}|$ evaluated at $\mathbf{a}$
+\end{itemize}
+Let $\mathbf{h} = \mathbf{x} - \mathbf{a}$:
+\[
+    f(\mathbf{a} + \mathbf{h}) = \sum_{|\boldsymbol{\alpha}|=0}^{\infty} \frac{D^{\boldsymbol{\alpha}} f(\mathbf{a})}{\boldsymbol{\alpha}!} \mathbf{h}^{\boldsymbol{\alpha}}
+\]
+
+\subsubsection{Second Order Taylor Series}
+\[
+    f(\mathbf{x}) \approx f(\mathbf{a}) + \nabla f(\mathbf{a})^T (\mathbf{x}-\mathbf{a}) + \frac{1}{2} (\mathbf{x}-\mathbf{a})^T \mathbf{H}(\mathbf{a}) (\mathbf{x}-\mathbf{a})
+\]
+Let $\mathbf{h} = \mathbf{x} - \mathbf{a}$:
+\[
+    f(\mathbf{a} + \mathbf{h}) \approx f(\mathbf{a}) + \nabla f(\mathbf{a})^T \mathbf{h} + \frac{1}{2} \mathbf{h}^T \mathbf{H}(\mathbf{a}) \mathbf{h}
+\]
+
+\subsection{Taylor Series of Functions}
 
 \subsubsection{Exponential Function}
 
@@ -221,80 +474,121 @@ Let $h = x - a$:
     \cos x = \sum_{n=0}^{\infty} \frac{(-1)^n}{(2n)!} x^{2n}
 \]
 
-\subsection{Optimization}
 
-\subsubsection{Convexity and Concavity}
+\newpage
+\section{Optimization}
 
-\paragraph{Convexity:}
+\subsection{Convexity and Concavity}
+
+\subsubsection{Convexity}
 A function $f: X \to \mathbb{R}$ is \textbf{convex} if for any $x_1, x_2 \in X$ and $\lambda \in [0, 1]$:
 \[
     f(\lambda x_1 + (1-\lambda) x_2) \le \lambda f(x_1) + (1-\lambda) f(x_2)
 \]
 If $f''(x) \ge 0$ for all $x$, then $f(x)$ is convex.
 
-\paragraph{Concavity:}
+\subsubsection{Concavity}
 A function $f: X \to \mathbb{R}$ is \textbf{concave} if for any $x_1, x_2 \in X$ and $\lambda \in [0, 1]$:
 \[
     f(\lambda x_1 + (1-\lambda) x_2) \ge \lambda f(x_1) + (1-\lambda) f(x_2)
 \]
 If $f''(x) \le 0$ for all $x$, then $f(x)$ is concave.
 
-\subsubsection{Extrema}
-
+\subsection{Extrema}
 \[
     y' = 0
 \]
+\begin{itemize}
+    \item \textbf{Local Minimum}: $y'' > 0$
+    \item \textbf{Local Maximum}: $y'' < 0$
+    \item \textbf{Degenerate}: $y'' = 0$
+\end{itemize}
 
-\subsubsection{Conditional Extrema}
+\subsection{Critical Points}
+\[
+    \nabla f = \mathbf{0}
+\]
+\begin{itemize}
+    \item \textbf{Local Minimum}: $\mathbf{H} \succ 0$ (all eigenvalues $> 0$)
+    \item \textbf{Local Maximum}: $\mathbf{H} \prec 0$ (all eigenvalues $< 0$)
+    \item \textbf{Saddle Point}: $\mathbf{H}$ has both positive and negative eigenvalues
+    \item \textbf{Degenerate}: $\mathbf{H}$ has zero eigenvalues
+\end{itemize}
 
-Find $x$ such that $f(x)$ is extremal, subject to $g(x) = 0$.
+\subsection{Conditional Extrema}
+
+Find $\mathbf{x}$ such that $f(\mathbf{x})$ is extremal, subject to $g(\mathbf{x}) = 0$.
 \newline
 \textbf{Lagrangian Function:}
 \[
-    \mathcal{L}(x, \lambda) = f(x) + \lambda g(x).
+    \mathcal{L}(\mathbf{x}, \lambda) = f(\mathbf{x}) + \langle \lambda, g(\mathbf{x}) \rangle
 \]
 where $\lambda$ is the \textbf{Lagrange Multiplier}.
 \newline
 Solve:
 \[
     \begin{cases}
-        \frac{\partial \mathcal{L}}{\partial x} = f'(x) + \lambda g'(x) = 0 \\
-        \frac{\partial \mathcal{L}}{\partial \lambda} = g(x) = 0
+        \frac{\partial \mathcal{L}}{\partial \mathbf{x}} = f'(\mathbf{x}) + \lambda g'(\mathbf{x}) = \mathbf{0} \\
+        \frac{\partial \mathcal{L}}{\partial \lambda} = g(\mathbf{x}) = 0
     \end{cases}
 \]
 
-\subsection{Applications for Derivatives}
 
-\subsubsection{Tangent Line Equation}
+\newpage
+\section{Application for Derivatives}
+
+\subsection{Tangent Line Equation}
 
 \[
     y - y_0 = y'(x - x_0)
 \]
 
-\subsubsection{Arc Length}
+\paragraph{Parametric curve:}
+\[
+    \begin{cases}
+        x = \phi(t) \\
+        y = \psi(t) \\
+        z = \omega(t)
+    \end{cases}
+\]
+\[
+    \frac{x - x_0}{\phi'(t_0)} = \frac{y - y_0}{\psi'(t_0)} = \frac{z - z_0}{\omega'(t_0)}
+\]
 
+\paragraph{Intersection of surfaces:}
+\[
+    \begin{cases}
+        F(x, y, z) = 0 \\
+        G(x, y, z) = 0
+    \end{cases}
+\]
+\[
+    M = (x_0, y_0, z_0)
+\]
+\[
+    \frac{x - x_0}{\begin{vmatrix} F_y' & F_z' \\ G_y' & G_z' \end{vmatrix}_M} = \frac{y - y_0}{\begin{vmatrix} F_z' & F_x' \\ G_z' & G_x' \end{vmatrix}_M} = \frac{z - z_0}{\begin{vmatrix} F_x' & F_y' \\ G_x' & G_y' \end{vmatrix}_M}
+\]
+
+\subsection{Arc Length}
 \[
     ds = \sqrt{1 + (y')^2} dx
 \]
 
-\subsubsection{Curvature}
-
+\subsection{Curvature}
 \[
     \kappa = \frac{|y''|}{(1 + (y')^2)^{3/2}}
 \]
-For parametric equations:
+\paragraph{Parametric equations:}
 \[
     \kappa = \frac{|\phi'(t)\psi''(t) - \phi''(t)\psi'(t)|}{(\phi'(t)^2 + \psi'(t)^2)^{3/2}}
 \]
 
-\subsubsection{Radius of Curvature}
-
+\subsection{Radius of Curvature}
 \[
     \rho = \frac{1}{\kappa}
 \]
 
-\subsubsection{Center of Curvature}
-
+\subsection{Center of Curvature}
 \[
     D(\alpha, \beta)
 \]
@@ -305,11 +599,25 @@ For parametric equations:
     \end{cases}
 \]
 
-\subsection{Integrals}
+\subsection{Normal Plane Equation}
+For $F(x, y, z) = 0$:
+\[
+    F_x'(x_0, y_0, z_0)(x - x_0) + F_y'(x_0, y_0, z_0)(y - y_0) + F_z'(x_0, y_0, z_0)(z - z_0) = 0
+\]
 
-\subsubsection{Indefinite Integrals}
 
-\textbf{Rational Functions:}
+\newpage
+\section{Integral}
+
+\subsection{Definite Integral with Variable Bounds}
+
+\[
+    \frac{d}{dx} \int_a^x f(t) dt = f(x)
+\]
+
+\subsection{Indefinite Integral of Functions}
+
+\paragraph{Rational Functions:}
 \[
     \int a dx = ax + C
 \]
@@ -325,7 +633,7 @@ For parametric equations:
 \[
     \int \frac{c}{ax + b} dx = \frac{c}{a} \ln|ax + b| + C
 \]
-\textbf{Exponential Functions:}
+\paragraph{Exponential Functions:}
 \[
     \int e^{ax} dx = \frac{1}{a} e^{ax} + C
 \]
@@ -335,14 +643,14 @@ For parametric equations:
 \[
     \int a^x dx = \frac{a^x}{\ln a} + C
 \]
-\textbf{Logarithms:}
+\paragraph{Logarithms:}
 \[
     \int \ln x dx = x \ln x - x + C
 \]
 \[
     \int \log_a x dx = x \log_a x - \frac{x}{\ln a} + C = \frac{x \ln x - x}{\ln a} + C
 \]
-\textbf{Trigonometric Functions:}
+\paragraph{Trigonometric Functions:}
 \[
     \int \sin x dx = -\cos x + C
 \]
@@ -397,7 +705,7 @@ For parametric equations:
 \[
     \int \cos^n x dx = \frac{\cos^{n-1} x \sin x}{n} + \frac{n-1}{n} \int \cos^{n-2} x dx
 \]
-\textbf{Inverse Trigonometric Functions:}
+\paragraph{Inverse Trigonometric Functions:}
 \[
     \int \arcsin x dx = x \arcsin x + \sqrt{1 - x^2} + C
 \]
@@ -417,7 +725,7 @@ For parametric equations:
     \int \operatorname{arccsc} x dx = x \operatorname{arccsc} x + \ln|x(1 + \sqrt{1 - x^{-2}})| + C
 \]
 
-\subsubsection{Definite Integrals}
+\subsection{Definite Integral of Functions}
 
 \[
     \int_0^{\pi/2} \sin^n x dx = \int_0^{\pi/2} \cos^n x dx = \frac{(n-1)!!}{n!!} \times
@@ -425,464 +733,6 @@ For parametric equations:
         1 & \text{if } n \text{ is odd} \\
         \frac{\pi}{2} & \text{if } n \text{ is even}
     \end{cases}
-\]
-
-\subsection{Ordinary Differential Equations}
-
-\subsubsection{Separable Differential Equation}
-
-\[
-    P(x) dx = Q(y) dy
-\]
-\[
-    \int P(x) dx = \int Q(y) dy
-\]
-
-\subsubsection{Homogeneous Differential Equation}
-
-\[
-    \frac{dy}{dx} = F\left(\frac{y}{x}\right)
-\]
-Set $u = \frac{y}{x}$, $\frac{dy}{dx} = u + x\frac{du}{dx}$:
-\[
-    u + x\frac{du}{dx} = F(u)
-\]
-\[
-    \frac{1}{F(u) - u} du = \frac{1}{x} dx
-\]
-
-\subsubsection{First Order Linear Differential Equation}
-
-\[
-    y' + P(x)y = Q(x)
-\]
-\[
-    y = e^{-\int P(x) dx} \left(\int Q(x) e^{\int P(x) dx} dx + C\right)
-\]
-
-\subsubsection{Bernoulli Equation}
-
-\[
-    y' + P(x)y = Q(x)y^n \quad (n \neq 0, 1)
-\]
-\[
-    y^{-n} \frac{dy}{dx} + P(x) y^{1-n} = Q(x)
-\]
-Set $z = y^{1-n}$:
-\[
-    \frac{dz}{dx} = (1-n) y^{-n} \frac{dy}{dx}
-\]
-
-\[
-    \frac{dz}{dx} + (1-n)P(x)z = (1-n)Q(x)
-\]
-
-\subsubsection{Higher Order Linear Differential Equations}
-
-\textbf{Degradable Higher Order Differential Equations:}
-
-\begin{itemize}
-    \item $y^{(n)} = f(x)$
-    \[
-        y = \underbrace{\int \int \cdots \int}_{n \text{ times}} f(x) dx
-    \]
-
-    \item $y'' = f(x, y')$
-
-    Set $y' = p$:
-    \[
-        y'' = \frac{dp}{dx} = p'
-    \]
-    \[
-        p' = f(x, p)
-    \]
-
-    \item $y'' = f(y, y')$
-
-    Set $y' = p$:
-    \[
-        y'' = \frac{dp}{dx} = \frac{dp}{dy} \frac{dy}{dx} = p \frac{dp}{dy}
-    \]
-    \[
-        p \frac{dp}{dy} = f(y, p)
-    \]
-\end{itemize}
-
-\textbf{Homogeneous Linear Differential Equations with Constant Coefficients:}
-
-\[
-    y'' + py' + qy = 0
-\]
-
-Characteristic Equation: $r^2 + pr + q = 0$
-
-\begin{itemize}
-    \item $r_1 \neq r_2$: $y = C_1 e^{r_1 x} + C_2 e^{r_2 x}$
-    \item $r_1 = r_2$: $y = (C_1 + C_2 x) e^{r_1 x}$
-    \item $r_{1,2} = \alpha \pm \beta i$: $y = e^{\alpha x}(C_1 \cos \beta x + C_2 \sin \beta x)$
-\end{itemize}
-
-\textbf{Inhomogeneous Linear Differential Equations with Constant Coefficients:}
-
-\[
-    y'' + py' + qy = f(x)
-\]
-\[
-    y = Y(x) + y^*(x)
-\]
-
-\begin{itemize}
-    \item $f(x) = e^{\lambda x} P_m(x)$
-    \[
-        y^* = x^k R_m(x) e^{\lambda x}
-    \]
-
-    where $k$ is the multiplicity of $\lambda$ as a root of the characteristic equation.
-
-    \item $f(x) = e^{\lambda x}(P_l(x) \cos \omega x + Q_n(x) \sin \omega x)$
-    \[
-        y^* = x^k e^{\lambda x}(R_m^{(1)}(x) \cos \omega x + R_m^{(2)}(x) \sin \omega x)
-    \]
-
-    where $m = \max\{l, n\}$ and $k$ is the multiplicity of $\lambda + \omega i$ as a root of the characteristic equation.
-\end{itemize}
-
-\newpage
-\section{Multivariable Calculus}
-
-\subsection{Total Differential}
-
-\[
-    df = \sum_{i=1}^n \frac{\partial f}{\partial x_i} dx_i
-\]
-
-\subsection{Layouts}
-
-\subsubsection{Numerator Layout}
-
-$f: \mathbb{R}^n \to \mathbb{R}^m$, $\mathbf{y} = f(\mathbf{x})$
-\[
-    \left[\frac{\partial \mathbf{y}}{\partial \mathbf{x}}\right]_{i,j} = \frac{\partial \mathbf{y}_{i}}{\partial \mathbf{x}_{j}}
-\]
-\[
-    \frac{\partial \mathbf{y}}{\partial \mathbf{x}} \in \mathbb{R}^{m\times n}
-\]
-
-\subsubsection{Denominator Layout}
-
-$f: \mathbb{R}^n \to \mathbb{R}^m$, $\mathbf{y} = f(\mathbf{x})$
-\[
-    \left[\frac{\partial \mathbf{y}}{\partial \mathbf{x}}\right]_{j,i} = \frac{\partial \mathbf{y}_{i}}{\partial \mathbf{x}_{j}}
-\]
-\[
-    \frac{\partial \mathbf{y}}{\partial \mathbf{x}} \in \mathbb{R}^{n\times m}
-\]
-
-\subsubsection{Conventions}
-
-\begin{itemize}
-    \item \textbf{Numerator Layout:} Chain Rule.
-    \begin{itemize}
-        \item Partial Derivatives
-        \item Jacobian Matrix
-    \end{itemize}
-
-    \item \textbf{Denominator Layout:} Preserves shape.
-    \begin{itemize}
-        \item Gradient
-        \item Hessian Matrix
-    \end{itemize}
-\end{itemize}
-
-\subsection{Derivative of Scalar-valued Function}
-
-$f: \mathbb{R}^n \to \mathbb{R}$, $f = f(\mathbf{x})$.
-
-\subsubsection{First-Order Derivative \& Gradient}
-\[
-    \nabla_\mathbf{x} f =
-    \begin{bmatrix}
-        \frac{\partial f}{\partial x_1} \\
-        \vdots \\
-        \frac{\partial f}{\partial x_n}
-    \end{bmatrix}
-\]
-\[
-    \frac{\partial f}{\partial \mathbf{x}} = \nabla_\mathbf{x}^T f
-\]
-
-\subsubsection{Second-Order Derivative \& Hessian Matrix}
-Curvature of a function.
-\[
-    \nabla^2_\mathbf{x} f = \mathbf{H}_\mathbf{x}(f) =
-    \begin{bmatrix}
-        \frac{\partial^2 f}{\partial x_1^2} & \cdots & \frac{\partial^2 f}{\partial x_1 \partial x_n} \\
-        \vdots & \ddots & \vdots \\
-        \frac{\partial^2 f}{\partial x_n \partial x_1} & \cdots & \frac{\partial^2 f}{\partial x_n^2}
-    \end{bmatrix}
-\]
-\[
-    \frac{\partial^2 f}{\partial \mathbf{x} \partial \mathbf{x}^T} = \mathbf{H}_\mathbf{x}^T(f)
-\]
-The Jacobian matrix of the Gradient of $f$.
-\[
-    \mathbf{H}^T(f) = \mathbf{J}(\nabla f)
-\]
-
-\subsection{Derivative of Vector-valued Function}
-
-$\mathbf{f}: \mathbb{R}^n \to \mathbb{R}^m$, $\mathbf{f}(\mathbf{x}) = \mathbf{y}$.
-
-\subsubsection{First-Order Derivative & Jacobian Matrix}
-\[
-    \mathbf{J_{\mathbf{y} \to \mathbf{x}}} =
-    \begin{bmatrix}
-        \frac{\partial y_1}{\partial x_1} & \cdots & \frac{\partial y_1}{\partial x_n} \\
-        \vdots & \ddots & \vdots \\
-        \frac{\partial y_m}{\partial x_1} & \cdots & \frac{\partial y_m}{\partial x_n}
-    \end{bmatrix}
-\]
-\[
-    \frac{\partial \mathbf{y}}{\partial \mathbf{x}} = \mathbf{J_{\mathbf{y} \to \mathbf{x}}}
-\]
-
-\subsection{Matrix Derivative}
-
-\subsubsection{Quadratic Form}
-For symmetric matrix $A \in \mathbb{R}^{n \times n}$:
-\[
-    f(\mathbf{x}) = \frac{1}{2}\mathbf{x}^T A \mathbf{x}
-\]
-\[
-    \nabla f(\mathbf{x}) = \frac{1}{2}(A + A^T)\mathbf{x} = A\mathbf{x}
-\]
-\[
-    \mathbf{H}^T(f(\mathbf{x})) = A
-\]
-
-\subsubsection{Linear Transformation}
-For $A \in \mathbb{R}^{m \times n}$:
-\[
-    \mathbf{y} = A\mathbf{x}
-\]
-\[
-    \mathbf{J}_{\mathbf{y} \to \mathbf{x}} = \frac{\partial (A\mathbf{x})}{\partial \mathbf{x}} = A
-\]
-
-
-\subsection{Chain Rule}
-
-$f = f(x(\mathbf{t}))$
-\[
-    \frac{\partial f}{\partial t_j} = \frac{df}{dx} \frac{\partial x}{\partial t_j}
-\]
-\[
-    \nabla_{\mathbf{t}}^T f = \frac{df}{dx} \nabla_{\mathbf{t}}^T x
-\]
-\[
-    \frac{\partial f}{\partial \mathbf{t}} = \frac{df}{dx} \frac{\partial x}{\partial \mathbf{t}}
-\]
-$f = f(\mathbf{x}(\mathbf{t}))$
-\[
-    \frac{\partial f}{\partial t_j} = \sum_{i=1}^n \frac{\partial f}{\partial x_i} \frac{\partial x_i}{\partial t_j}
-\]
-\[
-    \nabla_{\mathbf{t}}^T f = \nabla_{\mathbf{x}}^T f \cdot \mathbf{J}_{\mathbf{x} \to \mathbf{t}}
-\]
-\[
-    \frac{\partial f}{\partial \mathbf{t}} = \frac{\partial f}{\partial \mathbf{x}} \frac{\partial \mathbf{x}}{\partial \mathbf{t}}
-\]
-$\mathbf{y} = \mathbf{f}(\mathbf{x}(\mathbf{t}))$
-\[
-    \frac{\partial \mathbf{y}}{\partial t_j} = \sum_{i=1}^n \frac{\partial \mathbf{y}}{\partial x_i} \frac{\partial x_i}{\partial t_j}
-\]
-\[
-    \mathbf{J}_{\mathbf{y} \to \mathbf{t}} = \mathbf{J}_{\mathbf{y} \to \mathbf{x}} \cdot \mathbf{J}_{\mathbf{x} \to \mathbf{t}}
-\]
-\[
-    \frac{\partial \mathbf{y}}{\partial \mathbf{t}} = \frac{\partial \mathbf{y}}{\partial \mathbf{x}} \frac{\partial \mathbf{x}}{\partial \mathbf{t}}
-\]
-
-\subsection{Directional Derivative}
-
-\[
-    \nabla_u f(x) = \hat{u} \cdot \nabla f(x)
-\]
-
-\subsection{Divergence}
-For a vector field $\mathbf{F}: \mathbb{R}^n \to \mathbb{R}^n$, where $\mathbf{F}(\mathbf{x}) = (F_1(\mathbf{x}), F_2(\mathbf{x}), \dots, F_n(\mathbf{x}))$:
-\[
-    \operatorname{div} \mathbf{F} = \nabla \cdot \mathbf{F} = \sum_{i=1}^n \frac{\partial F_i}{\partial x_i}
-\]
-
-\subsection{Curl}
-For a vector field $\mathbf{F} = P\mathbf{i} + Q\mathbf{j} + R\mathbf{k}$:
-\[
-    \operatorname{curl} \mathbf{F} = \nabla \times \mathbf{F} =
-    \begin{vmatrix}
-        \mathbf{i} & \mathbf{j} & \mathbf{k} \\
-        \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\
-        P & Q & R
-    \end{vmatrix}
-    = \left(\frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z}\right)\mathbf{i} + \left(\frac{\partial P}{\partial z} - \frac{\partial R}{\partial x}\right)\mathbf{j} + \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right)\mathbf{k}
-\]
-
-\subsection{Implicit Function}
-
-\[
-    F(x, y, z) = 0
-\]
-\[
-    \frac{\partial z}{\partial x} = -\frac{F_x'}{F_z'}
-\]
-\[
-    \frac{\partial z}{\partial y} = -\frac{F_y'}{F_z'}
-\]
-
-\subsection{Jacobian Determinant}
-
-\[
-    \det(\mathbf{J}) = \left|\frac{\partial y}{\partial x}\right| = \begin{vmatrix}
-        \frac{\partial y_1}{\partial x_1} & \cdots & \frac{\partial y_1}{\partial x_n} \\
-        \vdots & \ddots & \vdots \\
-        \frac{\partial y_m}{\partial x_1} & \cdots & \frac{\partial y_m}{\partial x_n}
-    \end{vmatrix}
-\]
-\[
-    dx = \left|\frac{\partial x}{\partial u}\right| du
-\]
-
-\subsection{System of Functions}
-
-\[
-    \begin{cases}
-        F(x, y, u(x, y), v(x, y)) = 0 \\
-        G(x, y, u(x, y), v(x, y)) = 0
-    \end{cases}
-\]
-\[
-    \det(\mathbf{J}) = \frac{\partial(F, G)}{\partial(u, v)}
-\]
-\[
-    \frac{\partial u}{\partial x} = -\frac{1}{\det(\mathbf{J})} \frac{\partial(F, G)}{\partial(x, v)} = -\frac{\begin{vmatrix} F_x' & F_v' \\ G_x' & G_v' \end{vmatrix}}{\begin{vmatrix} F_u' & F_v' \\ G_u' & G_v' \end{vmatrix}}
-\]
-\[
-    \frac{\partial v}{\partial x} = -\frac{1}{\det(\mathbf{J})} \frac{\partial(F, G)}{\partial(u, x)} = -\frac{\begin{vmatrix} F_u' & F_x' \\ G_u' & G_x' \end{vmatrix}}{\begin{vmatrix} F_u' & F_v' \\ G_u' & G_v' \end{vmatrix}}
-\]
-\[
-    \frac{\partial u}{\partial y} = -\frac{1}{\det(\mathbf{J})} \frac{\partial(F, G)}{\partial(y, v)} = -\frac{\begin{vmatrix} F_y' & F_v' \\ G_y' & G_v' \end{vmatrix}}{\begin{vmatrix} F_u' & F_v' \\ G_u' & G_v' \end{vmatrix}}
-\]
-\[
-    \frac{\partial v}{\partial y} = -\frac{1}{\det(\mathbf{J})} \frac{\partial(F, G)}{\partial(u, y)} = -\frac{\begin{vmatrix} F_u' & F_y' \\ G_u' & G_y' \end{vmatrix}}{\begin{vmatrix} F_u' & F_v' \\ G_u' & G_v' \end{vmatrix}}
-\]
-
-\subsection{Hessian Determinant}
-
-For $f(x, y)$:
-
-\[
-    \det(\mathbf{H}) = \begin{vmatrix}
-        \frac{\partial^2 f}{\partial x_1^2} & \frac{\partial^2 f}{\partial x_1 x_2} \\
-        \frac{\partial^2 f}{\partial x_2 x_1} & \frac{\partial^2 f}{\partial x_2^2}
-    \end{vmatrix}
-\]
-
-\subsection{Taylor Series}
-
-\[
-    f(\mathbf{x}) = \sum_{|\boldsymbol{\alpha}|=0}^{\infty} \frac{D^{\boldsymbol{\alpha}} f(\mathbf{a})}{\boldsymbol{\alpha}!} (\mathbf{x} - \mathbf{a})^{\boldsymbol{\alpha}}
-\]
-where:
-\begin{itemize}
-    \item $\mathbf{x} = (x_1, x_2, \ldots, x_n) \in \mathbb{R}^n$ is the variable vector
-    \item $\mathbf{a} = (a_1, a_2, \ldots, a_n) \in \mathbb{R}^n$ is the expansion point
-    \item $\boldsymbol{\alpha} = (\alpha_1, \alpha_2, \ldots, \alpha_n)$ is a multi-index with $\alpha_i \geq 0$ for all $i$
-    \item $|\boldsymbol{\alpha}| = \alpha_1 + \alpha_2 + \cdots + \alpha_n$ is the order of the multi-index
-    \item $\boldsymbol{\alpha}! = \alpha_1! \alpha_2! \cdots \alpha_n!$ is the multi-index factorial
-    \item $(\mathbf{x} - \mathbf{a})^{\boldsymbol{\alpha}} = (x_1 - a_1)^{\alpha_1} (x_2 - a_2)^{\alpha_2} \cdots (x_n - a_n)^{\alpha_n}$
-    \item $D^{\boldsymbol{\alpha}} f(\mathbf{a}) = \frac{\partial^{|\boldsymbol{\alpha}|} f}{\partial x_1^{\alpha_1} \partial x_2^{\alpha_2} \cdots \partial x_n^{\alpha_n}}\bigg|_{\mathbf{x}=\mathbf{a}}$ is the mixed partial derivative of order $|\boldsymbol{\alpha}|$ evaluated at $\mathbf{a}$
-\end{itemize}
-Let $\mathbf{h} = \mathbf{x} - \mathbf{a}$:
-\[
-    f(\mathbf{a} + \mathbf{h}) = \sum_{|\boldsymbol{\alpha}|=0}^{\infty} \frac{D^{\boldsymbol{\alpha}} f(\mathbf{a})}{\boldsymbol{\alpha}!} \mathbf{h}^{\boldsymbol{\alpha}}
-\]
-
-\subsubsection{Second Order Taylor Series}
-\[
-    f(\mathbf{x}) \approx f(\mathbf{a}) + \nabla f(\mathbf{a})^T (\mathbf{x}-\mathbf{a}) + \frac{1}{2} (\mathbf{x}-\mathbf{a})^T \mathbf{H}(\mathbf{a}) (\mathbf{x}-\mathbf{a})
-\]
-Let $\mathbf{h} = \mathbf{x} - \mathbf{a}$:
-\[
-    f(\mathbf{a} + \mathbf{h}) \approx f(\mathbf{a}) + \nabla f(\mathbf{a})^T \mathbf{h} + \frac{1}{2} \mathbf{h}^T \mathbf{H}(\mathbf{a}) \mathbf{h}
-\]
-
-\subsection{Optimization}
-
-\subsubsection{Critical Points}
-
-\[
-    \nabla f = \mathbf{0}
-\]
-
-\begin{itemize}
-    \item \textbf{Local Minimum}: $\mathbf{H} \succ 0$ (all eigenvalues $> 0$)
-    \item \textbf{Local Maximum}: $\mathbf{H} \prec 0$ (all eigenvalues $< 0$)
-    \item \textbf{Saddle Point}: $\mathbf{H}$ has both positive and negative eigenvalues
-    \item \textbf{Degenerate}: $\mathbf{H}$ has zero eigenvalues
-\end{itemize}
-
-\subsubsection{Conditional Extrema}
-
-Find $\mathbf{x}$ such that $f(\mathbf{x})$ is extremal, subject to $g(\mathbf{x}) = 0$.
-\newline
-\textbf{Lagrangian Function:}
-\[
-    \mathcal{L}(\mathbf{x}, \lambda) = f(\mathbf{x}) + \langle \lambda, g(\mathbf{x}) \rangle
-\]
-where $\lambda$ is the \textbf{Lagrange Multiplier}.
-\newline
-Solve:
-\[
-    \begin{cases}
-        \frac{\partial \mathcal{L}}{\partial \mathbf{x}} = f'(\mathbf{x}) + \lambda g'(\mathbf{x}) = \mathbf{0} \\
-        \frac{\partial \mathcal{L}}{\partial \lambda} = g(\mathbf{x}) = 0
-    \end{cases}
-\]
-
-\subsection{Applications for Bivariable Derivatives}
-
-\subsubsection{Tangent Line Equation}
-
-\begin{itemize}
-    \item For parametric curve:
-    \[
-        \begin{cases}
-            x = \phi(t) \\
-            y = \psi(t) \\
-            z = \omega(t)
-        \end{cases}
-    \]
-    \[
-        \frac{x - x_0}{\phi'(t_0)} = \frac{y - y_0}{\psi'(t_0)} = \frac{z - z_0}{\omega'(t_0)}
-    \]
-
-    \item For intersection of surfaces:
-    \[
-        \begin{cases}
-            F(x, y, z) = 0 \\
-            G(x, y, z) = 0
-        \end{cases}
-    \]
-    \[
-        \frac{x - x_0}{\begin{vmatrix} F_y' & F_z' \\ G_y' & G_z' \end{vmatrix}_M} = \frac{y - y_0}{\begin{vmatrix} F_z' & F_x' \\ G_z' & G_x' \end{vmatrix}_M} = \frac{z - z_0}{\begin{vmatrix} F_x' & F_y' \\ G_x' & G_y' \end{vmatrix}_M}
-    \]
-\end{itemize}
-
-\subsubsection{Normal Plane Equation}
-
-For $F(x, y, z) = 0$:
-\[
-    F_x'(x_0, y_0, z_0)(x - x_0) + F_y'(x_0, y_0, z_0)(y - y_0) + F_z'(x_0, y_0, z_0)(z - z_0) = 0
 \]
 
 \subsection{Multiple Integrals}
@@ -1029,6 +879,131 @@ For parametric curve:
 \[
     \iiint_\Omega \left(\frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z}\right) dv = \iint_\Sigma P dy dz + Q dz dx + R dx dy
 \]
+
+
+\newpage
+\section{Differential Equations}
+
+\subsection{Ordinary Differential Equations}
+
+\subsubsection{Separable Differential Equation}
+
+\[
+    P(x) dx = Q(y) dy
+\]
+\[
+    \int P(x) dx = \int Q(y) dy
+\]
+
+\subsubsection{Homogeneous Differential Equation}
+
+\[
+    \frac{dy}{dx} = F\left(\frac{y}{x}\right)
+\]
+Set $u = \frac{y}{x}$, $\frac{dy}{dx} = u + x\frac{du}{dx}$:
+\[
+    u + x\frac{du}{dx} = F(u)
+\]
+\[
+    \frac{1}{F(u) - u} du = \frac{1}{x} dx
+\]
+
+\subsubsection{First Order Linear Differential Equation}
+
+\[
+    y' + P(x)y = Q(x)
+\]
+\[
+    y = e^{-\int P(x) dx} \left(\int Q(x) e^{\int P(x) dx} dx + C\right)
+\]
+
+\subsubsection{Bernoulli Equation}
+
+\[
+    y' + P(x)y = Q(x)y^n \quad (n \neq 0, 1)
+\]
+\[
+    y^{-n} \frac{dy}{dx} + P(x) y^{1-n} = Q(x)
+\]
+Set $z = y^{1-n}$:
+\[
+    \frac{dz}{dx} = (1-n) y^{-n} \frac{dy}{dx}
+\]
+
+\[
+    \frac{dz}{dx} + (1-n)P(x)z = (1-n)Q(x)
+\]
+
+\subsubsection{Higher Order Linear Differential Equations}
+
+\paragraph{Degradable Higher Order Differential Equations:}
+
+\begin{itemize}
+    \item $y^{(n)} = f(x)$
+    \[
+        y = \underbrace{\int \int \cdots \int}_{n \text{ times}} f(x) dx
+    \]
+
+    \item $y'' = f(x, y')$
+
+    Set $y' = p$:
+    \[
+        y'' = \frac{dp}{dx} = p'
+    \]
+    \[
+        p' = f(x, p)
+    \]
+
+    \item $y'' = f(y, y')$
+
+    Set $y' = p$:
+    \[
+        y'' = \frac{dp}{dx} = \frac{dp}{dy} \frac{dy}{dx} = p \frac{dp}{dy}
+    \]
+    \[
+        p \frac{dp}{dy} = f(y, p)
+    \]
+\end{itemize}
+
+\paragraph{Homogeneous Linear Differential Equations with Constant Coefficients:}
+
+\[
+    y'' + py' + qy = 0
+\]
+
+Characteristic Equation: $r^2 + pr + q = 0$
+
+\begin{itemize}
+    \item $r_1 \neq r_2$: $y = C_1 e^{r_1 x} + C_2 e^{r_2 x}$
+    \item $r_1 = r_2$: $y = (C_1 + C_2 x) e^{r_1 x}$
+    \item $r_{1,2} = \alpha \pm \beta i$: $y = e^{\alpha x}(C_1 \cos \beta x + C_2 \sin \beta x)$
+\end{itemize}
+
+\paragraph{Inhomogeneous Linear Differential Equations with Constant Coefficients:}
+
+\[
+    y'' + py' + qy = f(x)
+\]
+\[
+    y = Y(x) + y^*(x)
+\]
+
+\begin{itemize}
+    \item $f(x) = e^{\lambda x} P_m(x)$
+    \[
+        y^* = x^k R_m(x) e^{\lambda x}
+    \]
+
+    where $k$ is the multiplicity of $\lambda$ as a root of the characteristic equation.
+
+    \item $f(x) = e^{\lambda x}(P_l(x) \cos \omega x + Q_n(x) \sin \omega x)$
+    \[
+        y^* = x^k e^{\lambda x}(R_m^{(1)}(x) \cos \omega x + R_m^{(2)}(x) \sin \omega x)
+    \]
+
+    where $m = \max\{l, n\}$ and $k$ is the multiplicity of $\lambda + \omega i$ as a root of the characteristic equation.
+\end{itemize}
+
 
 \newpage
 \section{Coordinate Transformation}
