@@ -223,6 +223,22 @@ Let $h = x - a$:
 
 \subsection{Optimization}
 
+\subsubsection{Convexity and Concavity}
+
+\paragraph{Convexity:}
+A function $f: X \to \mathbb{R}$ is \textbf{convex} if for any $x_1, x_2 \in X$ and $\lambda \in [0, 1]$:
+\[
+    f(\lambda x_1 + (1-\lambda) x_2) \le \lambda f(x_1) + (1-\lambda) f(x_2)
+\]
+If $f''(x) \ge 0$ for all $x$, then $f(x)$ is convex.
+
+\paragraph{Concavity:}
+A function $f: X \to \mathbb{R}$ is \textbf{concave} if for any $x_1, x_2 \in X$ and $\lambda \in [0, 1]$:
+\[
+    f(\lambda x_1 + (1-\lambda) x_2) \ge \lambda f(x_1) + (1-\lambda) f(x_2)
+\]
+If $f''(x) \le 0$ for all $x$, then $f(x)$ is concave.
+
 \subsubsection{Extrema}
 
 \[
