@@ -365,10 +365,10 @@ $\frac{\sigma_1^2}{\sigma_2^2}$ & $S_1^2, S_2^2$ & $\frac{S_1^2/S_2^2}{\sigma_1^
 \newline
 \textbf{Variance:}
 \[
-    \text{Var}(B\mathbf{v}_i) = \frac{1}{n-1} \|B\mathbf{v}_i\|^2
+    \text{Var}(\mathbf{v}_i^T \mathbf{b}) = \frac{1}{n-1} \|B\mathbf{v}_i\|^2
 \]
 \[
-    \arg\min_{W} \text{cost}(W) = \arg\max_{W} \sum_{i=1}^{k} \text{Var}(B\mathbf{v}_i)
+    \arg \min_W \text{cost}(W) = \arg \max_W \sum_{i=1}^k \text{Var}(\mathbf{v}_i^T \mathbf{b})
 \]
 \textbf{Sample Covariance Matrix:}
 \[
