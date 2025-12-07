@@ -170,19 +170,21 @@ The Moment Generating Function is the Laplace Transform of the Probability Densi
 \subsection{Maximum Likelihood Estimation (MLE)}
 Likelihood Function:
 \[
-    L(\theta) = \prod_{i=1}^{n} p(x_i|\theta)
+    L_i(\theta) = \mathbb{P}(x|\theta)
 \]
-Maximum Likelihood:
 \[
-    \hat{\theta} = \arg\max_\theta L(\theta)
+    L(\theta|X) = \prod_{i=1}^{n} \mathbb{P}(x_i|\theta)
 \]
-Log likelihood:
+Log Likelihood:
 \[
-    \ell(\theta) = \log L(\theta) = \sum_{i=1}^{n} \log p(x_i|\theta)
+    \ell(\theta) = \log L(\theta) = \log \mathbb{P}(x|\theta)
 \]
-Found $\hat{\theta}$ by solving:
 \[
-    \frac{\partial \ell(\theta)}{\partial \theta_i} = 0
+    \ell(\theta|X) = \log L(\theta|X) = \sum_{i=1}^{n} \log \mathbb{P}(x_i|\theta)
+\]
+Maximum Log Likelihood:
+\[
+    \hat{\theta} = \arg\max_\theta \ell(\theta | X)
 \]
 
 \subsubsection{Linear Regression (Ordinary Least Squares)}
