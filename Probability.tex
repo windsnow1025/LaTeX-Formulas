@@ -289,6 +289,15 @@ The number of successes in $ n $ independent Bernoulli trails.
 \[ \mu = np \]
 \[ \sigma^2 = np(1-p) \]
 
+\subsubsection{Multinomial Distribution}
+The number of counts for $k$ mutually exclusive categories in $n$ independent trials.
+\[ \mathbf{X} \sim M(n, \mathbf{p}) \]
+Let $\mathbf{x} = (x_1, \dots, x_k)^\top$, $\mathbf{p} = (p_1, \dots, p_k)^\top$. $\displaystyle \sum_{i=1}^{k} x_i = n$, $\displaystyle \sum_{i=1}^{k} p_i = 1$.
+\[ p(\mathbf{x}) = \frac{n!}{\prod_{i=1}^{k} x_i!} \prod_{i=1}^{k} p_i^{x_i} \]
+\[ \mathbf{\mu} = n \mathbf{p} \]
+\[ \sigma_i^2 = n p_i (1 - p_i) \]
+\[ \Sigma_{i,j} = -n p_i p_j, \quad i \neq j \]
+
 \subsubsection{Geometric Distribution}
 The number of trials needed to get the first success in a sequence of independent Bernoulli trials.
 \[ X \sim G(p) \]
