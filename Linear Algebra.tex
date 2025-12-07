@@ -25,14 +25,39 @@
 \tableofcontents
 
 \newpage
-\section{Matrix}
-Matrix $A \in \mathbb{R}^{m \times n}$ defines a Linear Transformation from Domain $\mathbb{R}^n$ to Codomain $\mathbb{R}^m$.
+\section{Linear Transformation and Matrix}
+
+\subsection{Linear Transformation (Linear Mapping)}
+
+A function $f$ is a \textbf{Linear Mapping} if:
+\begin{itemize}
+    \item \textbf{Additivity}: $f(\mathbf{u}+\mathbf{v}) = f(\mathbf{u}+\mathbf{v})$.
+    \item \textbf{Homogeneity}: $f(c\mathbf{u}) = c f(\mathbf{u})$
+\end{itemize}
+
+\subsection{Matrix}
+
+Matrix $A \in \mathbb{R}^{m \times n}$ defines a \textbf{Linear Transformation} from Domain $\mathbb{R}^n$ to Codomain $\mathbb{R}^m$.
 \newline
 Matrix $A$ is composed of column vectors $\mathbf{a}_j$, each of which is the image of the $j$-th standard basis vector after applying the transformation $A$.
 \[
     A
 \]
 Expanded form~\ref{eq:matrix}
+
+\subsection{Mapping Types}
+
+\subsubsection{Homogeneous Mapping}
+A \textbf{Homogeneous Mapping} is a linear transformation.
+\[
+    f(\mathbf{x}) = A\mathbf{x}
+\]
+
+\subsubsection{Affine Mapping}
+An \textbf{Affine Mapping} is not a linear transformation.
+\[
+    f(\mathbf{x}) = A\mathbf{x} + \mathbf{b}
+\]
 
 
 \newpage
