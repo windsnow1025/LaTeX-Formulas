@@ -187,24 +187,50 @@ Maximum Log Likelihood:
     \hat{\theta} = \arg\max_\theta \ell(\theta | X)
 \]
 
-\subsubsection{Linear Regression (Ordinary Least Squares)}
-For a \textbf{Linear Regression} model in matrix form:
+\subsubsection{Multinomial Distribution}
+Likelihood Function:
 \[
-    A\mathbf{x} = \mathbf{b}
+    L(\theta) = \operatorname{Pr}(\mathbf{y}|\hat{\mathbf{y}}) = \prod_{k=1}^{K} \hat{y}_k^{y_k}
 \]
-where $\mathbf{b} \notin \text{Col}(A)$ and $\boldsymbol{\epsilon} = \mathbf{b} - A\mathbf{x} \sim \mathcal{N}(\mathbf{0}, \sigma^2 I)$.
+Maximum Log Likelihood:
+\[
+    \hat{\theta} = \arg\max_{\theta} \ell(\theta) = \arg\max_{\theta} \sum_{k=1}^{K} y_k \log \hat{y}_k = \arg\max_{\theta} \mathbf{y}^\top \log \hat{\mathbf{y}}
+\]
+
+\subsubsection{Gaussian Distribution}
+Model assumption:
+\[
+    \mathbf{y} = \hat{\mathbf{y}} + \boldsymbol{\epsilon}
+\]
+where $\boldsymbol{\epsilon} \sim \mathcal{N}(\mathbf{0}, \sigma^2 I)$.
+\newline
+Likelihood Function:
+\[
+    L(\theta) = \operatorname{Pr}(\mathbf{y}|\hat{\mathbf{y}}, \sigma^2 I) = \frac{1}{(2\pi\sigma^2)^{D/2}} \exp\left(-\frac{\|\mathbf{y}-\hat{\mathbf{y}}\|^2}{2\sigma^2}\right)
+\]
+Maximum Log Likelihood:
+\[
+    \hat{\theta} = \arg\max_{\theta} \ell(\theta) = \arg\min_{\theta} \|\mathbf{y}-\hat{\mathbf{y}}\|^2
+\]
+
+\subsubsection{Linear Regression (Ordinary Least Squares)}
+For a \textbf{Linear Regression} model:
+\[
+    A\mathbf{w} = \mathbf{b}
+\]
+where $\mathbf{b} \notin \text{Col}(A)$ and $\boldsymbol{\epsilon} = \mathbf{b} - A\mathbf{w} \sim \mathcal{N}(\mathbf{0}, \sigma^2 I)$.
 \newline
 By MLE, the optimal approximate solution (set) is found by minimizing the \textbf{Ordinary Least Squares (OLS)}:
 \[
-    \min_{\mathbf{x}} \|A\mathbf{x} - \mathbf{b}\|^2
+    \min_{\mathbf{w}} \|A\mathbf{w} - \mathbf{b}\|^2
 \]
 
 \subsubsection{Ridge Regression (OLS + L2 Regularization)}
 \textbf{Ridge Regression} is a regularized version of Linear Regression that uses \textbf{L2 Regularization}.
 \newline
-In Maximum A Posteriori (MAP) estimation framework, assume prior distribution $\mathbf{x} \sim \mathcal{N}(\mathbf{0}, \tau^2 I)$. By MLE, the optimal solution of OLS is found by:
+In Maximum A Posteriori (MAP) estimation framework, assume prior distribution $\mathbf{w} \sim \mathcal{N}(\mathbf{0}, \tau^2 I)$. By MLE, the optimal solution of OLS is found by:
 \[
-    \min_{\mathbf{x}} \|A\mathbf{x} - \mathbf{b}\|^2 + \lambda\|\mathbf{x}\|_2^2
+    \min_{\mathbf{w}} \|A\mathbf{w} - \mathbf{b}\|^2 + \lambda\|\mathbf{{w}}\|_2^2
 \]
 where the regularization parameter $\displaystyle \lambda = \frac{\sigma^2}{\tau^2}$.
 
