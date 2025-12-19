@@ -710,12 +710,12 @@ where $M_{ij}$ is the determinant of the submatrix obtained by removing the $i$-
     \node[concept, below right=1.5cm and 0.5cm of transpose_geo] (projection) {Projection Matrix \\ $P^T=P$};
 
     \node[concept, below=2.5cm of symmetric] (spectral) {Spectral Decomposition \\ $A = Q \Lambda Q^T$};
-    \node[concept, below=1.5cm of preserves_dot] (transpose_alg) {Transpose (Algebraic) \\ $(A^T)_{ij} = a_{ji}$};
-    \node[concept, below=5cm of dot_prod_geo] (dot_prod_alg) {Dot Product (Algebraic) \\ $x \cdot y = \sum x_n y_n$};
+    \node[concept, below left=3cm and 1.5cm of preserves_dot] (dist_rule) {Distribution Rule \\ $(AB)^T = B^T A^T$};
+    \node[concept, below=3cm of preserves_dot] (transpose_alg) {Transpose (Algebraic) \\ $(A^T)_{ij} = a_{ji}$};
+    \node[concept, below=6.5cm of dot_prod_geo] (dot_prod_alg) {Dot Product (Algebraic) \\ $x \cdot y = \sum x_n y_n$};
 
-    \node[concept, below=1.5cm of dot_prod_alg] (dot_prod_transpose) {Dot Product $\Leftrightarrow$ Transpose \\ $x \cdot y = x^T y$};
-    \node[concept, below=1.5cm of dot_prod_transpose] (dist_rule) {Distribution Rule \\ $(AB)^T = B^T A^T$};
-    \node[concept, below left=2cm and 4cm of dist_rule] (svd) {Singular Value Decomposition \\ $A = U \Sigma V^T$};
+    \node[concept, below=2cm of dot_prod_alg] (dot_prod_transpose) {Dot Product $\Leftrightarrow$ Transpose \\ $x \cdot y = x^T y$};
+    \node[concept, below=4cm of dist_rule] (svd) {Singular Value Decomposition \\ $A = U \Sigma V^T$};
 
     % EDGES
     \draw[arrow] (transpose_geo) to[out=-135, in=90] node[label, above] {(scaling on orthogonal basis only)} (symmetric);
@@ -730,13 +730,12 @@ where $M_{ij}$ is the determinant of the submatrix obtained by removing the $i$-
     \draw[arrow] (dot_prod_geo) to[out=-135, in=45] (preserves_dot);
 
     \draw[arrow] (preserves_dot) to[out=-90, in=90] (transpose_alg);
+    \draw[arrow] (preserves_dot) to[out=-90, in=90] (dist_rule);
     \draw[arrow] (transpose_alg) to[out=-90, in=135] (dot_prod_transpose);
     \draw[arrow] (dot_prod_alg) to[out=-90, in=90] (dot_prod_transpose);
 
-    \draw[arrow] (dot_prod_transpose) to[out=-90, in=90] (dist_rule);
-
     \draw[arrow] (spectral) to[out=-90, in=135] (svd);
-    \draw[arrow] (dist_rule) to[out=-90, in=45] (svd);
+    \draw[arrow] (dist_rule) to[out=-90, in=90] (svd);
 
 \end{tikzpicture}
 }
