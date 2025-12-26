@@ -1,8 +1,19 @@
-# Math and Physics Tutorials
+# Math Tutorials
 
 ## Geometry
 
 - 3Blue1Brown: Why slicing a cone gives an ellipse (beautiful proof)
+
+## Complex Analysis
+
+### Overview
+
+- Welch Labs: Imaginary Numbers are Real
+
+### Courses
+
+- Steve Brunton: Engineering Math: Crash Course in Complex Analysis
+- Mathemaniac: Essence of complex analysis
 
 ## Calculus
 
@@ -19,7 +30,6 @@
   - Fourier Analysis \[Data-Driven Science and Engineering]
   - Engineering Math: Differential Equations and Dynamical Systems
   - Engineering Math: Vector Calculus and Partial Differential Equations
-  - Engineering Math: Crash Course in Complex Analysis
 
 ### Deep Dives
 
@@ -74,7 +84,10 @@
 
 ### Overview
 
-- Very Normal: Explainers
+- 3Blue1Brown: Central limit theorem
+- Very Normal
+  - Explainers
+  - Pocket Stats
 
 ### Courses
 
@@ -82,8 +95,6 @@
 
 ### Deep Dives
 
-- Central Limit Theorem
-  - 3Blue1Brown: Central limit theorem
 - Degrees of Freedom
   - Sam Levey
     - Degrees of Freedom, Actually Explained - The Geometry of Statistics | Ch. 1 (#SoME4)
