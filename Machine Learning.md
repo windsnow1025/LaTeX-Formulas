@@ -27,8 +27,8 @@
   - Artem Kirsanov: How Neural Networks Handle Probabilities
   - DeepBean
     - Understanding Variational Autoencoders (VAEs)
-    - Disentanglement with beta-VAEs
     - Vector-Quantized Variational Autoencoders (VQ-VAEs)
+    - Disentanglement with beta-VAEs
 - Boltzmann Machine
   - Artem Kirsanov
     - A Brain-Inspired Algorithm For Memory
