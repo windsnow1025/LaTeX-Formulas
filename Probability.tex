@@ -328,14 +328,14 @@ where $n = b - a + 1$.
 
 \subsubsection{Bernoulli Distribution}
 Probability of success in a single trial.
-\[ X \sim B(1,p) \]
+\[ X \sim \text{Bernoulli}(p) = B(1,p)\]
 \[ p(x) = p^x (1-p)^{1-x}, \quad x=0,1 \]
 \[ \mu = p \]
 \[ \sigma^2 = p(1-p) \]
 
 \subsubsection{Categorical Distribution}
 Probability of observing one of $k$ mutually exclusive categories in a single trial.
-\[ \mathbf{X} \sim \text{Cat}(\mathbf{p}) \]
+\[ \mathbf{X} \sim \text{Categorical}(\mathbf{p}) = M(1, \mathbf{p})\]
 Let $\mathbf{x} = (x_1, \dots, x_k)^\top$ be a one-hot vector, $\mathbf{p} = (p_1, \dots, p_k)^\top$. $\displaystyle \sum_{i=1}^{k} x_i = 1$, $\displaystyle \sum_{i=1}^{k} p_i = 1$.
 \[ p(\mathbf{x}) = \prod_{i=1}^{k} p_i^{x_i} \]
 \[ \boldsymbol{\mu} = \mathbf{p} \]
