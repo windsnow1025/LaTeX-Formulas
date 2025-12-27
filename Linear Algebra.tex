@@ -64,16 +64,32 @@ An \textbf{Affine Mapping} is not a linear transformation.
 \section{Matrix Operation}
 
 \subsection{Inner Product}
-The \textbf{Inner Product} (Dot Product) of two vectors $\mathbf{a}, \mathbf{b} \in \mathbb{R}^n$ is a scalar:
+The \textbf{Inner Product} (Dot Product) of two vectors $\mathbf{a}, \mathbf{b} \in \mathbb{R}^n$ is defined as:
 \[
     \langle \mathbf{a}, \mathbf{b} \rangle = \mathbf{a}^T \mathbf{b} = \sum_{i=1}^n a_i b_i
 \]
 Expanded form~\ref{eq:innerprod}.
 
 \subsection{Norm}
-The Euclidean Norm or $L^2$-norm of a vector $\mathbf{x} \in \mathbb{R}^n$, denoted as $\|\mathbf{x}\|$ or $\|\mathbf{x}\|_2$, is a measure of its Euclidean length.
+The \textbf{Euclidean Norm} or $L^2$-norm of a vector $\mathbf{x} \in \mathbb{R}^n$, denoted as $\|\mathbf{x}\|$ or $\|\mathbf{x}\|_2$, is a measure of its Euclidean length.
 \[
     \|\mathbf{x}\|^2 = \langle \mathbf{x}, \mathbf{x} \rangle = \mathbf{x}^T \mathbf{x}
+\]
+
+\subsection{Frobenius Inner Product}
+For matrices $A, B \in \mathbb{R}^{m \times n}$:
+\[
+    \langle A, B \rangle_F = \sum_{i=1}^{m} \sum_{j=1}^{n} a_{ij} b_{ij}
+\]
+\paragraph{Trace Formula:}
+\[
+    \langle A, B \rangle_F = \operatorname{tr}(A^T B) = \operatorname{tr}(B A^T)
+\]
+
+\subsection{Frobenius Norm}
+For a matrix $A \in \mathbb{R}^{m \times n}$:
+\[
+    \|A\|^2_F = \langle A, B \rangle_F = \sum_{i=1}^m \sum_{j=1}^n a_{ij}^2
 \]
 
 \subsection{Outer Product}
@@ -464,12 +480,6 @@ where:
 \]
 \[
     A A^T = (U_r \Sigma_r V_r^T) (V_r \Sigma_r U_r^T) = U_r \Sigma_r^2 U_r^T
-\]
-
-\subsection{Frobenius Norm}
-For a matrix $A \in \mathbb{R}^{m \times n}$:
-\[
-    \|A\|_F = \sqrt{\sum_{i=1}^m \sum_{j=1}^n a_{ij}^2}
 \]
 
 \subsection{Low-Rank Approximation}
