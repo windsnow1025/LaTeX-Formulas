@@ -122,10 +122,10 @@ In Bayesian Inference,
 \[
     \mathbb{P}(H|E) = \frac{\mathbb{P}(H)\mathbb{P}(E|H)}{\mathbb{P}(E)}
 \]
-where $\mathbb{P}(H|E)$ is \textbf{Posterior}, $\mathbb{P}(H)$ is \textbf{Prior}, $\mathbb{P}(E|H)$ is \textbf{Likelihood}, \mathbb{P}(E) is \textbf{Marginal Likelihood}.
+where $\mathbb{P}(H|E)$ is \textbf{Posterior}, $\mathbb{P}(H)$ is \textbf{Prior}, $\mathbb{P}(E|H)$ is \textbf{Likelihood}, $\mathbb{P}(E)$ is \textbf{Marginal Likelihood}.
 
 \newpage
-\section{Numerical Characteristics}
+\section{Parameters}
 
 \subsection{Expected Value (Mean)}
 \[
@@ -223,6 +223,57 @@ For any $ \varepsilon > 0 $:
 \]
 \[
     \mathbb{P}(|X-\mathbb{E}[X]| < \varepsilon) \ge 1 - \frac{Var(X)}{\varepsilon^2}
+\]
+
+\subsection{Moment}
+
+\subsubsection{Raw Moment}
+\[
+    \mu_n' = \mathbb{E}[X^n]
+\]
+
+\subsubsection{Central Moment}
+\[
+    \mu_n = \mathbb{E}[(X - \mathbb{E}[X])^n]
+\]
+
+\subsubsection{Standardized Moment}
+\[
+    \gamma_n = \frac{\mu_n}{\sigma^n} = \frac{\mathbb{E}[(X - \mu)^n]}{\sigma^n}
+\]
+
+\subsubsection{Parameters and Moments}
+\textbf{Mean:}
+\[
+    \mu = \mu_1'
+\]
+\textbf{Variance:}
+\[
+    \sigma^2 = \mu_2 = \mu_2' - (\mu_1')^2
+\]
+\textbf{Skewness:}
+\[
+    \gamma_3 = \frac{\mu_3}{\sigma^3} = \frac{\mu_3' - 3\mu_1'\mu_2' + 2(\mu_1')^3}{\sigma^3}
+\]
+
+\subsubsection{Moment Generating Function}
+The Moment Generating Function is the Laplace Transform of the Probability Density Function:
+\[
+    M_X(t) = \mathbb{E}[e^{tX}] = \sum_{n=0}^{\infty} \frac{\mu_n' t^n}{n!}
+\]
+Relationship with moments:
+\[
+    \mu_n' = \left.\frac{d^n}{dt^n} M_X(t)\right|_{t=0}
+\]
+
+\subsubsection{Characteristic Function}
+The Characteristic Function is the Fourier Transform of the Probability Density Function:
+\[
+    \varphi_X(t) = \mathbb{E}[e^{itX}] = \sum_{n=0}^{\infty} \frac{\mu_n' (it)^n}{n!}
+\]
+Relationship with moments:
+\[
+    \mu_n' = \frac{1}{i^n} \left.\frac{d^n}{dt^n} \varphi_X(t)\right|_{t=0}
 \]
 
 \newpage
@@ -505,22 +556,22 @@ Define $ \mathbf{y} = Q^\top (\mathbf{x} - \boldsymbol{\mu}) $:
 \newpage
 \section{Information Theory}
 
-Let $X$ be a random variable with outcomes in the set $\mathcal{X}$, with $p(x) = \mathbb{P}(X=x)$.
+Let $p(x) = \mathbb{P}(X=x)$, $x \in \mathcal{X}$, $X \sim p(x)$.
 
 \subsection{Self-Information}
-The \textbf{Self-Information} (or surprisal) of an outcome $x \in \mathcal{X}$ is defined as:
+The \textbf{Self-Information} (or surprisal) of an outcome $x$ is defined as:
 \[
     I(x) = -\log_2 p(x)
 \]
 
 \subsection{Entropy}
-The \textbf{Entropy} of $X$ measures the average uncertainty (or surprisal) of a random variable's outcome.
+The \textbf{Entropy} of $X$ measures the average uncertainty (or surprisal) of the random variable's outcome.
 \[
     H(X) = \mathbb{E}[I(X)] = \mathbb{E}[-\log_2 p(X)] = -\sum_{x \in \mathcal{X}} p(x) \log_2 p(x)
 \]
 
 \subsection{Cross-Entropy}
-Let $P$ and $Q$ be two probability distributions over $\mathcal{X}$, with PMFs $p(x)$ and $q(x)$ respectively.
+Let $P \sim p(x)$, $Q \sim q(x)$.
 \newline
 \textbf{Cross-Entropy} measures the average surprisal of events drawn from distribution $P$, with a hypothesis distribution $Q$.
 \[
