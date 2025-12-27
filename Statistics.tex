@@ -243,15 +243,15 @@ Local Constraint:
 \end{align*}
 where $\lambda \in \mathbb{R}^M$.
 \[
-    \frac{\partial \mathcal{L}}{\partial p(y|x)} = - (1 + \ln p(y|x)) + \alpha(x) + \lambda(x)^T T(y) = 0
+    \frac{\partial \mathcal{L}}{\partial p(y|x)} = - (1 + \ln p(y|x)) + \alpha(x) + \lambda(x)^{\mathrm{T}} T(y) = 0
 \]
 \[
-    p(y|x) = \exp(\alpha(x) - 1) \cdot \exp(\lambda^T T(y))
+    p(y|x) = \exp(\alpha(x) - 1) \cdot \exp(\lambda^{\mathrm{T}} T(y))
 \]
 \[
-    p(y|x) = \frac{\exp(\lambda(x)^T T(y))}{\sum_{y \in \mathcal{Y}} \exp(\lambda(x)^T T(y))}
+    p(y|x) = \frac{\exp(\lambda(x)^{\mathrm{T}} T(y))}{\sum_{y \in \mathcal{Y}} \exp(\lambda(x)^{\mathrm{T}} T(y))}
 \]
-where $\displaystyle \frac{\sum T(y) \exp(\lambda^T T(y))}{\sum_{y \in \mathcal{Y}} \exp(\lambda^T T(y))} = \hat{\mathbb{E}}[T(Y)|x]$.
+where $\displaystyle \frac{\sum T(y) \exp(\lambda^{\mathrm{T}} T(y))}{\sum_{y \in \mathcal{Y}} \exp(\lambda^{\mathrm{T}} T(y))} = \hat{\mathbb{E}}[T(Y)|x]$.
 
 \subsubsection{Global Constraint}
 
@@ -263,10 +263,10 @@ where $\displaystyle \frac{\sum T(y) \exp(\lambda^T T(y))}{\sum_{y \in \mathcal{
 \newline
 Global Constraint:
 \[
-    \mathbb{E}[T(Y)x^T] = \hat{\mathbb{E}}[T(Y)x^T] \in \mathbb{R}^{M \times D}
+    \mathbb{E}[T(Y)x^{\mathrm{T}}] = \hat{\mathbb{E}}[T(Y)x^{\mathrm{T}}] \in \mathbb{R}^{M \times D}
 \]
 \[
-    \sum_x \tilde{p}(x) \sum_y p(y|x) T(y)x^T = \hat{\mathbb{E}}[T(Y)x^T]
+    \sum_x \tilde{p}(x) \sum_y p(y|x) T(y)x^{\mathrm{T}} = \hat{\mathbb{E}}[T(Y)x^{\mathrm{T}}]
 \]
 Marginal Constraint:
 \[
@@ -278,21 +278,21 @@ Marginal Constraint:
 \paragraph{Lagrange Multiplier:}
 \begin{align*}
     \mathcal{L}(p, \alpha, W, b) &= - \sum_x \tilde{p}(x) \sum_y p(y|x) \ln p(y|x) + \sum_x \alpha(x) \left(\sum_y p(y|x) - 1\right) \\
-    &\quad + \left\langle W, \sum_x \tilde{p}(x) \sum_y p(y|x) T(y)x^T - \hat{\mathbb{E}}[T(Y)x^T] \right\rangle \\
+    &\quad + \left\langle W, \sum_x \tilde{p}(x) \sum_y p(y|x) T(y)x^{\mathrm{T}} - \hat{\mathbb{E}}[T(Y)x^{\mathrm{T}}] \right\rangle \\
     &\quad + \left\langle b, \sum_x \tilde{p}(x) \sum_y p(y|x) T(y) - \hat{\mathbb{E}}[T(Y)] \right\rangle
 \end{align*}
 where $W \in \mathbb{R}^{M \times D}$, $b \in \mathbb{R}^M$.
 \[
-    \frac{\partial \mathcal{L}}{\partial p(y|x)} = - \tilde{p}(x) (1 + \ln p(y|x)) + \alpha(x) + \tilde{p}(x) \langle W, T(y)x^T \rangle + \tilde{p}(x) \langle b, T(y) \rangle
+    \frac{\partial \mathcal{L}}{\partial p(y|x)} = - \tilde{p}(x) (1 + \ln p(y|x)) + \alpha(x) + \tilde{p}(x) \langle W, T(y)x^{\mathrm{T}} \rangle + \tilde{p}(x) \langle b, T(y) \rangle
 \]
 \[
-    p(y|x) = \exp\left(\frac{\alpha(x)}{\tilde{p}(x)} - 1\right) \cdot \exp((Wx+b)^T T(y))
+    p(y|x) = \exp\left(\frac{\alpha(x)}{\tilde{p}(x)} - 1\right) \cdot \exp((Wx+b)^{\mathrm{T}} T(y))
 \]
 Let $z = Wx+b$,
 \[
-    p(y|x) = \frac{\exp(z^T T(y))}{\sum_{y \in \mathcal{Y}} \exp(z^T T(y))}
+    p(y|x) = \frac{\exp(z^{\mathrm{T}} T(y))}{\sum_{y \in \mathcal{Y}} \exp(z^{\mathrm{T}} T(y))}
 \]
-where $\displaystyle \frac{\sum_x \tilde{p}(x) \sum_y \exp(z^T T(y)) T(y)x^T}{\sum_{y \in \mathcal{Y}} \exp(z^T T(y))} = \hat{\mathbb{E}}[T(Y)x^T]$, $\displaystyle \frac{\sum_x \tilde{p}(x) \sum_y \exp(z^T T(y)) T(y)}{\sum_{y \in \mathcal{Y}} \exp(z^T T(y))} = \hat{\mathbb{E}}[T(Y)]$.
+where $\displaystyle \frac{\sum_x \tilde{p}(x) \sum_y \exp(z^{\mathrm{T}} T(y)) T(y)x^{\mathrm{T}}}{\sum_{y \in \mathcal{Y}} \exp(z^{\mathrm{T}} T(y))} = \hat{\mathbb{E}}[T(Y)x^{\mathrm{T}}]$, $\displaystyle \frac{\sum_x \tilde{p}(x) \sum_y \exp(z^{\mathrm{T}} T(y)) T(y)}{\sum_{y \in \mathcal{Y}} \exp(z^{\mathrm{T}} T(y))} = \hat{\mathbb{E}}[T(Y)]$.
 
 \subsubsection{On Bernoulli Distribution}
 \[
@@ -309,7 +309,7 @@ $T(y) = y \in \mathbb{R}$, $W \in \mathbb{R}^{1 \times D}$
 \]
 $T(\mathbf{y}) = \mathbf{y} \in \mathbb{R}^K$, $W \in \mathbb{R}^{K \times D}$
 \[
-    p(Y=\mathbf{y}|x) = \frac{\exp(\mathbf{z}^T \mathbf{y})}{\sum_{k=1}^K \exp(z_k)}
+    p(Y=\mathbf{y}|x) = \frac{\exp(\mathbf{z}^{\mathrm{T}} \mathbf{y})}{\sum_{k=1}^K \exp(z_k)}
 \]
 
 \subsubsection{On Gaussian Distribution}
@@ -400,45 +400,45 @@ $\frac{\sigma_1^2}{\sigma_2^2}$ & $S_1^2, S_2^2$ & $\frac{S_1^2/S_2^2}{\sigma_1^
     \[
         A =
         \begin{bmatrix}
-            - \mathbf{a}_1^T - \\
+            - \mathbf{a}_1^{\mathrm{T}} - \\
             \vdots \\
-            - \mathbf{a}_n^T -
+            - \mathbf{a}_n^{\mathrm{T}} -
         \end{bmatrix}
     \]
     \[
-        \sum_{i=1}^{n} \langle \mathbf{a}_i, \mathbf{q}_j \rangle^2 = \|A\mathbf{q}_j\|^2 = \mathbf{q}_{j}^T A^T A \mathbf{q}_j
+        \sum_{i=1}^{n} \langle \mathbf{a}_i, \mathbf{q}_j \rangle^2 = \|A\mathbf{q}_j\|^2 = \mathbf{q}_{j}^{\mathrm{T}} A^{\mathrm{T}} A \mathbf{q}_j
     \]
 
     \item New Objective Function:
     \[
-        \arg\min_{W} \text{cost}(W) = \arg\max_{W} \sum_{i=1}^{k} \mathbf{q}_i^T A^T A \mathbf{q}_i
+        \arg\min_{W} \text{cost}(W) = \arg\max_{W} \sum_{i=1}^{k} \mathbf{q}_i^{\mathrm{T}} A^{\mathrm{T}} A \mathbf{q}_i
     \]
 
     \item \textbf{Greedy Algorithm:}
     \newline
     Object: \textbf{Conditional Maximization:}
     \[
-        \arg\max_{\|\mathbf{q}_i\|=1} \mathbf{q}_i^T A^T A \mathbf{q}_i
+        \arg\max_{\|\mathbf{q}_i\|=1} \mathbf{q}_i^{\mathrm{T}} A^{\mathrm{T}} A \mathbf{q}_i
     \]
     By \textbf{Lagrange Multiplier Method}:
     \[
-        \mathcal{L}(\mathbf{q}_i, \lambda) = \mathbf{q}_i^T A^T A \mathbf{q}_i - \lambda(\mathbf{q}_i^T \mathbf{q}_i - 1)
+        \mathcal{L}(\mathbf{q}_i, \lambda) = \mathbf{q}_i^{\mathrm{T}} A^{\mathrm{T}} A \mathbf{q}_i - \lambda(\mathbf{q}_i^{\mathrm{T}} \mathbf{q}_i - 1)
     \]
     \[
-        \frac{\partial \mathcal{L}}{\partial \mathbf{q}_i} = 2 A^T A \mathbf{q}_i - 2\lambda\mathbf{q}_i = \mathbf{0}
+        \frac{\partial \mathcal{L}}{\partial \mathbf{q}_i} = 2 A^{\mathrm{T}} A \mathbf{q}_i - 2\lambda\mathbf{q}_i = \mathbf{0}
     \]
     \[
-        A^T A \mathbf{q}_i = \lambda\mathbf{q}_i
+        A^{\mathrm{T}} A \mathbf{q}_i = \lambda\mathbf{q}_i
     \]
     Solutions:
     \begin{itemize}
-        \item $\mathbf{q}_i = \mathbf{v}_i$ is an \textbf{Eigenvector} of $A^T A$
-        \item $\lambda = \lambda_i$ is an \textbf{Eigenvalue} of $A^T A$
+        \item $\mathbf{q}_i = \mathbf{v}_i$ is an \textbf{Eigenvector} of $A^{\mathrm{T}} A$
+        \item $\lambda = \lambda_i$ is an \textbf{Eigenvalue} of $A^{\mathrm{T}} A$
         \item $\mathbf{q}_i = \mathbf{v}_i$ is a \textbf{Right Singular Vector} of $A$
         \item $\sqrt{\lambda} = \sigma_i$ is a \textbf{Singular Value} of $A$
     \end{itemize}
     \[
-        \mathbf{q}_i^T A^T A \mathbf{q}_i = \mathbf{v}_i^T \lambda_i \mathbf{v}_i = \lambda_i = \sigma_i^2
+        \mathbf{q}_i^{\mathrm{T}} A^{\mathrm{T}} A \mathbf{q}_i = \mathbf{v}_i^{\mathrm{T}} \lambda_i \mathbf{v}_i = \lambda_i = \sigma_i^2
     \]
 
     \item Therefore:
@@ -478,14 +478,14 @@ $\frac{\sigma_1^2}{\sigma_2^2}$ & $S_1^2, S_2^2$ & $\frac{S_1^2/S_2^2}{\sigma_1^
 \newline
 \textbf{Variance:}
 \[
-    \text{Var}(\mathbf{v}_i^T \mathbf{b}) = \frac{1}{n-1} \|B\mathbf{v}_i\|^2
+    \text{Var}(\mathbf{v}_i^{\mathrm{T}} \mathbf{b}) = \frac{1}{n-1} \|B\mathbf{v}_i\|^2
 \]
 \[
-    \arg \min_W \text{cost}(W) = \arg \max_W \sum_{i=1}^k \text{Var}(\mathbf{v}_i^T \mathbf{b})
+    \arg \min_W \text{cost}(W) = \arg \max_W \sum_{i=1}^k \text{Var}(\mathbf{v}_i^{\mathrm{T}} \mathbf{b})
 \]
 \textbf{Sample Covariance Matrix:}
 \[
-    S = \frac{1}{n-1} B^T B
+    S = \frac{1}{n-1} B^{\mathrm{T}} B
 \]
 Let $\lambda_i$ be an \textbf{Eigenvalue} of $S$, $\sigma_i$ be an \textbf{Right Singular Value} of $B$.
 \[

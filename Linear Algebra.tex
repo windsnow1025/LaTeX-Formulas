@@ -66,14 +66,14 @@ An \textbf{Affine Mapping} is not a linear transformation.
 \subsection{Inner Product}
 The \textbf{Inner Product} (Dot Product) of two vectors $\mathbf{a}, \mathbf{b} \in \mathbb{R}^n$ is defined as:
 \[
-    \langle \mathbf{a}, \mathbf{b} \rangle = \mathbf{a}^T \mathbf{b} = \sum_{i=1}^n a_i b_i
+    \langle \mathbf{a}, \mathbf{b} \rangle = \mathbf{a}^{\mathrm{T}} \mathbf{b} = \sum_{i=1}^n a_i b_i
 \]
 Expanded form~\ref{eq:innerprod}.
 
 \subsection{Norm}
 The \textbf{Euclidean Norm} or $L^2$-norm of a vector $\mathbf{x} \in \mathbb{R}^n$, denoted as $\|\mathbf{x}\|$ or $\|\mathbf{x}\|_2$, is a measure of its Euclidean length.
 \[
-    \|\mathbf{x}\|^2 = \langle \mathbf{x}, \mathbf{x} \rangle = \mathbf{x}^T \mathbf{x}
+    \|\mathbf{x}\|^2 = \langle \mathbf{x}, \mathbf{x} \rangle = \mathbf{x}^{\mathrm{T}} \mathbf{x}
 \]
 
 \subsection{Frobenius Inner Product}
@@ -83,7 +83,7 @@ For matrices $A, B \in \mathbb{R}^{m \times n}$:
 \]
 \paragraph{Trace Formula:}
 \[
-    \langle A, B \rangle_F = \operatorname{tr}(A^T B) = \operatorname{tr}(B A^T)
+    \langle A, B \rangle_F = \operatorname{tr}(A^{\mathrm{T}} B) = \operatorname{tr}(B A^{\mathrm{T}})
 \]
 
 \subsection{Frobenius Norm}
@@ -95,7 +95,7 @@ For a matrix $A \in \mathbb{R}^{m \times n}$:
 \subsection{Outer Product}
 The \textbf{Outer Product} of two vectors $\mathbf{a} \in \mathbb{R}^m$ and $\mathbf{b} \in \mathbb{R}^n$ is an $m \times n$ matrix:
 \[
-    \mathbf{a} \otimes \mathbf{b} = \mathbf{a} \mathbf{b}^T
+    \mathbf{a} \otimes \mathbf{b} = \mathbf{a} \mathbf{b}^{\mathrm{T}}
 \]
 Expanded form~\ref{eq:outerprod}.
 
@@ -110,9 +110,9 @@ Expanded form~\ref{eq:matvec}.
 \paragraph{Geometric Interpretation:} Map the standard basis vectors in the Domain $\mathbb{R}^n$ to the column vectors in the Codomain $\mathbb{R}^m$.
 
 \subsubsection{Row Vector and Matrix Multiplication}
-Apply Linear Transformation $A \in \mathbb{R}^{m \times n}$ to a row vector $\mathbf{y}^T \in \mathbb{R}^{1 \times m}$ from the left and produce a new row vector $\mathbf{y}^T A \in \mathbb{R}^{1 \times n}$.
+Apply Linear Transformation $A \in \mathbb{R}^{m \times n}$ to a row vector $\mathbf{y}^{\mathrm{T}} \in \mathbb{R}^{1 \times m}$ from the left and produce a new row vector $\mathbf{y}^{\mathrm{T}} A \in \mathbb{R}^{1 \times n}$.
 \[
-    \mathbf{y}^T A = \sum_{i=1}^m y_i \mathbf{a}_i^T
+    \mathbf{y}^{\mathrm{T}} A = \sum_{i=1}^m y_i \mathbf{a}_i^{\mathrm{T}}
 \]
 Expanded form~\ref{eq:rowvecmat}.
 \paragraph{Geometric Interpretation:} Map the standard basis vectors in the Codomain $\mathbb{R}^m$ to the row vectors in the Domain $\mathbb{R}^n$.
@@ -175,16 +175,16 @@ The \textbf{trace} of a square matrix $A \in \mathbb{R}^{n \times n}$ is the sum
 
 \subsection{Transpose}
 \[
-    (A^T)_{ij} = a_{ji}
+    (A^{\mathrm{T}})_{ij} = a_{ji}
 \]
 \[
-    \langle A\mathbf{x}, \mathbf{y} \rangle = \langle \mathbf{x}, A^T\mathbf{y} \rangle
+    \langle A\mathbf{x}, \mathbf{y} \rangle = \langle \mathbf{x}, A^{\mathrm{T}}\mathbf{y} \rangle
 \]
 Expanded form~\ref{eq:trans}.
 \paragraph{Geometric Interpretation:} Preserves the scaling factors of $A$ but reverses the rotation/reflection directions of $A$ by swapping domain and codomain orientations.
 \paragraph{Transpose Distribution Rule:}
 \[
-    (AB)^T = B^T A^T
+    (AB)^{\mathrm{T}} = B^{\mathrm{T}} A^{\mathrm{T}}
 \]
 
 
@@ -222,20 +222,20 @@ The \textbf{Null Space} (or \textbf{Kernel}) of a matrix $A \in \mathbb{R}^{m \t
 \subsection{Row Space}
 The \textbf{Row Space} of a matrix $A \in \mathbb{R}^{m \times n}$ is the subspace of Domain $\mathbb{R}^n$ spanned by the rows of $A$:
 \[
-    \text{Row}(A) = \{ \mathbf{y}^T A : \mathbf{y} \in \mathbb{R}^m \}
+    \text{Row}(A) = \{ \mathbf{y}^{\mathrm{T}} A : \mathbf{y} \in \mathbb{R}^m \}
 \]
 \[
-    \text{Row}(A) = \text{Col}(A^T) = \{ A^T\mathbf{y} : \mathbf{y} \in \mathbb{R}^m \}
+    \text{Row}(A) = \text{Col}(A^{\mathrm{T}}) = \{ A^{\mathrm{T}}\mathbf{y} : \mathbf{y} \in \mathbb{R}^m \}
 \]
 \paragraph{Geometric Interpretation:} The subspace of the Domain containing the component of any input vector that is \textbf{preserved and transformed} by $A$.
 
 \subsection{Left Null Space}
 The \textbf{Left Null Space} (or \textbf{Cokernel}) of a matrix $A \in \mathbb{R}^{m \times n}$ is:
 \[
-    \operatorname{coker}(A) = \{ \mathbf{y} \in \mathbb{R}^m : \mathbf{y}^T A = \mathbf{0}^T \}
+    \operatorname{coker}(A) = \{ \mathbf{y} \in \mathbb{R}^m : \mathbf{y}^{\mathrm{T}} A = \mathbf{0}^{\mathrm{T}} \}
 \]
 \[
-    \operatorname{coker}(A) = \ker(A^T) = \{ \mathbf{y} \in \mathbb{R}^m : A^T \mathbf{y} = \mathbf{0} \}
+    \operatorname{coker}(A) = \ker(A^{\mathrm{T}}) = \{ \mathbf{y} \in \mathbb{R}^m : A^{\mathrm{T}} \mathbf{y} = \mathbf{0} \}
 \]
 \paragraph{Geometric Interpretation:} The subspace of the Codomain representing all directions that \textbf{cannot be reached} by the transformation $A$.
 
@@ -298,16 +298,16 @@ Expanded form~\ref{eq:diagminv}.
 \subsection{Orthogonal Matrix (Unitary Matrix)}
 All column vectors are unit vectors and orthogonal to each other.
 \[
-    Q^T Q = Q Q^T = I_n
+    Q^{\mathrm{T}} Q = Q Q^{\mathrm{T}} = I_n
 \]
 \[
-    Q^T = Q^{-1}
+    Q^{\mathrm{T}} = Q^{-1}
 \]
 \paragraph{Geometric Interpretation:} Rotation or reflection
 
 \subsection{Symmetric Matrix}
 \[
-    A = A^T
+    A = A^{\mathrm{T}}
 \]
 \paragraph{Geometric Interpretation:} Scaling Transformation along orthogonal basis
 \paragraph{Properties:} Eigenvectors corresponding to distinct eigenvalues are orthogonal.
@@ -340,7 +340,7 @@ where:
 
 Symmetric Matrix $A \in \mathbb{R}^{n \times n}$ can be decomposed as:
 \[
-    A = Q \Lambda Q^T
+    A = Q \Lambda Q^{\mathrm{T}}
 \]
 where:
 \begin{itemize}
@@ -349,7 +349,7 @@ where:
 \end{itemize}
 \paragraph{Geometric Interpretation:}
 \begin{enumerate}
-    \item $Q^T$: Rotate or reflect the basis of the vector space to the Eigenvector basis.
+    \item $Q^{\mathrm{T}}$: Rotate or reflect the basis of the vector space to the Eigenvector basis.
     \item $\Lambda$: Apply a scaling transformation along the new axes by the Eigenvalues.
     \item $Q$: Rotate or reflect the basis of the vector space back to the standard basis.
 \end{enumerate}
@@ -380,35 +380,35 @@ Matrix $P$ \textbf{diagonalizes} matrix $A$.
 \subsubsection{Derivation}
 Assume that matrix $A \in \mathbb{R}^{m \times n}$ can be decomposed as:
 \[
-    A = U \Sigma V^T
+    A = U \Sigma V^{\mathrm{T}}
 \]
 where $U \in \mathbb{R}^{m \times m}$ and $V \in \mathbb{R}^{n \times n}$ are orthogonal matrices, and $\Sigma \in \mathbb{R}^{m \times n}$ is a diagonal matrix.
 \[
-    A^T A = (U \Sigma V^T)^T (U \Sigma V^T) = V \Sigma^T U^T U \Sigma V^T = V (\Sigma^T \Sigma) V^T
+    A^{\mathrm{T}} A = (U \Sigma V^{\mathrm{T}})^{\mathrm{T}} (U \Sigma V^{\mathrm{T}}) = V \Sigma^{\mathrm{T}} U^{\mathrm{T}} U \Sigma V^{\mathrm{T}} = V (\Sigma^{\mathrm{T}} \Sigma) V^{\mathrm{T}}
 \]
 \[
-    AA^T = (U \Sigma V^T)(U \Sigma V^T)^T = U \Sigma V^T V \Sigma^T U^T = U (\Sigma \Sigma^T) U^T
+    AA^{\mathrm{T}} = (U \Sigma V^{\mathrm{T}})(U \Sigma V^{\mathrm{T}})^{\mathrm{T}} = U \Sigma V^{\mathrm{T}} V \Sigma^{\mathrm{T}} U^{\mathrm{T}} = U (\Sigma \Sigma^{\mathrm{T}}) U^{\mathrm{T}}
 \]
 
 \subsubsection{Singular Vector \& Singular Value}
 For a matrix $A \in \mathbb{R}^{m \times n}$ with $\operatorname{rank}(A) = r$:
 
 \begin{itemize}
-    \item \textbf{Right Singular Vectors:} The columns $\mathbf{v}_i$ of $V \in \mathbb{R}^{n \times n}$ are the orthonormal eigenvectors of $A^T A$.
+    \item \textbf{Right Singular Vectors:} The columns $\mathbf{v}_i$ of $V \in \mathbb{R}^{n \times n}$ are the orthonormal eigenvectors of $A^{\mathrm{T}} A$.
     \[
-        A^T A V = V (\Sigma^T \Sigma)
+        A^{\mathrm{T}} A V = V (\Sigma^{\mathrm{T}} \Sigma)
     \]
-    where $\Sigma^T \Sigma \in \mathbb{R}^{n \times n}$ is a diagonal matrix containing the eigenvalues of $A^T A$.
+    where $\Sigma^{\mathrm{T}} \Sigma \in \mathbb{R}^{n \times n}$ is a diagonal matrix containing the eigenvalues of $A^{\mathrm{T}} A$.
 
-    \item \textbf{Left Singular Vectors:} The columns $\mathbf{u}_i$ of $U \in \mathbb{R}^{m \times m}$ are the orthonormal eigenvectors of $AA^T$.
+    \item \textbf{Left Singular Vectors:} The columns $\mathbf{u}_i$ of $U \in \mathbb{R}^{m \times m}$ are the orthonormal eigenvectors of $AA^{\mathrm{T}}$.
     \[
-        AA^T U = U (\Sigma \Sigma^T)
+        AA^{\mathrm{T}} U = U (\Sigma \Sigma^{\mathrm{T}})
     \]
-    where $\Sigma \Sigma^T \in \mathbb{R}^{m \times m}$ is a diagonal matrix containing the eigenvalues of $AA^T$.
+    where $\Sigma \Sigma^{\mathrm{T}} \in \mathbb{R}^{m \times m}$ is a diagonal matrix containing the eigenvalues of $AA^{\mathrm{T}}$.
 
     \item \textbf{Singular Values:} The diagonal entries $\sigma_i$ of $\Sigma \in \mathbb{R}^{m \times n}$ are the square roots of the non-zero eigenvalues.
     \[
-        \sigma_i = \sqrt{(\Sigma^T \Sigma)_{ii}} = \sqrt{(\Sigma \Sigma^T)_{ii}} \quad \text{for } i \le r
+        \sigma_i = \sqrt{(\Sigma^{\mathrm{T}} \Sigma)_{ii}} = \sqrt{(\Sigma \Sigma^{\mathrm{T}})_{ii}} \quad \text{for } i \le r
     \]
 \end{itemize}
 
@@ -429,7 +429,7 @@ For a matrix $A \in \mathbb{R}^{m \times n}$ with $\operatorname{rank}(A) = r$:
 
 \subsubsection{Full SVD}
 \[
-    A = U \Sigma V^T = \sum_{i=1}^{r} \sigma_i \mathbf{u}_i \mathbf{v}_i^T
+    A = U \Sigma V^{\mathrm{T}} = \sum_{i=1}^{r} \sigma_i \mathbf{u}_i \mathbf{v}_i^{\mathrm{T}}
 \]
 
 \paragraph{Fundamental Relations:}
@@ -437,12 +437,12 @@ For a matrix $A \in \mathbb{R}^{m \times n}$ with $\operatorname{rank}(A) = r$:
     A \mathbf{v}_i = \sigma_i \mathbf{u}_i
 \]
 \[
-    A^T \mathbf{u}_i = \sigma_i \mathbf{v}_i
+    A^{\mathrm{T}} \mathbf{u}_i = \sigma_i \mathbf{v}_i
 \]
 
 \paragraph{Geometric Interpretation:}
 \begin{enumerate}
-    \item \textbf{$V^T$:} Rotate or reflect the Domain $\mathbb{R}^n$ from the standard basis to the principal directions defined by Right Singular Vectors:
+    \item \textbf{$V^{\mathrm{T}}$:} Rotate or reflect the Domain $\mathbb{R}^n$ from the standard basis to the principal directions defined by Right Singular Vectors:
     \begin{itemize}
         \item The first $r$ standard basis vectors align with the orthonormal basis of $\text{Row}(A)$
         \item The last $n-r$ standard basis vectors align with the orthonormal basis of $\ker(A)$
@@ -465,7 +465,7 @@ For a matrix $A \in \mathbb{R}^{m \times n}$ with $\operatorname{rank}(A) = r$:
 \subsubsection{Reduced SVD}
 For a matrix $A \in \mathbb{R}^{m \times n}$ with $\operatorname{rank}(A) = r$, the \textbf{Reduced SVD} retains only the parts corresponding to non-zero singular values:
 \[
-    A = U_r \Sigma_r V_r^T = \sum_{i=1}^{r} \sigma_i \mathbf{u}_i \mathbf{v}_i^T
+    A = U_r \Sigma_r V_r^{\mathrm{T}} = \sum_{i=1}^{r} \sigma_i \mathbf{u}_i \mathbf{v}_i^{\mathrm{T}}
 \]
 where:
 \begin{itemize}
@@ -476,22 +476,22 @@ where:
 
 \paragraph{Spectral Decompositions:}
 \[
-    A^T A = (V_r \Sigma_r U_r^T) (U_r \Sigma_r V_r^T) = V_r \Sigma_r^2 V_r^T
+    A^{\mathrm{T}} A = (V_r \Sigma_r U_r^{\mathrm{T}}) (U_r \Sigma_r V_r^{\mathrm{T}}) = V_r \Sigma_r^2 V_r^{\mathrm{T}}
 \]
 \[
-    A A^T = (U_r \Sigma_r V_r^T) (V_r \Sigma_r U_r^T) = U_r \Sigma_r^2 U_r^T
+    A A^{\mathrm{T}} = (U_r \Sigma_r V_r^{\mathrm{T}}) (V_r \Sigma_r U_r^{\mathrm{T}}) = U_r \Sigma_r^2 U_r^{\mathrm{T}}
 \]
 
 \subsection{Low-Rank Approximation}
 Eckart-Young Theorem:
 \[
-    \underset{\operatorname{rank}(\tilde{A})=k}{\operatorname{argmin}} \|A - \tilde{A}\|_F = \sum_{i=1}^{k} \sigma_i \mathbf{u}_i \mathbf{v}_i^T
+    \underset{\operatorname{rank}(\tilde{A})=k}{\operatorname{argmin}} \|A - \tilde{A}\|_F = \sum_{i=1}^{k} \sigma_i \mathbf{u}_i \mathbf{v}_i^{\mathrm{T}}
 \]
 
 \subsection{Pseudo Inverse}
-For any matrix $A \in \mathbb{R}^{m \times n}$ with SVD $A = U \Sigma V^T$, the \textbf{Moore-Penrose Pseudo Inverse} is:
+For any matrix $A \in \mathbb{R}^{m \times n}$ with SVD $A = U \Sigma V^{\mathrm{T}}$, the \textbf{Moore-Penrose Pseudo Inverse} is:
 \[
-    A^+ = V \Sigma^+ U^T
+    A^+ = V \Sigma^+ U^{\mathrm{T}}
 \]
 where $\Sigma^+ \in \mathbb{R}^{n \times m}$ is defined element-wise as:
 \[
@@ -510,15 +510,15 @@ where $\Sigma^+ \in \mathbb{R}^{n \times m}$ is defined element-wise as:
 
     \item \textbf{Left Inverse:} If $m \ge n$ and $\operatorname{rank}(A) = n$ (Full Column Rank):
     \[
-        A^+ = (A^T A)^{-1} A^T \quad \Rightarrow \quad A^+ A = I_n
+        A^+ = (A^{\mathrm{T}} A)^{-1} A^{\mathrm{T}} \quad \Rightarrow \quad A^+ A = I_n
     \]
 
     \item \textbf{Right Inverse:} If $m \le n$ and $\operatorname{rank}(A) = m$ (Full Row Rank):
     \[
-        A^+ = A^T (A A^T)^{-1} \quad \Rightarrow \quad A A^+ = I_m
+        A^+ = A^{\mathrm{T}} (A A^{\mathrm{T}})^{-1} \quad \Rightarrow \quad A A^+ = I_m
     \]
 
-    \item \textbf{Fundamental Subspaces:} The fundamental subspaces of $A^+$ are the same as those of $A^T$.
+    \item \textbf{Fundamental Subspaces:} The fundamental subspaces of $A^+$ are the same as those of $A^{\mathrm{T}}$.
     \[
         \text{Col}(A^+) = \text{Row}(A), \quad \ker(A^+) = \operatorname{coker}(A)
     \]
@@ -563,13 +563,13 @@ The general solution with the \textbf{minimum Euclidean norm} $\|\mathbf{x}\|$ i
 \subsection{Normal Equations}
 Solution to Ordinary Least Squares $\displaystyle \min_{\mathbf{x}} \|A\mathbf{x} - \mathbf{b}\|^2$:
 \[
-    A^T A \mathbf{x} = A^T \mathbf{b}
+    A^{\mathrm{T}} A \mathbf{x} = A^{\mathrm{T}} \mathbf{b}
 \]
 \begin{itemize}
-    \item If $A^T A$ is invertible ($A$ has full column rank), the unique solution is given by: $\mathbf{x} = (A^T A)^{-1} A^T \mathbf{b}$.
-    \item If $A^T A$ is not invertible ($A$ does not have full column rank), the solution with the minimum Euclidean norm $\|\mathbf{x}\|$ in the solution set is given by: $\mathbf{x} = A^+ \mathbf{b}$.
+    \item If $A^{\mathrm{T}} A$ is invertible ($A$ has full column rank), the unique solution is given by: $\mathbf{x} = (A^{\mathrm{T}} A)^{-1} A^{\mathrm{T}} \mathbf{b}$.
+    \item If $A^{\mathrm{T}} A$ is not invertible ($A$ does not have full column rank), the solution with the minimum Euclidean norm $\|\mathbf{x}\|$ in the solution set is given by: $\mathbf{x} = A^+ \mathbf{b}$.
 \end{itemize}
-\paragraph{Derivation:} To minimize $\|A\mathbf{x} - \mathbf{b}\|^2$, the residual $A\mathbf{x} - \mathbf{b}$ is orthogonal to the column space of $A$, i.e., it belongs to the left null space $\operatorname{coker}(A)$: $A^T(A\mathbf{x} - \mathbf{b}) = \mathbf{0}$.
+\paragraph{Derivation:} To minimize $\|A\mathbf{x} - \mathbf{b}\|^2$, the residual $A\mathbf{x} - \mathbf{b}$ is orthogonal to the column space of $A$, i.e., it belongs to the left null space $\operatorname{coker}(A)$: $A^{\mathrm{T}}(A\mathbf{x} - \mathbf{b}) = \mathbf{0}$.
 
 
 \newpage
@@ -581,15 +581,15 @@ The \textbf{Projection Matrix} $P$ projects a vector $\mathbf{b}$ onto the Colum
 \[
     \mathbf{p} = P\mathbf{b}
 \]
-If the columns of $A$ are Linearly Independent, then $A^TA$ is invertible, and the Projection Matrix is given by:
+If the columns of $A$ are Linearly Independent, then $A^{\mathrm{T}}A$ is invertible, and the Projection Matrix is given by:
 \[
-    P = A(A^TA)^{-1}A^T
+    P = A(A^{\mathrm{T}}A)^{-1}A^{\mathrm{T}}
 \]
 Derived by Normal Equations.
 \paragraph{Properties:}
 \begin{itemize}
     \item \textbf{Idempotency:} $P^2 = P$.
-    \item \textbf{Symmetry:} $P^T = P$.
+    \item \textbf{Symmetry:} $P^{\mathrm{T}} = P$.
     \item \textbf{Trace equals Rank:} $\operatorname{tr}(P) = \operatorname{rank}(P)$.
     \newline
     Derivation: The eigenvalues of a Projection Matrix are 1 for its projection subspace and 0 for its null space: $\operatorname{tr}(P) = \sum_{i=1}^m \lambda_i = \sum_{\lambda_i=1} 1 = \operatorname{rank}(P)$.
@@ -598,19 +598,19 @@ Derived by Normal Equations.
 \subsubsection{Projection onto a Vector}
 Project onto a line spanned by a non-zero vector $\mathbf{a} \in \mathbb{R}^m$:
 \[
-    P = \frac{\mathbf{a}\mathbf{a}^T}{\mathbf{a}^T\mathbf{a}}
+    P = \frac{\mathbf{a}\mathbf{a}^{\mathrm{T}}}{\mathbf{a}^{\mathrm{T}}\mathbf{a}}
 \]
 
 \subsubsection{Projection onto an Orthonormal Basis}
 If the columns of matrix $Q \in \mathbb{R}^{m \times n}$ form an Orthonormal Basis for the subspace:
 \[
-    P = Q(Q^TQ)^{-1}Q^T = QIQ^T = QQ^T
+    P = Q(Q^{\mathrm{T}}Q)^{-1}Q^{\mathrm{T}} = QIQ^{\mathrm{T}} = QQ^{\mathrm{T}}
 \]
 
 \subsection{Parseval's Identity}
 For a vector $\mathbf{x} \in \mathbb{R}^n$ and an Orthonormal Basis $\{\mathbf{q}_i\}_{i=1}^n$:
 \[
-    \|\mathbf{x}\|^2 = \sum_{i=1}^n (\mathbf{x}^T \mathbf{q}_i)^2
+    \|\mathbf{x}\|^2 = \sum_{i=1}^n (\mathbf{x}^{\mathrm{T}} \mathbf{q}_i)^2
 \]
 
 
@@ -621,28 +621,28 @@ For a vector $\mathbf{x} \in \mathbb{R}^n$ and an Orthonormal Basis $\{\mathbf{q
 
 For a vector $\mathbf{x} \in \mathbb{R}^n$, a Symmetric Matrix $A \in \mathbb{R}^{n \times n}$ determines a \textbf{Quadratic Form}:
 \[
-    q(\mathbf{x}) = \mathbf{x}^T A \mathbf{x} = \sum_{i=1}^n \sum_{j=1}^n a_{ij} x_i x_j
+    q(\mathbf{x}) = \mathbf{x}^{\mathrm{T}} A \mathbf{x} = \sum_{i=1}^n \sum_{j=1}^n a_{ij} x_i x_j
 \]
 \paragraph{Derivation of Symmetric:}~
 \newline
-For a vector $\mathbf{x} \in \mathbb{R}^n$ and any square matrix $A \in \mathbb{R}^{n \times n}$, a \textbf{Quadratic Form} is defined as $q(\mathbf{x}) = \mathbf{x}^T A \mathbf{x}$.
+For a vector $\mathbf{x} \in \mathbb{R}^n$ and any square matrix $A \in \mathbb{R}^{n \times n}$, a \textbf{Quadratic Form} is defined as $q(\mathbf{x}) = \mathbf{x}^{\mathrm{T}} A \mathbf{x}$.
 \newline
-Since $\mathbf{x}^T A \mathbf{x}$ is a scalar, $\mathbf{x}^T A \mathbf{x} = (\mathbf{x}^T A \mathbf{x})^T = \mathbf{x}^T A^T \mathbf{x}$, so can write the Quadratic Form as:
+Since $\mathbf{x}^{\mathrm{T}} A \mathbf{x}$ is a scalar, $\mathbf{x}^{\mathrm{T}} A \mathbf{x} = (\mathbf{x}^{\mathrm{T}} A \mathbf{x})^{\mathrm{T}} = \mathbf{x}^{\mathrm{T}} A^{\mathrm{T}} \mathbf{x}$, so can write the Quadratic Form as:
 \[
-    \mathbf{x}^T A \mathbf{x} = \frac{1}{2} (\mathbf{x}^T A \mathbf{x} + \mathbf{x}^T A^T \mathbf{x}) = \mathbf{x}^T \left( \frac{A + A^T}{2} \right) \mathbf{x}
+    \mathbf{x}^{\mathrm{T}} A \mathbf{x} = \frac{1}{2} (\mathbf{x}^{\mathrm{T}} A \mathbf{x} + \mathbf{x}^{\mathrm{T}} A^{\mathrm{T}} \mathbf{x}) = \mathbf{x}^{\mathrm{T}} \left( \frac{A + A^{\mathrm{T}}}{2} \right) \mathbf{x}
 \]
-where $\frac{A + A^T}{2}$ is always symmetric.
+where $\frac{A + A^{\mathrm{T}}}{2}$ is always symmetric.
 \newline
 Thus, without loss of generality, the matrix defining a quadratic form is assumed to be symmetric.
 
 \subsubsection{Principal Axis Theorem}
 Apply Spectral Decomposition to $A$:
 \[
-    q(\mathbf{x}) = \mathbf{x}^T (Q \Lambda Q^T) \mathbf{x} = (\mathbf{x}^T Q) \Lambda (Q^T \mathbf{x})
+    q(\mathbf{x}) = \mathbf{x}^{\mathrm{T}} (Q \Lambda Q^{\mathrm{T}}) \mathbf{x} = (\mathbf{x}^{\mathrm{T}} Q) \Lambda (Q^{\mathrm{T}} \mathbf{x})
 \]
-Define $\mathbf{y} = Q^T \mathbf{x}$:
+Define $\mathbf{y} = Q^{\mathrm{T}} \mathbf{x}$:
 \[
-    q(\mathbf{y}) = \mathbf{y}^T \Lambda \mathbf{y} = \sum_{i=1}^n \lambda_i y_i^2
+    q(\mathbf{y}) = \mathbf{y}^{\mathrm{T}} \Lambda \mathbf{y} = \sum_{i=1}^n \lambda_i y_i^2
 \]
 \begin{itemize}
     \item The \textbf{Eigenvectors} of $A$ (columns of $Q$) define the \textbf{principal axes} of the geometric shape.
@@ -652,7 +652,7 @@ Define $\mathbf{y} = Q^T \mathbf{x}$:
 \subsection{Positive Definite}
 A Symmetric Matrix $A \in \mathbb{R}^{n \times n}$ is \textbf{positive definite}, denoted as $A \succ 0$, if for any nonzero vector $\mathbf{x} \in \mathbb{R}^n$,
 \[
-    \mathbf{x}^T A \mathbf{x} > 0
+    \mathbf{x}^{\mathrm{T}} A \mathbf{x} > 0
 \]
 \paragraph{Properties:}
 \begin{itemize}
@@ -663,7 +663,7 @@ A Symmetric Matrix $A \in \mathbb{R}^{n \times n}$ is \textbf{positive definite}
 \subsection{Positive Semi-Definite}
 A Symmetric Matrix $A \in \mathbb{R}^{n \times n}$ is \textbf{positive semi-definite}, denoted as $A \succeq 0$, if for any vector $\mathbf{x} \in \mathbb{R}^n$,
 \[
-    \mathbf{x}^T A \mathbf{x} \geq 0
+    \mathbf{x}^{\mathrm{T}} A \mathbf{x} \geq 0
 \]
 \paragraph{Properties:}
 \begin{itemize}
@@ -714,18 +714,18 @@ where $M_{ij}$ is the determinant of the submatrix obtained by removing the $i$-
     \node[concept] (transpose_geo) {Def (Geometric) \\ Transpose \\ \footnotesize{Reverses Rotation/Reflection, Preserves Scaling}};
     \node[concept, below right=0cm and 4cm of transpose_geo] (dot_prod_geo) {Def (Geometric) \\ Dot Product \\ \footnotesize{Projection Measurement + Scaling}};
 
-    \node[concept, below left=4cm and 0.5cm of transpose_geo] (symmetric) {Symmetric Matrix \\ $A^T=A$ \\ has orthogonal eigenvectors};
-    \node[concept, right=1cm of symmetric] (orthogonal) {Orthogonal Matrix \\ $Q^T=Q^{-1}$};
-    \node[concept, below right=4cm and 0cm of transpose_geo] (preserves_dot) {Preserves Dot Product \\ $(Ax) \cdot y = x \cdot (A^T y)$};
-    \node[concept, below right=1.5cm and 0.5cm of transpose_geo] (projection) {Projection Matrix \\ $P^T=P$};
+    \node[concept, below left=4cm and 0.5cm of transpose_geo] (symmetric) {Symmetric Matrix \\ $A^{\mathrm{T}}=A$ \\ has orthogonal eigenvectors};
+    \node[concept, right=1cm of symmetric] (orthogonal) {Orthogonal Matrix \\ $Q^{\mathrm{T}}=Q^{-1}$};
+    \node[concept, below right=4cm and 0cm of transpose_geo] (preserves_dot) {Preserves Dot Product \\ $(Ax) \cdot y = x \cdot (A^{\mathrm{T}} y)$};
+    \node[concept, below right=1.5cm and 0.5cm of transpose_geo] (projection) {Projection Matrix \\ $P^{\mathrm{T}}=P$};
 
-    \node[concept, below=2.5cm of symmetric] (spectral) {Spectral Decomposition \\ $A = Q \Lambda Q^T$};
-    \node[concept, below left=3cm and 1.5cm of preserves_dot] (dist_rule) {Distribution Rule \\ $(AB)^T = B^T A^T$};
-    \node[concept, below=3cm of preserves_dot] (transpose_alg) {Transpose (Algebraic) \\ $(A^T)_{ij} = a_{ji}$};
+    \node[concept, below=2.5cm of symmetric] (spectral) {Spectral Decomposition \\ $A = Q \Lambda Q^{\mathrm{T}}$};
+    \node[concept, below left=3cm and 1.5cm of preserves_dot] (dist_rule) {Distribution Rule \\ $(AB)^{\mathrm{T}} = B^{\mathrm{T}} A^{\mathrm{T}}$};
+    \node[concept, below=3cm of preserves_dot] (transpose_alg) {Transpose (Algebraic) \\ $(A^{\mathrm{T}})_{ij} = a_{ji}$};
     \node[concept, below=6.5cm of dot_prod_geo] (dot_prod_alg) {Dot Product (Algebraic) \\ $x \cdot y = \sum x_n y_n$};
 
-    \node[concept, below=2cm of dot_prod_alg] (dot_prod_transpose) {Dot Product $\Leftrightarrow$ Transpose \\ $x \cdot y = x^T y$};
-    \node[concept, below=4cm of dist_rule] (svd) {Singular Value Decomposition \\ $A = U \Sigma V^T$};
+    \node[concept, below=2cm of dot_prod_alg] (dot_prod_transpose) {Dot Product $\Leftrightarrow$ Transpose \\ $x \cdot y = x^{\mathrm{T}} y$};
+    \node[concept, below=4cm of dist_rule] (svd) {Singular Value Decomposition \\ $A = U \Sigma V^{\mathrm{T}}$};
 
     % EDGES
     \draw[arrow] (transpose_geo) to[out=-135, in=90] node[label, above] {(scaling on orthogonal basis only)} (symmetric);
@@ -773,7 +773,7 @@ where $M_{ij}$ is the determinant of the submatrix obtained by removing the $i$-
 
     \item \textbf{Inner Product:}
     \begin{equation}
-        \mathbf{a}^T \mathbf{b} =
+        \mathbf{a}^{\mathrm{T}} \mathbf{b} =
         \left[
             \begin{array}{ccc}
                 a_1 & \cdots & a_n
@@ -792,7 +792,7 @@ where $M_{ij}$ is the determinant of the submatrix obtained by removing the $i$-
 
     \item \textbf{Outer Product:}
     \begin{equation}
-        \mathbf{a} \mathbf{b}^T =
+        \mathbf{a} \mathbf{b}^{\mathrm{T}} =
         \left[
             \begin{array}{c}
                 a_1 \\
@@ -840,7 +840,7 @@ where $M_{ij}$ is the determinant of the submatrix obtained by removing the $i$-
 
     \item \textbf{Row Vector-Matrix Multiplication:}
     \begin{equation}
-        \mathbf{y}^T A =
+        \mathbf{y}^{\mathrm{T}} A =
         \left[
             \begin{array}{ccc}
                 y_1 & \cdots & y_m
@@ -848,13 +848,13 @@ where $M_{ij}$ is the determinant of the submatrix obtained by removing the $i$-
         \right]
         \left[
             \begin{array}{c}
-                - \mathbf{a}_1^T - \\
+                - \mathbf{a}_1^{\mathrm{T}} - \\
                 \vdots \\
-                - \mathbf{a}_m^T -
+                - \mathbf{a}_m^{\mathrm{T}} -
             \end{array}
         \right]
         =
-        y_1\mathbf{a}_1^T + y_2\mathbf{a}_2^T + \cdots + y_m\mathbf{a}_m^T
+        y_1\mathbf{a}_1^{\mathrm{T}} + y_2\mathbf{a}_2^{\mathrm{T}} + \cdots + y_m\mathbf{a}_m^{\mathrm{T}}
         \label{eq:rowvecmat}
     \end{equation}
 
@@ -864,9 +864,9 @@ where $M_{ij}$ is the determinant of the submatrix obtained by removing the $i$-
         AB =
         \left[
             \begin{array}{c}
-                - \mathbf{a}_1^T - \\
+                - \mathbf{a}_1^{\mathrm{T}} - \\
                 \vdots \\
-                - \mathbf{a}_m^T -
+                - \mathbf{a}_m^{\mathrm{T}} -
             \end{array}
         \right]
         \left[
@@ -879,9 +879,9 @@ where $M_{ij}$ is the determinant of the submatrix obtained by removing the $i$-
         =
         \left[
             \begin{array}{ccc}
-                \mathbf{a}_1^T \mathbf{b}_1 & \cdots & \mathbf{a}_1^T \mathbf{b}_n \\
+                \mathbf{a}_1^{\mathrm{T}} \mathbf{b}_1 & \cdots & \mathbf{a}_1^{\mathrm{T}} \mathbf{b}_n \\
                 \vdots & \ddots & \vdots \\
-                \mathbf{a}_m^T \mathbf{b}_1 & \cdots & \mathbf{a}_m^T \mathbf{b}_n
+                \mathbf{a}_m^{\mathrm{T}} \mathbf{b}_1 & \cdots & \mathbf{a}_m^{\mathrm{T}} \mathbf{b}_n
             \end{array}
         \right]
         \label{eq:mul_inner}
@@ -900,13 +900,13 @@ where $M_{ij}$ is the determinant of the submatrix obtained by removing the $i$-
         \right]
         \left[
             \begin{array}{c}
-                - \mathbf{b}_1^T - \\
+                - \mathbf{b}_1^{\mathrm{T}} - \\
                 \vdots \\
-                - \mathbf{b}_n^T -
+                - \mathbf{b}_n^{\mathrm{T}} -
             \end{array}
         \right]
         =
-        \mathbf{a}_1 \mathbf{b}_1^T + \mathbf{a}_2 \mathbf{b}_2^T + \cdots + \mathbf{a}_n \mathbf{b}_n^T
+        \mathbf{a}_1 \mathbf{b}_1^{\mathrm{T}} + \mathbf{a}_2 \mathbf{b}_2^{\mathrm{T}} + \cdots + \mathbf{a}_n \mathbf{b}_n^{\mathrm{T}}
         \label{eq:mul_outer}
     \end{equation}
 
@@ -939,7 +939,7 @@ where $M_{ij}$ is the determinant of the submatrix obtained by removing the $i$-
                 \vdots & \ddots & \vdots \\
                 a_{m1} & \cdots & a_{mn}
             \end{array}
-        \right]^T
+        \right]^{\mathrm{T}}
         =
         \left[
             \begin{array}{ccc}

@@ -181,7 +181,7 @@ $f: \mathbb{R}^n \to \mathbb{R}$, $f = f(\mathbf{x})$.
     \end{bmatrix}
 \]
 \[
-    \frac{\partial f}{\partial \mathbf{x}} = \nabla_\mathbf{x}^T f
+    \frac{\partial f}{\partial \mathbf{x}} = \nabla_\mathbf{x}^{\mathrm{T}} f
 \]
 
 \subsubsection{Second-Order Derivative \& Hessian Matrix}
@@ -195,18 +195,18 @@ Curvature of a function.
     \end{bmatrix}
 \]
 \[
-    \frac{\partial^2 f}{\partial \mathbf{x} \partial \mathbf{x}^T} = \mathbf{H}_\mathbf{x}^T(f)
+    \frac{\partial^2 f}{\partial \mathbf{x} \partial \mathbf{x}^{\mathrm{T}}} = \mathbf{H}_\mathbf{x}^{\mathrm{T}}(f)
 \]
 The Jacobian matrix of the Gradient of $f$.
 \[
-    \mathbf{H}^T(f) = \mathbf{J}(\nabla f)
+    \mathbf{H}^{\mathrm{T}}(f) = \mathbf{J}(\nabla f)
 \]
 
 \subsection{Vector-valued Function}
 
 $\mathbf{f}: \mathbb{R}^n \to \mathbb{R}^m$, $\mathbf{f}(\mathbf{x}) = \mathbf{y}$.
 
-\subsubsection{First-Order Derivative & Jacobian Matrix}
+\subsubsection{First-Order Derivative \& Jacobian Matrix}
 \[
     \mathbf{J_{\mathbf{y} \to \mathbf{x}}} =
     \begin{bmatrix}
@@ -224,13 +224,13 @@ $\mathbf{f}: \mathbb{R}^n \to \mathbb{R}^m$, $\mathbf{f}(\mathbf{x}) = \mathbf{y
 \subsubsection{Quadratic Form}
 For symmetric matrix $A \in \mathbb{R}^{n \times n}$:
 \[
-    f(\mathbf{x}) = \frac{1}{2}\mathbf{x}^T A \mathbf{x}
+    f(\mathbf{x}) = \frac{1}{2}\mathbf{x}^{\mathrm{T}} A \mathbf{x}
 \]
 \[
-    \nabla f(\mathbf{x}) = \frac{1}{2}(A + A^T)\mathbf{x} = A\mathbf{x}
+    \nabla f(\mathbf{x}) = \frac{1}{2}(A + A^{\mathrm{T}})\mathbf{x} = A\mathbf{x}
 \]
 \[
-    \mathbf{H}^T(f(\mathbf{x})) = A
+    \mathbf{H}^{\mathrm{T}}(f(\mathbf{x})) = A
 \]
 
 \subsubsection{Linear Transformation}
@@ -253,7 +253,7 @@ $f = f(x(\mathbf{t}))$
     \frac{\partial f}{\partial t_j} = \frac{df}{dx} \frac{\partial x}{\partial t_j}
 \]
 \[
-    \nabla_{\mathbf{t}}^T f = \frac{df}{dx} \nabla_{\mathbf{t}}^T x
+    \nabla_{\mathbf{t}}^{\mathrm{T}} f = \frac{df}{dx} \nabla_{\mathbf{t}}^{\mathrm{T}} x
 \]
 \[
     \frac{\partial f}{\partial \mathbf{t}} = \frac{df}{dx} \frac{\partial x}{\partial \mathbf{t}}
@@ -263,7 +263,7 @@ $f = f(\mathbf{x}(\mathbf{t}))$
     \frac{\partial f}{\partial t_j} = \sum_{i=1}^n \frac{\partial f}{\partial x_i} \frac{\partial x_i}{\partial t_j}
 \]
 \[
-    \nabla_{\mathbf{t}}^T f = \nabla_{\mathbf{x}}^T f \cdot \mathbf{J}_{\mathbf{x} \to \mathbf{t}}
+    \nabla_{\mathbf{t}}^{\mathrm{T}} f = \nabla_{\mathbf{x}}^{\mathrm{T}} f \cdot \mathbf{J}_{\mathbf{x} \to \mathbf{t}}
 \]
 \[
     \frac{\partial f}{\partial \mathbf{t}} = \frac{\partial f}{\partial \mathbf{x}} \frac{\partial \mathbf{x}}{\partial \mathbf{t}}
@@ -435,11 +435,11 @@ Let $\mathbf{h} = \mathbf{x} - \mathbf{a}$:
 
 \subsubsection{Second Order Taylor Series}
 \[
-    f(\mathbf{x}) \approx f(\mathbf{a}) + \nabla f(\mathbf{a})^T (\mathbf{x}-\mathbf{a}) + \frac{1}{2} (\mathbf{x}-\mathbf{a})^T \mathbf{H}(\mathbf{a}) (\mathbf{x}-\mathbf{a})
+    f(\mathbf{x}) \approx f(\mathbf{a}) + \nabla f(\mathbf{a})^{\mathrm{T}} (\mathbf{x}-\mathbf{a}) + \frac{1}{2} (\mathbf{x}-\mathbf{a})^{\mathrm{T}} \mathbf{H}(\mathbf{a}) (\mathbf{x}-\mathbf{a})
 \]
 Let $\mathbf{h} = \mathbf{x} - \mathbf{a}$:
 \[
-    f(\mathbf{a} + \mathbf{h}) \approx f(\mathbf{a}) + \nabla f(\mathbf{a})^T \mathbf{h} + \frac{1}{2} \mathbf{h}^T \mathbf{H}(\mathbf{a}) \mathbf{h}
+    f(\mathbf{a} + \mathbf{h}) \approx f(\mathbf{a}) + \nabla f(\mathbf{a})^{\mathrm{T}} \mathbf{h} + \frac{1}{2} \mathbf{h}^{\mathrm{T}} \mathbf{H}(\mathbf{a}) \mathbf{h}
 \]
 
 \subsection{Taylor Series of Functions}
