@@ -13,6 +13,7 @@
 \usepackage{graphicx}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
 \usepackage{amssymb}
+\usepackage{mathtools}
 
 \title{Statistics}
 \date{}
@@ -146,7 +147,6 @@ Maximum Log Likelihood:
 \[
     y \sim \text{Bernoulli}(\hat{y})
 \]
-\newline
 Likelihood Function:
 \[
     L(\theta) = \hat{y}^y (1-\hat{y})^{1-y}
@@ -160,7 +160,6 @@ Maximum Log Likelihood:
 \[
     \mathbf{y} \sim \text{Categorical}(\hat{\mathbf{y}})
 \]
-\newline
 Likelihood Function:
 \[
     L(\theta) = \prod_{k=1}^{K} \hat{y}_k^{y_k}
@@ -172,154 +171,198 @@ Maximum Log Likelihood:
 
 \subsubsection{On Gaussian Distribution}
 \[
-    \mathbf{y} \sim \mathcal{N}(\hat{\mathbf{y}}, \sigma^2 I)
+    y \sim \mathcal{N}(\hat{y}, \sigma^2)
 \]
-\newline
 Likelihood Function:
 \[
-    L(\theta) = \frac{1}{(2\pi\sigma^2)^{D/2}} \exp\left(-\frac{\|\mathbf{y}-\hat{\mathbf{y}}\|^2}{2\sigma^2}\right)
+    L(\theta) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(y-\hat{y})^2}{2\sigma^2}\right)
 \]
 Maximum Log Likelihood:
 \[
-    \hat{\theta} = \arg\max_{\theta} \ell(\theta) = \arg\min_{\theta} \|\mathbf{y}-\hat{\mathbf{y}}\|^2
+    \hat{\theta} = \arg\max_{\theta} \ell(\theta) = \arg\min_{\theta} (y-\hat{y})^2
 \]
-
-\subsubsection{Linear Regression (Ordinary Least Squares)}
-For a \textbf{Linear Regression} model:
-\[
-    A\mathbf{w} = \mathbf{b}
-\]
-where $\mathbf{b} \notin \text{Col}(A)$ and $\boldsymbol{\epsilon} = \mathbf{b} - A\mathbf{w} \sim \mathcal{N}(\mathbf{0}, \sigma^2 I)$.
-\newline
-By MLE, the optimal approximate solution (set) is found by minimizing the \textbf{Ordinary Least Squares (OLS)}:
-\[
-    \min_{\mathbf{w}} \|A\mathbf{w} - \mathbf{b}\|^2
-\]
-
-\subsubsection{Ridge Regression (OLS + L2 Regularization)}
-\textbf{Ridge Regression} is a regularized version of Linear Regression that uses \textbf{L2 Regularization}.
-\newline
-In Maximum A Posteriori (MAP) estimation framework, assume prior distribution $\mathbf{w} \sim \mathcal{N}(\mathbf{0}, \tau^2 I)$. By MLE, the optimal solution of OLS is found by:
-\[
-    \min_{\mathbf{w}} \|A\mathbf{w} - \mathbf{b}\|^2 + \lambda\|\mathbf{{w}}\|_2^2
-\]
-where the regularization parameter $\displaystyle \lambda = \frac{\sigma^2}{\tau^2}$.
 
 \subsection{Max Entropy}
 
-Sample: $x \in \mathcal{X} = \mathbb{R}^D$, $y \in \mathcal{Y}$
+Sample: $\mathbf{x} \in \mathcal{X} = \mathbb{R}^D$, $y \in \mathcal{Y}$, $\mathcal{S} = \left( (\mathbf{x}^{(i)}, y^{(i)}) \right)_{i=1}^N$
 \paragraph{Marginal Distribution:}
 \[
-    p(y|x) = P(y|x)
+    p(y|\mathbf{x}) = P(y|\mathbf{x})
 \]
 \paragraph{Sufficient Statistics:}
 \[
-    T(y) \in \mathbb{R}^M
+    \mathbf{T}(y) \in \mathbb{R}^M
 \]
 \paragraph{Normalization Constraint:}
 \[
-    \sum_y p(y|x) = 1
+    \sum_y p(y|\mathbf{x}) = 1
 \]
 
 \subsubsection{Local Constraint}
 
 \paragraph{Principal of Maximum Entropy:}
 \[
-    H(Y|X=x) = - \sum_y p(y|x) \ln p(y|x)
+    H(Y|X=\mathbf{x}) = - \sum_y p(y|\mathbf{x}) \ln p(y|\mathbf{x})
 \]
 \paragraph{Moment Matching:} \mbox{}
 \newline
 Local Constraint:
 \[
-    \mathbb{E}[T(Y)|x] = \hat{\mathbb{E}}[T(Y)|x] \in \mathbb{R}^M
+    \mathbb{E}[\mathbf{T}(Y)|\mathbf{x}] = \hat{\mathbb{E}}[\mathbf{T}(Y)|\mathbf{x}] \in \mathbb{R}^M
 \]
 \[
-    \sum_y p(y|x) T(y) = \hat{\mathbb{E}}[T(Y)|x]
+    \sum_y p(y|\mathbf{x}) \mathbf{T}(y) = \hat{\mathbb{E}}[\mathbf{T}(Y)|\mathbf{x}]
 \]
 \paragraph{Lagrange Multiplier:}
 \begin{align*}
-    \mathcal{L}(p, \alpha, \lambda) &= - \sum_y p(y|x) \ln p(y|x) + \alpha(x) \left(\sum_y p(y|x) - 1\right) \\
-    &\quad + \left\langle \lambda(x), \sum_y p(y|x) T(y) - \hat{\mathbb{E}}[T(Y)|x] \right\rangle
+    \mathcal{L}(p, \alpha, \boldsymbol{\lambda}) &= - \sum_y p(y|\mathbf{x}) \ln p(y|\mathbf{x}) + \alpha(\mathbf{x}) \left(\sum_y p(y|\mathbf{x}) - 1\right) \\
+    &\quad + \left\langle \boldsymbol{\lambda}(\mathbf{x}), \sum_y p(y|\mathbf{x}) \mathbf{T}(y) - \hat{\mathbb{E}}[\mathbf{T}(Y)|\mathbf{x}] \right\rangle
 \end{align*}
-where $\lambda \in \mathbb{R}^M$.
+where $\boldsymbol{\lambda} \in \mathbb{R}^M$.
 \[
-    \frac{\partial \mathcal{L}}{\partial p(y|x)} = - (1 + \ln p(y|x)) + \alpha(x) + \lambda(x)^{\mathrm{T}} T(y) = 0
+    \frac{\partial \mathcal{L}}{\partial p(y|\mathbf{x})} = - (1 + \ln p(y|\mathbf{x})) + \alpha(\mathbf{x}) + \boldsymbol{\lambda}(\mathbf{x})^{\mathrm{T}} \mathbf{T}(y) = 0
 \]
 \[
-    p(y|x) = \exp(\alpha(x) - 1) \cdot \exp(\lambda^{\mathrm{T}} T(y))
+    p(y|\mathbf{x}) = \exp(\alpha(\mathbf{x}) - 1) \cdot \exp(\boldsymbol{\lambda}(\mathbf{x})^{\mathrm{T}} \mathbf{T}(y))
 \]
 \[
-    p(y|x) = \frac{\exp(\lambda(x)^{\mathrm{T}} T(y))}{\sum_{y \in \mathcal{Y}} \exp(\lambda(x)^{\mathrm{T}} T(y))}
+    p(y|\mathbf{x}) = \frac{\exp(\boldsymbol{\lambda}(\mathbf{x})^{\mathrm{T}} \mathbf{T}(y))}{\sum_{y \in \mathcal{Y}} \exp(\boldsymbol{\lambda}(\mathbf{x})^{\mathrm{T}} \mathbf{T}(y))}
 \]
-where $\displaystyle \frac{\sum T(y) \exp(\lambda^{\mathrm{T}} T(y))}{\sum_{y \in \mathcal{Y}} \exp(\lambda^{\mathrm{T}} T(y))} = \hat{\mathbb{E}}[T(Y)|x]$.
+where $\mathbb{E}[\mathbf{T}(Y)|\mathbf{x}] = \hat{\mathbb{E}}[\mathbf{T}(Y)|\mathbf{x}]$.
 
 \subsubsection{Global Constraint}
 
 \paragraph{Principal of Maximum Entropy:}
 \[
-    H(Y|X) = \sum_x \tilde{p}(x) H(Y|X=x) = - \sum_x \tilde{p}(x) \sum_y p(y|x) \ln p(y|x)
+    H(Y|X) = \sum_\mathbf{x} \tilde{p}(\mathbf{x}) H(Y|X=\mathbf{x}) = - \sum_\mathbf{x} \tilde{p}(\mathbf{x}) \sum_y p(y|\mathbf{x}) \ln p(y|\mathbf{x})
 \]
 \paragraph{Moment Matching:} \mbox{}
 \newline
 Global Constraint:
 \[
-    \mathbb{E}[T(Y)x^{\mathrm{T}}] = \hat{\mathbb{E}}[T(Y)x^{\mathrm{T}}] \in \mathbb{R}^{M \times D}
+    \mathbb{E}[\mathbf{T}(Y)\mathbf{x}^{\mathrm{T}}] = \hat{\mathbb{E}}[\mathbf{T}(Y)\mathbf{x}^{\mathrm{T}}] \in \mathbb{R}^{M \times D}
 \]
 \[
-    \sum_x \tilde{p}(x) \sum_y p(y|x) T(y)x^{\mathrm{T}} = \hat{\mathbb{E}}[T(Y)x^{\mathrm{T}}]
+    \sum_\mathbf{x} \tilde{p}(\mathbf{x}) \sum_y p(y|\mathbf{x}) \mathbf{T}(y)\mathbf{x}^{\mathrm{T}} = \hat{\mathbb{E}}[\mathbf{T}(Y)\mathbf{x}^{\mathrm{T}}]
 \]
 Marginal Constraint:
 \[
-    \mathbb{E}[T(Y)] = \hat{\mathbb{E}}[T(Y)] \in \mathbb{R}^M
+    \mathbb{E}[\mathbf{T}(Y)] = \hat{\mathbb{E}}[\mathbf{T}(Y)] \in \mathbb{R}^M
 \]
 \[
-    \sum_x \tilde{p}(x) \sum_y p(y|x) T(y) = \hat{\mathbb{E}}[T(Y)]
+    \sum_\mathbf{x} \tilde{p}(\mathbf{x}) \sum_y p(y|\mathbf{x}) \mathbf{T}(y) = \hat{\mathbb{E}}[\mathbf{T}(Y)]
 \]
 \paragraph{Lagrange Multiplier:}
 \begin{align*}
-    \mathcal{L}(p, \alpha, W, b) &= - \sum_x \tilde{p}(x) \sum_y p(y|x) \ln p(y|x) + \sum_x \alpha(x) \left(\sum_y p(y|x) - 1\right) \\
-    &\quad + \left\langle W, \sum_x \tilde{p}(x) \sum_y p(y|x) T(y)x^{\mathrm{T}} - \hat{\mathbb{E}}[T(Y)x^{\mathrm{T}}] \right\rangle \\
-    &\quad + \left\langle b, \sum_x \tilde{p}(x) \sum_y p(y|x) T(y) - \hat{\mathbb{E}}[T(Y)] \right\rangle
+    \mathcal{L}(p, \alpha, W, \mathbf{b}) &= - \sum_\mathbf{x} \tilde{p}(\mathbf{x}) \sum_y p(y|\mathbf{x}) \ln p(y|\mathbf{x}) + \sum_\mathbf{x} \alpha(\mathbf{x}) \left(\sum_y p(y|\mathbf{x}) - 1\right) \\
+    &\quad + \left\langle W, \sum_\mathbf{x} \tilde{p}(\mathbf{x}) \sum_y p(y|\mathbf{x}) \mathbf{T}(y)\mathbf{x}^{\mathrm{T}} - \hat{\mathbb{E}}[\mathbf{T}(Y)\mathbf{x}^{\mathrm{T}}] \right\rangle \\
+    &\quad + \left\langle \mathbf{b}, \sum_\mathbf{x} \tilde{p}(\mathbf{x}) \sum_y p(y|\mathbf{x}) \mathbf{T}(y) - \hat{\mathbb{E}}[\mathbf{T}(Y)] \right\rangle
 \end{align*}
-where $W \in \mathbb{R}^{M \times D}$, $b \in \mathbb{R}^M$.
+where $W \in \mathbb{R}^{M \times D}$, $\mathbf{b} \in \mathbb{R}^M$.
 \[
-    \frac{\partial \mathcal{L}}{\partial p(y|x)} = - \tilde{p}(x) (1 + \ln p(y|x)) + \alpha(x) + \tilde{p}(x) \langle W, T(y)x^{\mathrm{T}} \rangle + \tilde{p}(x) \langle b, T(y) \rangle
+    \frac{\partial \mathcal{L}}{\partial p(y|\mathbf{x})} = - \tilde{p}(\mathbf{x}) (1 + \ln p(y|\mathbf{x})) + \alpha(\mathbf{x}) + \tilde{p}(\mathbf{x}) \langle W, \mathbf{T}(y)\mathbf{x}^{\mathrm{T}} \rangle + \tilde{p}(\mathbf{x}) \langle \mathbf{b}, \mathbf{T}(y) \rangle
 \]
 \[
-    p(y|x) = \exp\left(\frac{\alpha(x)}{\tilde{p}(x)} - 1\right) \cdot \exp((Wx+b)^{\mathrm{T}} T(y))
+    p(y|\mathbf{x}) = \exp\left(\frac{\alpha(\mathbf{x})}{\tilde{p}(\mathbf{x})} - 1\right) \cdot \exp((W\mathbf{x}+\mathbf{b})^{\mathrm{T}} \mathbf{T}(y))
 \]
-Let $z = Wx+b$,
+Let $\mathbf{z} = W\mathbf{x}+\mathbf{b}$,
 \[
-    p(y|x) = \frac{\exp(z^{\mathrm{T}} T(y))}{\sum_{y \in \mathcal{Y}} \exp(z^{\mathrm{T}} T(y))}
+    p(y|\mathbf{x}) = \frac{\exp(\mathbf{z}^{\mathrm{T}} \mathbf{T}(y))}{\sum_{y \in \mathcal{Y}} \exp(\mathbf{z}^{\mathrm{T}} \mathbf{T}(y))}
 \]
-where $\displaystyle \frac{\sum_x \tilde{p}(x) \sum_y \exp(z^{\mathrm{T}} T(y)) T(y)x^{\mathrm{T}}}{\sum_{y \in \mathcal{Y}} \exp(z^{\mathrm{T}} T(y))} = \hat{\mathbb{E}}[T(Y)x^{\mathrm{T}}]$, $\displaystyle \frac{\sum_x \tilde{p}(x) \sum_y \exp(z^{\mathrm{T}} T(y)) T(y)}{\sum_{y \in \mathcal{Y}} \exp(z^{\mathrm{T}} T(y))} = \hat{\mathbb{E}}[T(Y)]$.
+where $\mathbb{E}[\mathbf{T}(Y)\mathbf{x}^{\mathrm{T}}] = \hat{\mathbb{E}}[\mathbf{T}(Y)\mathbf{x}^{\mathrm{T}}]$, $\mathbb{E}[\mathbf{T}(Y)] = \hat{\mathbb{E}}[\mathbf{T}(Y)]$.
 
 \subsubsection{On Bernoulli Distribution}
 \[
     y \sim \text{Bernoulli}(p)
 \]
-$T(y) = y \in \mathbb{R}$, $W \in \mathbb{R}^{1 \times D}$
+$T(y) = y \in \mathbb{R}$, $W \in \mathbb{R}^{1 \times D}$, $b \in \mathbb{R}$.
 \[
-    p(Y=1|x) = \frac{1}{1 + \exp(-z)}
+    p(Y=1|\mathbf{x}) = \frac{1}{1 + \exp(-z)}
+\]
+\paragraph{Moment Matching:}
+\[
+    \sum_{i}^N (\hat{y}^{(i)} - y^{(i)}) \mathbf{x}^{(i)} = \mathbf{0}
+\]
+\[
+    \sum_{i}^N (\hat{y}^{(i)} - y^{(i)}) = 0
 \]
 
 \subsubsection{On Categorical Distribution}
 \[
     \mathbf{y} \sim \text{Categorical}(\mathbf{p})
 \]
-$T(\mathbf{y}) = \mathbf{y} \in \mathbb{R}^K$, $W \in \mathbb{R}^{K \times D}$
+$\mathbf{T}(\mathbf{y}) = \mathbf{y} \in \mathbb{R}^K$, $W \in \mathbb{R}^{K \times D}$, $b \in \mathbb{R}$.
 \[
-    p(Y=\mathbf{y}|x) = \frac{\exp(\mathbf{z}^{\mathrm{T}} \mathbf{y})}{\sum_{k=1}^K \exp(z_k)}
+    p(Y=\mathbf{y}|\mathbf{x}) = \frac{\exp(\mathbf{z}^{\mathrm{T}} \mathbf{y})}{\sum_{k=1}^K \exp(\mathbf{z}_k)}
+\]
+\paragraph{Moment Matching:}
+\[
+    \sum_{i}^N (\hat{\mathbf{y}}^{(i)} - \mathbf{y}^{(i)}) \mathbf{x}^{(i)\mathrm{T}} = 0
+\]
+\[
+    \sum_{i}^N (\hat{\mathbf{y}}^{(i)} - \mathbf{y}^{(i)}) = \mathbf{0}
 \]
 
 \subsubsection{On Gaussian Distribution}
 \[
     y \sim \mathcal{N}(\mu, \sigma^2)
 \]
-$T(y) = \begin{bmatrix} y \\ y^2 \end{bmatrix} \in \mathbb{R}^2$, $W \in \mathbb{R}^{2 \times D}$
+$\mathbf{T}(y) = \begin{bmatrix} y \\ y^2 \end{bmatrix} \in \mathbb{R}^2$, $W \in \mathbb{R}^{2 \times D}$.
 \[
-    p(Y=y|x) = \frac{\exp(z_1 y + z_2 y^2)}{\int_{-\infty}^{\infty} \exp(z_1 y' + z_2 (y')^2) dy'} = \sqrt{\frac{-z_2}{\pi}} \exp\left(z_2\left(y + \frac{z_1}{2z_2}\right)^2\right) \quad (z_2 < 0 \text{ for convergence})
+    p(Y=y|\mathbf{x}) = \frac{\exp(z_1 y + z_2 y^2)}{\int_{-\infty}^{\infty} \exp(z_1 y' + z_2 (y')^2) dy'} = \sqrt{\frac{-z_2}{\pi}} \exp\left(z_2\left(y + \frac{z_1}{2z_2}\right)^2\right) \quad (z_2 < 0 \text{ for convergence})
 \]
+\paragraph{Parameter Relationship:}
+\[
+    \begin{dcases}
+        \sigma^2 = -\frac{1}{2z_2} \\
+        \mu = -\frac{z_1}{2z_2}
+    \end{dcases}
+    , \quad
+    \begin{dcases}
+        z_1 = \frac{\mu}{\sigma^2} \\
+        z_2 = -\frac{1}{2\sigma^2}
+    \end{dcases}
+\]
+\paragraph{Moment Matching:}
+\[
+    \sum_{i=1}^N \left( \hat{y}^{(i)} - y^{(i)} \right) \mathbf{x}^{(i)} = \mathbf{0}
+\]
+\[
+    \sum_{i=1}^N \left( \widehat{y^2}^{(i)} - (y^{(i)})^2 \right) \mathbf{x}^{(i)} = \mathbf{0}
+\]
+\[
+    \sum_{i=1}^N \left( \hat{y}^{(i)} - y^{(i)} \right) = 0
+\]
+\[
+    \sum_{i=1}^N \left( \widehat{y^2}^{(i)} - (y^{(i)})^2 \right) = 0
+\]
+
+\subsubsection{On Homoscedastic Gaussian Distribution}
+\[
+    \mathbf{w}_2 = 0
+\]
+\[
+    p(Y=y|\mathbf{x}) = \sqrt{\frac{-b_2}{\pi}} \exp\left( b_2 \left( y + \frac{\mathbf{w}_1^\top \mathbf{x} + b_1}{2b_2} \right)^2 \right)
+\]
+\paragraph{Parameter Relationship:}
+\[
+    \begin{dcases}
+        \sigma^2 = -\frac{1}{2b_2} \\
+        \mu(\mathbf{x}) = -\frac{\mathbf{w}_1^\top \mathbf{x} + b_1}{2b_2}
+    \end{dcases}
+\]
+\paragraph{Moment Matching:}
+\[
+    \sum_{i=1}^N \left( \hat{y}^{(i)} - y^{(i)} \right) \mathbf{x}^{(i)} = \mathbf{0}
+\]
+\[
+    \sum_{i=1}^N \left( \hat{y}^{(i)} - y^{(i)} \right) = 0
+\]
+\[
+    \sum_{i=1}^N \left( \widehat{y^2}^{(i)} - (y^{(i)})^2 \right) = 0
+\]
+
+
 
 \subsection{Interval Estimation}
 
@@ -330,8 +373,7 @@ For significance level $\alpha$:
 
 \subsubsection{Single Population}
 
-\begin{table}[h!]
-\centering
+\begin{center}
 \begin{tabular}{|c|c|c|c|}
 \hline
 \textbf{Unknown} & \textbf{Known} & \textbf{Distribution} & \textbf{Two-tailed Confidence Interval} \\
@@ -343,12 +385,11 @@ $\mu$ & $S^2$ & $t = \frac{\overline{X} - \mu}{S/\sqrt{n}} \sim t(n-1)$ & $\left
 $\sigma^2$ & $S^2$ & $\chi^2 = \frac{(n-1)S^2}{\sigma^2} \sim \chi^2(n-1)$ & $\left(\frac{(n-1)S^2}{\chi^2_{\alpha/2}(n-1)}, \frac{(n-1)S^2}{\chi^2_{1-\alpha/2}(n-1)}\right)$ \\
 \hline
 \end{tabular}
-\end{table}
+\end{center}
 
 \subsubsection{Two Populations}
 
-\begin{table}[h!]
-\centering
+\begin{center}
 \begin{tabular}{|c|c|c|c|}
 \hline
 \textbf{Unknown} & \textbf{Known} & \textbf{Distribution} & \textbf{Two-tailed Confidence Interval} \\
@@ -361,8 +402,10 @@ $\mu_1 - \mu_2$ & $S_1^2, S_2^2$ & $\frac{(\overline{X} - \overline{Y}) - (\mu_1
 $\frac{\sigma_1^2}{\sigma_2^2}$ & $S_1^2, S_2^2$ & $\frac{S_1^2/S_2^2}{\sigma_1^2/\sigma_2^2} \sim F(n_1-1, n_2-1)$ & $\left(\frac{S_1^2/S_2^2}{F_{1-\alpha/2}(n_1-1, n_2-1)}, \frac{S_1^2/S_2^2}{F_{\alpha/2}(n_1-1, n_2-1)}\right)$ \\
 \hline
 \end{tabular}
-\end{table}
+\end{center}
 
+
+\newpage
 \section{Principal Component Analysis (PCA)}
 
 \subsection{Best Fitting Subspace (BFS)}
