@@ -327,14 +327,22 @@ where $n = b - a + 1$.
 \]
 
 \subsubsection{Bernoulli Distribution}
-Probability of success in a single trial with only two outcomes.
+Probability of success in a single trial.
 \[ X \sim B(1,p) \]
 \[ p(x) = p^x (1-p)^{1-x}, \quad x=0,1 \]
 \[ \mu = p \]
 \[ \sigma^2 = p(1-p) \]
 
+\subsubsection{Categorical Distribution}
+Probability of observing one of $k$ mutually exclusive categories in a single trial.
+\[ \mathbf{X} \sim \text{Cat}(\mathbf{p}) \]
+Let $\mathbf{x} = (x_1, \dots, x_k)^\top$ be a one-hot vector, $\mathbf{p} = (p_1, \dots, p_k)^\top$. $\displaystyle \sum_{i=1}^{k} x_i = 1$, $\displaystyle \sum_{i=1}^{k} p_i = 1$.
+\[ p(\mathbf{x}) = \prod_{i=1}^{k} p_i^{x_i} \]
+\[ \boldsymbol{\mu} = \mathbf{p} \]
+\[ \Sigma_{i,j} = \begin{cases} p_i(1-p_i) & i=j \\ -p_i p_j & i \neq j \end{cases} \]
+
 \subsubsection{Binomial Distribution}
-The number of successes in $ n $ independent Bernoulli trails.
+The number of successes in $n$ independent Bernoulli trails.
 \[ X \sim B(n,p) \]
 \[ p(x) = \binom{n}{x} p^x (1-p)^{n-x}, \quad x=0,1,\dots,n \]
 \[ \mu = np \]
@@ -343,11 +351,10 @@ The number of successes in $ n $ independent Bernoulli trails.
 \subsubsection{Multinomial Distribution}
 The number of counts for $k$ mutually exclusive categories in $n$ independent trials.
 \[ \mathbf{X} \sim M(n, \mathbf{p}) \]
-Let $\mathbf{x} = (x_1, \dots, x_k)^\top$, $\mathbf{p} = (p_1, \dots, p_k)^\top$. $\displaystyle \sum_{i=1}^{k} x_i = n$, $\displaystyle \sum_{i=1}^{k} p_i = 1$.
+Let $\mathbf{x} = (x_1, \dots, x_k)^\top$ be a one-hot vector, $\mathbf{p} = (p_1, \dots, p_k)^\top$. $\displaystyle \sum_{i=1}^{k} x_i = n$, $\displaystyle \sum_{i=1}^{k} p_i = 1$.
 \[ p(\mathbf{x}) = \frac{n!}{\prod_{i=1}^{k} x_i!} \prod_{i=1}^{k} p_i^{x_i} \]
 \[ \mathbf{\mu} = n \mathbf{p} \]
-\[ \sigma_i^2 = n p_i (1 - p_i) \]
-\[ \Sigma_{i,j} = -n p_i p_j, \quad i \neq j \]
+\[ \Sigma_{i,j} = \begin{cases} n p_i (1 - p_i) & i=j \\ -p_i p_j & i \neq j \end{cases} \]
 
 \subsubsection{Geometric Distribution}
 The number of trials needed to get the first success in a sequence of independent Bernoulli trials.
