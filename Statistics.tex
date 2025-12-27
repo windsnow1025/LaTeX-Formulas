@@ -142,8 +142,7 @@ Maximum Log Likelihood:
     \hat{\theta} = \arg\max_\theta \ell(\theta | X)
 \]
 
-\subsubsection{Bernoulli Distribution}
-Model assumption:
+\subsubsection{On Bernoulli Distribution}
 \[
     y \sim \text{Bernoulli}(\hat{y})
 \]
@@ -157,8 +156,7 @@ Maximum Log Likelihood:
     \hat{\theta} = \arg\max_{\theta} \ell(\theta) = \arg\max_{\theta} \left[ y \log \hat{y} + (1-y) \log (1-\hat{y}) \right]
 \]
 
-\subsubsection{Categorical Distribution}
-Model assumption:
+\subsubsection{On Categorical Distribution}
 \[
     \mathbf{y} \sim \text{Categorical}(\hat{\mathbf{y}})
 \]
@@ -172,8 +170,7 @@ Maximum Log Likelihood:
     \hat{\theta} = \arg\max_{\theta} \ell(\theta) = \arg\max_{\theta} \sum_{k=1}^{K} y_k \log \hat{y}_k = \arg\max_{\theta} \mathbf{y}^\top \log \hat{\mathbf{y}}
 \]
 
-\subsubsection{Gaussian Distribution}
-Model assumption:
+\subsubsection{On Gaussian Distribution}
 \[
     \mathbf{y} \sim \mathcal{N}(\hat{\mathbf{y}}, \sigma^2 I)
 \]
@@ -207,6 +204,122 @@ In Maximum A Posteriori (MAP) estimation framework, assume prior distribution $\
     \min_{\mathbf{w}} \|A\mathbf{w} - \mathbf{b}\|^2 + \lambda\|\mathbf{{w}}\|_2^2
 \]
 where the regularization parameter $\displaystyle \lambda = \frac{\sigma^2}{\tau^2}$.
+
+\subsection{Max Entropy}
+
+Sample: $x \in \mathcal{X} = \mathbb{R}^D$, $y \in \mathcal{Y}$
+\paragraph{Marginal Distribution:}
+\[
+    p(y|x) = P(y|x)
+\]
+\paragraph{Sufficient Statistics:}
+\[
+    T(y) \in \mathbb{R}^M
+\]
+\paragraph{Normalization Constraint:}
+\[
+    \sum_y p(y|x) = 1
+\]
+
+\subsubsection{Local Constraint}
+
+\paragraph{Principal of Maximum Entropy:}
+\[
+    H(Y|X=x) = - \sum_y p(y|x) \ln p(y|x)
+\]
+\paragraph{Moment Matching:} \mbox{}
+\newline
+Local Constraint:
+\[
+    \mathbb{E}[T(Y)|x] = \hat{\mathbb{E}}[T(Y)|x] \in \mathbb{R}^M
+\]
+\[
+    \sum_y p(y|x) T(y) = \hat{\mathbb{E}}[T(Y)|x]
+\]
+\paragraph{Lagrange Multiplier:}
+\begin{align*}
+    \mathcal{L}(p, \alpha, \lambda) &= - \sum_y p(y|x) \ln p(y|x) + \alpha(x) \left(\sum_y p(y|x) - 1\right) \\
+    &\quad + \left\langle \lambda(x), \sum_y p(y|x) T(y) - \hat{\mathbb{E}}[T(Y)|x] \right\rangle
+\end{align*}
+where $\lambda \in \mathbb{R}^M$.
+\[
+    \frac{\partial \mathcal{L}}{\partial p(y|x)} = - (1 + \ln p(y|x)) + \alpha(x) + \lambda(x)^T T(y) = 0
+\]
+\[
+    p(y|x) = \exp(\alpha(x) - 1) \cdot \exp(\lambda^T T(y))
+\]
+\[
+    p(y|x) = \frac{\exp(\lambda(x)^T T(y))}{\sum_{y \in \mathcal{Y}} \exp(\lambda(x)^T T(y))}
+\]
+where $\displaystyle \frac{\sum T(y) \exp(\lambda^T T(y))}{\sum_{y \in \mathcal{Y}} \exp(\lambda^T T(y))} = \hat{\mathbb{E}}[T(Y)|x]$.
+
+\subsubsection{Global Constraint}
+
+\paragraph{Principal of Maximum Entropy:}
+\[
+    H(Y|X) = \sum_x \tilde{p}(x) H(Y|X=x) = - \sum_x \tilde{p}(x) \sum_y p(y|x) \ln p(y|x)
+\]
+\paragraph{Moment Matching:} \mbox{}
+\newline
+Global Constraint:
+\[
+    \mathbb{E}[T(Y)x^T] = \hat{\mathbb{E}}[T(Y)x^T] \in \mathbb{R}^{M \times D}
+\]
+\[
+    \sum_x \tilde{p}(x) \sum_y p(y|x) T(y)x^T = \hat{\mathbb{E}}[T(Y)x^T]
+\]
+Marginal Constraint:
+\[
+    \mathbb{E}[T(Y)] = \hat{\mathbb{E}}[T(Y)] \in \mathbb{R}^M
+\]
+\[
+    \sum_x \tilde{p}(x) \sum_y p(y|x) T(y) = \hat{\mathbb{E}}[T(Y)]
+\]
+\paragraph{Lagrange Multiplier:}
+\begin{align*}
+    \mathcal{L}(p, \alpha, W, b) &= - \sum_x \tilde{p}(x) \sum_y p(y|x) \ln p(y|x) + \sum_x \alpha(x) \left(\sum_y p(y|x) - 1\right) \\
+    &\quad + \left\langle W, \sum_x \tilde{p}(x) \sum_y p(y|x) T(y)x^T - \hat{\mathbb{E}}[T(Y)x^T] \right\rangle \\
+    &\quad + \left\langle b, \sum_x \tilde{p}(x) \sum_y p(y|x) T(y) - \hat{\mathbb{E}}[T(Y)] \right\rangle
+\end{align*}
+where $W \in \mathbb{R}^{M \times D}$, $b \in \mathbb{R}^M$.
+\[
+    \frac{\partial \mathcal{L}}{\partial p(y|x)} = - \tilde{p}(x) (1 + \ln p(y|x)) + \alpha(x) + \tilde{p}(x) \langle W, T(y)x^T \rangle + \tilde{p}(x) \langle b, T(y) \rangle
+\]
+\[
+    p(y|x) = \exp\left(\frac{\alpha(x)}{\tilde{p}(x)} - 1\right) \cdot \exp((Wx+b)^T T(y))
+\]
+Let $z = Wx+b$,
+\[
+    p(y|x) = \frac{\exp(z^T T(y))}{\sum_{y \in \mathcal{Y}} \exp(z^T T(y))}
+\]
+where $\displaystyle \frac{\sum_x \tilde{p}(x) \sum_y \exp(z^T T(y)) T(y)x^T}{\sum_{y \in \mathcal{Y}} \exp(z^T T(y))} = \hat{\mathbb{E}}[T(Y)x^T]$, $\displaystyle \frac{\sum_x \tilde{p}(x) \sum_y \exp(z^T T(y)) T(y)}{\sum_{y \in \mathcal{Y}} \exp(z^T T(y))} = \hat{\mathbb{E}}[T(Y)]$.
+
+\subsubsection{On Bernoulli Distribution}
+\[
+    y \sim \text{Bernoulli}(p)
+\]
+$T(y) = y \in \mathbb{R}$, $W \in \mathbb{R}^{1 \times D}$
+\[
+    p(Y=1|x) = \frac{1}{1 + \exp(-z)}
+\]
+
+\subsubsection{On Categorical Distribution}
+\[
+    \mathbf{y} \sim \text{Categorical}(\mathbf{p})
+\]
+$T(\mathbf{y}) = \mathbf{y} \in \mathbb{R}^K$, $W \in \mathbb{R}^{K \times D}$
+\[
+    p(Y=\mathbf{y}|x) = \frac{\exp(\mathbf{z}^T \mathbf{y})}{\sum_{k=1}^K \exp(z_k)}
+\]
+
+\subsubsection{On Gaussian Distribution}
+\[
+    y \sim \mathcal{N}(\mu, \sigma^2)
+\]
+$T(y) = \begin{bmatrix} y \\ y^2 \end{bmatrix} \in \mathbb{R}^2$, $W \in \mathbb{R}^{2 \times D}$
+\[
+    p(Y=y|x) = \frac{\exp(z_1 y + z_2 y^2)}{\int_{-\infty}^{\infty} \exp(z_1 y' + z_2 (y')^2) dy'} = \sqrt{\frac{-z_2}{\pi}} \exp\left(z_2\left(y + \frac{z_1}{2z_2}\right)^2\right) \quad (z_2 < 0 \text{ for convergence})
+\]
 
 \subsection{Interval Estimation}
 
