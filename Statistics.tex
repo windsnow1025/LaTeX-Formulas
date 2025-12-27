@@ -142,12 +142,30 @@ Maximum Log Likelihood:
     \hat{\theta} = \arg\max_\theta \ell(\theta | X)
 \]
 
-\subsubsection{Multinomial Distribution}
-Let $\displaystyle \mathbf{y} = \frac{1}{n} \mathbf{x}$, $\hat{\mathbf{y}} = \mathbf{p}$.
+\subsubsection{Bernoulli Distribution}
+Model assumption:
+\[
+    y \sim \text{Bernoulli}(\hat{y})
+\]
 \newline
 Likelihood Function:
 \[
-    L(\theta) = \mathbb{P}(\mathbf{y}|n, \hat{\mathbf{y}}) = \frac{n!}{\prod_{k=1}^{K} (ny_k)!} \prod_{k=1}^{K} \hat{y}_k^{n y_k}
+    L(\theta) = \hat{y}^y (1-\hat{y})^{1-y}
+\]
+Maximum Log Likelihood:
+\[
+    \hat{\theta} = \arg\max_{\theta} \ell(\theta) = \arg\max_{\theta} \left[ y \log \hat{y} + (1-y) \log (1-\hat{y}) \right]
+\]
+
+\subsubsection{Categorical Distribution}
+Model assumption:
+\[
+    \mathbf{y} \sim \text{Categorical}(\hat{\mathbf{y}})
+\]
+\newline
+Likelihood Function:
+\[
+    L(\theta) = \prod_{k=1}^{K} \hat{y}_k^{y_k}
 \]
 Maximum Log Likelihood:
 \[
@@ -157,13 +175,12 @@ Maximum Log Likelihood:
 \subsubsection{Gaussian Distribution}
 Model assumption:
 \[
-    \mathbf{y} = \hat{\mathbf{y}} + \boldsymbol{\epsilon}
+    \mathbf{y} \sim \mathcal{N}(\hat{\mathbf{y}}, \sigma^2 I)
 \]
-where $\boldsymbol{\epsilon} \sim \mathcal{N}(\mathbf{0}, \sigma^2 I)$.
 \newline
 Likelihood Function:
 \[
-    L(\theta) = \mathbb{P}(\mathbf{y}|\hat{\mathbf{y}}, \sigma^2 I) = \frac{1}{(2\pi\sigma^2)^{D/2}} \exp\left(-\frac{\|\mathbf{y}-\hat{\mathbf{y}}\|^2}{2\sigma^2}\right)
+    L(\theta) = \frac{1}{(2\pi\sigma^2)^{D/2}} \exp\left(-\frac{\|\mathbf{y}-\hat{\mathbf{y}}\|^2}{2\sigma^2}\right)
 \]
 Maximum Log Likelihood:
 \[
