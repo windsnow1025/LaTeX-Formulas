@@ -182,6 +182,17 @@ Maximum Log Likelihood:
     \hat{\theta} = \arg\max_{\theta} \ell(\theta) = \arg\min_{\theta} (y-\hat{y})^2
 \]
 
+
+\subsection{Maximum A Posteriori (MAP)}
+
+\[
+    \hat{\theta}_{\text{MAP}} = \arg\max_{\theta} \mathbb{P}(\theta | X) = \arg\max_{\theta} \frac{\mathbb{P}(X | \theta) \mathbb{P}(\theta)}{\mathbb{P}(X)} = \arg\max_{\theta} \left( \log \mathbb{P}(X | \theta) + \log \mathbb{P}(\theta) \right)
+\]
+\[
+    \hat{\theta}_{\text{MAP}} = \arg\max_{\theta} \left( \ell(\theta) + \log \mathbb{P}(\theta) \right)
+\]
+
+
 \subsection{Max Entropy}
 
 \paragraph{Sample:}
