@@ -67,6 +67,7 @@
     - Projection Matrix Properties - Projection, Part 1
     - Orthogonal Projection Formulas (Least Squares) - Projection, Part 2
     - Quadratic Forms | Degrees of Freedom Ch. 3
+    - Projection and Rank | Degrees of Freedom Ch. 4
 - Trace
   - Mathemaniac: Matrix trace isn't just summing the diagonal | Lie groups, algebras, brackets #5
 
