@@ -192,6 +192,14 @@ Maximum Log Likelihood:
     \hat{\theta}_{\text{MAP}} = \arg\max_{\theta} \left( \ell(\theta) + \log \mathbb{P}(\theta) \right)
 \]
 
+\subsubsection{On Gaussian Prior}
+\[
+    \theta \sim \mathcal{N}(\mathbf{0}, \tau^2 I)
+\]
+\[
+    \hat{\theta}_{\text{MAP}} = \arg\max_{\theta} \left( \ell(\theta) - \frac{1}{2\tau^2} \|\theta\|_2^2 \right)
+\]
+
 
 \subsection{Max Entropy}
 
