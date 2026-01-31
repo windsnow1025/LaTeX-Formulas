@@ -26,10 +26,20 @@
 
 ### Courses
 
-- Steve Brunton
-  - Fourier Analysis \[Data-Driven Science and Engineering]
-  - Engineering Math: Differential Equations and Dynamical Systems
-  - Engineering Math: Vector Calculus and Partial Differential Equations
+- Multivariable Calculus
+  - Serpentine Integral
+    - Multivariable Calculus Theory
+  - Steve Brunton
+    - Engineering Math: Vector Calculus and Partial Differential Equations
+- Differential Equations
+  - Steve Brunton
+    - Engineering Math: Differential Equations and Dynamical Systems
+    - Engineering Math: Vector Calculus and Partial Differential Equations
+- Infinite Series
+  - Serpentine Integral: Calculus 2 Theory
+- Coordinate Transformation
+  - Steve Brunton
+    - Fourier Analysis \[Data-Driven Science and Engineering]
 
 ### Deep Dives
 
@@ -44,7 +54,8 @@
 
 ### Courses
 
-- Steve Brunton: Singular Value Decomposition \[Data-Driven Science and Engineering]
+- Singular Value Decomposition
+  - Steve Brunton: Singular Value Decomposition \[Data-Driven Science and Engineering]
 
 ### Deep Dives
 
@@ -79,7 +90,8 @@
 
 ### Courses
 
-- Steve Brunton: Probability Bootcamp
+- Probability
+  - Steve Brunton: Probability Bootcamp
 
 ## Statistics
 
@@ -92,7 +104,8 @@
 
 ### Courses
 
-- Steve Brunton: Introduction to Statistics and Data Analysis
+- Statistics
+  - Steve Brunton: Introduction to Statistics and Data Analysis
 
 ### Deep Dives
 
