@@ -1037,7 +1037,7 @@ Characteristic Equation: $r^2 + pr + q = 0$
     |z| = \sqrt{a^2 + b^2}
 \]
 
-\subsection{Complex Conjugate}
+\subsection{Conjugate}
 \[
     \bar{z} = a - bi
 \]
@@ -1056,9 +1056,15 @@ Characteristic Equation: $r^2 + pr + q = 0$
     z = r(\cos \theta + i\sin \theta) = re^{i\theta}
 \]
 
-\subsection{Complex Multiplication}
+\subsection{Multiplication}
 \[
     z_1 z_2 = r_1 r_2 \left[\cos(\theta_1 + \theta_2) + i\sin(\theta_1 + \theta_2)\right]
+\]
+
+\subsection{Inner Product}
+
+\[
+    \langle z_1, z_2 \rangle = z_1 \bar{z}_2
 \]
 
 
@@ -1123,10 +1129,10 @@ In Complex Field:
     \mathcal{F}: \{f: \mathbb{R} \to \mathbb{R}\} \to \{F: \mathbb{R} \to \mathbb{C}\}
 \]
 \[
-    F(\omega) = \mathcal{F}(f(t)) = \int_{-\infty}^{\infty} f(t) e^{-i\omega t} dt
+    F(\omega) = \mathcal{F}(f(t)) = \langle f(t), e^{i\omega t} \rangle = \int_{-\infty}^{\infty} f(t) e^{-i\omega t} dt
 \]
 \[
-    f(t) = \frac{1}{2\pi} \int_{-\infty}^{\infty} F(\omega) e^{i\omega t} dt
+    f(t) = \mathcal{F}^{-1}(F(\omega)) = \int_{-\infty}^{\infty} \frac{F(\omega)}{\|e^{i\omega t}\|^2} e^{i\omega t} d\omega = \frac{1}{2\pi} \int_{-\infty}^{\infty} F(\omega) e^{i\omega t} d\omega
 \]
 \textbf{Properties:}
 \[
@@ -1142,7 +1148,7 @@ In Complex Field:
     F(s) = \mathcal{L}(f(t)) = \int_0^{\infty} f(t) e^{-st} dt
 \]
 \[
-    f(t) = \frac{1}{2\pi i} \int_{\gamma - i\infty}^{\gamma + i\infty} F(s) e^{st} ds
+    f(t) = \mathcal{L}^{-1}(F(s)) = \frac{1}{2\pi i} \int_{\gamma - i\infty}^{\gamma + i\infty} F(s) e^{st} ds
 \]
 \textbf{Derivation:}
 \[
