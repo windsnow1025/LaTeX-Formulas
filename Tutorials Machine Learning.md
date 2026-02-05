@@ -19,7 +19,7 @@
 - Boosting
   - StatQuest with Josh Starmer: AdaBoost, Clearly Explained
 - Explainable AI
-  - DeepFindr: Explainable AI explained! | #4 SHAP
+  - DeepFindr: Explainable AI
 
 ## Methods
 
