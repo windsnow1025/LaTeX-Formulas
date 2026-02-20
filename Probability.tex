@@ -329,29 +329,29 @@ where $n = b - a + 1$.
 \subsubsection{Bernoulli Distribution}
 Probability of success in a single trial.
 \[ X \sim \text{Bernoulli}(p) = B(1,p)\]
-\[ p(x) = p^x (1-p)^{1-x}, \quad x=0,1 \]
+\[ p(x) = p^x (1-p)^{1-x}, \quad x \in \{0,1\} \]
 \[ \mu = p \]
 \[ \sigma^2 = p(1-p) \]
 
 \subsubsection{Categorical Distribution}
 Probability of observing one of $k$ mutually exclusive categories in a single trial.
 \[ \mathbf{X} \sim \text{Categorical}(\mathbf{p}) = M(1, \mathbf{p})\]
-Let $\mathbf{x} = (x_1, \dots, x_k)^\top$ be a one-hot vector, $\mathbf{p} = (p_1, \dots, p_k)^\top$. $\displaystyle \sum_{i=1}^{k} x_i = 1$, $\displaystyle \sum_{i=1}^{k} p_i = 1$.
+Let $\mathbf{x} \in \{\mathbf{e}_i\}_{i=1}^{k}$, $\mathbf{p} \in [0,1]^k$. $\displaystyle \sum_{i=1}^{k} p_i = 1$.
 \[ p(\mathbf{x}) = \prod_{i=1}^{k} p_i^{x_i} \]
 \[ \boldsymbol{\mu} = \mathbf{p} \]
 \[ \Sigma_{i,j} = \begin{cases} p_i(1-p_i) & i=j \\ -p_i p_j & i \neq j \end{cases} \]
 
 \subsubsection{Binomial Distribution}
-The number of successes in $n$ independent Bernoulli trails.
+The number of successes in $n$ independent Bernoulli trials.
 \[ X \sim B(n,p) \]
-\[ p(x) = \binom{n}{x} p^x (1-p)^{n-x}, \quad x=0,1,\dots,n \]
+\[ p(x) = \binom{n}{x} p^x (1-p)^{n-x}, \quad x \in \{0,1,\dots,n\} \]
 \[ \mu = np \]
 \[ \sigma^2 = np(1-p) \]
 
 \subsubsection{Multinomial Distribution}
 The number of counts for $k$ mutually exclusive categories in $n$ independent trials.
 \[ \mathbf{X} \sim M(n, \mathbf{p}) \]
-Let $\mathbf{x} = (x_1, \dots, x_k)^\top$ be a one-hot vector, $\mathbf{p} = (p_1, \dots, p_k)^\top$. $\displaystyle \sum_{i=1}^{k} x_i = n$, $\displaystyle \sum_{i=1}^{k} p_i = 1$.
+Let $\mathbf{x} \in \{0,1,\dots,n\}^k$, $\mathbf{p} \in [0,1]^k$. $\displaystyle \sum_{i=1}^{k} x_i = n$, $\displaystyle \sum_{i=1}^{k} p_i = 1$.
 \[ p(\mathbf{x}) = \frac{n!}{\prod_{i=1}^{k} x_i!} \prod_{i=1}^{k} p_i^{x_i} \]
 \[ \mathbf{\mu} = n \mathbf{p} \]
 \[ \Sigma_{i,j} = \begin{cases} n p_i (1 - p_i) & i=j \\ -p_i p_j & i \neq j \end{cases} \]
@@ -359,7 +359,7 @@ Let $\mathbf{x} = (x_1, \dots, x_k)^\top$ be a one-hot vector, $\mathbf{p} = (p_
 \subsubsection{Geometric Distribution}
 The number of trials needed to get the first success in a sequence of independent Bernoulli trials.
 \[ X \sim G(p) \]
-\[ p(x) = (1-p)^{x-1}p, \quad x=1,2,\dots \]
+\[ p(x) = (1-p)^{x-1}p, \quad x \in \mathbb{Z}^+ \]
 \[ F(x) = 1 - (1-p)^x \]
 \[ \mu = \frac{1}{p} \]
 \[ \sigma^2 = \frac{1-p}{p^2} \]
@@ -367,7 +367,7 @@ The number of trials needed to get the first success in a sequence of independen
 \subsubsection{Poisson Distribution}
 The number of events occurring in an interval of time, given an average rate $ \lambda $ of occurrence.
 \[ X \sim \mathbb{P}(\lambda) \]
-\[ p(x) = \frac{\lambda^x e^{-\lambda}}{x!}, \quad \lambda>0, x=0,1,\dots \]
+\[ p(x) = \frac{\lambda^x e^{-\lambda}}{x!}, \quad \lambda>0, \, x \in \mathbb{Z}_{\geq 0} \]
 \[ \mu = \sigma^2 = \lambda \]
 \textbf{Derivation (Poisson Limit Theorem):}
 \[
