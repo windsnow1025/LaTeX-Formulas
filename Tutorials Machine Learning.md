@@ -7,6 +7,8 @@
 
 ## General
 
+- The Exponential Family
+  - Mutual Information: The Exponential Family
 - Backpropagation
   - Artem Kirsanov: The Most Important Algorithm in Machine Learning
   - DeepBean: Backpropagation: How Neural Networks Learn
