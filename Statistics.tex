@@ -177,7 +177,7 @@ Maximum Log Likelihood:
     \hat{\theta} = \arg\max_{\theta} \mathbf{y}^\top \log \hat{\mathbf{y}}
 \]
 
-\subsubsection{On Gaussian Distribution}
+\subsubsection{On Univariate Gaussian Distribution}
 \[
     y \sim \mathcal{N}(\hat{y}, \sigma^2)
 \]
@@ -192,6 +192,23 @@ Log Likelihood:
 Maximum Log Likelihood:
 \[
     \hat{\theta} = \arg\min_{\theta} (y-\hat{y})^2
+\]
+
+\subsubsection{On Isotropic Multivariate Gaussian Distribution}
+\[
+    \mathbf{y} \sim \mathcal{N}(\hat{\mathbf{y}}, \sigma^2 I)
+\]
+Likelihood Function:
+\[
+    L(\theta) = \frac{1}{(2\pi\sigma^2)^{d/2}} \exp\left(-\frac{\|\mathbf{y}-\hat{\mathbf{y}}\|^2}{2\sigma^2}\right)
+\]
+Log Likelihood:
+\[
+    \ell(\theta) = -\frac{d}{2}\log(2\pi\sigma^2) - \frac{\|\mathbf{y}-\hat{\mathbf{y}}\|^2}{2\sigma^2}
+\]
+Maximum Log Likelihood:
+\[
+    \hat{\theta} = \arg\min_{\theta} \|\mathbf{y}-\hat{\mathbf{y}}\|^2
 \]
 
 
@@ -363,7 +380,7 @@ where $W \in \mathbb{R}^{M \times D}$, $\mathbf{b} \in \mathbb{R}^M$.
     \end{dcases}
 \]
 
-\subsubsection{On Gaussian Distribution}
+\subsubsection{On Univariate Gaussian Distribution}
 \[
     y \sim \mathcal{N}(\mu, \sigma^2), \quad \mathcal{Y} = \mathbb{R}
 \]
@@ -402,7 +419,7 @@ where $W \in \mathbb{R}^{M \times D}$, $\mathbf{b} \in \mathbb{R}^M$.
     \end{dcases}
 \]
 
-\subsubsection{On Homoscedastic Gaussian Distribution}
+\subsubsection{On Homoscedastic Univariate Gaussian Distribution}
 \[
     \mathbf{w}_2 = 0
 \]
