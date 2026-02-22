@@ -151,9 +151,13 @@ Likelihood Function:
 \[
     L(\theta) = \hat{y}^y (1-\hat{y})^{1-y}
 \]
+Log Likelihood:
+\[
+    \ell(\theta) = y \log \hat{y} + (1-y) \log (1-\hat{y})
+\]
 Maximum Log Likelihood:
 \[
-    \hat{\theta} = \arg\max_{\theta} \ell(\theta) = \arg\max_{\theta} \left( y \log \hat{y} + (1-y) \log (1-\hat{y}) \right)
+    \hat{\theta} = \arg\max_{\theta} \left( y \log \hat{y} + (1-y) \log (1-\hat{y}) \right)
 \]
 
 \subsubsection{On Categorical Distribution}
@@ -164,9 +168,13 @@ Likelihood Function:
 \[
     L(\theta) = \prod_{k=1}^{K} \hat{y}_k^{y_k}
 \]
+Log Likelihood:
+\[
+    \ell(\theta) = \sum_{k=1}^{K} y_k \log \hat{y}_k = \mathbf{y}^\top \log \hat{\mathbf{y}}
+\]
 Maximum Log Likelihood:
 \[
-    \hat{\theta} = \arg\max_{\theta} \ell(\theta) = \arg\max_{\theta} \mathbf{y}^\top \log \hat{\mathbf{y}}
+    \hat{\theta} = \arg\max_{\theta} \mathbf{y}^\top \log \hat{\mathbf{y}}
 \]
 
 \subsubsection{On Gaussian Distribution}
@@ -177,9 +185,13 @@ Likelihood Function:
 \[
     L(\theta) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(y-\hat{y})^2}{2\sigma^2}\right)
 \]
+Log Likelihood:
+\[
+    \ell(\theta) = -\frac{1}{2}\log(2\pi\sigma^2) - \frac{(y-\hat{y})^2}{2\sigma^2}
+\]
 Maximum Log Likelihood:
 \[
-    \hat{\theta} = \arg\max_{\theta} \ell(\theta) = \arg\min_{\theta} (y-\hat{y})^2
+    \hat{\theta} = \arg\min_{\theta} (y-\hat{y})^2
 \]
 
 
