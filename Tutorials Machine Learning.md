@@ -7,17 +7,19 @@
 
 ## General
 
-- The Exponential Family
-  - Mutual Information: The Exponential Family
-- Backpropagation
-  - Artem Kirsanov: The Most Important Algorithm in Machine Learning
-  - DeepBean: Backpropagation: How Neural Networks Learn
+- Modeling
+  - The Exponential Family
+    - Mutual Information: The Exponential Family
 - Optimization
-  - DeepBean: Optimization for Deep Learning (Momentum, RMSprop, AdaGrad, Adam)
-- Normalization
-  - Assembly AI
-    - Batch normalization | What it is and how to implement it
-    - What is Layer Normalization? | Deep Learning Fundamentals
+  - Backpropagation
+    - Artem Kirsanov: The Most Important Algorithm in Machine Learning
+    - DeepBean: Backpropagation: How Neural Networks Learn
+  - Gradient Methods
+    - DeepBean: Optimization for Deep Learning (Momentum, RMSprop, AdaGrad, Adam)
+  - Normalization
+    - Assembly AI
+      - Batch normalization | What it is and how to implement it
+      - What is Layer Normalization? | Deep Learning Fundamentals
 - Boosting
   - StatQuest with Josh Starmer: AdaBoost, Clearly Explained
 - Explainable AI
