@@ -439,7 +439,7 @@ Derivation from Poisson:
     \mathbb{P}(X > x) = \sum_{k=0}^{r-1} f_{\text{Poisson}(\lambda x)}(k)
 \]
 
-\subsubsection{Normal Distribution}
+\subsubsection{Univariate Normal Distribution}
 \[ X \sim \mathcal{N}(\mu, \sigma^2) \]
 \[
     f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left( -\frac{(x-\mu)^2}{2\sigma^2} \right)
@@ -449,7 +449,7 @@ Derivation from Poisson:
     B(n, p) \xrightarrow{n \to \infty} \mathcal{N}(\mu = np, \sigma^2 = np(1-p))
 \]
 
-\subsubsection{Standard Normal Distribution}
+\subsubsection{Standard Univariate Normal Distribution}
 \[ Z = \frac{X-\mu}{\sigma} \sim \mathcal{N}(0,1) \]
 \[
     \phi(z) = \frac{1}{\sqrt{2\pi}} \exp\left( -\frac{z^2}{2} \right)
@@ -556,7 +556,7 @@ Define $ \mathbf{y} = Q^\top (\mathbf{x} - \boldsymbol{\mu}) $:
 \subsection{Isotropic Gaussian Distribution}
 \[ \mathbf{X} \sim \mathcal{N}(\boldsymbol{\mu}, \sigma^2 I) \]
 \[
-    f(\mathbf{x}) = \frac{1}{(2\pi)^{d/2} \sigma^d} \exp\left(-\frac{\|\mathbf{x} - \boldsymbol{\mu}\|^2}{2\sigma^2}\right)
+    f(\mathbf{x}) = \frac{1}{(2\pi\sigma^2)^{d/2}} \exp\left(-\frac{\|\mathbf{x} - \boldsymbol{\mu}\|^2}{2\sigma^2}\right)
 \]
 
 
