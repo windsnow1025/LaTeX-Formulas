@@ -406,6 +406,9 @@ For $f(x, y)$:
 \section{Taylor Series}
 
 \subsection{Univariate Taylor Series}
+
+Find a polynomial $P(x)$ such that $P^{(n)}(a) = f^{(n)}(a)$ for all $n \geq 0$.
+
 \[
     f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!}(x - a)^n
 \]
@@ -415,6 +418,9 @@ Let $h = x - a$:
 \]
 
 \subsection{Multivariate Taylor Series}
+
+Find a polynomial $P(\mathbf{x})$ such that $D^{\boldsymbol{\alpha}} P(\mathbf{a}) = D^{\boldsymbol{\alpha}} f(\mathbf{a})$ for all multi-indices $\boldsymbol{\alpha}$.
+
 \[
     f(\mathbf{x}) = \sum_{|\boldsymbol{\alpha}|=0}^{\infty} \frac{D^{\boldsymbol{\alpha}} f(\mathbf{a})}{\boldsymbol{\alpha}!} (\mathbf{x} - \mathbf{a})^{\boldsymbol{\alpha}}
 \]
