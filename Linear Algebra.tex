@@ -99,17 +99,23 @@ The \textbf{Outer Product} of two vectors $\mathbf{a} \in \mathbb{R}^m$ and $\ma
 \]
 Expanded form~\ref{eq:outerprod}.
 
-\subsection{Matrix and Vector Multiplication}
-
-\subsubsection{Matrix and Column Vector Multiplication}
+\subsection{Matrix and Column Vector Multiplication}
 Apply Linear Transformation $A \in \mathbb{R}^{m \times n}$ to vector $\mathbf{x} \in \mathbb{R}^n$ and produce a new vector $A\mathbf{x} \in \mathbb{R}^m$.
+
+\subsubsection{Column-wise View (Linear Combination)}
 \[
     A\mathbf{x} = \sum_{j=1}^n x_j \mathbf{a}_j
 \]
-Expanded form~\ref{eq:matvec}.
+Expanded form~\ref{eq:matvec_col}.
 \paragraph{Geometric Interpretation:} Map the standard basis vectors in the Domain $\mathbb{R}^n$ to the column vectors in the Codomain $\mathbb{R}^m$.
 
-\subsubsection{Row Vector and Matrix Multiplication}
+\subsubsection{Row-wise View (Inner Product)}
+\[
+    (A\mathbf{x})_i = \mathbf{a}_i^{\mathrm{T}} \mathbf{x}
+\]
+Expanded form~\ref{eq:matvec_row}.
+
+\subsection{Row Vector and Matrix Multiplication}
 Apply Linear Transformation $A \in \mathbb{R}^{m \times n}$ to a row vector $\mathbf{y}^{\mathrm{T}} \in \mathbb{R}^{1 \times m}$ from the left and produce a new row vector $\mathbf{y}^{\mathrm{T}} A \in \mathbb{R}^{1 \times n}$.
 \[
     \mathbf{y}^{\mathrm{T}} A = \sum_{i=1}^m y_i \mathbf{a}_i^{\mathrm{T}}
@@ -119,15 +125,26 @@ Expanded form~\ref{eq:rowvecmat}.
 
 \subsection{Matrix and Matrix Multiplication}
 Apply transformation $B$, then apply transformation $A$.
+
+\subsubsection{Column-wise View}
 \[
     (AB)_{*j} = A\mathbf{b}_j
 \]
-\begin{itemize}
-    \item Inner Product view: expanded form~\ref{eq:mul_inner}.
-    \item Outer Product view: expanded form~\ref{eq:mul_outer}.
-    \item Column-wise view: expanded form~\ref{eq:mul_colwise}.
-\end{itemize}
-\paragraph{Associative Law:}
+Expanded form~\ref{eq:mul_colwise}.
+
+\subsubsection{Inner Product View}
+\[
+    (AB)_{ij} = \mathbf{a}_i^{\mathrm{T}} \mathbf{b}_j
+\]
+Expanded form~\ref{eq:mul_inner}.
+
+\subsubsection{Outer Product View}
+\[
+    AB = \sum_{k=1}^n \mathbf{a}_k \mathbf{b}_k^{\mathrm{T}}
+\]
+Expanded form~\ref{eq:mul_outer}.
+
+\subsubsection{Associative Law}
 \[
     (AB)C = A(BC)
 \]
@@ -374,6 +391,14 @@ Matrix $P$ \textbf{diagonalizes} matrix $A$.
     \item $\Lambda$: Apply a scaling transformation along the new axes by the Eigenvalues.
     \item $P$: Change the basis of the vector space back to the standard basis.
 \end{enumerate}
+
+\subsection{Matrix Function}
+
+For any scalar function $f$ and diagonalizable $A = P \Lambda P^{-1}$:
+\[
+    f(A) = P f(\Lambda) P^{-1}
+\]
+where $f$ applies element-wise to $\Lambda$.
 
 \subsection{Singular Value Decomposition (SVD)}
 
@@ -816,7 +841,8 @@ where $M_{ij}$ is the determinant of the submatrix obtained by removing the $i$-
         \label{eq:outerprod}
     \end{equation}
 
-    \item \textbf{Matrix-Vector Multiplication:}
+
+    \item \textbf{Matrix and Vector Multiplication - Column-wise View:}
     \begin{equation}
         A\mathbf{x} =
         \left[
@@ -835,10 +861,32 @@ where $M_{ij}$ is the determinant of the submatrix obtained by removing the $i$-
         \right]
         =
         x_1\mathbf{a}_1 + x_2\mathbf{a}_2 + \cdots + x_n\mathbf{a}_n
-        \label{eq:matvec}
+        \label{eq:matvec_col}
     \end{equation}
 
-    \item \textbf{Row Vector-Matrix Multiplication:}
+    \item \textbf{Matrix and Vector Multiplication - Inner Product View:}
+    \begin{equation}
+        A\mathbf{x} =
+        \left[
+            \begin{array}{c}
+                - \mathbf{a}_1^{\mathrm{T}} - \\
+                \vdots \\
+                - \mathbf{a}_m^{\mathrm{T}} -
+            \end{array}
+        \right]
+        \mathbf{x}
+        =
+        \left[
+            \begin{array}{c}
+                \mathbf{a}_1^{\mathrm{T}} \mathbf{x} \\
+                \vdots \\
+                \mathbf{a}_m^{\mathrm{T}} \mathbf{x}
+            \end{array}
+        \right]
+        \label{eq:matvec_row}
+    \end{equation}
+
+    \item \textbf{Row Vector and Matrix Multiplication:}
     \begin{equation}
         \mathbf{y}^{\mathrm{T}} A =
         \left[
@@ -858,7 +906,28 @@ where $M_{ij}$ is the determinant of the submatrix obtained by removing the $i$-
         \label{eq:rowvecmat}
     \end{equation}
 
-    \item \textbf{Matrix-Matrix Multiplication - Inner Product View:}
+    \item \textbf{Matrix and Matrix Multiplication - Column-wise View:}
+    \begin{equation}
+        A B = A
+        \left[
+            \begin{array}{ccc}
+                | &        & | \\
+                \mathbf{b}_1 & \cdots & \mathbf{b}_n \\
+                | &        & |
+            \end{array}
+        \right]
+        =
+        \left[
+            \begin{array}{ccc}
+                | &        & | \\
+                A\mathbf{b}_1 & \cdots & A\mathbf{b}_n \\
+                | &        & |
+            \end{array}
+        \right]
+        \label{eq:mul_colwise}
+    \end{equation}
+
+    \item \textbf{Matrix and Matrix Multiplication - Inner Product View:}
 
     \begin{equation}
         AB =
@@ -887,7 +956,7 @@ where $M_{ij}$ is the determinant of the submatrix obtained by removing the $i$-
         \label{eq:mul_inner}
     \end{equation}
 
-    \item \textbf{Matrix-Matrix Multiplication - Outer Product View:}
+    \item \textbf{Matrix and Matrix Multiplication - Outer Product View:}
 
     \begin{equation}
         AB =
@@ -908,27 +977,6 @@ where $M_{ij}$ is the determinant of the submatrix obtained by removing the $i$-
         =
         \mathbf{a}_1 \mathbf{b}_1^{\mathrm{T}} + \mathbf{a}_2 \mathbf{b}_2^{\mathrm{T}} + \cdots + \mathbf{a}_n \mathbf{b}_n^{\mathrm{T}}
         \label{eq:mul_outer}
-    \end{equation}
-
-    \item \textbf{Matrix-Matrix Multiplication - Column-wise View:}
-    \begin{equation}
-        A B = A
-        \left[
-            \begin{array}{ccc}
-                | &        & | \\
-                \mathbf{b}_1 & \cdots & \mathbf{b}_n \\
-                | &        & |
-            \end{array}
-        \right]
-        =
-        \left[
-            \begin{array}{ccc}
-                | &        & | \\
-                A\mathbf{b}_1 & \cdots & A\mathbf{b}_n \\
-                | &        & |
-            \end{array}
-        \right]
-        \label{eq:mul_colwise}
     \end{equation}
 
     \item \textbf{Transpose:}
