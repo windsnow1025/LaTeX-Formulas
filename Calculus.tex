@@ -242,6 +242,18 @@ For $A \in \mathbb{R}^{m \times n}$:
     \mathbf{J}_{\mathbf{y} \to \mathbf{x}} = \frac{\partial (A\mathbf{x})}{\partial \mathbf{x}} = A
 \]
 
+\subsubsection{Element-wise Operation}
+For a scalar function $f: \mathbb{R} \to \mathbb{R}$ applied element-wise to a vector $\mathbf{x} \in \mathbb{R}^n$, such that $\mathbf{y} = f(\mathbf{x})$ implies $y_i = f(x_i)$:
+\[
+    \mathbf{J}_{\mathbf{y} \to \mathbf{x}} = \frac{\partial f(\mathbf{x})}{\partial \mathbf{x}} = \operatorname{diag}(f'(\mathbf{x})) =
+    \begin{bmatrix}
+        f'(x_1) & 0 & \cdots & 0 \\
+        0 & f'(x_2) & \cdots & 0 \\
+        \vdots & \vdots & \ddots & \vdots \\
+        0 & 0 & \cdots & f'(x_n)
+    \end{bmatrix}
+\]
+
 \subsection{Chain Rule}
 
 $f = f(x(t))$
