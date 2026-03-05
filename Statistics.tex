@@ -33,7 +33,7 @@
 \textbf{Properties:}
 \begin{itemize}
     \item $\mathbb{E}[\overline{X}] = \mu$
-    \item $\text{Var}(\overline{X}) = \frac{\sigma^2}{n}$
+    \item $\displaystyle \text{Var}(\overline{X}) = \frac{\sigma^2}{n}$
 \end{itemize}
 
 \subsection{Sample Variance}
@@ -145,7 +145,7 @@ Maximum Log Likelihood:
 
 \subsubsection{On Bernoulli Distribution}
 \[
-    y \sim \text{Bernoulli}(\hat{y})
+    y \sim \text{Bernoulli}(\hat{y}(\mathbf{x}))
 \]
 Likelihood Function:
 \[
@@ -162,7 +162,7 @@ Maximum Log Likelihood:
 
 \subsubsection{On Categorical Distribution}
 \[
-    \mathbf{y} \sim \text{Categorical}(\hat{\mathbf{y}})
+    \mathbf{y} \sim \text{Categorical}(\hat{\mathbf{y}}(\mathbf{x}))
 \]
 Likelihood Function:
 \[
@@ -179,7 +179,7 @@ Maximum Log Likelihood:
 
 \subsubsection{On Univariate Gaussian Distribution}
 \[
-    y \sim \mathcal{N}(\hat{y}, \sigma^2)
+    y \sim \mathcal{N}(\hat{y}(\mathbf{x}), \sigma^2)
 \]
 Likelihood Function:
 \[
@@ -196,7 +196,7 @@ Maximum Log Likelihood:
 
 \subsubsection{On Isotropic Multivariate Gaussian Distribution}
 \[
-    \mathbf{y} \sim \mathcal{N}(\hat{\mathbf{y}}, \sigma^2 I)
+    \mathbf{y} \sim \mathcal{N}(\hat{\mathbf{y}}(\mathbf{x}), \sigma^2 I)
 \]
 Likelihood Function:
 \[
