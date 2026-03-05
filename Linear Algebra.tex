@@ -117,11 +117,19 @@ Expanded form~\ref{eq:matvec_row}.
 
 \subsection{Row Vector and Matrix Multiplication}
 Apply Linear Transformation $A \in \mathbb{R}^{m \times n}$ to a row vector $\mathbf{y}^{\mathrm{T}} \in \mathbb{R}^{1 \times m}$ from the left and produce a new row vector $\mathbf{y}^{\mathrm{T}} A \in \mathbb{R}^{1 \times n}$.
+
+\subsubsection{Row-wise View (Linear Combination)}
 \[
     \mathbf{y}^{\mathrm{T}} A = \sum_{i=1}^m y_i \mathbf{a}_i^{\mathrm{T}}
 \]
-Expanded form~\ref{eq:rowvecmat}.
+Expanded form~\ref{eq:rowvecmat_row}.
 \paragraph{Geometric Interpretation:} Map the standard basis vectors in the Codomain $\mathbb{R}^m$ to the row vectors in the Domain $\mathbb{R}^n$.
+
+\subsubsection{Column-wise View (Inner Product)}
+\[
+    (\mathbf{y}^{\mathrm{T}} A)_j = \mathbf{y}^{\mathrm{T}} \mathbf{a}_j
+\]
+Expanded form~\ref{eq:rowvecmat_col}.
 
 \subsection{Matrix and Matrix Multiplication}
 Apply transformation $B$, then apply transformation $A$.
@@ -886,7 +894,7 @@ where $M_{ij}$ is the determinant of the submatrix obtained by removing the $i$-
         \label{eq:matvec_row}
     \end{equation}
 
-    \item \textbf{Row Vector and Matrix Multiplication:}
+    \item \textbf{Row Vector and Matrix Multiplication - Row-wise View:}
     \begin{equation}
         \mathbf{y}^{\mathrm{T}} A =
         \left[
@@ -903,7 +911,27 @@ where $M_{ij}$ is the determinant of the submatrix obtained by removing the $i$-
         \right]
         =
         y_1\mathbf{a}_1^{\mathrm{T}} + y_2\mathbf{a}_2^{\mathrm{T}} + \cdots + y_m\mathbf{a}_m^{\mathrm{T}}
-        \label{eq:rowvecmat}
+        \label{eq:rowvecmat_row}
+    \end{equation}
+
+    \item \textbf{Row Vector and Matrix Multiplication - Column-wise View:}
+    \begin{equation}
+        \mathbf{y}^{\mathrm{T}} A =
+        \mathbf{y}^{\mathrm{T}}
+        \left[
+            \begin{array}{ccc}
+                | &        & | \\
+                \mathbf{a}_1 & \cdots & \mathbf{a}_n \\
+                | &        & |
+            \end{array}
+        \right]
+        =
+        \left[
+            \begin{array}{ccc}
+                \mathbf{y}^{\mathrm{T}}\mathbf{a}_1 & \cdots & \mathbf{y}^{\mathrm{T}}\mathbf{a}_n
+            \end{array}
+        \right]
+        \label{eq:rowvecmat_col}
     \end{equation}
 
     \item \textbf{Matrix and Matrix Multiplication - Column-wise View:}
