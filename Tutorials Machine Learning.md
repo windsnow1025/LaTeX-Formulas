@@ -28,12 +28,12 @@
 ## Methods
 
 - Variational Inference
-  - Artem Kirsanov: How Neural Networks Handle Probabilities
+  - Artem Kirsanov: How AI Solves the Impossible Search Problem
   - DeepBean
     - Understanding Variational Autoencoders (VAEs)
     - Vector-Quantized Variational Autoencoders (VQ-VAEs)
     - Disentanglement with beta-VAEs
-- Boltzmann Machine
+- Hopfield Network & Boltzmann Machine
   - Artem Kirsanov
     - A Brain-Inspired Algorithm For Memory
     - Generative Model That Won 2024 Nobel Prize
