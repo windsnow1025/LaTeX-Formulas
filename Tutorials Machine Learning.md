@@ -54,5 +54,6 @@
   - DeepBean: Understanding GANs (Generative Adversarial Networks)
 - Diffusion
   - DeepBean: Diffusion Models
+  - Julia Turc: Diffusion Models
 - MiniMax
   - Sebastian Lague: Algorithms Explained – minimax and alpha-beta pruning
