@@ -33,7 +33,7 @@
 \textbf{Properties:}
 \begin{itemize}
     \item $\mathbb{E}[\overline{X}] = \mu$
-    \item $\displaystyle \text{Var}(\overline{X}) = \frac{\sigma^2}{n}$
+    \item $\displaystyle \operatorname{Var}(\overline{X}) = \frac{\sigma^2}{n}$
 \end{itemize}
 
 \subsection{Sample Variance}
@@ -85,7 +85,7 @@ where $Z_i \sim \mathcal{N}(0,1)$ and:
 \textbf{Properties:}
 \begin{itemize}
     \item $\mathbb{E}[\chi^2] = n$
-    \item $\text{Var}(\chi^2) = 2n$
+    \item $\operatorname{Var}(\chi^2) = 2n$
     \item $\chi_1^2 \sim \chi^2(n_1), \chi_2^2 \sim \chi^2(n_2)$: $\chi_1^2 + \chi_2^2 \sim \chi^2(n_1 + n_2)$
     \item $X_i \sim N(\mu, \sigma^2)$: $\chi^2 = \frac{1}{\sigma^2}\sum_{i=1}^{n}(X_i - \mu)^2 \sim \chi^2(n)$
     \item $X_i \sim N(\mu, \sigma^2)$: $\frac{(n-1)S^2}{\sigma^2} = \frac{1}{\sigma^2}\sum_{i=1}^{n}(X_i - \overline{X})^2 \sim \chi^2(n-1)$
@@ -126,21 +126,21 @@ where $X \sim \chi^2(m)$, $Y \sim \chi^2(n)$, and:
 \subsection{Maximum Likelihood Estimation (MLE)}
 Likelihood Function:
 \[
-    L_i(\theta) = \mathbb{P}(x|\theta)
+    L_i(\theta) = \mathbb{P}(x \mid \theta)
 \]
 \[
-    L(\theta|X) = \prod_{i=1}^{n} \mathbb{P}(x_i|\theta)
+    L(\theta \mid X) = \prod_{i=1}^{n} \mathbb{P}(x_i \mid \theta)
 \]
 Log Likelihood:
 \[
-    \ell(\theta) = \log L(\theta) = \log \mathbb{P}(x|\theta)
+    \ell(\theta) = \log L(\theta) = \log \mathbb{P}(x \mid \theta)
 \]
 \[
-    \ell(\theta|X) = \log L(\theta|X) = \sum_{i=1}^{n} \log \mathbb{P}(x_i|\theta)
+    \ell(\theta \mid X) = \log L(\theta \mid X) = \sum_{i=1}^{n} \log \mathbb{P}(x_i \mid \theta)
 \]
 Maximum Log Likelihood:
 \[
-    \hat{\theta} = \arg\max_\theta \ell(\theta | X)
+    \hat{\theta} = \arg\max_\theta \ell(\theta \mid X)
 \]
 
 \subsubsection{On Bernoulli Distribution}
@@ -215,7 +215,7 @@ Maximum Log Likelihood:
 \subsection{Maximum A Posteriori (MAP)}
 
 \[
-    \hat{\theta}_{\text{MAP}} = \arg\max_{\theta} \mathbb{P}(\theta | X) = \arg\max_{\theta} \frac{\mathbb{P}(X | \theta) \mathbb{P}(\theta)}{\mathbb{P}(X)} = \arg\max_{\theta} \left( \log \mathbb{P}(X | \theta) + \log \mathbb{P}(\theta) \right)
+    \hat{\theta}_{\text{MAP}} = \arg\max_{\theta} \mathbb{P}(\theta \mid X) = \arg\max_{\theta} \frac{\mathbb{P}(X \mid \theta) \mathbb{P}(\theta)}{\mathbb{P}(X)} = \arg\max_{\theta} \left( \log \mathbb{P}(X \mid \theta) + \log \mathbb{P}(\theta) \right)
 \]
 \[
     \hat{\theta}_{\text{MAP}} = \arg\max_{\theta} \left( \ell(\theta) + \log \mathbb{P}(\theta) \right)
@@ -238,7 +238,7 @@ Maximum Log Likelihood:
 \]
 \paragraph{Marginal Distribution:}
 \[
-    p(\mathbf{y}|\mathbf{x}) = \mathbb{P}(\mathbf{Y}=\mathbf{y}|\mathbf{X}=\mathbf{x})
+    p(\mathbf{y} \mid \mathbf{x}) = \mathbb{P}(\mathbf{Y}=\mathbf{y} \mid \mathbf{X}=\mathbf{x})
 \]
 \paragraph{Sufficient Statistics:}
 \[
@@ -246,52 +246,52 @@ Maximum Log Likelihood:
 \]
 \paragraph{Normalization Constraint:}
 \[
-    \sum_{\mathbf{y}} p(\mathbf{y}|\mathbf{x}) = 1
+    \sum_{\mathbf{y}} p(\mathbf{y} \mid \mathbf{x}) = 1
 \]
 
 \subsubsection{Local Constraint}
 
 \paragraph{Principal of Maximum Entropy:}
 \[
-    H(\mathbf{Y}|\mathbf{X}=\mathbf{x}) = - \sum_{\mathbf{y}} p(\mathbf{y}|\mathbf{x}) \ln p(\mathbf{y}|\mathbf{x})
+    H(\mathbf{Y} \mid \mathbf{X}=\mathbf{x}) = - \sum_{\mathbf{y}} p(\mathbf{y} \mid \mathbf{x}) \ln p(\mathbf{y} \mid \mathbf{x})
 \]
 \paragraph{Moment Matching:} \mbox{}
 \newline
 Local Constraint:
 \[
-    \mathbb{E}[\mathbf{T}(\mathbf{Y})|\mathbf{x}] = \hat{\mathbb{E}}[\mathbf{T}(\mathbf{Y})|\mathbf{x}] \in \mathbb{R}^M
+    \mathbb{E}[\mathbf{T}(\mathbf{Y}) \mid \mathbf{x}] = \hat{\mathbb{E}}[\mathbf{T}(\mathbf{Y}) \mid \mathbf{x}] \in \mathbb{R}^M
 \]
 \[
-    \sum_{\mathbf{y}} p(\mathbf{y}|\mathbf{x}) \mathbf{T}(\mathbf{y}) = \hat{\mathbb{E}}[\mathbf{T}(\mathbf{Y})|\mathbf{x}]
+    \sum_{\mathbf{y}} p(\mathbf{y} \mid \mathbf{x}) \mathbf{T}(\mathbf{y}) = \hat{\mathbb{E}}[\mathbf{T}(\mathbf{Y}) \mid \mathbf{x}]
 \]
 \paragraph{Lagrange Multiplier:}
 \begin{align*}
-    \mathcal{L}(p, \alpha, \boldsymbol{\lambda}) &= - \sum_{\mathbf{y}} p(\mathbf{y}|\mathbf{x}) \ln p(\mathbf{y}|\mathbf{x}) + \alpha(\mathbf{x}) \left(\sum_{\mathbf{y}} p(\mathbf{y}|\mathbf{x}) - 1\right) \\
-    &\quad + \left\langle \boldsymbol{\lambda}(\mathbf{x}), \sum_{\mathbf{y}} p(\mathbf{y}|\mathbf{x}) \mathbf{T}(\mathbf{y}) - \hat{\mathbb{E}}[\mathbf{T}(\mathbf{Y})|\mathbf{x}] \right\rangle
+    \mathcal{L}(p, \alpha, \boldsymbol{\lambda}) &= - \sum_{\mathbf{y}} p(\mathbf{y} \mid \mathbf{x}) \ln p(\mathbf{y} \mid \mathbf{x}) + \alpha(\mathbf{x}) \left(\sum_{\mathbf{y}} p(\mathbf{y} \mid \mathbf{x}) - 1\right) \\
+    &\quad + \left\langle \boldsymbol{\lambda}(\mathbf{x}), \sum_{\mathbf{y}} p(\mathbf{y} \mid \mathbf{x}) \mathbf{T}(\mathbf{y}) - \hat{\mathbb{E}}[\mathbf{T}(\mathbf{Y}) \mid \mathbf{x}] \right\rangle
 \end{align*}
 where $\boldsymbol{\lambda} \in \mathbb{R}^M$.
 \[
-    \frac{\partial \mathcal{L}}{\partial p(\mathbf{y}|\mathbf{x})} = - (1 + \ln p(\mathbf{y}|\mathbf{x})) + \alpha(\mathbf{x}) + \boldsymbol{\lambda}(\mathbf{x})^{\mathrm{T}} \mathbf{T}(\mathbf{y}) = 0
+    \frac{\partial \mathcal{L}}{\partial p(\mathbf{y} \mid \mathbf{x})} = - (1 + \ln p(\mathbf{y} \mid \mathbf{x})) + \alpha(\mathbf{x}) + \boldsymbol{\lambda}(\mathbf{x})^{\mathrm{T}} \mathbf{T}(\mathbf{y}) = 0
 \]
 \[
-    p(\mathbf{y}|\mathbf{x}) = \exp(\alpha(\mathbf{x}) - 1) \cdot \exp(\boldsymbol{\lambda}(\mathbf{x})^{\mathrm{T}} \mathbf{T}(\mathbf{y}))
+    p(\mathbf{y} \mid \mathbf{x}) = \exp(\alpha(\mathbf{x}) - 1) \cdot \exp(\boldsymbol{\lambda}(\mathbf{x})^{\mathrm{T}} \mathbf{T}(\mathbf{y}))
 \]
 \[
-    p(\mathbf{y}|\mathbf{x}) = \frac{\exp(\boldsymbol{\lambda}(\mathbf{x})^{\mathrm{T}} \mathbf{T}(\mathbf{y}))}{\sum_{\mathbf{y} \in \mathcal{Y}} \exp(\boldsymbol{\lambda}(\mathbf{x})^{\mathrm{T}} \mathbf{T}(\mathbf{y}))}
+    p(\mathbf{y} \mid \mathbf{x}) = \frac{\exp(\boldsymbol{\lambda}(\mathbf{x})^{\mathrm{T}} \mathbf{T}(\mathbf{y}))}{\sum_{\mathbf{y} \in \mathcal{Y}} \exp(\boldsymbol{\lambda}(\mathbf{x})^{\mathrm{T}} \mathbf{T}(\mathbf{y}))}
 \]
 \paragraph{Moment Matching:}
 \[
-    \mathbb{E}[\mathbf{T}(\mathbf{Y})|\mathbf{x}] = \hat{\mathbb{E}}[\mathbf{T}(\mathbf{Y})|\mathbf{x}]
+    \mathbb{E}[\mathbf{T}(\mathbf{Y}) \mid \mathbf{x}] = \hat{\mathbb{E}}[\mathbf{T}(\mathbf{Y}) \mid \mathbf{x}]
 \]
 \[
-    \sum_{\mathbf{y} \in \mathcal{Y}} p(\mathbf{y}|\mathbf{x}^{(i)}) \mathbf{T}(\mathbf{y}) = \mathbf{T}(\mathbf{y}^{(i)})
+    \sum_{\mathbf{y} \in \mathcal{Y}} p(\mathbf{y} \mid \mathbf{x}^{(i)}) \mathbf{T}(\mathbf{y}) = \mathbf{T}(\mathbf{y}^{(i)})
 \]
 
 \subsubsection{Global Constraint}
 
 \paragraph{Principal of Maximum Entropy:}
 \[
-    H(\mathbf{Y}|\mathbf{X}) = \sum_\mathbf{x} \tilde{p}(\mathbf{x}) H(\mathbf{Y}|\mathbf{X}=\mathbf{x}) = - \sum_\mathbf{x} \tilde{p}(\mathbf{x}) \sum_{\mathbf{y}} p(\mathbf{y}|\mathbf{x}) \ln p(\mathbf{y}|\mathbf{x})
+    H(\mathbf{Y} \mid \mathbf{X}) = \sum_\mathbf{x} \tilde{p}(\mathbf{x}) H(\mathbf{Y} \mid \mathbf{X}=\mathbf{x}) = - \sum_\mathbf{x} \tilde{p}(\mathbf{x}) \sum_{\mathbf{y}} p(\mathbf{y} \mid \mathbf{x}) \ln p(\mathbf{y} \mid \mathbf{x})
 \]
 \paragraph{Moment Matching:} \mbox{}
 \newline
@@ -300,32 +300,32 @@ Global Constraint:
     \mathbb{E}[\mathbf{T}(\mathbf{Y})\mathbf{X}^{\mathrm{T}}] = \hat{\mathbb{E}}[\mathbf{T}(\mathbf{Y})\mathbf{X}^{\mathrm{T}}] \in \mathbb{R}^{M \times D}
 \]
 \[
-    \sum_\mathbf{x} \tilde{p}(\mathbf{x}) \sum_{\mathbf{y}} p(\mathbf{y}|\mathbf{x}) \mathbf{T}(\mathbf{y})\mathbf{x}^{\mathrm{T}} = \hat{\mathbb{E}}[\mathbf{T}(\mathbf{Y})\mathbf{X}^{\mathrm{T}}]
+    \sum_\mathbf{x} \tilde{p}(\mathbf{x}) \sum_{\mathbf{y}} p(\mathbf{y} \mid \mathbf{x}) \mathbf{T}(\mathbf{y})\mathbf{x}^{\mathrm{T}} = \hat{\mathbb{E}}[\mathbf{T}(\mathbf{Y})\mathbf{X}^{\mathrm{T}}]
 \]
 Marginal Constraint:
 \[
     \mathbb{E}[\mathbf{T}(\mathbf{Y})] = \hat{\mathbb{E}}[\mathbf{T}(\mathbf{Y})] \in \mathbb{R}^M
 \]
 \[
-    \sum_\mathbf{x} \tilde{p}(\mathbf{x}) \sum_{\mathbf{y}} p(\mathbf{y}|\mathbf{x}) \mathbf{T}(\mathbf{y}) = \hat{\mathbb{E}}[\mathbf{T}(\mathbf{Y})]
+    \sum_\mathbf{x} \tilde{p}(\mathbf{x}) \sum_{\mathbf{y}} p(\mathbf{y} \mid \mathbf{x}) \mathbf{T}(\mathbf{y}) = \hat{\mathbb{E}}[\mathbf{T}(\mathbf{Y})]
 \]
 \paragraph{Lagrange Multiplier:}
 \begin{align*}
-    \mathcal{L}(p, \alpha, W, \mathbf{b}) &= - \sum_\mathbf{x} \tilde{p}(\mathbf{x}) \sum_{\mathbf{y}} p(\mathbf{y}|\mathbf{x}) \ln p(\mathbf{y}|\mathbf{x}) + \sum_\mathbf{x} \alpha(\mathbf{x}) \left(\sum_{\mathbf{y}} p(\mathbf{y}|\mathbf{x}) - 1\right) \\
-    &\quad + \left\langle W, \sum_\mathbf{x} \tilde{p}(\mathbf{x}) \sum_{\mathbf{y}} p(\mathbf{y}|\mathbf{x}) \mathbf{T}(\mathbf{y})\mathbf{x}^{\mathrm{T}} - \hat{\mathbb{E}}[\mathbf{T}(\mathbf{Y})\mathbf{X}^{\mathrm{T}}] \right\rangle \\
-    &\quad + \left\langle \mathbf{b}, \sum_\mathbf{x} \tilde{p}(\mathbf{x}) \sum_{\mathbf{y}} p(\mathbf{y}|\mathbf{x}) \mathbf{T}(\mathbf{y}) - \hat{\mathbb{E}}[\mathbf{T}(\mathbf{Y})] \right\rangle
+    \mathcal{L}(p, \alpha, W, \mathbf{b}) &= - \sum_\mathbf{x} \tilde{p}(\mathbf{x}) \sum_{\mathbf{y}} p(\mathbf{y} \mid \mathbf{x}) \ln p(\mathbf{y} \mid \mathbf{x}) + \sum_\mathbf{x} \alpha(\mathbf{x}) \left(\sum_{\mathbf{y}} p(\mathbf{y} \mid \mathbf{x}) - 1\right) \\
+    &\quad + \left\langle W, \sum_\mathbf{x} \tilde{p}(\mathbf{x}) \sum_{\mathbf{y}} p(\mathbf{y} \mid \mathbf{x}) \mathbf{T}(\mathbf{y})\mathbf{x}^{\mathrm{T}} - \hat{\mathbb{E}}[\mathbf{T}(\mathbf{Y})\mathbf{X}^{\mathrm{T}}] \right\rangle \\
+    &\quad + \left\langle \mathbf{b}, \sum_\mathbf{x} \tilde{p}(\mathbf{x}) \sum_{\mathbf{y}} p(\mathbf{y} \mid \mathbf{x}) \mathbf{T}(\mathbf{y}) - \hat{\mathbb{E}}[\mathbf{T}(\mathbf{Y})] \right\rangle
 \end{align*}
 where $W \in \mathbb{R}^{M \times D}$, $\mathbf{b} \in \mathbb{R}^M$.
 \[
-    \frac{\partial \mathcal{L}}{\partial p(\mathbf{y}|\mathbf{x})} = - \tilde{p}(\mathbf{x}) (1 + \ln p(\mathbf{y}|\mathbf{x})) + \alpha(\mathbf{x}) + \tilde{p}(\mathbf{x}) \langle W, \mathbf{T}(\mathbf{y})\mathbf{x}^{\mathrm{T}} \rangle + \tilde{p}(\mathbf{x}) \langle \mathbf{b}, \mathbf{T}(\mathbf{y}) \rangle
+    \frac{\partial \mathcal{L}}{\partial p(\mathbf{y} \mid \mathbf{x})} = - \tilde{p}(\mathbf{x}) (1 + \ln p(\mathbf{y} \mid \mathbf{x})) + \alpha(\mathbf{x}) + \tilde{p}(\mathbf{x}) \langle W, \mathbf{T}(\mathbf{y})\mathbf{x}^{\mathrm{T}} \rangle + \tilde{p}(\mathbf{x}) \langle \mathbf{b}, \mathbf{T}(\mathbf{y}) \rangle
 \]
 \[
-    p(\mathbf{y}|\mathbf{x}) = \exp\left(\frac{\alpha(\mathbf{x})}{\tilde{p}(\mathbf{x})} - 1\right) \cdot \exp((W\mathbf{x}+\mathbf{b})^{\mathrm{T}} \mathbf{T}(\mathbf{y}))
+    p(\mathbf{y} \mid \mathbf{x}) = \exp\left(\frac{\alpha(\mathbf{x})}{\tilde{p}(\mathbf{x})} - 1\right) \cdot \exp((W\mathbf{x}+\mathbf{b})^{\mathrm{T}} \mathbf{T}(\mathbf{y}))
 \]
 \[
     \begin{dcases}
         \mathbf{z} = W\mathbf{x}+\mathbf{b} \\
-        p(\mathbf{y}|\mathbf{x}) = \frac{\exp(\mathbf{z}^{\mathrm{T}} \mathbf{T}(\mathbf{y}))}{\sum_{\mathbf{y} \in \mathcal{Y}} \exp(\mathbf{z}^{\mathrm{T}} \mathbf{T}(\mathbf{y}))}
+        p(\mathbf{y} \mid \mathbf{x}) = \frac{\exp(\mathbf{z}^{\mathrm{T}} \mathbf{T}(\mathbf{y}))}{\sum_{\mathbf{y} \in \mathcal{Y}} \exp(\mathbf{z}^{\mathrm{T}} \mathbf{T}(\mathbf{y}))}
     \end{dcases}
 \]
 \paragraph{Moment Matching:}
@@ -337,8 +337,8 @@ where $W \in \mathbb{R}^{M \times D}$, $\mathbf{b} \in \mathbb{R}^M$.
 \]
 \[
     \begin{dcases}
-        \sum_{i=1}^N \left(\sum_{\mathbf{y} \in \mathcal{Y}} p(\mathbf{y}|\mathbf{x}^{(i)}) \mathbf{T}(\mathbf{y}) - \mathbf{T}(\mathbf{y}^{(i)})\right) \mathbf{x}^{(i)\mathrm{T}} = \mathbf{0} \\
-        \sum_{i=1}^N \left(\sum_{\mathbf{y} \in \mathcal{Y}} p(\mathbf{y}|\mathbf{x}^{(i)}) \mathbf{T}(\mathbf{y}) - \mathbf{T}(\mathbf{y}^{(i)})\right) = \mathbf{0}
+        \sum_{i=1}^N \left(\sum_{\mathbf{y} \in \mathcal{Y}} p(\mathbf{y} \mid \mathbf{x}^{(i)}) \mathbf{T}(\mathbf{y}) - \mathbf{T}(\mathbf{y}^{(i)})\right) \mathbf{x}^{(i)\mathrm{T}} = \mathbf{0} \\
+        \sum_{i=1}^N \left(\sum_{\mathbf{y} \in \mathcal{Y}} p(\mathbf{y} \mid \mathbf{x}^{(i)}) \mathbf{T}(\mathbf{y}) - \mathbf{T}(\mathbf{y}^{(i)})\right) = \mathbf{0}
     \end{dcases}
 \]
 
@@ -350,12 +350,12 @@ where $W \in \mathbb{R}^{M \times D}$, $\mathbf{b} \in \mathbb{R}^M$.
     T(y) = y \in \mathbb{R}, \quad W \in \mathbb{R}^{1 \times D}, \quad b \in \mathbb{R}
 \]
 \[
-    p(Y=1|\mathbf{x}) = \frac{1}{1 + \exp(-z)}
+    p(Y=1 \mid \mathbf{x}) = \frac{1}{1 + \exp(-z)}
 \]
 \paragraph{Moment Matching:}
 \[
     \begin{dcases}
-        \hat{y}^{(i)} = \sum_{y \in \mathcal{Y}} y \cdot p(y|\mathbf{x}^{(i)}) = p(Y=1|\mathbf{x}^{(i)}) \\
+        \hat{y}^{(i)} = \sum_{y \in \mathcal{Y}} y \cdot p(y \mid \mathbf{x}^{(i)}) = p(Y=1 \mid \mathbf{x}^{(i)}) \\
         \sum_{i=1}^N (\hat{y}^{(i)} - y^{(i)}) \mathbf{x}^{(i)\mathrm{T}} = \mathbf{0} \\
         \sum_{i=1}^N (\hat{y}^{(i)} - y^{(i)}) = 0
     \end{dcases}
@@ -369,12 +369,12 @@ where $W \in \mathbb{R}^{M \times D}$, $\mathbf{b} \in \mathbb{R}^M$.
     \mathbf{T}(\mathbf{y}) = \mathbf{y} \in \mathbb{R}^K, \quad W \in \mathbb{R}^{K \times D}, \quad \mathbf{b} \in \mathbb{R}^K
 \]
 \[
-    p(Y=\mathbf{y}|\mathbf{x}) = \frac{\exp(\mathbf{z}^{\mathrm{T}} \mathbf{y})}{\sum_{k=1}^K \exp(\mathbf{z}_k)}
+    p(Y=\mathbf{y} \mid \mathbf{x}) = \frac{\exp(\mathbf{z}^{\mathrm{T}} \mathbf{y})}{\sum_{k=1}^K \exp(\mathbf{z}_k)}
 \]
 \paragraph{Moment Matching:}
 \[
     \begin{dcases}
-        \hat{\mathbf{y}}^{(i)} = \sum_{\mathbf{y} \in \mathcal{Y}} \mathbf{y} \cdot p(\mathbf{y}|\mathbf{x}^{(i)}) = \begin{bmatrix} p(\mathbf{Y}=\mathbf{e}_1|\mathbf{x}^{(i)}) \\ \vdots \\ p(\mathbf{Y}=\mathbf{e}_K|\mathbf{x}^{(i)}) \end{bmatrix} \\
+        \hat{\mathbf{y}}^{(i)} = \sum_{\mathbf{y} \in \mathcal{Y}} \mathbf{y} \cdot p(\mathbf{y} \mid \mathbf{x}^{(i)}) = \begin{bmatrix} p(\mathbf{Y}=\mathbf{e}_1 \mid \mathbf{x}^{(i)}) \\ \vdots \\ p(\mathbf{Y}=\mathbf{e}_K \mid \mathbf{x}^{(i)}) \end{bmatrix} \\
         \sum_{i=1}^N (\hat{\mathbf{y}}^{(i)} - \mathbf{y}^{(i)}) \mathbf{x}^{(i)\mathrm{T}} = \mathbf{0} \\
         \sum_{i=1}^N (\hat{\mathbf{y}}^{(i)} - \mathbf{y}^{(i)}) = \mathbf{0}
     \end{dcases}
@@ -388,13 +388,13 @@ where $W \in \mathbb{R}^{M \times D}$, $\mathbf{b} \in \mathbb{R}^M$.
     \mathbf{T}(y) = \begin{bmatrix} y \\ y^2 \end{bmatrix} \in \mathbb{R}^2, \quad W \in \mathbb{R}^{2 \times D}, \quad \mathbf{b} \in \mathbb{R}^2
 \]
 \[
-    p(Y=y|\mathbf{x}) = \frac{\exp(z_1 y + z_2 y^2)}{\int_{-\infty}^{\infty} \exp(z_1 y' + z_2 (y')^2) dy'} = \sqrt{\frac{-z_2}{\pi}} \exp\left(z_2\left(y + \frac{z_1}{2z_2}\right)^2\right) \quad (z_2 < 0 \text{ for convergence})
+    p(Y=y \mid \mathbf{x}) = \frac{\exp(z_1 y + z_2 y^2)}{\int_{-\infty}^{\infty} \exp(z_1 y' + z_2 (y')^2) dy'} = \sqrt{\frac{-z_2}{\pi}} \exp\left(z_2\left(y + \frac{z_1}{2z_2}\right)^2\right) \quad (z_2 < 0 \text{ for convergence})
 \]
 \paragraph{Moment Matching:}
 \[
     \begin{dcases}
-        \hat{y}^{(i)} = \int_{-\infty}^{\infty} y \cdot p(y|\mathbf{x}^{(i)}) dy \\
-        \widehat{y^2}^{(i)} = \int_{-\infty}^{\infty} y^2 \cdot p(y|\mathbf{x}^{(i)}) dy \\
+        \hat{y}^{(i)} = \int_{-\infty}^{\infty} y \cdot p(y \mid \mathbf{x}^{(i)}) dy \\
+        \widehat{y^2}^{(i)} = \int_{-\infty}^{\infty} y^2 \cdot p(y \mid \mathbf{x}^{(i)}) dy \\
         \sum_{i=1}^N \left( \hat{y}^{(i)} - y^{(i)} \right) \mathbf{x}^{(i)} = \mathbf{0} \\
         \sum_{i=1}^N \left( \widehat{y^2}^{(i)} - (y^{(i)})^2 \right) \mathbf{x}^{(i)} = \mathbf{0} \\
         \sum_{i=1}^N \left( \hat{y}^{(i)} - y^{(i)} \right) = 0 \\
@@ -424,7 +424,7 @@ where $W \in \mathbb{R}^{M \times D}$, $\mathbf{b} \in \mathbb{R}^M$.
     \mathbf{w}_2 = 0
 \]
 \[
-    p(Y=y|\mathbf{x}) = \sqrt{\frac{-b_2}{\pi}} \exp\left( b_2 \left( y + \frac{\mathbf{w}_1^\top \mathbf{x} + b_1}{2b_2} \right)^2 \right)
+    p(Y=y \mid \mathbf{x}) = \sqrt{\frac{-b_2}{\pi}} \exp\left( b_2 \left( y + \frac{\mathbf{w}_1^\top \mathbf{x} + b_1}{2b_2} \right)^2 \right)
 \]
 \paragraph{Parameterization:}
 \[
@@ -637,10 +637,10 @@ $\frac{\sigma_1^2}{\sigma_2^2}$ & $S_1^2, S_2^2$ & $\frac{S_1^2/S_2^2}{\sigma_1^
 \newline
 \textbf{Variance:}
 \[
-    \text{Var}(\mathbf{v}_i^{\mathrm{T}} \mathbf{b}) = \frac{1}{n-1} \|B\mathbf{v}_i\|^2
+    \operatorname{Var}(\mathbf{v}_i^{\mathrm{T}} \mathbf{b}) = \frac{1}{n-1} \|B\mathbf{v}_i\|^2
 \]
 \[
-    \arg \min_W \text{cost}(W) = \arg \max_W \sum_{i=1}^k \text{Var}(\mathbf{v}_i^{\mathrm{T}} \mathbf{b})
+    \arg \min_W \text{cost}(W) = \arg \max_W \sum_{i=1}^k \operatorname{Var}(\mathbf{v}_i^{\mathrm{T}} \mathbf{b})
 \]
 \textbf{Sample Covariance Matrix:}
 \[

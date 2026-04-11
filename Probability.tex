@@ -61,10 +61,10 @@
     \mathbb{P}(A \cap B) = \mathbb{P}(A)\mathbb{P}(B)
 \]
 \[
-    \mathbb{P}(A|B) = \mathbb{P}(A)
+    \mathbb{P}(A \mid B) = \mathbb{P}(A)
 \]
 \[
-    \mathbb{P}(B|A) = \mathbb{P}(B)
+    \mathbb{P}(B \mid A) = \mathbb{P}(B)
 \]
 
 \subsubsection{Conditional Independence}
@@ -106,23 +106,23 @@
 
 \subsection{Conditional Probability}
 \[
-    \mathbb{P}(A|B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}
+    \mathbb{P}(A \mid B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}
 \]
 
 \subsection{Law of Total Probability}
 \[
-    \mathbb{P}(A) = \sum_{i=1}^{k} \mathbb{P}(B_i \cap A) = \sum_{i=1}^{k} \mathbb{P}(B_i)\mathbb{P}(A|B_i)
+    \mathbb{P}(A) = \sum_{i=1}^{k} \mathbb{P}(B_i \cap A) = \sum_{i=1}^{k} \mathbb{P}(B_i)\mathbb{P}(A \mid B_i)
 \]
 
 \subsection{Bayes Theorem}
 \[
-    \mathbb{P}(B_i|A) = \frac{\mathbb{P}(B_i)\mathbb{P}(A|B_i)}{\mathbb{P}(A)}
+    \mathbb{P}(B_i \mid A) = \frac{\mathbb{P}(B_i)\mathbb{P}(A \mid B_i)}{\mathbb{P}(A)}
 \]
 In Bayesian Inference,
 \[
-    \mathbb{P}(H|E) = \frac{\mathbb{P}(H)\mathbb{P}(E|H)}{\mathbb{P}(E)}
+    \mathbb{P}(H \mid E) = \frac{\mathbb{P}(H)\mathbb{P}(E \mid H)}{\mathbb{P}(E)}
 \]
-where $\mathbb{P}(H|E)$ is \textbf{Posterior}, $\mathbb{P}(H)$ is \textbf{Prior}, $\mathbb{P}(E|H)$ is \textbf{Likelihood}, $\mathbb{P}(E)$ is \textbf{Marginal Likelihood}.
+where $\mathbb{P}(H \mid E)$ is \textbf{Posterior}, $\mathbb{P}(H)$ is \textbf{Prior}, $\mathbb{P}(E \mid H)$ is \textbf{Likelihood}, $\mathbb{P}(E)$ is \textbf{Marginal Likelihood}.
 
 \newpage
 \section{Parameters}
@@ -139,7 +139,7 @@ where $\mathbb{P}(H|E)$ is \textbf{Posterior}, $\mathbb{P}(H)$ is \textbf{Prior}
     \item $ \mathbb{E}[c] = c $
     \item $ \mathbb{E}[aX+bY] = a\mathbb{E}[X] + b\mathbb{E}[Y] $
     \item $ \mathbb{E}[XY] = \mathbb{E}[X]\mathbb{E}[Y] + \operatorname{cov}(X,Y) $
-    \item $ \mathbb{E}[(X-a)^2] = (\mathbb{E}[X]-a)^2 + \text{Var}(X) $
+    \item $ \mathbb{E}[(X-a)^2] = (\mathbb{E}[X]-a)^2 + \operatorname{Var}(X) $
     \item $ X, Y $ i.i.d. with $ \sigma^2 $: $ \mathbb{E}[(X-Y)^2] = 2\sigma^2 $
 \end{itemize}
 
@@ -150,7 +150,7 @@ where $\mathbb{P}(H|E)$ is \textbf{Posterior}, $\mathbb{P}(H)$ is \textbf{Prior}
 
 \subsubsection{Law of Total Expectation}
 \[
-    \mathbb{E}_{X,Y}[X] = \mathbb{E}_Y[\mathbb{E}_{X|Y}[X|Y]]
+    \mathbb{E}_{X,Y}[X] = \mathbb{E}_Y[\mathbb{E}_{X \mid Y}[X \mid Y]]
 \]
 
 \subsubsection{Jensen's Inequality:}
@@ -161,15 +161,21 @@ For any convex function $f: X \to \mathbb{R}$:
 
 \subsection{Variance}
 \[
-    \sigma^2 = Var(X) = \mathbb{E}[(X - \mathbb{E}[X])^2] = \mathbb{E}[X^2] - \mathbb{E}[X]^2
+    \sigma^2 = \operatorname{Var}(X) = \mathbb{E}[(X - \mathbb{E}[X])^2] = \mathbb{E}[X^2] - \mathbb{E}[X]^2
 \]
 \textbf{Properties:}
 \begin{itemize}
-    \item $ Var(c) = 0 $
-    \item $ Var(cX) = c^2 Var(X) $
-    \item $ Var(X+c) = Var(X) $
-    \item $ Var(X \pm Y) = Var(X) + Var(Y) \pm 2\operatorname{cov}(X,Y) $
+    \item $ \operatorname{Var}(c) = 0 $
+    \item $ \operatorname{Var}(cX) = c^2 \operatorname{Var}(X) $
+    \item $ \operatorname{Var}(X+c) = \operatorname{Var}(X) $
+    \item $ \operatorname{Var}(X \pm Y) = \operatorname{Var}(X) + \operatorname{Var}(Y) \pm 2\operatorname{cov}(X,Y) $
 \end{itemize}
+
+\subsubsection{Law of Total Variance}
+\[
+    \operatorname{Var}(X) = \mathbb{E}_Y[\operatorname{Var}(X \mid Y)] + \operatorname{Var}_Y(\mathbb{E}[X \mid Y])
+\]
+
 
 \subsection{Standard Deviation}
 \[
@@ -182,7 +188,7 @@ For any convex function $f: X \to \mathbb{R}$:
 \]
 \textbf{Properties:}
 \begin{itemize}
-    \item $ \operatorname{cov}(X, X) = \text{Var}(X) $
+    \item $ \operatorname{cov}(X, X) = \operatorname{Var}(X) $
     \item $ \operatorname{cov}(X,Y) = \operatorname{cov}(Y,X) $
     \item $ \operatorname{cov}(aX, bY) = ab\,\operatorname{cov}(X,Y) $
     \item $ \operatorname{cov}(c,X) = 0 $
@@ -219,10 +225,10 @@ If $ X \geq 0 $, for any $ a > 0 $:
 \subsection{Chebyshev's Inequality}
 For any $ \varepsilon > 0 $:
 \[
-    \mathbb{P}(|X-\mathbb{E}[X]| \ge \varepsilon) \le \frac{Var(X)}{\varepsilon^2}
+    \mathbb{P}(|X-\mathbb{E}[X]| \ge \varepsilon) \le \frac{\operatorname{Var}(X)}{\varepsilon^2}
 \]
 \[
-    \mathbb{P}(|X-\mathbb{E}[X]| < \varepsilon) \ge 1 - \frac{Var(X)}{\varepsilon^2}
+    \mathbb{P}(|X-\mathbb{E}[X]| < \varepsilon) \ge 1 - \frac{\operatorname{Var}(X)}{\varepsilon^2}
 \]
 
 \subsection{Moment}
@@ -482,10 +488,10 @@ For two continuous random variables, the Probability Density Function $ f(x,y) $
 
 \subsection{Conditional Probability Density Function}
 \[
-    f_{X|Y}(x|y) = \frac{f(x,y)}{f_Y(y)}
+    f_{X \mid Y}(x \mid y) = \frac{f(x,y)}{f_Y(y)}
 \]
 \[
-    f_{Y|X}(y|x) = \frac{f(x,y)}{f_X(x)}
+    f_{Y \mid X}(y \mid x) = \frac{f(x,y)}{f_X(x)}
 \]
 
 \subsection{Convolution of Probability Distributions}
