@@ -54,7 +54,7 @@
   - Julia Turc: Why are Transformers replacing CNNs?
 - GAN
   - DeepBean: Understanding GANs (Generative Adversarial Networks)
-- Diffusion
+- Flow Matching
   - DeepBean: Diffusion Models
   - Julia Turc: Diffusion Models
 - MiniMax
