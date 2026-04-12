@@ -534,19 +534,102 @@ If $f''(x) \le 0$ for all $x$, then $f(x)$ is concave.
     \item \textbf{Degenerate}: $\mathbf{H}$ has zero eigenvalues
 \end{itemize}
 
-\subsection{Conditional Extrema}
+\subsection{Equality Constrained Extrema}
 
-Find $\mathbf{x}$ such that $f(\mathbf{x})$ is extremal, subject to $\mathbf{g}(\mathbf{x}) = \mathbf{0}$.
+\[
+    \min_{\mathbf{x}} f(\mathbf{x}) \quad \text{subject to} \quad \mathbf{g}(\mathbf{x}) = \mathbf{0}
+\]
 \paragraph{Lagrangian Function:}
 The extremal of $f(\mathbf{x})$ subject to constraints $\mathbf{g}(\mathbf{x}) = \mathbf{0}$ must occur where $\nabla f$ is a linear combination of $\nabla g_i$, i.e. $\displaystyle \nabla f = \sum_{i} \lambda_i \nabla g_i$.
 \[
     \begin{dcases}
         \mathcal{L}(\mathbf{x}, \boldsymbol{\lambda}) = f(\mathbf{x}) + \langle \boldsymbol{\lambda}, \mathbf{g}(\mathbf{x}) \rangle \\
-        \frac{\partial \mathcal{L}}{\partial \mathbf{x}} = \nabla f(\mathbf{x}) + \boldsymbol{\lambda}^\top \nabla \mathbf{g}(\mathbf{x}) = \mathbf{0} \\
+        \frac{\partial \mathcal{L}}{\partial \mathbf{x}} = \nabla f(\mathbf{x}) + \nabla \langle \boldsymbol{\lambda}, \mathbf{g}(\mathbf{x}) \rangle = \mathbf{0} \\
         \frac{\partial \mathcal{L}}{\partial \boldsymbol{\lambda}} = \mathbf{g}(\mathbf{x}) = \mathbf{0}
     \end{dcases}
 \]
 where $\boldsymbol{\lambda}$ is the \textbf{Lagrange Multiplier}.
+
+\subsection{Conditional Extrema}
+
+\subsubsection{Max-Min Inequality}
+For any $f: W \times Z \to \mathbb{R}$:
+\[
+    \sup_{z \in Z} \inf_{w \in W} f(w, z) \le \inf_{w \in W} \sup_{z \in Z} f(w, z)
+\]
+
+\subsubsection{Lagrangian}
+\[
+    \min_{\mathbf{x}} f_0(\mathbf{x}) \quad \text{subject to} \quad \mathbf{f}(\mathbf{x}) \le \mathbf{0}
+\]
+\paragraph{Convex Problem:} $f_0$ and all $f_i$ are convex.
+
+\paragraph{Lagrangian:}
+\[
+    \mathcal{L}(\mathbf{x}, \boldsymbol{\lambda}) = f_0(\mathbf{x}) + \langle \boldsymbol{\lambda}, \mathbf{f}(\mathbf{x}) \rangle, \quad \boldsymbol{\lambda} \ge \mathbf{0}
+\]
+
+\subsubsection{Primal Problem}
+\[
+    \sup_{\boldsymbol{\lambda} \ge \mathbf{0}} \mathcal{L}(\mathbf{x}, \boldsymbol{\lambda}) =
+    \begin{cases}
+        f_0(\mathbf{x}) & \text{when } \mathbf{f}(\mathbf{x}) \le \mathbf{0} \\
+        \infty           & \text{otherwise}
+    \end{cases}
+\]
+\[
+    p^* = \inf_{\mathbf{x}} \sup_{\boldsymbol{\lambda} \ge \mathbf{0}} \mathcal{L}(\mathbf{x}, \boldsymbol{\lambda})
+\]
+
+\subsubsection{Dual Problem}
+
+\paragraph{Lagrange Dual Function:}
+\[
+    g(\boldsymbol{\lambda}) = \inf_{\mathbf{x}} \mathcal{L}(\mathbf{x}, \boldsymbol{\lambda})
+\]
+The dual function is always \textbf{concave} (pointwise infimum of affine functions).
+
+\paragraph{Dual Problem:} Search for the best lower bound on $p^*$:
+\[
+    d^* = \sup_{\boldsymbol{\lambda} \ge \mathbf{0}} g(\boldsymbol{\lambda}) = \sup_{\boldsymbol{\lambda} \ge \mathbf{0}} \inf_{\mathbf{x}} \mathcal{L}(\mathbf{x}, \boldsymbol{\lambda})
+\]
+
+\paragraph{Weak Duality:} By the max-min inequality, for any optimization problem:
+\[
+    d^* \le p^*
+\]
+
+\paragraph{Strong Duality:} Defined as $p^* = d^*$.
+
+\paragraph{Convex Optimization:} For \textbf{convex} problems, \textbf{Strong Duality} holds if \textbf{Slater's Condition} is satisfied: there exists $\mathbf{x}$ such that
+\begin{itemize}
+    \item $f_i(\mathbf{x}) < 0$ for all non-affine constraints
+    \item $f_i(\mathbf{x}) \le 0$ for affine constraints
+\end{itemize}
+
+\subsubsection{KKT Conditions}
+For \textbf{convex} problems, the KKT conditions are \textbf{sufficient} for optimality. If \textbf{Slater's condition} is also satisfied, they are \textbf{sufficient and necessary}.
+\begin{itemize}
+    \item \textbf{Stationarity}: $\nabla f_0(\mathbf{x}^*) + \nabla \langle \boldsymbol{\lambda}^*, \mathbf{f}(\mathbf{x}^*) \rangle = \mathbf{0}$
+    \item \textbf{Primal Feasibility}: $\mathbf{f}(\mathbf{x}^*) \le \mathbf{0}$
+    \item \textbf{Dual Feasibility}: $\boldsymbol{\lambda}^* \ge \mathbf{0}$
+    \item \textbf{Complementary Slackness}: $\langle \boldsymbol{\lambda}^*, \mathbf{f}(\mathbf{x}^*) \rangle = 0$
+\end{itemize}
+
+\paragraph{Proof of Sufficiency:}
+Let $(\mathbf{x}^*, \boldsymbol{\lambda}^*)$ satisfy the KKT conditions. For any feasible $\mathbf{x}$:
+\begin{align*}
+    f_0(\mathbf{x})
+    &\ge f_0(\mathbf{x}) + \langle \boldsymbol{\lambda}^*, \mathbf{f}(\mathbf{x}) \rangle
+        & & (\text{Dual Feasibility} + \text{Primal Feasibility}: \boldsymbol{\lambda}^* \ge \mathbf{0}, \mathbf{f}(\mathbf{x}) \le \mathbf{0}) \\
+    &= \mathcal{L}(\mathbf{x}, \boldsymbol{\lambda}^*) \\
+    &\ge \inf_{\mathbf{x}} \mathcal{L}(\mathbf{x}, \boldsymbol{\lambda}^*)
+        = \mathcal{L}(\mathbf{x}^*, \boldsymbol{\lambda}^*)
+        & & (\text{Stationarity} + \text{Convexity} \Rightarrow \mathbf{x}^* = \arg\min_{\mathbf{x}} \mathcal{L}(\mathbf{x}, \boldsymbol{\lambda}^*)) \\
+    &= f_0(\mathbf{x}^*) + \langle \boldsymbol{\lambda}^*, \mathbf{f}(\mathbf{x}^*) \rangle \\
+    &= f_0(\mathbf{x}^*)
+        & & (\text{Complementary Slackness})
+\end{align*}
 
 \newpage
 \section{Application for Derivatives}
