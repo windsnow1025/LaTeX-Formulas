@@ -45,8 +45,6 @@
 
 - Jacobian Matrix
   - Mathemaniac: What is Jacobian? | The right way of thinking derivatives and integrals
-- Lagrange Multiplier
-  - SerpetinelIntegral: Understanding Lagrange Multipliers Visually
 
 ## Linear Algebra
 
