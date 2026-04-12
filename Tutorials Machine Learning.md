@@ -5,14 +5,16 @@
 - 3Blue1Brown: Neural networks
 - Welch Labs: Neural Networks Demystified
 
+## Courses
+
+- Inside Bloomberg: Bloomberg ML EDU
+
 ## General
 
 - Modeling
   - The Exponential Family
     - Mutual Information: The Exponential Family
 - Optimization
-  - Convex Optimization
-    - Inside Bloomberg: Lagrangian Duality and Convex Optimization
   - Backpropagation
     - Artem Kirsanov: The Most Important Algorithm in Machine Learning
     - DeepBean: Backpropagation: How Neural Networks Learn
