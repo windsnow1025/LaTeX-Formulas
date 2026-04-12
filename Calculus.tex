@@ -536,17 +536,17 @@ If $f''(x) \le 0$ for all $x$, then $f(x)$ is concave.
 
 \subsection{Conditional Extrema}
 
-Find $\mathbf{x}$ such that $f(\mathbf{x})$ is extremal, subject to $g(\mathbf{x}) = 0$.
+Find $\mathbf{x}$ such that $f(\mathbf{x})$ is extremal, subject to $\mathbf{g}(\mathbf{x}) = \mathbf{0}$.
 \paragraph{Lagrangian Function:}
-The extremal of a function $f(\mathbf{x})$ subject to a constraint $g(\mathbf{x}) = 0$ must occur where $\nabla f$ is parallel to $\nabla g$, i.e. $\nabla f = \lambda \nabla g$.
+The extremal of $f(\mathbf{x})$ subject to constraints $\mathbf{g}(\mathbf{x}) = \mathbf{0}$ must occur where $\nabla f$ is a linear combination of $\nabla g_i$, i.e. $\displaystyle \nabla f = \sum_{i} \lambda_i \nabla g_i$.
 \[
     \begin{dcases}
-        \mathcal{L}(\mathbf{x}, \lambda) = f(\mathbf{x}) + \langle \lambda, g(\mathbf{x}) \rangle \\
-        \frac{\partial \mathcal{L}}{\partial \mathbf{x}} = f'(\mathbf{x}) + \lambda g'(\mathbf{x}) = \mathbf{0} \\
-        \frac{\partial \mathcal{L}}{\partial \lambda} = g(\mathbf{x}) = 0
+        \mathcal{L}(\mathbf{x}, \boldsymbol{\lambda}) = f(\mathbf{x}) + \langle \boldsymbol{\lambda}, \mathbf{g}(\mathbf{x}) \rangle \\
+        \frac{\partial \mathcal{L}}{\partial \mathbf{x}} = \nabla f(\mathbf{x}) + \boldsymbol{\lambda}^\top \nabla \mathbf{g}(\mathbf{x}) = \mathbf{0} \\
+        \frac{\partial \mathcal{L}}{\partial \boldsymbol{\lambda}} = \mathbf{g}(\mathbf{x}) = \mathbf{0}
     \end{dcases}
 \]
-where $\lambda$ is the \textbf{Lagrange Multiplier}.
+where $\boldsymbol{\lambda}$ is the \textbf{Lagrange Multiplier}.
 
 \newpage
 \section{Application for Derivatives}
