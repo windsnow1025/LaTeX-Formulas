@@ -13,6 +13,7 @@
 \usepackage{graphicx}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
 \usepackage{amssymb}
+\usepackage{mathtools}
 
 \title{Calculus}
 \date{}
@@ -536,21 +537,16 @@ If $f''(x) \le 0$ for all $x$, then $f(x)$ is concave.
 \subsection{Conditional Extrema}
 
 Find $\mathbf{x}$ such that $f(\mathbf{x})$ is extremal, subject to $g(\mathbf{x}) = 0$.
-\newline
-\textbf{Lagrangian Function:}
+\paragraph{Lagrangian Function:}
+The extremal of a function $f(\mathbf{x})$ subject to a constraint $g(\mathbf{x}) = 0$ must occur where $\nabla f$ is parallel to $\nabla g$, i.e. $\nabla f = \lambda \nabla g$.
 \[
-    \mathcal{L}(\mathbf{x}, \lambda) = f(\mathbf{x}) + \langle \lambda, g(\mathbf{x}) \rangle
-\]
-where $\lambda$ is the \textbf{Lagrange Multiplier}.
-\newline
-Solve:
-\[
-    \begin{cases}
+    \begin{dcases}
+        \mathcal{L}(\mathbf{x}, \lambda) = f(\mathbf{x}) + \langle \lambda, g(\mathbf{x}) \rangle \\
         \frac{\partial \mathcal{L}}{\partial \mathbf{x}} = f'(\mathbf{x}) + \lambda g'(\mathbf{x}) = \mathbf{0} \\
         \frac{\partial \mathcal{L}}{\partial \lambda} = g(\mathbf{x}) = 0
-    \end{cases}
+    \end{dcases}
 \]
-
+where $\lambda$ is the \textbf{Lagrange Multiplier}.
 
 \newpage
 \section{Application for Derivatives}
