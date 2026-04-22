@@ -97,7 +97,9 @@
 
 ### Overview
 
-- 3Blue1Brown: Central limit theorem
+- 3Blue1Brown
+  - Central limit theorem
+  - Why π is in the normal distribution (beyond integral tricks)
 - Very Normal
   - Explainers
   - Pocket Stats
