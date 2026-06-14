@@ -119,4 +119,5 @@
 - Regression
   - Artem Kirsanov: What Textbooks Don't Tell You About Curve Fitting
 - Information Theory
+  - 3Blue1Brown: Reinventing Entropy | Compression is Intelligence Part 1
   - Artem Kirsanov: The Key Equation Behind Probability
