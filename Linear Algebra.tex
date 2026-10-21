@@ -31,7 +31,7 @@
 
 A function $f$ is a \textbf{Linear Mapping} if:
 \begin{itemize}
-    \item \textbf{Additivity}: $f(\mathbf{u}+\mathbf{v}) = f(\mathbf{u}+\mathbf{v})$.
+    \item \textbf{Additivity}: $f(\mathbf{u}+\mathbf{v}) = f(\mathbf{u}) + f(\mathbf{v})$.
     \item \textbf{Homogeneity}: $f(c\mathbf{u}) = c f(\mathbf{u})$
 \end{itemize}
 
@@ -214,7 +214,7 @@ Expanded form~\ref{eq:trans}.
 
 
 \newpage
-\section{Vecctor Spaces and Subspaces}
+\section{Vector Spaces and Subspaces}
 
 \subsection{Linear Independence}
 A set of vectors $\{\mathbf{v}_i\}_{i=1}^n$ is \textbf{Linearly Independent} if the only solution to the equation:
@@ -310,7 +310,7 @@ The diagonal entries can be any value, and all off-diagonal entries are 0.
 \]
 Expanded form~\ref{eq:diagm}.
 \paragraph{Geometric Interpretation:} Scale the $i$-th standard basis vector by $d_i$
-\paragraph{Inverse of a Diagnal Matrix:}
+\paragraph{Inverse of a Diagonal Matrix:}
 \[
     (D_n^{-1})_{ij} =
     \begin{cases}
@@ -339,7 +339,7 @@ All column vectors are unit vectors and orthogonal to each other.
 
 
 \newpage
-\section{Matrix Decomposision}
+\section{Matrix Decomposition}
 
 \subsection{Eigenvector \& Eigenvalue}
 
@@ -354,7 +354,7 @@ An unit \textbf{Eigenvector} $\|\mathbf{v}\| = 1$ of a Symmetric Matrix $A \in \
 where:
 \begin{itemize}
     \item $V$ is a matrix whose columns are the Eigenvectors of $A$.
-    \item $\Lambda$ is a diagonal matrix whose diagonal entries are the Eigenvalues $A$.
+    \item $\Lambda$ is a diagonal matrix whose diagonal entries are the Eigenvalues of $A$.
 \end{itemize}
 \paragraph{Calculation:}
 \[
