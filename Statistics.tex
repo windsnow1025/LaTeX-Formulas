@@ -30,7 +30,7 @@
 \[
     \overline{X} = \frac{1}{n}\sum_{i=1}^{n} X_i
 \]
-\textbf{Properties:}
+\paragraph{Properties:}
 \begin{itemize}
     \item $\mathbb{E}[\overline{X}] = \mu$
     \item $\displaystyle \operatorname{Var}(\overline{X}) = \frac{\sigma^2}{n}$
@@ -40,7 +40,7 @@
 \[
     S^2 = \frac{1}{n-1}\sum_{i=1}^{n}(X_i - \overline{X})^2 = \frac{1}{n-1}\left(\sum_{i=1}^{n} X_i^2 - n\overline{X}^2\right)
 \]
-\textbf{Properties:}
+\paragraph{Properties:}
 \begin{itemize}
     \item $\mathbb{E}[S^2] = \sigma^2$
 \end{itemize}
@@ -49,7 +49,7 @@
 \[
     Cov(X,Y) = \frac{1}{n-1}\sum_{i=1}^{n}(X_i - \overline{X})(Y_i - \overline{Y})
 \]
-\textbf{Properties:}
+\paragraph{Properties:}
 \begin{itemize}
     \item $\mathbb{E}[Cov(X,Y)] = \operatorname{cov}(X,Y)$
 \end{itemize}
@@ -58,7 +58,7 @@
 \[
     S = \frac{1}{n-1}\sum_{i=1}^{n}(\mathbf{X}_i - \overline{\mathbf{X}})(\mathbf{X}_i - \overline{\mathbf{X}})^\top
 \]
-\textbf{Properties:}
+\paragraph{Properties:}
 \begin{itemize}
     \item $\mathbb{E}[S] = \Sigma$
 \end{itemize}
@@ -82,7 +82,7 @@ where $Z_i \sim \mathcal{N}(0,1)$ and:
 \[
     \chi^2 = \sum_{i=1}^{n} Z_i^2
 \]
-\textbf{Properties:}
+\paragraph{Properties:}
 \begin{itemize}
     \item $\mathbb{E}[\chi^2] = n$
     \item $\operatorname{Var}(\chi^2) = 2n$
@@ -99,7 +99,7 @@ where $X \sim \mathcal{N}(0,1)$, $Y \sim \chi^2(n)$, and:
 \[
     t = \frac{X}{\sqrt{Y/n}}
 \]
-\textbf{Properties:}
+\paragraph{Properties:}
 \begin{itemize}
     \item $n \rightarrow +\infty$: $\mathcal{N}(0,1)$
     \item $T = \frac{\overline{X} - \mu}{S/\sqrt{n}} \sim t(n-1)$
@@ -113,7 +113,7 @@ where $X \sim \chi^2(m)$, $Y \sim \chi^2(n)$, and:
 \[
     F = \frac{X/m}{Y/n}
 \]
-\textbf{Properties:}
+\paragraph{Properties:}
 \begin{itemize}
     \item $F_{1-\alpha}(n_1, n_2) = \frac{1}{F_\alpha(n_2, n_1)}$
     \item $t \sim t(n)$: $t^2 \sim F(1, n)$
@@ -124,21 +124,21 @@ where $X \sim \chi^2(m)$, $Y \sim \chi^2(n)$, and:
 \section{Estimation}
 
 \subsection{Maximum Likelihood Estimation (MLE)}
-\textbf{Likelihood Function:}
+\paragraph{Likelihood Function:}
 \[
     L_i(\theta) = \mathbb{P}(x \mid \theta)
 \]
 \[
     L(\theta \mid X) = \prod_{i=1}^{n} \mathbb{P}(x_i \mid \theta)
 \]
-\textbf{Log Likelihood:}
+\paragraph{Log Likelihood:}
 \[
     \ell(\theta) = \log L(\theta) = \log \mathbb{P}(x \mid \theta)
 \]
 \[
     \ell(\theta \mid X) = \log L(\theta \mid X) = \sum_{i=1}^{n} \log \mathbb{P}(x_i \mid \theta)
 \]
-\textbf{Maximum Log Likelihood:}
+\paragraph{Maximum Log Likelihood:}
 \[
     \hat{\theta} = \arg\max_\theta \ell(\theta \mid X)
 \]
@@ -147,15 +147,15 @@ where $X \sim \chi^2(m)$, $Y \sim \chi^2(n)$, and:
 \[
     y \sim \text{Bernoulli}(\hat{y}(\mathbf{x}))
 \]
-\textbf{Likelihood Function:}
+\paragraph{Likelihood Function:}
 \[
     L(\theta) = \hat{y}^y (1-\hat{y})^{1-y}
 \]
-\textbf{Log Likelihood:}
+\paragraph{Log Likelihood:}
 \[
     \ell(\theta) = y \log \hat{y} + (1-y) \log (1-\hat{y})
 \]
-\textbf{Maximum Log Likelihood:}
+\paragraph{Maximum Log Likelihood:}
 \[
     \hat{\theta} = \arg\max_{\theta} \left( y \log \hat{y} + (1-y) \log (1-\hat{y}) \right)
 \]
@@ -164,15 +164,15 @@ where $X \sim \chi^2(m)$, $Y \sim \chi^2(n)$, and:
 \[
     \mathbf{y} \sim \text{Categorical}(\hat{\mathbf{y}}(\mathbf{x}))
 \]
-\textbf{Likelihood Function:}
+\paragraph{Likelihood Function:}
 \[
     L(\theta) = \prod_{k=1}^{K} \hat{y}_k^{y_k}
 \]
-\textbf{Log Likelihood:}
+\paragraph{Log Likelihood:}
 \[
     \ell(\theta) = \sum_{k=1}^{K} y_k \log \hat{y}_k = \mathbf{y}^\top \log \hat{\mathbf{y}}
 \]
-\textbf{Maximum Log Likelihood:}
+\paragraph{Maximum Log Likelihood:}
 \[
     \hat{\theta} = \arg\max_{\theta} \mathbf{y}^\top \log \hat{\mathbf{y}}
 \]
@@ -181,15 +181,15 @@ where $X \sim \chi^2(m)$, $Y \sim \chi^2(n)$, and:
 \[
     y \sim \mathcal{N}(\hat{y}(\mathbf{x}), \sigma^2)
 \]
-\textbf{Likelihood Function:}
+\paragraph{Likelihood Function:}
 \[
     L(\theta) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(y-\hat{y})^2}{2\sigma^2}\right)
 \]
-\textbf{Log Likelihood:}
+\paragraph{Log Likelihood:}
 \[
     \ell(\theta) = -\frac{1}{2}\log(2\pi\sigma^2) - \frac{(y-\hat{y})^2}{2\sigma^2}
 \]
-\textbf{Maximum Log Likelihood:}
+\paragraph{Maximum Log Likelihood:}
 \[
     \hat{\theta} = \arg\min_{\theta} (y-\hat{y})^2
 \]
@@ -198,15 +198,15 @@ where $X \sim \chi^2(m)$, $Y \sim \chi^2(n)$, and:
 \[
     \mathbf{y} \sim \mathcal{N}(\hat{\mathbf{y}}(\mathbf{x}), \sigma^2 I)
 \]
-\textbf{Likelihood Function:}
+\paragraph{Likelihood Function:}
 \[
     L(\theta) = \frac{1}{(2\pi\sigma^2)^{d/2}} \exp\left(-\frac{\|\mathbf{y}-\hat{\mathbf{y}}\|^2}{2\sigma^2}\right)
 \]
-\textbf{Log Likelihood:}
+\paragraph{Log Likelihood:}
 \[
     \ell(\theta) = -\frac{d}{2}\log(2\pi\sigma^2) - \frac{\|\mathbf{y}-\hat{\mathbf{y}}\|^2}{2\sigma^2}
 \]
-\textbf{Maximum Log Likelihood:}
+\paragraph{Maximum Log Likelihood:}
 \[
     \hat{\theta} = \arg\min_{\theta} \|\mathbf{y}-\hat{\mathbf{y}}\|^2
 \]
@@ -255,9 +255,8 @@ where $X \sim \chi^2(m)$, $Y \sim \chi^2(n)$, and:
 \[
     H(\mathbf{Y} \mid \mathbf{X}=\mathbf{x}) = - \sum_{\mathbf{y}} p(\mathbf{y} \mid \mathbf{x}) \ln p(\mathbf{y} \mid \mathbf{x})
 \]
-\paragraph{Moment Matching:} \mbox{}
-\newline
-\textbf{Local Constraint:}
+\paragraph{Moment Matching:}
+\paragraph{Local Constraint:}
 \[
     \mathbb{E}[\mathbf{T}(\mathbf{Y}) \mid \mathbf{x}] = \hat{\mathbb{E}}[\mathbf{T}(\mathbf{Y}) \mid \mathbf{x}] \in \mathbb{R}^M
 \]
@@ -293,16 +292,15 @@ where $\boldsymbol{\lambda} \in \mathbb{R}^M$.
 \[
     H(\mathbf{Y} \mid \mathbf{X}) = \sum_\mathbf{x} \tilde{p}(\mathbf{x}) H(\mathbf{Y} \mid \mathbf{X}=\mathbf{x}) = - \sum_\mathbf{x} \tilde{p}(\mathbf{x}) \sum_{\mathbf{y}} p(\mathbf{y} \mid \mathbf{x}) \ln p(\mathbf{y} \mid \mathbf{x})
 \]
-\paragraph{Moment Matching:} \mbox{}
-\newline
-\textbf{Global Constraint:}
+\paragraph{Moment Matching:}
+\paragraph{Global Constraint:}
 \[
     \mathbb{E}[\mathbf{T}(\mathbf{Y})\mathbf{X}^{\mathrm{T}}] = \hat{\mathbb{E}}[\mathbf{T}(\mathbf{Y})\mathbf{X}^{\mathrm{T}}] \in \mathbb{R}^{M \times D}
 \]
 \[
     \sum_\mathbf{x} \tilde{p}(\mathbf{x}) \sum_{\mathbf{y}} p(\mathbf{y} \mid \mathbf{x}) \mathbf{T}(\mathbf{y})\mathbf{x}^{\mathrm{T}} = \hat{\mathbb{E}}[\mathbf{T}(\mathbf{Y})\mathbf{X}^{\mathrm{T}}]
 \]
-\textbf{Marginal Constraint:}
+\paragraph{Marginal Constraint:}
 \[
     \mathbb{E}[\mathbf{T}(\mathbf{Y})] = \hat{\mathbb{E}}[\mathbf{T}(\mathbf{Y})] \in \mathbb{R}^M
 \]
@@ -544,7 +542,7 @@ $\frac{\sigma_1^2}{\sigma_2^2}$ & $S_1^2, S_2^2$ & $\frac{S_1^2/S_2^2}{\sigma_1^
         \sum_{i=1}^{n} \|\mathbf{a}_i - P_W \mathbf{a}_i\|^2 = \sum_{i=1}^{n} \|\mathbf{a}_i\|^2 - \sum_{i=1}^{n} \|P_W \mathbf{a}_i\|^2
     \]
 
-    \item Let $\{\mathbf{q}_j\}_{j=1}^{k}$ be an \textbf{orthonormal basis} for $W$.
+    \item Let $\{\mathbf{q}_j\}_{j=1}^{k}$ be an \textbf{Orthonormal Basis} for $W$.
     By \textbf{Parseval's Identity:}
     \[
         \|P_W \mathbf{a}_i\|^2 = \sum_{j=1}^{k} \langle \mathbf{a}_i, \mathbf{q}_j \rangle^2
@@ -555,7 +553,7 @@ $\frac{\sigma_1^2}{\sigma_2^2}$ & $S_1^2, S_2^2$ & $\frac{S_1^2/S_2^2}{\sigma_1^
         = \sum_{j=1}^{k} \sum_{i=1}^{n} \langle \mathbf{a}_i, \mathbf{q}_j \rangle^2
     \]
 
-    \item Define Matrix $A$:
+    \item Define matrix $A$:
     \[
         A =
         \begin{bmatrix}
@@ -574,8 +572,7 @@ $\frac{\sigma_1^2}{\sigma_2^2}$ & $S_1^2, S_2^2$ & $\frac{S_1^2/S_2^2}{\sigma_1^
     \]
 
     \item \textbf{Greedy Algorithm:}
-    \newline
-    Objective: \textbf{Conditional Maximization:}
+    \paragraph{Objective:} \textbf{Conditional Maximization:}
     \[
         \arg\max_{\|\mathbf{q}_i\|=1} \mathbf{q}_i^{\mathrm{T}} A^{\mathrm{T}} A \mathbf{q}_i
     \]
@@ -589,7 +586,7 @@ $\frac{\sigma_1^2}{\sigma_2^2}$ & $S_1^2, S_2^2$ & $\frac{S_1^2/S_2^2}{\sigma_1^
     \[
         A^{\mathrm{T}} A \mathbf{q}_i = \lambda\mathbf{q}_i
     \]
-    \textbf{Solutions:}
+    \paragraph{Solutions:}
     \begin{itemize}
         \item $\mathbf{q}_i = \mathbf{v}_i$ is an \textbf{Eigenvector} of $A^{\mathrm{T}} A$
         \item $\lambda = \lambda_i$ is an \textbf{Eigenvalue} of $A^{\mathrm{T}} A$
@@ -611,9 +608,9 @@ $\frac{\sigma_1^2}{\sigma_2^2}$ & $S_1^2, S_2^2$ & $\frac{S_1^2/S_2^2}{\sigma_1^
 
 \subsection{PCA}
 
-\textbf{Objective:} Find the $k$-BFS for centered data.
+\paragraph{Objective:} Find the $k$-BFS for centered data.
 \newline
-\textbf{Data matrix} $X \in \mathbb{R}^{n \times d}$:
+\textbf{Data Matrix} $X \in \mathbb{R}^{n \times d}$:
 \[
     X =
     \begin{bmatrix}
@@ -634,15 +631,14 @@ $\frac{\sigma_1^2}{\sigma_2^2}$ & $S_1^2, S_2^2$ & $\frac{S_1^2/S_2^2}{\sigma_1^
 \[
     T = BV
 \]
-\newline
-\textbf{Variance:}
+\paragraph{Variance:}
 \[
     \operatorname{Var}(\mathbf{v}_i^{\mathrm{T}} \mathbf{b}) = \frac{1}{n-1} \|B\mathbf{v}_i\|^2
 \]
 \[
     \arg \min_W \text{cost}(W) = \arg \max_W \sum_{i=1}^k \operatorname{Var}(\mathbf{v}_i^{\mathrm{T}} \mathbf{b})
 \]
-\textbf{Sample Covariance Matrix:}
+\paragraph{Sample Covariance Matrix:}
 \[
     S = \frac{1}{n-1} B^{\mathrm{T}} B
 \]

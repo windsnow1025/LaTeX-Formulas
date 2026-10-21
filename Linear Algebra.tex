@@ -37,7 +37,7 @@ A function $f$ is a \textbf{Linear Mapping} if:
 
 \subsection{Matrix}
 
-Matrix $A \in \mathbb{R}^{m \times n}$ defines a \textbf{Linear Transformation} from Domain $\mathbb{R}^n$ to Codomain $\mathbb{R}^m$.
+Matrix $A \in \mathbb{R}^{m \times n}$ defines a \textbf{Linear Transformation} from \textbf{Domain} $\mathbb{R}^n$ to \textbf{Codomain} $\mathbb{R}^m$.
 \newline
 Matrix $A$ is composed of column vectors $\mathbf{a}_j$, each of which is the image of the $j$-th standard basis vector after applying the transformation $A$.
 \[
@@ -100,14 +100,14 @@ The \textbf{Outer Product} of two vectors $\mathbf{a} \in \mathbb{R}^m$ and $\ma
 Expanded form~\ref{eq:outerprod}.
 
 \subsection{Matrix and Column Vector Multiplication}
-Apply Linear Transformation $A \in \mathbb{R}^{m \times n}$ to vector $\mathbf{x} \in \mathbb{R}^n$ and produce a new vector $A\mathbf{x} \in \mathbb{R}^m$.
+Apply \textbf{Linear Transformation} $A \in \mathbb{R}^{m \times n}$ to vector $\mathbf{x} \in \mathbb{R}^n$ and produce a new vector $A\mathbf{x} \in \mathbb{R}^m$.
 
 \subsubsection{Column-wise View (Linear Combination)}
 \[
     A\mathbf{x} = \sum_{j=1}^n x_j \mathbf{a}_j
 \]
 Expanded form~\ref{eq:matvec_col}.
-\paragraph{Geometric Interpretation:} Map the standard basis vectors in the Domain $\mathbb{R}^n$ to the column vectors in the Codomain $\mathbb{R}^m$.
+\paragraph{Geometric Interpretation:} Map the standard basis vectors in the \textbf{Domain} $\mathbb{R}^n$ to the column vectors in the \textbf{Codomain} $\mathbb{R}^m$.
 
 \subsubsection{Row-wise View (Inner Product)}
 \[
@@ -116,14 +116,14 @@ Expanded form~\ref{eq:matvec_col}.
 Expanded form~\ref{eq:matvec_row}.
 
 \subsection{Row Vector and Matrix Multiplication}
-Apply Linear Transformation $A \in \mathbb{R}^{m \times n}$ to a row vector $\mathbf{y}^{\mathrm{T}} \in \mathbb{R}^{1 \times m}$ from the left and produce a new row vector $\mathbf{y}^{\mathrm{T}} A \in \mathbb{R}^{1 \times n}$.
+Apply \textbf{Linear Transformation} $A \in \mathbb{R}^{m \times n}$ to a row vector $\mathbf{y}^{\mathrm{T}} \in \mathbb{R}^{1 \times m}$ from the left and produce a new row vector $\mathbf{y}^{\mathrm{T}} A \in \mathbb{R}^{1 \times n}$.
 
 \subsubsection{Row-wise View (Linear Combination)}
 \[
     \mathbf{y}^{\mathrm{T}} A = \sum_{i=1}^m y_i \mathbf{a}_i^{\mathrm{T}}
 \]
 Expanded form~\ref{eq:rowvecmat_row}.
-\paragraph{Geometric Interpretation:} Map the standard basis vectors in the Codomain $\mathbb{R}^m$ to the row vectors in the Domain $\mathbb{R}^n$.
+\paragraph{Geometric Interpretation:} Map the standard basis vectors in the \textbf{Codomain} $\mathbb{R}^m$ to the row vectors in the \textbf{Domain} $\mathbb{R}^n$.
 
 \subsubsection{Column-wise View (Inner Product)}
 \[
@@ -167,17 +167,17 @@ Calculation~\ref{subsec:gauss}.
 \[
     (AB)^{-1} = B^{-1}A^{-1}
 \]
-\paragraph{Properties:} A square matrix $A \in \mathbb{R}^{n \times n}$ is invertible iff it has full rank, i.e., $\operatorname{rank}(A) = n$.
+\paragraph{Properties:} A square matrix $A \in \mathbb{R}^{n \times n}$ is invertible iff it has \textbf{Full Rank}, i.e., $\operatorname{rank}(A) = n$.
 
 \subsection{Determinant}
-The \textbf{determinant} of a square matrix $A \in \mathbb{R}^{n \times n}$ is denoted as:
+The \textbf{Determinant} of a square matrix $A \in \mathbb{R}^{n \times n}$ is denoted as:
 \[
     \det(A)
 \]
 \paragraph{Geometric Interpretation:} The oriented volume change factor.
 \paragraph{Properties:}
 \begin{itemize}
-    \item $A \in \mathbb{R}^{n \times n}$ has Full Rank iff $\det(A) \neq 0$.
+    \item $A \in \mathbb{R}^{n \times n}$ has \textbf{Full Rank} iff $\det(A) \neq 0$.
     \item \textbf{Determinant as the product of eigenvalues}: $\det(A) = \prod_{i=1}^n \lambda_i$.
 \end{itemize}
 \paragraph{Calculation:}
@@ -187,11 +187,11 @@ The \textbf{determinant} of a square matrix $A \in \mathbb{R}^{n \times n}$ is d
 \end{itemize}
 
 \subsection{Trace}
-The \textbf{trace} of a square matrix $A \in \mathbb{R}^{n \times n}$ is the sum of the elements on the main diagonal:
+The \textbf{Trace} of a square matrix $A \in \mathbb{R}^{n \times n}$ is the sum of the elements on the main diagonal:
 \[
     \operatorname{tr}(A) = \sum_{i=1}^n a_{ii}
 \]
-\paragraph{Geometric Interpretation:} The change rate of oriented volume. Viewing the Matrix as a Vector Field, the trace is its divergence.
+\paragraph{Geometric Interpretation:} The change rate of oriented volume. Viewing the matrix as a \textbf{Vector Field}, the trace is its divergence.
 \paragraph{Properties:}
 \begin{itemize}
     \item \textbf{Trace as the sum of eigenvalues:} $\operatorname{tr}(A) = \sum_{i=1}^n \lambda_i$
@@ -206,7 +206,7 @@ The \textbf{trace} of a square matrix $A \in \mathbb{R}^{n \times n}$ is the sum
     \langle A\mathbf{x}, \mathbf{y} \rangle = \langle \mathbf{x}, A^{\mathrm{T}}\mathbf{y} \rangle
 \]
 Expanded form~\ref{eq:trans}.
-\paragraph{Geometric Interpretation:} Preserves the scaling factors of $A$ but reverses the rotation/reflection directions of $A$ by swapping domain and codomain orientations.
+\paragraph{Geometric Interpretation:} Preserves the scaling factors of $A$ but reverses the rotation/reflection directions of $A$ by swapping \textbf{Domain} and \textbf{Codomain} orientations.
 \paragraph{Transpose Distribution Rule:}
 \[
     (AB)^{\mathrm{T}} = B^{\mathrm{T}} A^{\mathrm{T}}
@@ -231,28 +231,28 @@ is the trivial solution, where all coefficients $c_i = 0$. Otherwise, the set is
 \]
 
 \subsection{Column Space}
-The \textbf{Column Space} (or \textbf{Range}) of a matrix $A \in \mathbb{R}^{m \times n}$ is the subspace of Codomain $\mathbb{R}^m$ spanned by the columns of $A$:
+The \textbf{Column Space} (or \textbf{Range}) of a matrix $A \in \mathbb{R}^{m \times n}$ is the subspace of \textbf{Codomain} $\mathbb{R}^m$ spanned by the columns of $A$:
 \[
     \text{Col}(A) = \{ A\mathbf{x} : \mathbf{x} \in \mathbb{R}^n \}
 \]
-\paragraph{Geometric Interpretation:} The subspace of the Codomain representing all directions that \textbf{can be reached} by the transformation $A$.
+\paragraph{Geometric Interpretation:} The subspace of the \textbf{Codomain} representing all directions that can be reached by the transformation $A$.
 
 \subsection{Null Space}
 The \textbf{Null Space} (or \textbf{Kernel}) of a matrix $A \in \mathbb{R}^{m \times n}$ is:
 \[
     \ker(A) = \{ \mathbf{x} \in \mathbb{R}^n : A\mathbf{x} = \mathbf{0} \}
 \]
-\paragraph{Geometric Interpretation:} The subspace of the Domain containing the component of any input vector that is \textbf{discarded} by $A$.
+\paragraph{Geometric Interpretation:} The subspace of the \textbf{Domain} containing the component of any input vector that is discarded by $A$.
 
 \subsection{Row Space}
-The \textbf{Row Space} of a matrix $A \in \mathbb{R}^{m \times n}$ is the subspace of Domain $\mathbb{R}^n$ spanned by the rows of $A$:
+The \textbf{Row Space} of a matrix $A \in \mathbb{R}^{m \times n}$ is the subspace of \textbf{Domain} $\mathbb{R}^n$ spanned by the rows of $A$:
 \[
     \text{Row}(A) = \{ \mathbf{y}^{\mathrm{T}} A : \mathbf{y} \in \mathbb{R}^m \}
 \]
 \[
     \text{Row}(A) = \text{Col}(A^{\mathrm{T}}) = \{ A^{\mathrm{T}}\mathbf{y} : \mathbf{y} \in \mathbb{R}^m \}
 \]
-\paragraph{Geometric Interpretation:} The subspace of the Domain containing the component of any input vector that is \textbf{preserved and transformed} by $A$.
+\paragraph{Geometric Interpretation:} The subspace of the \textbf{Domain} containing the component of any input vector that is preserved and transformed by $A$.
 
 \subsection{Left Null Space}
 The \textbf{Left Null Space} (or \textbf{Cokernel}) of a matrix $A \in \mathbb{R}^{m \times n}$ is:
@@ -262,12 +262,12 @@ The \textbf{Left Null Space} (or \textbf{Cokernel}) of a matrix $A \in \mathbb{R
 \[
     \operatorname{coker}(A) = \ker(A^{\mathrm{T}}) = \{ \mathbf{y} \in \mathbb{R}^m : A^{\mathrm{T}} \mathbf{y} = \mathbf{0} \}
 \]
-\paragraph{Geometric Interpretation:} The subspace of the Codomain representing all directions that \textbf{cannot be reached} by the transformation $A$.
+\paragraph{Geometric Interpretation:} The subspace of the \textbf{Codomain} representing all directions that cannot be reached by the transformation $A$.
 
 \subsection{Rank}
 The \textbf{Rank} of a matrix $A$ is the dimension of the \textbf{Column Space} or \textbf{Row Space} of $A$.
 \paragraph{Codomain:}
-The \textbf{Column Space} is the \textbf{orthogonal complement} of the \textbf{Left Null Space}.
+The \textbf{Column Space} is the \textbf{Orthogonal Complement} of the \textbf{Left Null Space}.
 \[
     \text{Col}(A) = (\operatorname{coker}(A))^{\perp}
 \]
@@ -275,7 +275,7 @@ The \textbf{Column Space} is the \textbf{orthogonal complement} of the \textbf{L
     \operatorname{rank}(A) + \dim(\operatorname{coker}(A)) = m
 \]
 \paragraph{Domain:}
-The \textbf{Row Space} is the \textbf{orthogonal complement} of the \textbf{Null Space}.
+The \textbf{Row Space} is the \textbf{Orthogonal Complement} of the \textbf{Null Space}.
 \[
     \text{Row}(A) = (\ker(A))^{\perp}
 \]
@@ -343,7 +343,7 @@ All column vectors are unit vectors and orthogonal to each other.
 
 \subsection{Eigenvector \& Eigenvalue}
 
-An unit \textbf{Eigenvector} $\|\mathbf{v}\| = 1$ of a Symmetric Matrix $A \in \mathbb{R}^{n \times n}$ is scaled by its corresponding \textbf{Eigenvalue} $\lambda$ when the transformation $A$ is applied.
+An unit \textbf{Eigenvector} $\|\mathbf{v}\| = 1$ of a \textbf{Symmetric Matrix} $A \in \mathbb{R}^{n \times n}$ is scaled by its corresponding \textbf{Eigenvalue} $\lambda$ when the transformation $A$ is applied.
 \[
     A\mathbf{v} = \lambda \mathbf{v}
 \]
@@ -363,7 +363,7 @@ where:
 
 \subsection{Spectral Decomposition}
 
-Symmetric Matrix $A \in \mathbb{R}^{n \times n}$ can be decomposed as:
+\textbf{Symmetric Matrix} $A \in \mathbb{R}^{n \times n}$ can be decomposed as:
 \[
     A = Q \Lambda Q^{\mathrm{T}}
 \]
@@ -390,9 +390,9 @@ where:
     \item $P$ is a matrix whose columns are the \textbf{Eigenvectors} of $A$.
     \item $\Lambda$ is a diagonal matrix whose diagonal entries are the \textbf{Eigenvalues} of $A$.
 \end{itemize}
-Matrix $A$ is \textbf{similar} to diagonal matrix $\Lambda$.
+Matrix $A$ is \textbf{Similar} to diagonal matrix $\Lambda$.
 \newline
-Matrix $P$ \textbf{diagonalizes} matrix $A$.
+Matrix $P$ diagonalizes matrix $A$.
 \paragraph{Geometric Interpretation:}
 \begin{enumerate}
     \item $P^{-1}$: Change the basis of the vector space to the \textbf{Eigenvector} basis.
@@ -447,12 +447,12 @@ For a matrix $A \in \mathbb{R}^{m \times n}$ with $\operatorname{rank}(A) = r$:
 
 \paragraph{Geometric Interpretation:}
 \begin{itemize}
-    \item \textbf{Right Singular Vectors:} Orthonormal basis for the Domain subspaces:
+    \item \textbf{Right Singular Vectors:} Orthonormal basis for the \textbf{Domain} subspaces:
         \begin{itemize}
             \item First $r$ columns of $V$: orthonormal basis for $\text{Row}(A)$
             \item Last $n-r$ columns of $V$: orthonormal basis for $\ker(A)$
         \end{itemize}
-    \item \textbf{Left Singular Vectors:} Orthonormal basis for the Codomain subspaces:
+    \item \textbf{Left Singular Vectors:} Orthonormal basis for the \textbf{Codomain} subspaces:
         \begin{itemize}
             \item First $r$ columns of $U$: orthonormal basis for $\text{Col}(A)$
             \item Last $m-r$ columns of $U$: orthonormal basis for $\operatorname{coker}(A)$
@@ -475,7 +475,7 @@ For a matrix $A \in \mathbb{R}^{m \times n}$ with $\operatorname{rank}(A) = r$:
 
 \paragraph{Geometric Interpretation:}
 \begin{enumerate}
-    \item \textbf{$V^{\mathrm{T}}$:} Rotate or reflect the Domain $\mathbb{R}^n$ from the standard basis to the principal directions defined by \textbf{Right Singular Vectors}:
+    \item \textbf{$V^{\mathrm{T}}$:} Rotate or reflect the \textbf{Domain} $\mathbb{R}^n$ from the standard basis to the principal directions defined by \textbf{Right Singular Vectors}:
     \begin{itemize}
         \item The first $r$ standard basis vectors align with the orthonormal basis of $\text{Row}(A)$
         \item The last $n-r$ standard basis vectors align with the orthonormal basis of $\ker(A)$
@@ -488,7 +488,7 @@ For a matrix $A \in \mathbb{R}^{m \times n}$ with $\operatorname{rank}(A) = r$:
         \item Map the $\text{Row}(A)$ directions to the $\text{Col}(A)$ directions
     \end{itemize}
 
-    \item \textbf{$U$:} Rotate or reflect the Codomain $\mathbb{R}^m$ from the principal directions defined by \textbf{Left Singular Vectors} to the standard basis:
+    \item \textbf{$U$:} Rotate or reflect the \textbf{Codomain} $\mathbb{R}^m$ from the principal directions defined by \textbf{Left Singular Vectors} to the standard basis:
     \begin{itemize}
         \item The orthonormal basis of $\text{Col}(A)$ aligns with the first $r$ standard basis vectors
         \item The orthonormal basis of $\operatorname{coker}(A)$ aligns with the last $m-r$ standard basis vectors
@@ -503,7 +503,7 @@ For a matrix $A \in \mathbb{R}^{m \times n}$ with $\operatorname{rank}(A) = r$, 
 where:
 \begin{itemize}
     \item $U_r \in \mathbb{R}^{m \times r}$ consists of the first $r$ columns of $U$ (Orthonormal basis for $\text{Col}(A)$).
-    \item $\Sigma_r \in \mathbb{R}^{r \times r}$ is a \textbf{square} diagonal matrix containing the non-zero singular values $\sigma_1, \dots, \sigma_r$.
+    \item $\Sigma_r \in \mathbb{R}^{r \times r}$ is a square diagonal matrix containing the non-zero singular values $\sigma_1, \dots, \sigma_r$.
     \item $V_r \in \mathbb{R}^{n \times r}$ consists of the first $r$ columns of $V$ (Orthonormal basis for $\text{Row}(A)$).
 \end{itemize}
 
@@ -516,7 +516,7 @@ where:
 \]
 
 \subsection{Low-Rank Approximation}
-\textbf{Eckart-Young Theorem:}
+\paragraph{Eckart-Young Theorem:}
 \[
     \underset{\operatorname{rank}(\tilde{A})=k}{\operatorname{argmin}} \|A - \tilde{A}\|_F = \sum_{i=1}^{k} \sigma_i \mathbf{u}_i \mathbf{v}_i^{\mathrm{T}}
 \]
@@ -541,12 +541,12 @@ where $\Sigma^+ \in \mathbb{R}^{n \times m}$ is defined element-wise as:
 
     \item \textbf{Inverse:} If $A$ is square and invertible, then $A^+ = A^{-1}$.
 
-    \item \textbf{Left Inverse:} If $m \ge n$ and $\operatorname{rank}(A) = n$ (Full Column Rank):
+    \item \textbf{Left Inverse:} If $m \ge n$ and $\operatorname{rank}(A) = n$ (\textbf{Full Column Rank}):
     \[
         A^+ = (A^{\mathrm{T}} A)^{-1} A^{\mathrm{T}} \quad \Rightarrow \quad A^+ A = I_n
     \]
 
-    \item \textbf{Right Inverse:} If $m \le n$ and $\operatorname{rank}(A) = m$ (Full Row Rank):
+    \item \textbf{Right Inverse:} If $m \le n$ and $\operatorname{rank}(A) = m$ (\textbf{Full Row Rank}):
     \[
         A^+ = A^{\mathrm{T}} (A A^{\mathrm{T}})^{-1} \quad \Rightarrow \quad A A^+ = I_m
     \]
@@ -583,7 +583,7 @@ where the coefficient matrix $A \in \mathbb{R}^{m \times n}$, the vector of unkn
 \end{itemize}
 
 \subsection{Solutions}
-The general solution with the \textbf{minimum Euclidean norm} $\|\mathbf{x}\|$ is given by:
+The general solution with the minimum Euclidean norm $\|\mathbf{x}\|$ is given by:
 \[
     \mathbf{x} = A^+ \mathbf{b}
 \]
@@ -599,8 +599,8 @@ Solution to \textbf{Ordinary Least Squares} $\displaystyle \min_{\mathbf{x}} \|A
     A^{\mathrm{T}} A \mathbf{x} = A^{\mathrm{T}} \mathbf{b}
 \]
 \begin{itemize}
-    \item If $A^{\mathrm{T}} A$ is invertible ($A$ has full column rank), the unique solution is given by: $\mathbf{x} = (A^{\mathrm{T}} A)^{-1} A^{\mathrm{T}} \mathbf{b}$.
-    \item If $A^{\mathrm{T}} A$ is not invertible ($A$ does not have full column rank), the solution with the minimum Euclidean norm $\|\mathbf{x}\|$ in the solution set is given by: $\mathbf{x} = A^+ \mathbf{b}$.
+    \item If $A^{\mathrm{T}} A$ is invertible ($A$ has \textbf{Full Column Rank}), the unique solution is given by: $\mathbf{x} = (A^{\mathrm{T}} A)^{-1} A^{\mathrm{T}} \mathbf{b}$.
+    \item If $A^{\mathrm{T}} A$ is not invertible ($A$ does not have \textbf{Full Column Rank}), the solution with the minimum Euclidean norm $\|\mathbf{x}\|$ in the solution set is given by: $\mathbf{x} = A^+ \mathbf{b}$.
 \end{itemize}
 \paragraph{Derivation:} To minimize $\|A\mathbf{x} - \mathbf{b}\|^2$, the residual $A\mathbf{x} - \mathbf{b}$ is orthogonal to the column space of $A$, i.e., it belongs to the left null space $\operatorname{coker}(A)$: $A^{\mathrm{T}}(A\mathbf{x} - \mathbf{b}) = \mathbf{0}$.
 
@@ -610,7 +610,7 @@ Solution to \textbf{Ordinary Least Squares} $\displaystyle \min_{\mathbf{x}} \|A
 
 \subsection{Projection Matrix}
 
-The \textbf{Projection Matrix} $P$ projects a vector $\mathbf{b}$ onto the Column Space of a matrix $A \in \mathbb{R}^{m \times n}$ to produce the projected vector $\mathbf{p}$.
+The \textbf{Projection Matrix} $P$ projects a vector $\mathbf{b}$ onto the \textbf{Column Space} of a matrix $A \in \mathbb{R}^{m \times n}$ to produce the projected vector $\mathbf{p}$.
 \[
     \mathbf{p} = P\mathbf{b}
 \]
@@ -624,8 +624,7 @@ Derived by \textbf{Normal Equations}.
     \item \textbf{Idempotency:} $P^2 = P$.
     \item \textbf{Symmetry:} $P^{\mathrm{T}} = P$.
     \item \textbf{Trace equals Rank:} $\operatorname{tr}(P) = \operatorname{rank}(P)$.
-    \newline
-    \textbf{Derivation:} The eigenvalues of a Projection Matrix are 1 for its projection subspace and 0 for its null space: $\operatorname{tr}(P) = \sum_{i=1}^m \lambda_i = \sum_{\lambda_i=1} 1 = \operatorname{rank}(P)$.
+    \paragraph{Derivation:} The eigenvalues of a Projection Matrix are 1 for its projection subspace and 0 for its null space: $\operatorname{tr}(P) = \sum_{i=1}^m \lambda_i = \sum_{\lambda_i=1} 1 = \operatorname{rank}(P)$.
 \end{itemize}
 
 \subsubsection{Projection onto a Vector}
@@ -641,7 +640,7 @@ If the columns of matrix $Q \in \mathbb{R}^{m \times n}$ form an \textbf{Orthono
 \]
 
 \subsection{Parseval's Identity}
-For a vector $\mathbf{x} \in \mathbb{R}^n$ and an Orthonormal Basis $\{\mathbf{q}_i\}_{i=1}^n$:
+For a vector $\mathbf{x} \in \mathbb{R}^n$ and an \textbf{Orthonormal Basis} $\{\mathbf{q}_i\}_{i=1}^n$:
 \[
     \|\mathbf{x}\|^2 = \sum_{i=1}^n (\mathbf{x}^{\mathrm{T}} \mathbf{q}_i)^2
 \]
@@ -652,7 +651,7 @@ For a vector $\mathbf{x} \in \mathbb{R}^n$ and an Orthonormal Basis $\{\mathbf{q
 
 \subsection{Quadratic Form}
 
-For a vector $\mathbf{x} \in \mathbb{R}^n$, a Symmetric Matrix $A \in \mathbb{R}^{n \times n}$ determines a \textbf{Quadratic Form}:
+For a vector $\mathbf{x} \in \mathbb{R}^n$, a \textbf{Symmetric Matrix} $A \in \mathbb{R}^{n \times n}$ determines a \textbf{Quadratic Form}:
 \[
     q(\mathbf{x}) = \mathbf{x}^{\mathrm{T}} A \mathbf{x} = \sum_{i=1}^n \sum_{j=1}^n a_{ij} x_i x_j
 \]
@@ -678,12 +677,12 @@ Define $\mathbf{y} = Q^{\mathrm{T}} \mathbf{x}$:
     q(\mathbf{y}) = \mathbf{y}^{\mathrm{T}} \Lambda \mathbf{y} = \sum_{i=1}^n \lambda_i y_i^2
 \]
 \begin{itemize}
-    \item The \textbf{Eigenvectors} of $A$ (columns of $Q$) define the \textbf{principal axes} of the geometric shape.
-    \item The \textbf{Eigenvalues} $\lambda_i$ of $A$ \textbf{scales} the length of each semi-axis by $1/\sqrt{\lambda_i}$.
+    \item The \textbf{Eigenvectors} of $A$ (columns of $Q$) define the \textbf{Principal Axes} of the geometric shape.
+    \item The \textbf{Eigenvalues} $\lambda_i$ of $A$ scales the length of each semi-axis by $1/\sqrt{\lambda_i}$.
 \end{itemize}
 
 \subsection{Positive Definite}
-A Symmetric Matrix $A \in \mathbb{R}^{n \times n}$ is \textbf{positive definite}, denoted as $A \succ 0$, if for any nonzero vector $\mathbf{x} \in \mathbb{R}^n$,
+A \textbf{Symmetric Matrix} $A \in \mathbb{R}^{n \times n}$ is \textbf{Positive Definite}, denoted as $A \succ 0$, if for any nonzero vector $\mathbf{x} \in \mathbb{R}^n$,
 \[
     \mathbf{x}^{\mathrm{T}} A \mathbf{x} > 0
 \]
@@ -694,7 +693,7 @@ A Symmetric Matrix $A \in \mathbb{R}^{n \times n}$ is \textbf{positive definite}
 \end{itemize}
 
 \subsection{Positive Semi-Definite}
-A Symmetric Matrix $A \in \mathbb{R}^{n \times n}$ is \textbf{positive semi-definite}, denoted as $A \succeq 0$, if for any vector $\mathbf{x} \in \mathbb{R}^n$,
+A \textbf{Symmetric Matrix} $A \in \mathbb{R}^{n \times n}$ is \textbf{Positive Semi-Definite}, denoted as $A \succeq 0$, if for any vector $\mathbf{x} \in \mathbb{R}^n$,
 \[
     \mathbf{x}^{\mathrm{T}} A \mathbf{x} \geq 0
 \]
@@ -713,7 +712,7 @@ A Symmetric Matrix $A \in \mathbb{R}^{n \times n}$ is \textbf{positive semi-defi
 \textbf{Gaussian Elimination} is an algorithm for solving systems of linear equations, finding the rank, and calculating the inverse of a matrix. The process consists of two main steps:
 
 \begin{enumerate}
-    \item \textbf{Forward Elimination:} Transform the matrix into an upper triangular form using \textbf{elementary row operations}:
+    \item \textbf{Forward Elimination:} Transform the matrix into an upper triangular form using \textbf{Elementary Row Operations}:
     \begin{itemize}
         \item Swap two rows.
         \item Multiply a row by a nonzero scalar.
