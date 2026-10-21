@@ -139,7 +139,6 @@ where $\mathbb{P}(H \mid E)$ is \textbf{Posterior}, $\mathbb{P}(H)$ is \textbf{P
     \item $ \mathbb{E}[c] = c $
     \item $ \mathbb{E}[aX+bY] = a\mathbb{E}[X] + b\mathbb{E}[Y] $
     \item $ \mathbb{E}[XY] = \mathbb{E}[X]\mathbb{E}[Y] + \operatorname{cov}(X,Y) $
-    \item \textbf{Bias-Variance Decomposition}: $ \mathbb{E}[(X-a)^2] = (\mathbb{E}[X]-a)^2 + \operatorname{Var}(X) $
     \item $ X, Y $ i.i.d. with $ \sigma^2 $: $ \mathbb{E}[(X-Y)^2] = 2\sigma^2 $
 \end{itemize}
 
@@ -169,6 +168,15 @@ For any convex function $f: X \to \mathbb{R}$:
     \item $ \operatorname{Var}(cX) = c^2 \operatorname{Var}(X) $
     \item $ \operatorname{Var}(X+c) = \operatorname{Var}(X) $
     \item $ \operatorname{Var}(X \pm Y) = \operatorname{Var}(X) + \operatorname{Var}(Y) \pm 2\operatorname{cov}(X,Y) $
+\end{itemize}
+
+\subsubsection{Bias-Variance Decomposition}
+\[
+    \mathbb{E}[(X-a)^2] = (\mathbb{E}[X]-a)^2 + \operatorname{Var}(X)
+\]
+\paragraph{Properties:}
+\begin{itemize}
+    \item $ \displaystyle a^* = \arg\min_{a} \mathbb{E}[(X-a)^2] \Leftrightarrow a^* = \mathbb{E}[X] $
 \end{itemize}
 
 \subsubsection{Law of Total Variance}
