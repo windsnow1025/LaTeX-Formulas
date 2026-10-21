@@ -123,6 +123,39 @@ where $X \sim \chi^2(m)$, $Y \sim \chi^2(n)$, and:
 \newpage
 \section{Estimation}
 
+\subsection{Least Squares}
+\paragraph{Sample:}
+\[
+    \mathbf{x} \in \mathbb{R}^D, \quad y \in \mathbb{R}, \quad \mathcal{S} = \left( (\mathbf{x}^{(i)}, y^{(i)}) \right)_{i=1}^N
+\]
+\paragraph{Optimal Predictor:}
+\[
+    f: \mathbb{R}^D \to \mathbb{R}
+\]
+\[
+    f^* = \arg\min_{f} \mathbb{E}[(Y-f(\mathbf{X}))^2] \Leftrightarrow f^*(\mathbf{x}) = \mathbb{E}[Y \mid \mathbf{X}=\mathbf{x}]
+\]
+\paragraph{Least Squares Estimator:}
+\[
+    \hat{\theta} = \arg\min_{\theta} \hat{\mathbb{E}}[(Y-\hat{y}(\mathbf{X}; \theta))^2] = \arg\min_{\theta} \frac{1}{N} \sum_{i=1}^N \left(y^{(i)} - \hat{y}(\mathbf{x}^{(i)}; \theta)\right)^2
+\]
+
+\subsubsection{On Linear Model}
+\paragraph{Basis Functions:}
+\[
+    \boldsymbol{\phi}: \mathbb{R}^D \to \mathbb{R}^M, \quad \boldsymbol{\theta} \in \mathbb{R}^M, \quad \hat{y}(\mathbf{x}; \boldsymbol{\theta}) = \boldsymbol{\theta}^{\mathrm{T}} \boldsymbol{\phi}(\mathbf{x})
+\]
+\[
+    \Phi = \begin{bmatrix} \boldsymbol{\phi}(\mathbf{x}^{(1)})^{\mathrm{T}} \\ \vdots \\ \boldsymbol{\phi}(\mathbf{x}^{(N)})^{\mathrm{T}} \end{bmatrix} \in \mathbb{R}^{N \times M}, \quad \mathbf{y} = \begin{bmatrix} y^{(1)} \\ \vdots \\ y^{(N)} \end{bmatrix} \in \mathbb{R}^N
+\]
+\[
+    \hat{\boldsymbol{\theta}} = \arg\min_{\boldsymbol{\theta}} \|\Phi \boldsymbol{\theta} - \mathbf{y}\|^2
+\]
+\paragraph{Normal Equations:}
+\[
+    \Phi^{\mathrm{T}} \Phi \hat{\boldsymbol{\theta}} = \Phi^{\mathrm{T}} \mathbf{y}
+\]
+
 \subsection{Maximum Likelihood Estimation (MLE)}
 \paragraph{Likelihood Function:}
 \[
