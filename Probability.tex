@@ -600,4 +600,67 @@ The \textbf{KL Divergence} (or relative entropy) of $P$ from $Q$ measures the av
     D_{KL}(P||Q) = \mathbb{E}_p\left[\log_2 \frac{p(X)}{q(X)}\right] = \sum_{x \in \mathcal{X}} p(x) \log_2 \frac{p(x)}{q(x)}
 \]
 
+\newpage
+\section{Stochastic Process}
+
+\subsection{Geometric Brownian Motion}
+
+\paragraph{Value at time $t$:}
+\[
+    S(t)
+\]
+\paragraph{Value Ratio:}
+\[
+    \frac{S(t+\Delta t)}{S(t)}
+\]
+\[
+    \frac{S(n\Delta t)}{S(0)} = \frac{S(\Delta t)}{S(0)} \cdots \frac{S(n\Delta t)}{S((n-1)\Delta t)}
+\]
+\[
+    \ln \frac{S(n\Delta t)}{S(0)} = \ln \frac{S(\Delta t)}{S(0)} + \cdots + \ln \frac{S(n\Delta t)}{S((n-1)\Delta t)}
+\]
+\paragraph{Log Value Ratio:}
+\[
+    X = \ln \frac{S(t+\Delta t)}{S(t)}
+\]
+\[
+    S(t+\Delta t) = S(t) e^X
+\]
+By time division and \textbf{Central Limit Theorem},
+\[
+    X = \mu \Delta t + \sigma \sqrt{\Delta t} Z
+\]
+Let $s = \sigma \sqrt{\Delta t}$.
+\[
+    \mathbb{E}[e^X] = \mathbb{E}[e^{\mu \Delta t} \cdot e^{sZ}] = e^{\mu \Delta t} \cdot \mathbb{E}[e^{sZ}]
+\]
+\[
+    \mathbb{E}[e^{sZ}] = \int_{-\infty}^{+\infty} e^{sz} \cdot \frac{1}{\sqrt{2\pi}} \exp\left( -\frac{z^2}{2} \right) dz = \int_{-\infty}^{+\infty} \frac{1}{\sqrt{2\pi}} \exp\left( sz - \frac{z^2}{2} \right) dz
+\]
+\[
+    sz - \frac{z^2}{2} = -\frac{1}{2}(z^2 - 2sz) = -\frac{1}{2}((z-s)^2 - s^2) = -\frac{(z-s)^2}{2} + \frac{s^2}{2}
+\]
+\[
+    \mathbb{E}[e^{sZ}] = \exp\left( \frac{s^2}{2} \right) \int_{-\infty}^{+\infty} \frac{1}{\sqrt{2\pi}} \exp\left( -\frac{(z-s)^2}{2} \right) dz = \exp\left( \frac{s^2}{2} \right) = \exp\left( \frac{\sigma^2 \Delta t}{2} \right)
+\]
+\[
+    \mathbb{E}[e^X] = \exp\left( \mu \Delta t + \frac{1}{2} \sigma^2 \Delta t \right)
+\]
+\[
+    \mathbb{E}[S(t+\Delta t)] = \mathbb{E}[S(t) e^X] = S(t) \mathbb{E}[e^X] = S(t) \exp\left( \mu \Delta t + \frac{1}{2} \sigma^2 \Delta t \right)
+\]
+\paragraph{Expected Growth Ratio:}
+\[
+    \mathbb{E}[S(t+\Delta t)] = S(t) e^{r \Delta t}
+\]
+\[
+    r \Delta t = \mu \Delta t + \frac{1}{2} \sigma^2 \Delta t
+\]
+\[
+    \mu = r - \frac{1}{2} \sigma^2
+\]
+\[
+    S(t+\Delta t) = S(t) \exp\left( \left( r - \frac{1}{2} \sigma^2 \right) \Delta t + \sigma \sqrt{\Delta t} Z \right)
+\]
+
 \end{document}
