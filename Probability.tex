@@ -139,7 +139,7 @@ where $\mathbb{P}(H \mid E)$ is \textbf{Posterior}, $\mathbb{P}(H)$ is \textbf{P
     \item $ \mathbb{E}[c] = c $
     \item $ \mathbb{E}[aX+bY] = a\mathbb{E}[X] + b\mathbb{E}[Y] $
     \item $ \mathbb{E}[XY] = \mathbb{E}[X]\mathbb{E}[Y] + \operatorname{cov}(X,Y) $
-    \item Bias-Variance Decomposition: $ \mathbb{E}[(X-a)^2] = (\mathbb{E}[X]-a)^2 + \operatorname{Var}(X) $
+    \item \textbf{Bias-Variance Decomposition}: $ \mathbb{E}[(X-a)^2] = (\mathbb{E}[X]-a)^2 + \operatorname{Var}(X) $
     \item $ X, Y $ i.i.d. with $ \sigma^2 $: $ \mathbb{E}[(X-Y)^2] = 2\sigma^2 $
 \end{itemize}
 
@@ -263,21 +263,21 @@ For any $ \varepsilon > 0 $:
 \]
 
 \subsubsection{Moment Generating Function}
-The Moment Generating Function is the Laplace Transform of the Probability Density Function:
+The \textbf{Moment Generating Function} is the \textbf{Laplace Transform} of the \textbf{Probability Density Function}:
 \[
     M_X(t) = \mathbb{E}[e^{tX}] = \sum_{n=0}^{\infty} \frac{\mu_n' t^n}{n!}
 \]
-Relationship with moments:
+\textbf{Relationship with moments:}
 \[
     \mu_n' = \left.\frac{d^n}{dt^n} M_X(t)\right|_{t=0}
 \]
 
 \subsubsection{Characteristic Function}
-The Characteristic Function is the Fourier Transform of the Probability Density Function:
+The \textbf{Characteristic Function} is the \textbf{Fourier Transform} of the \textbf{Probability Density Function}:
 \[
     \varphi_X(t) = \mathbb{E}[e^{itX}] = \sum_{n=0}^{\infty} \frac{\mu_n' (it)^n}{n!}
 \]
-Relationship with moments:
+\textbf{Relationship with moments:}
 \[
     \mu_n' = \frac{1}{i^n} \left.\frac{d^n}{dt^n} \varphi_X(t)\right|_{t=0}
 \]
@@ -286,13 +286,13 @@ Relationship with moments:
 \section{One-dimensional Random Variables}
 
 \subsection{Probability Mass Function}
-For a discrete random variable, the Probability Mass Function $ p(x) $ is defined as:
+For a discrete random variable, the \textbf{Probability Mass Function} $ p(x) $ is defined as:
 \[
     \mathbb{P}(X=x) = p(x)
 \]
 
 \subsection{Probability Density Function}
-For a continuous random variable, the Probability Density Function $ f(x) $ is defined as:
+For a continuous random variable, the \textbf{Probability Density Function} $ f(x) $ is defined as:
 \[
     \mathbb{P}(a \le x \le b) = \int_{a}^{b} f_X(x)dx
 \]
@@ -423,7 +423,7 @@ The waiting time for the next event in a Poisson process with an average rate $ 
 \[
     \sigma^2 = \frac{1}{\lambda^2}
 \]
-Derivation from Poisson:
+\textbf{Derivation from Poisson:}
 \[
     \mathbb{P}(X>x) = f_{\text{Poisson}(\lambda x)}(0)
 \]
@@ -440,7 +440,7 @@ The waiting time for the $ r^{th} $ event in a Poisson process with an average r
 \[
     \sigma^2 = \frac{r}{\lambda^2}
 \]
-Derivation from Poisson:
+\textbf{Derivation from Poisson:}
 \[
     \mathbb{P}(X > x) = \sum_{k=0}^{r-1} f_{\text{Poisson}(\lambda x)}(k)
 \]
@@ -468,7 +468,7 @@ Derivation from Poisson:
 \section{Two-dimensional Continuous Random Variable}
 
 \subsection{Probability Density Function}
-For two continuous random variables, the Probability Density Function $ f(x,y) $ is defined as:
+For two continuous random variables, the \textbf{Probability Density Function} $ f(x,y) $ is defined as:
 \[
     \mathbb{P}((X,Y) \in A) = \iint_{A} f(x,y) dx dy
 \]

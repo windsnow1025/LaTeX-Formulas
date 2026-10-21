@@ -198,7 +198,7 @@ Curvature of a function.
 \[
     \frac{\partial^2 f}{\partial \mathbf{x} \partial \mathbf{x}^{\mathrm{T}}} = \mathbf{H}_\mathbf{x}^{\mathrm{T}}(f)
 \]
-The Jacobian matrix of the Gradient of $f$.
+The \textbf{Jacobian Matrix} of the \textbf{Gradient} of $f$.
 \[
     \mathbf{H}^{\mathrm{T}}(f) = \mathbf{J}(\nabla f)
 \]
@@ -594,7 +594,7 @@ The dual function is always \textbf{concave} (pointwise infimum of affine functi
     d^* = \sup_{\boldsymbol{\lambda} \ge \mathbf{0}} g(\boldsymbol{\lambda}) = \sup_{\boldsymbol{\lambda} \ge \mathbf{0}} \inf_{\mathbf{x}} \mathcal{L}(\mathbf{x}, \boldsymbol{\lambda})
 \]
 
-\paragraph{Weak Duality:} By the max-min inequality, for any optimization problem:
+\paragraph{Weak Duality:} By the \textbf{Max-Min Inequality}, for any optimization problem:
 \[
     d^* \le p^*
 \]
@@ -608,7 +608,7 @@ The dual function is always \textbf{concave} (pointwise infimum of affine functi
 \end{itemize}
 
 \subsubsection{KKT Conditions}
-For \textbf{convex} problems, the KKT conditions are \textbf{sufficient} for optimality. If \textbf{Slater's condition} is also satisfied, they are \textbf{sufficient and necessary}.
+For \textbf{convex} problems, the \textbf{KKT Conditions} are \textbf{sufficient} for optimality. If \textbf{Slater's condition} is also satisfied, they are \textbf{sufficient and necessary}.
 \begin{itemize}
     \item \textbf{Stationarity}: $\nabla f_0(\mathbf{x}^*) + \nabla \langle \boldsymbol{\lambda}^*, \mathbf{f}(\mathbf{x}^*) \rangle = \mathbf{0}$
     \item \textbf{Primal Feasibility}: $\mathbf{f}(\mathbf{x}^*) \le \mathbf{0}$
@@ -617,7 +617,7 @@ For \textbf{convex} problems, the KKT conditions are \textbf{sufficient} for opt
 \end{itemize}
 
 \paragraph{Proof of Sufficiency:}
-Let $(\mathbf{x}^*, \boldsymbol{\lambda}^*)$ satisfy the KKT conditions. For any feasible $\mathbf{x}$:
+Let $(\mathbf{x}^*, \boldsymbol{\lambda}^*)$ satisfy the \textbf{KKT Conditions}. For any feasible $\mathbf{x}$:
 \begin{align*}
     f_0(\mathbf{x})
     &\ge f_0(\mathbf{x}) + \langle \boldsymbol{\lambda}^*, \mathbf{f}(\mathbf{x}) \rangle
@@ -1068,7 +1068,7 @@ Set $z = y^{1-n}$:
     y'' + py' + qy = 0
 \]
 
-Characteristic Equation: $r^2 + pr + q = 0$
+\textbf{Characteristic Equation:} $r^2 + pr + q = 0$
 
 \begin{itemize}
     \item $r_1 \neq r_2$: $y = C_1 e^{r_1 x} + C_2 e^{r_2 x}$

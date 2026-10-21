@@ -64,7 +64,7 @@ An \textbf{Affine Mapping} is not a linear transformation.
 \section{Matrix Operation}
 
 \subsection{Inner Product}
-The \textbf{Inner Product} (Dot Product) of two vectors $\mathbf{a}, \mathbf{b} \in \mathbb{R}^n$ is defined as:
+The \textbf{Inner Product} (\textbf{Dot Product}) of two vectors $\mathbf{a}, \mathbf{b} \in \mathbb{R}^n$ is defined as:
 \[
     \langle \mathbf{a}, \mathbf{b} \rangle = \mathbf{a}^{\mathrm{T}} \mathbf{b} = \sum_{i=1}^n a_i b_i
 \]
@@ -265,9 +265,9 @@ The \textbf{Left Null Space} (or \textbf{Cokernel}) of a matrix $A \in \mathbb{R
 \paragraph{Geometric Interpretation:} The subspace of the Codomain representing all directions that \textbf{cannot be reached} by the transformation $A$.
 
 \subsection{Rank}
-The \textbf{Rank} of a matrix $A$ is the dimension of the Column Space or Row Space of $A$.
+The \textbf{Rank} of a matrix $A$ is the dimension of the \textbf{Column Space} or \textbf{Row Space} of $A$.
 \paragraph{Codomain:}
-The Column Space is the \textbf{orthogonal complement} of the Left Null Space.
+The \textbf{Column Space} is the \textbf{orthogonal complement} of the \textbf{Left Null Space}.
 \[
     \text{Col}(A) = (\operatorname{coker}(A))^{\perp}
 \]
@@ -275,7 +275,7 @@ The Column Space is the \textbf{orthogonal complement} of the Left Null Space.
     \operatorname{rank}(A) + \dim(\operatorname{coker}(A)) = m
 \]
 \paragraph{Domain:}
-The Row Space is the \textbf{orthogonal complement} of the Null Space.
+The \textbf{Row Space} is the \textbf{orthogonal complement} of the \textbf{Null Space}.
 \[
     \text{Row}(A) = (\ker(A))^{\perp}
 \]
@@ -335,7 +335,7 @@ All column vectors are unit vectors and orthogonal to each other.
     A = A^{\mathrm{T}}
 \]
 \paragraph{Geometric Interpretation:} Scaling Transformation along orthogonal basis
-\paragraph{Properties:} Eigenvectors corresponding to distinct eigenvalues are orthogonal.
+\paragraph{Properties:} \textbf{Eigenvectors} corresponding to distinct eigenvalues are orthogonal.
 
 
 \newpage
@@ -353,8 +353,8 @@ An unit \textbf{Eigenvector} $\|\mathbf{v}\| = 1$ of a Symmetric Matrix $A \in \
 \]
 where:
 \begin{itemize}
-    \item $V$ is a matrix whose columns are the Eigenvectors of $A$.
-    \item $\Lambda$ is a diagonal matrix whose diagonal entries are the Eigenvalues of $A$.
+    \item $V$ is a matrix whose columns are the \textbf{Eigenvectors} of $A$.
+    \item $\Lambda$ is a diagonal matrix whose diagonal entries are the \textbf{Eigenvalues} of $A$.
 \end{itemize}
 \paragraph{Calculation:}
 \[
@@ -369,13 +369,13 @@ Symmetric Matrix $A \in \mathbb{R}^{n \times n}$ can be decomposed as:
 \]
 where:
 \begin{itemize}
-    \item $Q$ is an orthogonal matrix whose columns are a set of orthonormal Eigenvectors of $A$.
-    \item $\Lambda$ is a diagonal matrix whose diagonal entries are the Eigenvalues of $A$.
+    \item $Q$ is an orthogonal matrix whose columns are a set of orthonormal \textbf{Eigenvectors} of $A$.
+    \item $\Lambda$ is a diagonal matrix whose diagonal entries are the \textbf{Eigenvalues} of $A$.
 \end{itemize}
 \paragraph{Geometric Interpretation:}
 \begin{enumerate}
-    \item $Q^{\mathrm{T}}$: Rotate or reflect the basis of the vector space to the Eigenvector basis.
-    \item $\Lambda$: Apply a scaling transformation along the new axes by the Eigenvalues.
+    \item $Q^{\mathrm{T}}$: Rotate or reflect the basis of the vector space to the \textbf{Eigenvector} basis.
+    \item $\Lambda$: Apply a scaling transformation along the new axes by the \textbf{Eigenvalues}.
     \item $Q$: Rotate or reflect the basis of the vector space back to the standard basis.
 \end{enumerate}
 
@@ -387,16 +387,16 @@ Square matrix $A \in \mathbb{R}^{n \times n}$ with $n$ linearly independent eige
 \]
 where:
 \begin{itemize}
-    \item $P$ is a matrix whose columns are the Eigenvectors of $A$.
-    \item $\Lambda$ is a diagonal matrix whose diagonal entries are the Eigenvalues of $A$.
+    \item $P$ is a matrix whose columns are the \textbf{Eigenvectors} of $A$.
+    \item $\Lambda$ is a diagonal matrix whose diagonal entries are the \textbf{Eigenvalues} of $A$.
 \end{itemize}
 Matrix $A$ is \textbf{similar} to diagonal matrix $\Lambda$.
 \newline
 Matrix $P$ \textbf{diagonalizes} matrix $A$.
 \paragraph{Geometric Interpretation:}
 \begin{enumerate}
-    \item $P^{-1}$: Change the basis of the vector space to the Eigenvector basis.
-    \item $\Lambda$: Apply a scaling transformation along the new axes by the Eigenvalues.
+    \item $P^{-1}$: Change the basis of the vector space to the \textbf{Eigenvector} basis.
+    \item $\Lambda$: Apply a scaling transformation along the new axes by the \textbf{Eigenvalues}.
     \item $P$: Change the basis of the vector space back to the standard basis.
 \end{enumerate}
 
@@ -475,20 +475,20 @@ For a matrix $A \in \mathbb{R}^{m \times n}$ with $\operatorname{rank}(A) = r$:
 
 \paragraph{Geometric Interpretation:}
 \begin{enumerate}
-    \item \textbf{$V^{\mathrm{T}}$:} Rotate or reflect the Domain $\mathbb{R}^n$ from the standard basis to the principal directions defined by Right Singular Vectors:
+    \item \textbf{$V^{\mathrm{T}}$:} Rotate or reflect the Domain $\mathbb{R}^n$ from the standard basis to the principal directions defined by \textbf{Right Singular Vectors}:
     \begin{itemize}
         \item The first $r$ standard basis vectors align with the orthonormal basis of $\text{Row}(A)$
         \item The last $n-r$ standard basis vectors align with the orthonormal basis of $\ker(A)$
     \end{itemize}
 
-    \item \textbf{$\Sigma$:} Scale along each principal axis defined by the Singular Vectors:
+    \item \textbf{$\Sigma$:} Scale along each principal axis defined by the \textbf{Singular Vectors}:
     \begin{itemize}
         \item Scale the first $r$ axes (corresponding to $\text{Row}(A)$) by singular values $\sigma_1, \ldots, \sigma_r$
         \item Scale the last $n-r$ axes (corresponding to $\ker(A)$) by zero
         \item Map the $\text{Row}(A)$ directions to the $\text{Col}(A)$ directions
     \end{itemize}
 
-    \item \textbf{$U$:} Rotate or reflect the Codomain $\mathbb{R}^m$ from the principal directions defined by Left Singular Vectors to the standard basis:
+    \item \textbf{$U$:} Rotate or reflect the Codomain $\mathbb{R}^m$ from the principal directions defined by \textbf{Left Singular Vectors} to the standard basis:
     \begin{itemize}
         \item The orthonormal basis of $\text{Col}(A)$ aligns with the first $r$ standard basis vectors
         \item The orthonormal basis of $\operatorname{coker}(A)$ aligns with the last $m-r$ standard basis vectors
@@ -516,7 +516,7 @@ where:
 \]
 
 \subsection{Low-Rank Approximation}
-Eckart-Young Theorem:
+\textbf{Eckart-Young Theorem:}
 \[
     \underset{\operatorname{rank}(\tilde{A})=k}{\operatorname{argmin}} \|A - \tilde{A}\|_F = \sum_{i=1}^{k} \sigma_i \mathbf{u}_i \mathbf{v}_i^{\mathrm{T}}
 \]
@@ -590,11 +590,11 @@ The general solution with the \textbf{minimum Euclidean norm} $\|\mathbf{x}\|$ i
 \begin{itemize}
     \item If square matrix $A$ is invertible: unique solution is given by: $\mathbf{x} = A^{-1} \mathbf{b}$.
     \item If $\ker(A) \neq \{\mathbf{0}\}$ and $\mathbf{b} \in \text{Col}(A)$: there are infinite solutions. The solution with the minimum Euclidean norm $\|\mathbf{x}\|$ is given by $\mathbf{x} = A^+ \mathbf{b}$.
-    \item If $\mathbf{b} \notin \text{Col}(A)$: no exact solution exists. One approximate solution is found by minimizing Ordinary Least Squares.
+    \item If $\mathbf{b} \notin \text{Col}(A)$: no exact solution exists. One approximate solution is found by minimizing \textbf{Ordinary Least Squares}.
 \end{itemize}
 
 \subsection{Normal Equations}
-Solution to Ordinary Least Squares $\displaystyle \min_{\mathbf{x}} \|A\mathbf{x} - \mathbf{b}\|^2$:
+Solution to \textbf{Ordinary Least Squares} $\displaystyle \min_{\mathbf{x}} \|A\mathbf{x} - \mathbf{b}\|^2$:
 \[
     A^{\mathrm{T}} A \mathbf{x} = A^{\mathrm{T}} \mathbf{b}
 \]
@@ -614,18 +614,18 @@ The \textbf{Projection Matrix} $P$ projects a vector $\mathbf{b}$ onto the Colum
 \[
     \mathbf{p} = P\mathbf{b}
 \]
-If the columns of $A$ are Linearly Independent, then $A^{\mathrm{T}}A$ is invertible, and the Projection Matrix is given by:
+If the columns of $A$ are \textbf{Linearly Independent}, then $A^{\mathrm{T}}A$ is invertible, and the \textbf{Projection Matrix} is given by:
 \[
     P = A(A^{\mathrm{T}}A)^{-1}A^{\mathrm{T}}
 \]
-Derived by Normal Equations.
+Derived by \textbf{Normal Equations}.
 \paragraph{Properties:}
 \begin{itemize}
     \item \textbf{Idempotency:} $P^2 = P$.
     \item \textbf{Symmetry:} $P^{\mathrm{T}} = P$.
     \item \textbf{Trace equals Rank:} $\operatorname{tr}(P) = \operatorname{rank}(P)$.
     \newline
-    Derivation: The eigenvalues of a Projection Matrix are 1 for its projection subspace and 0 for its null space: $\operatorname{tr}(P) = \sum_{i=1}^m \lambda_i = \sum_{\lambda_i=1} 1 = \operatorname{rank}(P)$.
+    \textbf{Derivation:} The eigenvalues of a Projection Matrix are 1 for its projection subspace and 0 for its null space: $\operatorname{tr}(P) = \sum_{i=1}^m \lambda_i = \sum_{\lambda_i=1} 1 = \operatorname{rank}(P)$.
 \end{itemize}
 
 \subsubsection{Projection onto a Vector}
@@ -635,7 +635,7 @@ Project onto a line spanned by a non-zero vector $\mathbf{a} \in \mathbb{R}^m$:
 \]
 
 \subsubsection{Projection onto an Orthonormal Basis}
-If the columns of matrix $Q \in \mathbb{R}^{m \times n}$ form an Orthonormal Basis for the subspace:
+If the columns of matrix $Q \in \mathbb{R}^{m \times n}$ form an \textbf{Orthonormal Basis} for the subspace:
 \[
     P = Q(Q^{\mathrm{T}}Q)^{-1}Q^{\mathrm{T}} = QIQ^{\mathrm{T}} = QQ^{\mathrm{T}}
 \]
@@ -660,7 +660,7 @@ For a vector $\mathbf{x} \in \mathbb{R}^n$, a Symmetric Matrix $A \in \mathbb{R}
 \newline
 For a vector $\mathbf{x} \in \mathbb{R}^n$ and any square matrix $A \in \mathbb{R}^{n \times n}$, a \textbf{Quadratic Form} is defined as $q(\mathbf{x}) = \mathbf{x}^{\mathrm{T}} A \mathbf{x}$.
 \newline
-Since $\mathbf{x}^{\mathrm{T}} A \mathbf{x}$ is a scalar, $\mathbf{x}^{\mathrm{T}} A \mathbf{x} = (\mathbf{x}^{\mathrm{T}} A \mathbf{x})^{\mathrm{T}} = \mathbf{x}^{\mathrm{T}} A^{\mathrm{T}} \mathbf{x}$, so can write the Quadratic Form as:
+Since $\mathbf{x}^{\mathrm{T}} A \mathbf{x}$ is a scalar, $\mathbf{x}^{\mathrm{T}} A \mathbf{x} = (\mathbf{x}^{\mathrm{T}} A \mathbf{x})^{\mathrm{T}} = \mathbf{x}^{\mathrm{T}} A^{\mathrm{T}} \mathbf{x}$, so can write the \textbf{Quadratic Form} as:
 \[
     \mathbf{x}^{\mathrm{T}} A \mathbf{x} = \frac{1}{2} (\mathbf{x}^{\mathrm{T}} A \mathbf{x} + \mathbf{x}^{\mathrm{T}} A^{\mathrm{T}} \mathbf{x}) = \mathbf{x}^{\mathrm{T}} \left( \frac{A + A^{\mathrm{T}}}{2} \right) \mathbf{x}
 \]
@@ -669,7 +669,7 @@ where $\frac{A + A^{\mathrm{T}}}{2}$ is always symmetric.
 Thus, without loss of generality, the matrix defining a quadratic form is assumed to be symmetric.
 
 \subsubsection{Principal Axis Theorem}
-Apply Spectral Decomposition to $A$:
+Apply \textbf{Spectral Decomposition} to $A$:
 \[
     q(\mathbf{x}) = \mathbf{x}^{\mathrm{T}} (Q \Lambda Q^{\mathrm{T}}) \mathbf{x} = (\mathbf{x}^{\mathrm{T}} Q) \Lambda (Q^{\mathrm{T}} \mathbf{x})
 \]
@@ -689,7 +689,7 @@ A Symmetric Matrix $A \in \mathbb{R}^{n \times n}$ is \textbf{positive definite}
 \]
 \paragraph{Properties:}
 \begin{itemize}
-    \item All Eigenvalues of $A$ are positive.
+    \item All \textbf{Eigenvalues} of $A$ are positive.
     \item $A$ is invertible, and $A^{-1}$ is also positive definite.
 \end{itemize}
 
@@ -700,7 +700,7 @@ A Symmetric Matrix $A \in \mathbb{R}^{n \times n}$ is \textbf{positive semi-defi
 \]
 \paragraph{Properties:}
 \begin{itemize}
-    \item All Eigenvalues of $A$ are non-negative.
+    \item All \textbf{Eigenvalues} of $A$ are non-negative.
 \end{itemize}
 
 
@@ -710,7 +710,7 @@ A Symmetric Matrix $A \in \mathbb{R}^{n \times n}$ is \textbf{positive semi-defi
 \subsection{Gaussian Elimination}
 \label{subsec:gauss}
 
-Gaussian elimination is an algorithm for solving systems of linear equations, finding the rank, and calculating the inverse of a matrix. The process consists of two main steps:
+\textbf{Gaussian Elimination} is an algorithm for solving systems of linear equations, finding the rank, and calculating the inverse of a matrix. The process consists of two main steps:
 
 \begin{enumerate}
     \item \textbf{Forward Elimination:} Transform the matrix into an upper triangular form using \textbf{elementary row operations}:
@@ -724,7 +724,7 @@ Gaussian elimination is an algorithm for solving systems of linear equations, fi
 
 \subsection{Cofactor Expansion}
 \label{subsec:cofactor}
-The determinant of a matrix can be calculated using Cofactor Expansion (or Laplace Expansion) along any row or column. For matrix $A \in \mathbb{R}^{n \times n}$, the expansion along the $i$-th row is:
+The determinant of a matrix can be calculated using \textbf{Cofactor Expansion} (or \textbf{Laplace Expansion}) along any row or column. For matrix $A \in \mathbb{R}^{n \times n}$, the expansion along the $i$-th row is:
 \[
     \det(A) = \sum_{j=1}^{n} (-1)^{i+j} a_{ij} M_{ij}
 \]

@@ -124,21 +124,21 @@ where $X \sim \chi^2(m)$, $Y \sim \chi^2(n)$, and:
 \section{Estimation}
 
 \subsection{Maximum Likelihood Estimation (MLE)}
-Likelihood Function:
+\textbf{Likelihood Function:}
 \[
     L_i(\theta) = \mathbb{P}(x \mid \theta)
 \]
 \[
     L(\theta \mid X) = \prod_{i=1}^{n} \mathbb{P}(x_i \mid \theta)
 \]
-Log Likelihood:
+\textbf{Log Likelihood:}
 \[
     \ell(\theta) = \log L(\theta) = \log \mathbb{P}(x \mid \theta)
 \]
 \[
     \ell(\theta \mid X) = \log L(\theta \mid X) = \sum_{i=1}^{n} \log \mathbb{P}(x_i \mid \theta)
 \]
-Maximum Log Likelihood:
+\textbf{Maximum Log Likelihood:}
 \[
     \hat{\theta} = \arg\max_\theta \ell(\theta \mid X)
 \]
@@ -147,15 +147,15 @@ Maximum Log Likelihood:
 \[
     y \sim \text{Bernoulli}(\hat{y}(\mathbf{x}))
 \]
-Likelihood Function:
+\textbf{Likelihood Function:}
 \[
     L(\theta) = \hat{y}^y (1-\hat{y})^{1-y}
 \]
-Log Likelihood:
+\textbf{Log Likelihood:}
 \[
     \ell(\theta) = y \log \hat{y} + (1-y) \log (1-\hat{y})
 \]
-Maximum Log Likelihood:
+\textbf{Maximum Log Likelihood:}
 \[
     \hat{\theta} = \arg\max_{\theta} \left( y \log \hat{y} + (1-y) \log (1-\hat{y}) \right)
 \]
@@ -164,15 +164,15 @@ Maximum Log Likelihood:
 \[
     \mathbf{y} \sim \text{Categorical}(\hat{\mathbf{y}}(\mathbf{x}))
 \]
-Likelihood Function:
+\textbf{Likelihood Function:}
 \[
     L(\theta) = \prod_{k=1}^{K} \hat{y}_k^{y_k}
 \]
-Log Likelihood:
+\textbf{Log Likelihood:}
 \[
     \ell(\theta) = \sum_{k=1}^{K} y_k \log \hat{y}_k = \mathbf{y}^\top \log \hat{\mathbf{y}}
 \]
-Maximum Log Likelihood:
+\textbf{Maximum Log Likelihood:}
 \[
     \hat{\theta} = \arg\max_{\theta} \mathbf{y}^\top \log \hat{\mathbf{y}}
 \]
@@ -181,15 +181,15 @@ Maximum Log Likelihood:
 \[
     y \sim \mathcal{N}(\hat{y}(\mathbf{x}), \sigma^2)
 \]
-Likelihood Function:
+\textbf{Likelihood Function:}
 \[
     L(\theta) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(y-\hat{y})^2}{2\sigma^2}\right)
 \]
-Log Likelihood:
+\textbf{Log Likelihood:}
 \[
     \ell(\theta) = -\frac{1}{2}\log(2\pi\sigma^2) - \frac{(y-\hat{y})^2}{2\sigma^2}
 \]
-Maximum Log Likelihood:
+\textbf{Maximum Log Likelihood:}
 \[
     \hat{\theta} = \arg\min_{\theta} (y-\hat{y})^2
 \]
@@ -198,15 +198,15 @@ Maximum Log Likelihood:
 \[
     \mathbf{y} \sim \mathcal{N}(\hat{\mathbf{y}}(\mathbf{x}), \sigma^2 I)
 \]
-Likelihood Function:
+\textbf{Likelihood Function:}
 \[
     L(\theta) = \frac{1}{(2\pi\sigma^2)^{d/2}} \exp\left(-\frac{\|\mathbf{y}-\hat{\mathbf{y}}\|^2}{2\sigma^2}\right)
 \]
-Log Likelihood:
+\textbf{Log Likelihood:}
 \[
     \ell(\theta) = -\frac{d}{2}\log(2\pi\sigma^2) - \frac{\|\mathbf{y}-\hat{\mathbf{y}}\|^2}{2\sigma^2}
 \]
-Maximum Log Likelihood:
+\textbf{Maximum Log Likelihood:}
 \[
     \hat{\theta} = \arg\min_{\theta} \|\mathbf{y}-\hat{\mathbf{y}}\|^2
 \]
@@ -257,7 +257,7 @@ Maximum Log Likelihood:
 \]
 \paragraph{Moment Matching:} \mbox{}
 \newline
-Local Constraint:
+\textbf{Local Constraint:}
 \[
     \mathbb{E}[\mathbf{T}(\mathbf{Y}) \mid \mathbf{x}] = \hat{\mathbb{E}}[\mathbf{T}(\mathbf{Y}) \mid \mathbf{x}] \in \mathbb{R}^M
 \]
@@ -295,14 +295,14 @@ where $\boldsymbol{\lambda} \in \mathbb{R}^M$.
 \]
 \paragraph{Moment Matching:} \mbox{}
 \newline
-Global Constraint:
+\textbf{Global Constraint:}
 \[
     \mathbb{E}[\mathbf{T}(\mathbf{Y})\mathbf{X}^{\mathrm{T}}] = \hat{\mathbb{E}}[\mathbf{T}(\mathbf{Y})\mathbf{X}^{\mathrm{T}}] \in \mathbb{R}^{M \times D}
 \]
 \[
     \sum_\mathbf{x} \tilde{p}(\mathbf{x}) \sum_{\mathbf{y}} p(\mathbf{y} \mid \mathbf{x}) \mathbf{T}(\mathbf{y})\mathbf{x}^{\mathrm{T}} = \hat{\mathbb{E}}[\mathbf{T}(\mathbf{Y})\mathbf{X}^{\mathrm{T}}]
 \]
-Marginal Constraint:
+\textbf{Marginal Constraint:}
 \[
     \mathbb{E}[\mathbf{T}(\mathbf{Y})] = \hat{\mathbb{E}}[\mathbf{T}(\mathbf{Y})] \in \mathbb{R}^M
 \]
@@ -568,7 +568,7 @@ $\frac{\sigma_1^2}{\sigma_2^2}$ & $S_1^2, S_2^2$ & $\frac{S_1^2/S_2^2}{\sigma_1^
         \sum_{i=1}^{n} \langle \mathbf{a}_i, \mathbf{q}_j \rangle^2 = \|A\mathbf{q}_j\|^2 = \mathbf{q}_{j}^{\mathrm{T}} A^{\mathrm{T}} A \mathbf{q}_j
     \]
 
-    \item New Objective Function:
+    \item \textbf{New Objective Function:}
     \[
         \arg\min_{W} \text{cost}(W) = \arg\max_{W} \sum_{i=1}^{k} \mathbf{q}_i^{\mathrm{T}} A^{\mathrm{T}} A \mathbf{q}_i
     \]
@@ -589,7 +589,7 @@ $\frac{\sigma_1^2}{\sigma_2^2}$ & $S_1^2, S_2^2$ & $\frac{S_1^2/S_2^2}{\sigma_1^
     \[
         A^{\mathrm{T}} A \mathbf{q}_i = \lambda\mathbf{q}_i
     \]
-    Solutions:
+    \textbf{Solutions:}
     \begin{itemize}
         \item $\mathbf{q}_i = \mathbf{v}_i$ is an \textbf{Eigenvector} of $A^{\mathrm{T}} A$
         \item $\lambda = \lambda_i$ is an \textbf{Eigenvalue} of $A^{\mathrm{T}} A$
